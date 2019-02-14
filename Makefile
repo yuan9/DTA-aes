@@ -1,0 +1,26 @@
+gtl-vsim: 
+	#vsim
+	#vlog -work work "Add Tech Library files here!"
+	vlib work
+	vlog -work work /home/dtatest/gtl_sim/fame_v2/lib/tech/dare/components/sage-x_tsmc_cl018g_rvt.v 
+	vlog -work work /home/dtatest/gtl_sim/fame_v2/lib/tech/dare/components/tpz018nv.v  
+	#vlog -work work /home/bilgiday/sram_new/verilog/sram2p8x32.v
+	#vlog -work work /home/bilgiday/sram_new/verilog/sram6x26.v  
+	#vlog -work work /home/bilgiday/sram_new/verilog/sram6x32.v  
+	#vlog -work work /home/bilgiday/sram_new/verilog/sram8x25.v  
+	#vlog -work work /home/bilgiday/sram_new/verilog/sram7x25.v  
+	#vlog -work work /home/bilgiday/sram_new/verilog/sram8x32.v  
+	#vlog -work work /home/bilgiday/sram_new/verilog/sram9x32.v  
+	#vlog -work work /home/bilgiday/sram_new/verilog/sram12x8.v  
+	#vlog -work work /home/bilgiday/sram_new/verilog/sram13x8.v  
+	
+	vlog -work work /home/dtatest/DTA-aes/workdir/aes_netlist.v
+	
+	vlog -work work aes_cipher_top_tb.v
+
+aes-flow-launch: gtl-vsim
+	#make -C "../../software/test_soft/fault_tests/dtatest" prog.mem
+	vsim -L work -novopt -i work.aes_cipher_top_tb +notimingchecks -sdfmax /aes_cipher_top_tb/dut=/home/dtatest/DTA-aes/workdir/aes_synthesis.sdf
+
+
+	#make -C "../../software/test_soft/fault_tests/dtatest" clean

@@ -56,17 +56,51 @@ set mw_design_library leon3mp_mw_lib
 
 create_mw_lib -technology $technology_file -mw_reference_library "$std_cell_mw_ref_lib $io_mw_ref_lib $mem_mw_ref_lib $io_bonding_ref_lib" -open $mw_design_library/
 
-define_design_lib WORK -path ./WORK
+define_design_lib work -path ./workdir
 #define_design_lib synopsys -path ./synopsys
 
 #analyze -format verilog -library synopsys {aes_rcon.v aes_cipher_top.v aes_sbox.v aes_key_expand_128.v}
 analyze -format verilog -library work {aes_rcon.v aes_cipher_top.v aes_sbox.v aes_key_expand_128.v}
 #elaborate aes_cipher_top -library synopsys -update
+
 elaborate aes_cipher_top -library work -update
-compile -map_effort high
-#report_cell 
 
-ungroup -all
+
+###################################################################
+# Link Design
+###################################################################
+link
+###################################################################
+# apply timing constraint
+###################################################################
+set clock_margin 0.1
+set sys_clk_freq   80.0
+set sys_in_peri [expr 1000.0 / $sys_clk_freq]
+set sys_peri [expr $sys_in_peri - $sys_in_peri*$clock_margin]
+echo "Info: CLK period is set to ${sys_peri} ns"
+create_clock clk -name clk -period $sys_peri
+###################################################################
+#add uncertainity
+set pll_output_jitter 0.100
+set clock_tree_jitter 0.300
+set ocv_jitter 0.100
+set extra_jitter 0.100
+
+set_clock_uncertainty [expr $clock_tree_jitter + $ocv_jitter + $extra_jitter] [get_clocks clk]
+
+
 uniquify
+#compile -map_effort high
+compile_ultra -no_autoungroup
 
-write -format verilog -hierarchy -output aes_netlist.v
+
+#ungroup -all ##check solvnet
+#uniquify ##before compile
+
+write_sdc workdir/aes_synthesis.sdc
+write -f ddc -hier aes_cipher_top -output workdir/aes_synthesis.ddc
+write_sdf -version 2.1 workdir/aes_synthesis.sdf
+write -format verilog -hierarchy -output workdir/aes_netlist.v
+
+quit
+#/home/shashank/asic_design/dc_scripts

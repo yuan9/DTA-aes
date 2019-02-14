@@ -62,11 +62,37 @@ define_design_lib WORK -path ./WORK
 #analyze -format verilog -library synopsys {aes_rcon.v aes_cipher_top.v aes_sbox.v aes_key_expand_128.v}
 analyze -format verilog -library work {aes_rcon.v aes_cipher_top.v aes_sbox.v aes_key_expand_128.v}
 #elaborate aes_cipher_top -library synopsys -update
+
 elaborate aes_cipher_top -library work -update
+
+
+###################################################################
+# Link Design
+###################################################################
+link
+###################################################################
+# apply timing constraint
+###################################################################
+set clock_margin 0.1
+set sys_clk_freq   80.0
+set sys_in_peri [expr 1000.0 / $sys_clk_freq]
+set sys_peri [expr $sys_in_peri - $sys_in_peri*$clock_margin]
+echo "Info: CLK period is set to ${sys_peri} ns"
+create_clock clk -name clk -period $sys_peri
+###################################################################
+
+
+
 compile -map_effort high
 #report_cell 
 
 ungroup -all
 uniquify
 
-write -format verilog -hierarchy -output simon_ARM_mapped.v
+write_sdc work/aes_synthesis.sdc
+write -f ddc -hier aes_cipher_top -output work/aes_synthesis.ddc
+write_sdf -version 2.1 work/aes_synthesis.sdf
+write -format verilog -hierarchy -output work/aes_netlist.v
+
+quit
+
