@@ -47,12 +47,12 @@ read_vcd test.vcd -strip_path /aes_cipher_top_tb/dut
 #read_vcd test.vcd -strip_path /testbench/d3 -path core0_leon3core0_cp2_v0 
 #set_power_analysis_options -waveform_interval 0.001 -waveform_format out -waveform_output "yuan_power" -include all_without_leaf
 #set_power_analysis_options -waveform_interval 0.01 -waveform_format out -waveform_output "yuan_power" -include all_with_leaf
-set_power_analysis_options -waveform_format out -waveform_output "yuan_power" -include all_with_leaf
+#set_power_analysis_options -waveform_format out -waveform_output "yuan_power" -include all_with_leaf
 #set_power_analysis_options -waveform_format fsdb -waveform_output "yuan_power" -include all_with_leaf
-#set_power_analysis_options -waveform_format out -waveform_output "yuan_power" -include top
+set_power_analysis_options -waveform_interval 0.0001 -waveform_format out -waveform_output "yuan_power" -include top
 update_timing
 
 update_power  
 report_power_analysis_options
 report_power -verbose -hierarchy > yuan_PowerReport.txt
-#quit
+quit

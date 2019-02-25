@@ -55,4 +55,4 @@ update_timing
 update_power  
 report_power_analysis_options
 report_power -verbose -hierarchy > yuan_PowerReport.txt
-#quit
+quit

@@ -175,28 +175,28 @@ vaes_cipher_top
 Vbg4?85@Zk@EQMZjnNLNgz3
 r1
 31
-I3[X@Aa?C@H6K16@4<g56;2
-Z6 w1550183428
+IHIeQb^35KRUEJiNMD^Jmd0
+Z6 w1550777405
 Z7 8/home/dtatest/DTA-aes/workdir/aes_netlist.v
 Z8 F/home/dtatest/DTA-aes/workdir/aes_netlist.v
 L0 8979
 R4
 R5
 !s85 0
-!s100 d[<Ve0k?_b7f^11PJd5Fc1
+!s100 O_=[eiC:IGlZaA2R_ZHZ=3
 vaes_cipher_top_tb
 V>d95MLhXNER:XCeo;`bN?2
 r1
 31
-ITb?4c?;TzOm]oO?m1L1lm2
-Z9 w1550114448
+I2Q;Vj9;`GBZBZ6d_[?1E21
+Z9 w1550784561
 Z10 8aes_cipher_top_tb.v
 Z11 Faes_cipher_top_tb.v
-L0 16
+L0 17
 R4
 R5
 !s85 0
-!s100 V[KTI[L`Mi`A2j?G2j1gE2
+!s100 Ugc<eJ8]7f>h=;eC_cL1?2
 vaes_key_expand_128
 VEF0AL<nW;fiDPK_6j[V222
 r1
@@ -1705,15 +1705,15 @@ vclkgen
 VhLkGe:_oM:i=k0Wi5ebmL3
 r1
 31
-ImKP81K8b>l0FVi6RXC0:>3
+I7WJ>oFVj7@^7Jz>988da?1
 R9
 R10
 R11
-L0 3
+L0 4
 R4
 R5
 !s85 0
-!s100 ;ZNm9I4ML<NRQ=Y6I?5KH2
+!s100 K0F:NcaDOhSiC>k9I9K>F2
 vCLKINVX1
 ISB=7L9P2K__o3:HbD3Aza1
 V?KC4UF@AnBRCAdTo0h`jA1

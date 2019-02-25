@@ -1,6 +1,6 @@
 #@ # 
 #@ # Running pt_shell Version N-2017.12-SP3-2 for linux64 -- Aug 10, 2018
-#@ # Date:   Tue Feb 19 21:15:35 2019
+#@ # Date:   Thu Feb 21 16:29:28 2019
 #@ # Run by: dtatest@keccak
 #@ 
 
@@ -872,8 +872,8 @@ source /software/Synopsys_New/pts/N-2017.12-SP3-2/admin/setup/.synopsys_pt.setup
 #@ }
 #@ # -- End source /software/Synopsys_New/pts/N-2017.12-SP3-2/auxx/tcllib/lib/itcl4.0.2/itcl.tcl
 
-source -echo -verbose pt_script_aes.tcl
-#@ # -- Starting source pt_script_aes.tcl
+source -echo -verbose /home/dtatest/DTA-aes/simulation_scripts/pt_script_aes.tcl
+#@ # -- Starting source /home/dtatest/DTA-aes/simulation_scripts/pt_script_aes.tcl
 
 #@ if {[catch {getenv "TSMC180_HOME"} msg]} {
 #@  echo "ERROR: Enviroment variable TSMC180_HOME should point at a tsmc180 lib installation "
@@ -926,13 +926,10 @@ source -echo -verbose pt_script_aes.tcl
 #@ #set_power_analysis_options -waveform_interval 0.01 -waveform_format out -waveform_output "yuan_power" -include all_with_leaf
 #@ #set_power_analysis_options -waveform_format out -waveform_output "yuan_power" -include all_with_leaf
 #@ #set_power_analysis_options -waveform_format fsdb -waveform_output "yuan_power" -include all_with_leaf
-#@ set_power_analysis_options -waveform_format out -waveform_output "yuan_power" -include top
+#@ set_power_analysis_options -waveform_interval 0.0001 -waveform_format out -waveform_output "yuan_power" -include top
 #@ update_timing
 #@ 
 #@ update_power  
 #@ report_power_analysis_options
 #@ report_power -verbose -hierarchy > yuan_PowerReport.txt
-#@ #quit
-#@ # -- End source pt_script_aes.tcl
-
-quit
+#@ quit

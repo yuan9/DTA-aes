@@ -1,9 +1,10 @@
-`timescale 1ps/1ps
+//`timescale 1ps/1ps
+`timescale 100fs/100fs
 
 module clkgen(input reset, output reg clk);
 	always
 		begin
-		#21333
+		#213333
 		if(reset==1'b0)
 			clk=1'b0;
 		else
@@ -29,12 +30,12 @@ clkgen CLK (rst, clk);
 
 initial begin
     rst = 1'b1;
-	#100
+	#1000
 	rst = 1'b0;
-	#21333
+	#213333
 	rst = 1'b1;
 	key = 128'hcafebabedeadbeefdeadbeef00000000;
-	text_in = 128'hFEDCBA98765432100123456789ABCDEF;
+	text_in = 128'hED601A47199A4BEBF815DA96DB76BEE8;
 	@(posedge clk);
 	ld = 1'b1;
 	@(posedge clk);

@@ -262,404 +262,404 @@
 #         Region: /aes_cipher_top_tb/dut/u0/\w_reg[3][25] 
 # ** Warning: (vsim-3722) /home/dtatest/DTA-aes/workdir/aes_netlist.v(2020): [TFMPC] - Missing connection for port 'Q'.
 # ** Warning: (vsim-3017) /home/dtatest/DTA-aes/workdir/aes_netlist.v(9151): [TFMPC] - Too few port connections. Expected 5, found 4.
-#         Region: /aes_cipher_top_tb/dut/\dcnt_reg[0] 
+#         Region: /aes_cipher_top_tb/dut/dcnt_reg_0_
 # ** Warning: (vsim-3722) /home/dtatest/DTA-aes/workdir/aes_netlist.v(9151): [TFMPC] - Missing connection for port 'QN'.
 # ** Warning: (vsim-3017) /home/dtatest/DTA-aes/workdir/aes_netlist.v(9282): [TFMPC] - Too few port connections. Expected 5, found 4.
-#         Region: /aes_cipher_top_tb/dut/\text_in_r_reg[127] 
+#         Region: /aes_cipher_top_tb/dut/text_in_r_reg_127_
 # ** Warning: (vsim-3722) /home/dtatest/DTA-aes/workdir/aes_netlist.v(9282): [TFMPC] - Missing connection for port 'QN'.
 # Refreshing /home/dtatest/DTA-aes/work.udp_edff
 # Loading work.udp_edff
 # ** Warning: (vsim-3017) /home/dtatest/DTA-aes/workdir/aes_netlist.v(9284): [TFMPC] - Too few port connections. Expected 5, found 4.
-#         Region: /aes_cipher_top_tb/dut/\text_in_r_reg[126] 
+#         Region: /aes_cipher_top_tb/dut/text_in_r_reg_126_
 # ** Warning: (vsim-3722) /home/dtatest/DTA-aes/workdir/aes_netlist.v(9284): [TFMPC] - Missing connection for port 'QN'.
 # ** Warning: (vsim-3017) /home/dtatest/DTA-aes/workdir/aes_netlist.v(9286): [TFMPC] - Too few port connections. Expected 5, found 4.
-#         Region: /aes_cipher_top_tb/dut/\text_in_r_reg[125] 
+#         Region: /aes_cipher_top_tb/dut/text_in_r_reg_125_
 # ** Warning: (vsim-3722) /home/dtatest/DTA-aes/workdir/aes_netlist.v(9286): [TFMPC] - Missing connection for port 'QN'.
 # ** Warning: (vsim-3017) /home/dtatest/DTA-aes/workdir/aes_netlist.v(9288): [TFMPC] - Too few port connections. Expected 5, found 4.
-#         Region: /aes_cipher_top_tb/dut/\text_in_r_reg[124] 
+#         Region: /aes_cipher_top_tb/dut/text_in_r_reg_124_
 # ** Warning: (vsim-3722) /home/dtatest/DTA-aes/workdir/aes_netlist.v(9288): [TFMPC] - Missing connection for port 'QN'.
 # ** Warning: (vsim-3017) /home/dtatest/DTA-aes/workdir/aes_netlist.v(9290): [TFMPC] - Too few port connections. Expected 5, found 4.
-#         Region: /aes_cipher_top_tb/dut/\text_in_r_reg[123] 
+#         Region: /aes_cipher_top_tb/dut/text_in_r_reg_123_
 # ** Warning: (vsim-3722) /home/dtatest/DTA-aes/workdir/aes_netlist.v(9290): [TFMPC] - Missing connection for port 'QN'.
 # ** Warning: (vsim-3017) /home/dtatest/DTA-aes/workdir/aes_netlist.v(9292): [TFMPC] - Too few port connections. Expected 5, found 4.
-#         Region: /aes_cipher_top_tb/dut/\text_in_r_reg[122] 
+#         Region: /aes_cipher_top_tb/dut/text_in_r_reg_122_
 # ** Warning: (vsim-3722) /home/dtatest/DTA-aes/workdir/aes_netlist.v(9292): [TFMPC] - Missing connection for port 'QN'.
 # ** Warning: (vsim-3017) /home/dtatest/DTA-aes/workdir/aes_netlist.v(9294): [TFMPC] - Too few port connections. Expected 5, found 4.
-#         Region: /aes_cipher_top_tb/dut/\text_in_r_reg[121] 
+#         Region: /aes_cipher_top_tb/dut/text_in_r_reg_121_
 # ** Warning: (vsim-3722) /home/dtatest/DTA-aes/workdir/aes_netlist.v(9294): [TFMPC] - Missing connection for port 'QN'.
 # ** Warning: (vsim-3017) /home/dtatest/DTA-aes/workdir/aes_netlist.v(9296): [TFMPC] - Too few port connections. Expected 5, found 4.
-#         Region: /aes_cipher_top_tb/dut/\text_in_r_reg[120] 
+#         Region: /aes_cipher_top_tb/dut/text_in_r_reg_120_
 # ** Warning: (vsim-3722) /home/dtatest/DTA-aes/workdir/aes_netlist.v(9296): [TFMPC] - Missing connection for port 'QN'.
 # ** Warning: (vsim-3017) /home/dtatest/DTA-aes/workdir/aes_netlist.v(9298): [TFMPC] - Too few port connections. Expected 5, found 4.
-#         Region: /aes_cipher_top_tb/dut/\text_in_r_reg[119] 
+#         Region: /aes_cipher_top_tb/dut/text_in_r_reg_119_
 # ** Warning: (vsim-3722) /home/dtatest/DTA-aes/workdir/aes_netlist.v(9298): [TFMPC] - Missing connection for port 'QN'.
 # ** Warning: (vsim-3017) /home/dtatest/DTA-aes/workdir/aes_netlist.v(9300): [TFMPC] - Too few port connections. Expected 5, found 4.
-#         Region: /aes_cipher_top_tb/dut/\text_in_r_reg[118] 
+#         Region: /aes_cipher_top_tb/dut/text_in_r_reg_118_
 # ** Warning: (vsim-3722) /home/dtatest/DTA-aes/workdir/aes_netlist.v(9300): [TFMPC] - Missing connection for port 'QN'.
 # ** Warning: (vsim-3017) /home/dtatest/DTA-aes/workdir/aes_netlist.v(9302): [TFMPC] - Too few port connections. Expected 5, found 4.
-#         Region: /aes_cipher_top_tb/dut/\text_in_r_reg[117] 
+#         Region: /aes_cipher_top_tb/dut/text_in_r_reg_117_
 # ** Warning: (vsim-3722) /home/dtatest/DTA-aes/workdir/aes_netlist.v(9302): [TFMPC] - Missing connection for port 'QN'.
 # ** Warning: (vsim-3017) /home/dtatest/DTA-aes/workdir/aes_netlist.v(9304): [TFMPC] - Too few port connections. Expected 5, found 4.
-#         Region: /aes_cipher_top_tb/dut/\text_in_r_reg[116] 
+#         Region: /aes_cipher_top_tb/dut/text_in_r_reg_116_
 # ** Warning: (vsim-3722) /home/dtatest/DTA-aes/workdir/aes_netlist.v(9304): [TFMPC] - Missing connection for port 'QN'.
 # ** Warning: (vsim-3017) /home/dtatest/DTA-aes/workdir/aes_netlist.v(9306): [TFMPC] - Too few port connections. Expected 5, found 4.
-#         Region: /aes_cipher_top_tb/dut/\text_in_r_reg[115] 
+#         Region: /aes_cipher_top_tb/dut/text_in_r_reg_115_
 # ** Warning: (vsim-3722) /home/dtatest/DTA-aes/workdir/aes_netlist.v(9306): [TFMPC] - Missing connection for port 'QN'.
 # ** Warning: (vsim-3017) /home/dtatest/DTA-aes/workdir/aes_netlist.v(9308): [TFMPC] - Too few port connections. Expected 5, found 4.
-#         Region: /aes_cipher_top_tb/dut/\text_in_r_reg[114] 
+#         Region: /aes_cipher_top_tb/dut/text_in_r_reg_114_
 # ** Warning: (vsim-3722) /home/dtatest/DTA-aes/workdir/aes_netlist.v(9308): [TFMPC] - Missing connection for port 'QN'.
 # ** Warning: (vsim-3017) /home/dtatest/DTA-aes/workdir/aes_netlist.v(9310): [TFMPC] - Too few port connections. Expected 5, found 4.
-#         Region: /aes_cipher_top_tb/dut/\text_in_r_reg[113] 
+#         Region: /aes_cipher_top_tb/dut/text_in_r_reg_113_
 # ** Warning: (vsim-3722) /home/dtatest/DTA-aes/workdir/aes_netlist.v(9310): [TFMPC] - Missing connection for port 'QN'.
 # ** Warning: (vsim-3017) /home/dtatest/DTA-aes/workdir/aes_netlist.v(9312): [TFMPC] - Too few port connections. Expected 5, found 4.
-#         Region: /aes_cipher_top_tb/dut/\text_in_r_reg[112] 
+#         Region: /aes_cipher_top_tb/dut/text_in_r_reg_112_
 # ** Warning: (vsim-3722) /home/dtatest/DTA-aes/workdir/aes_netlist.v(9312): [TFMPC] - Missing connection for port 'QN'.
 # ** Warning: (vsim-3017) /home/dtatest/DTA-aes/workdir/aes_netlist.v(9314): [TFMPC] - Too few port connections. Expected 5, found 4.
-#         Region: /aes_cipher_top_tb/dut/\text_in_r_reg[111] 
+#         Region: /aes_cipher_top_tb/dut/text_in_r_reg_111_
 # ** Warning: (vsim-3722) /home/dtatest/DTA-aes/workdir/aes_netlist.v(9314): [TFMPC] - Missing connection for port 'QN'.
 # ** Warning: (vsim-3017) /home/dtatest/DTA-aes/workdir/aes_netlist.v(9316): [TFMPC] - Too few port connections. Expected 5, found 4.
-#         Region: /aes_cipher_top_tb/dut/\text_in_r_reg[110] 
+#         Region: /aes_cipher_top_tb/dut/text_in_r_reg_110_
 # ** Warning: (vsim-3722) /home/dtatest/DTA-aes/workdir/aes_netlist.v(9316): [TFMPC] - Missing connection for port 'QN'.
 # ** Warning: (vsim-3017) /home/dtatest/DTA-aes/workdir/aes_netlist.v(9318): [TFMPC] - Too few port connections. Expected 5, found 4.
-#         Region: /aes_cipher_top_tb/dut/\text_in_r_reg[109] 
+#         Region: /aes_cipher_top_tb/dut/text_in_r_reg_109_
 # ** Warning: (vsim-3722) /home/dtatest/DTA-aes/workdir/aes_netlist.v(9318): [TFMPC] - Missing connection for port 'QN'.
 # ** Warning: (vsim-3017) /home/dtatest/DTA-aes/workdir/aes_netlist.v(9320): [TFMPC] - Too few port connections. Expected 5, found 4.
-#         Region: /aes_cipher_top_tb/dut/\text_in_r_reg[108] 
+#         Region: /aes_cipher_top_tb/dut/text_in_r_reg_108_
 # ** Warning: (vsim-3722) /home/dtatest/DTA-aes/workdir/aes_netlist.v(9320): [TFMPC] - Missing connection for port 'QN'.
 # ** Warning: (vsim-3017) /home/dtatest/DTA-aes/workdir/aes_netlist.v(9322): [TFMPC] - Too few port connections. Expected 5, found 4.
-#         Region: /aes_cipher_top_tb/dut/\text_in_r_reg[107] 
+#         Region: /aes_cipher_top_tb/dut/text_in_r_reg_107_
 # ** Warning: (vsim-3722) /home/dtatest/DTA-aes/workdir/aes_netlist.v(9322): [TFMPC] - Missing connection for port 'QN'.
 # ** Warning: (vsim-3017) /home/dtatest/DTA-aes/workdir/aes_netlist.v(9324): [TFMPC] - Too few port connections. Expected 5, found 4.
-#         Region: /aes_cipher_top_tb/dut/\text_in_r_reg[106] 
+#         Region: /aes_cipher_top_tb/dut/text_in_r_reg_106_
 # ** Warning: (vsim-3722) /home/dtatest/DTA-aes/workdir/aes_netlist.v(9324): [TFMPC] - Missing connection for port 'QN'.
 # ** Warning: (vsim-3017) /home/dtatest/DTA-aes/workdir/aes_netlist.v(9326): [TFMPC] - Too few port connections. Expected 5, found 4.
-#         Region: /aes_cipher_top_tb/dut/\text_in_r_reg[105] 
+#         Region: /aes_cipher_top_tb/dut/text_in_r_reg_105_
 # ** Warning: (vsim-3722) /home/dtatest/DTA-aes/workdir/aes_netlist.v(9326): [TFMPC] - Missing connection for port 'QN'.
 # ** Warning: (vsim-3017) /home/dtatest/DTA-aes/workdir/aes_netlist.v(9328): [TFMPC] - Too few port connections. Expected 5, found 4.
-#         Region: /aes_cipher_top_tb/dut/\text_in_r_reg[104] 
+#         Region: /aes_cipher_top_tb/dut/text_in_r_reg_104_
 # ** Warning: (vsim-3722) /home/dtatest/DTA-aes/workdir/aes_netlist.v(9328): [TFMPC] - Missing connection for port 'QN'.
 # ** Warning: (vsim-3017) /home/dtatest/DTA-aes/workdir/aes_netlist.v(9330): [TFMPC] - Too few port connections. Expected 5, found 4.
-#         Region: /aes_cipher_top_tb/dut/\text_in_r_reg[103] 
+#         Region: /aes_cipher_top_tb/dut/text_in_r_reg_103_
 # ** Warning: (vsim-3722) /home/dtatest/DTA-aes/workdir/aes_netlist.v(9330): [TFMPC] - Missing connection for port 'QN'.
 # ** Warning: (vsim-3017) /home/dtatest/DTA-aes/workdir/aes_netlist.v(9332): [TFMPC] - Too few port connections. Expected 5, found 4.
-#         Region: /aes_cipher_top_tb/dut/\text_in_r_reg[102] 
+#         Region: /aes_cipher_top_tb/dut/text_in_r_reg_102_
 # ** Warning: (vsim-3722) /home/dtatest/DTA-aes/workdir/aes_netlist.v(9332): [TFMPC] - Missing connection for port 'QN'.
 # ** Warning: (vsim-3017) /home/dtatest/DTA-aes/workdir/aes_netlist.v(9334): [TFMPC] - Too few port connections. Expected 5, found 4.
-#         Region: /aes_cipher_top_tb/dut/\text_in_r_reg[101] 
+#         Region: /aes_cipher_top_tb/dut/text_in_r_reg_101_
 # ** Warning: (vsim-3722) /home/dtatest/DTA-aes/workdir/aes_netlist.v(9334): [TFMPC] - Missing connection for port 'QN'.
 # ** Warning: (vsim-3017) /home/dtatest/DTA-aes/workdir/aes_netlist.v(9336): [TFMPC] - Too few port connections. Expected 5, found 4.
-#         Region: /aes_cipher_top_tb/dut/\text_in_r_reg[100] 
+#         Region: /aes_cipher_top_tb/dut/text_in_r_reg_100_
 # ** Warning: (vsim-3722) /home/dtatest/DTA-aes/workdir/aes_netlist.v(9336): [TFMPC] - Missing connection for port 'QN'.
 # ** Warning: (vsim-3017) /home/dtatest/DTA-aes/workdir/aes_netlist.v(9338): [TFMPC] - Too few port connections. Expected 5, found 4.
-#         Region: /aes_cipher_top_tb/dut/\text_in_r_reg[99] 
+#         Region: /aes_cipher_top_tb/dut/text_in_r_reg_99_
 # ** Warning: (vsim-3722) /home/dtatest/DTA-aes/workdir/aes_netlist.v(9338): [TFMPC] - Missing connection for port 'QN'.
 # ** Warning: (vsim-3017) /home/dtatest/DTA-aes/workdir/aes_netlist.v(9340): [TFMPC] - Too few port connections. Expected 5, found 4.
-#         Region: /aes_cipher_top_tb/dut/\text_in_r_reg[98] 
+#         Region: /aes_cipher_top_tb/dut/text_in_r_reg_98_
 # ** Warning: (vsim-3722) /home/dtatest/DTA-aes/workdir/aes_netlist.v(9340): [TFMPC] - Missing connection for port 'QN'.
 # ** Warning: (vsim-3017) /home/dtatest/DTA-aes/workdir/aes_netlist.v(9342): [TFMPC] - Too few port connections. Expected 5, found 4.
-#         Region: /aes_cipher_top_tb/dut/\text_in_r_reg[97] 
+#         Region: /aes_cipher_top_tb/dut/text_in_r_reg_97_
 # ** Warning: (vsim-3722) /home/dtatest/DTA-aes/workdir/aes_netlist.v(9342): [TFMPC] - Missing connection for port 'QN'.
 # ** Warning: (vsim-3017) /home/dtatest/DTA-aes/workdir/aes_netlist.v(9344): [TFMPC] - Too few port connections. Expected 5, found 4.
-#         Region: /aes_cipher_top_tb/dut/\text_in_r_reg[96] 
+#         Region: /aes_cipher_top_tb/dut/text_in_r_reg_96_
 # ** Warning: (vsim-3722) /home/dtatest/DTA-aes/workdir/aes_netlist.v(9344): [TFMPC] - Missing connection for port 'QN'.
 # ** Warning: (vsim-3017) /home/dtatest/DTA-aes/workdir/aes_netlist.v(9346): [TFMPC] - Too few port connections. Expected 5, found 4.
-#         Region: /aes_cipher_top_tb/dut/\text_in_r_reg[95] 
+#         Region: /aes_cipher_top_tb/dut/text_in_r_reg_95_
 # ** Warning: (vsim-3722) /home/dtatest/DTA-aes/workdir/aes_netlist.v(9346): [TFMPC] - Missing connection for port 'QN'.
 # ** Warning: (vsim-3017) /home/dtatest/DTA-aes/workdir/aes_netlist.v(9348): [TFMPC] - Too few port connections. Expected 5, found 4.
-#         Region: /aes_cipher_top_tb/dut/\text_in_r_reg[94] 
+#         Region: /aes_cipher_top_tb/dut/text_in_r_reg_94_
 # ** Warning: (vsim-3722) /home/dtatest/DTA-aes/workdir/aes_netlist.v(9348): [TFMPC] - Missing connection for port 'QN'.
 # ** Warning: (vsim-3017) /home/dtatest/DTA-aes/workdir/aes_netlist.v(9350): [TFMPC] - Too few port connections. Expected 5, found 4.
-#         Region: /aes_cipher_top_tb/dut/\text_in_r_reg[93] 
+#         Region: /aes_cipher_top_tb/dut/text_in_r_reg_93_
 # ** Warning: (vsim-3722) /home/dtatest/DTA-aes/workdir/aes_netlist.v(9350): [TFMPC] - Missing connection for port 'QN'.
 # ** Warning: (vsim-3017) /home/dtatest/DTA-aes/workdir/aes_netlist.v(9352): [TFMPC] - Too few port connections. Expected 5, found 4.
-#         Region: /aes_cipher_top_tb/dut/\text_in_r_reg[92] 
+#         Region: /aes_cipher_top_tb/dut/text_in_r_reg_92_
 # ** Warning: (vsim-3722) /home/dtatest/DTA-aes/workdir/aes_netlist.v(9352): [TFMPC] - Missing connection for port 'QN'.
 # ** Warning: (vsim-3017) /home/dtatest/DTA-aes/workdir/aes_netlist.v(9354): [TFMPC] - Too few port connections. Expected 5, found 4.
-#         Region: /aes_cipher_top_tb/dut/\text_in_r_reg[91] 
+#         Region: /aes_cipher_top_tb/dut/text_in_r_reg_91_
 # ** Warning: (vsim-3722) /home/dtatest/DTA-aes/workdir/aes_netlist.v(9354): [TFMPC] - Missing connection for port 'QN'.
 # ** Warning: (vsim-3017) /home/dtatest/DTA-aes/workdir/aes_netlist.v(9356): [TFMPC] - Too few port connections. Expected 5, found 4.
-#         Region: /aes_cipher_top_tb/dut/\text_in_r_reg[90] 
+#         Region: /aes_cipher_top_tb/dut/text_in_r_reg_90_
 # ** Warning: (vsim-3722) /home/dtatest/DTA-aes/workdir/aes_netlist.v(9356): [TFMPC] - Missing connection for port 'QN'.
 # ** Warning: (vsim-3017) /home/dtatest/DTA-aes/workdir/aes_netlist.v(9358): [TFMPC] - Too few port connections. Expected 5, found 4.
-#         Region: /aes_cipher_top_tb/dut/\text_in_r_reg[89] 
+#         Region: /aes_cipher_top_tb/dut/text_in_r_reg_89_
 # ** Warning: (vsim-3722) /home/dtatest/DTA-aes/workdir/aes_netlist.v(9358): [TFMPC] - Missing connection for port 'QN'.
 # ** Warning: (vsim-3017) /home/dtatest/DTA-aes/workdir/aes_netlist.v(9360): [TFMPC] - Too few port connections. Expected 5, found 4.
-#         Region: /aes_cipher_top_tb/dut/\text_in_r_reg[88] 
+#         Region: /aes_cipher_top_tb/dut/text_in_r_reg_88_
 # ** Warning: (vsim-3722) /home/dtatest/DTA-aes/workdir/aes_netlist.v(9360): [TFMPC] - Missing connection for port 'QN'.
 # ** Warning: (vsim-3017) /home/dtatest/DTA-aes/workdir/aes_netlist.v(9362): [TFMPC] - Too few port connections. Expected 5, found 4.
-#         Region: /aes_cipher_top_tb/dut/\text_in_r_reg[87] 
+#         Region: /aes_cipher_top_tb/dut/text_in_r_reg_87_
 # ** Warning: (vsim-3722) /home/dtatest/DTA-aes/workdir/aes_netlist.v(9362): [TFMPC] - Missing connection for port 'QN'.
 # ** Warning: (vsim-3017) /home/dtatest/DTA-aes/workdir/aes_netlist.v(9364): [TFMPC] - Too few port connections. Expected 5, found 4.
-#         Region: /aes_cipher_top_tb/dut/\text_in_r_reg[86] 
+#         Region: /aes_cipher_top_tb/dut/text_in_r_reg_86_
 # ** Warning: (vsim-3722) /home/dtatest/DTA-aes/workdir/aes_netlist.v(9364): [TFMPC] - Missing connection for port 'QN'.
 # ** Warning: (vsim-3017) /home/dtatest/DTA-aes/workdir/aes_netlist.v(9366): [TFMPC] - Too few port connections. Expected 5, found 4.
-#         Region: /aes_cipher_top_tb/dut/\text_in_r_reg[85] 
+#         Region: /aes_cipher_top_tb/dut/text_in_r_reg_85_
 # ** Warning: (vsim-3722) /home/dtatest/DTA-aes/workdir/aes_netlist.v(9366): [TFMPC] - Missing connection for port 'QN'.
 # ** Warning: (vsim-3017) /home/dtatest/DTA-aes/workdir/aes_netlist.v(9368): [TFMPC] - Too few port connections. Expected 5, found 4.
-#         Region: /aes_cipher_top_tb/dut/\text_in_r_reg[84] 
+#         Region: /aes_cipher_top_tb/dut/text_in_r_reg_84_
 # ** Warning: (vsim-3722) /home/dtatest/DTA-aes/workdir/aes_netlist.v(9368): [TFMPC] - Missing connection for port 'QN'.
 # ** Warning: (vsim-3017) /home/dtatest/DTA-aes/workdir/aes_netlist.v(9370): [TFMPC] - Too few port connections. Expected 5, found 4.
-#         Region: /aes_cipher_top_tb/dut/\text_in_r_reg[83] 
+#         Region: /aes_cipher_top_tb/dut/text_in_r_reg_83_
 # ** Warning: (vsim-3722) /home/dtatest/DTA-aes/workdir/aes_netlist.v(9370): [TFMPC] - Missing connection for port 'QN'.
 # ** Warning: (vsim-3017) /home/dtatest/DTA-aes/workdir/aes_netlist.v(9372): [TFMPC] - Too few port connections. Expected 5, found 4.
-#         Region: /aes_cipher_top_tb/dut/\text_in_r_reg[82] 
+#         Region: /aes_cipher_top_tb/dut/text_in_r_reg_82_
 # ** Warning: (vsim-3722) /home/dtatest/DTA-aes/workdir/aes_netlist.v(9372): [TFMPC] - Missing connection for port 'QN'.
 # ** Warning: (vsim-3017) /home/dtatest/DTA-aes/workdir/aes_netlist.v(9374): [TFMPC] - Too few port connections. Expected 5, found 4.
-#         Region: /aes_cipher_top_tb/dut/\text_in_r_reg[81] 
+#         Region: /aes_cipher_top_tb/dut/text_in_r_reg_81_
 # ** Warning: (vsim-3722) /home/dtatest/DTA-aes/workdir/aes_netlist.v(9374): [TFMPC] - Missing connection for port 'QN'.
 # ** Warning: (vsim-3017) /home/dtatest/DTA-aes/workdir/aes_netlist.v(9376): [TFMPC] - Too few port connections. Expected 5, found 4.
-#         Region: /aes_cipher_top_tb/dut/\text_in_r_reg[80] 
+#         Region: /aes_cipher_top_tb/dut/text_in_r_reg_80_
 # ** Warning: (vsim-3722) /home/dtatest/DTA-aes/workdir/aes_netlist.v(9376): [TFMPC] - Missing connection for port 'QN'.
 # ** Warning: (vsim-3017) /home/dtatest/DTA-aes/workdir/aes_netlist.v(9378): [TFMPC] - Too few port connections. Expected 5, found 4.
-#         Region: /aes_cipher_top_tb/dut/\text_in_r_reg[79] 
+#         Region: /aes_cipher_top_tb/dut/text_in_r_reg_79_
 # ** Warning: (vsim-3722) /home/dtatest/DTA-aes/workdir/aes_netlist.v(9378): [TFMPC] - Missing connection for port 'QN'.
 # ** Warning: (vsim-3017) /home/dtatest/DTA-aes/workdir/aes_netlist.v(9380): [TFMPC] - Too few port connections. Expected 5, found 4.
-#         Region: /aes_cipher_top_tb/dut/\text_in_r_reg[78] 
+#         Region: /aes_cipher_top_tb/dut/text_in_r_reg_78_
 # ** Warning: (vsim-3722) /home/dtatest/DTA-aes/workdir/aes_netlist.v(9380): [TFMPC] - Missing connection for port 'QN'.
 # ** Warning: (vsim-3017) /home/dtatest/DTA-aes/workdir/aes_netlist.v(9382): [TFMPC] - Too few port connections. Expected 5, found 4.
-#         Region: /aes_cipher_top_tb/dut/\text_in_r_reg[77] 
+#         Region: /aes_cipher_top_tb/dut/text_in_r_reg_77_
 # ** Warning: (vsim-3722) /home/dtatest/DTA-aes/workdir/aes_netlist.v(9382): [TFMPC] - Missing connection for port 'QN'.
 # ** Warning: (vsim-3017) /home/dtatest/DTA-aes/workdir/aes_netlist.v(9384): [TFMPC] - Too few port connections. Expected 5, found 4.
-#         Region: /aes_cipher_top_tb/dut/\text_in_r_reg[76] 
+#         Region: /aes_cipher_top_tb/dut/text_in_r_reg_76_
 # ** Warning: (vsim-3722) /home/dtatest/DTA-aes/workdir/aes_netlist.v(9384): [TFMPC] - Missing connection for port 'QN'.
 # ** Warning: (vsim-3017) /home/dtatest/DTA-aes/workdir/aes_netlist.v(9386): [TFMPC] - Too few port connections. Expected 5, found 4.
-#         Region: /aes_cipher_top_tb/dut/\text_in_r_reg[75] 
+#         Region: /aes_cipher_top_tb/dut/text_in_r_reg_75_
 # ** Warning: (vsim-3722) /home/dtatest/DTA-aes/workdir/aes_netlist.v(9386): [TFMPC] - Missing connection for port 'QN'.
 # ** Warning: (vsim-3017) /home/dtatest/DTA-aes/workdir/aes_netlist.v(9388): [TFMPC] - Too few port connections. Expected 5, found 4.
-#         Region: /aes_cipher_top_tb/dut/\text_in_r_reg[74] 
+#         Region: /aes_cipher_top_tb/dut/text_in_r_reg_74_
 # ** Warning: (vsim-3722) /home/dtatest/DTA-aes/workdir/aes_netlist.v(9388): [TFMPC] - Missing connection for port 'QN'.
 # ** Warning: (vsim-3017) /home/dtatest/DTA-aes/workdir/aes_netlist.v(9390): [TFMPC] - Too few port connections. Expected 5, found 4.
-#         Region: /aes_cipher_top_tb/dut/\text_in_r_reg[73] 
+#         Region: /aes_cipher_top_tb/dut/text_in_r_reg_73_
 # ** Warning: (vsim-3722) /home/dtatest/DTA-aes/workdir/aes_netlist.v(9390): [TFMPC] - Missing connection for port 'QN'.
 # ** Warning: (vsim-3017) /home/dtatest/DTA-aes/workdir/aes_netlist.v(9392): [TFMPC] - Too few port connections. Expected 5, found 4.
-#         Region: /aes_cipher_top_tb/dut/\text_in_r_reg[72] 
+#         Region: /aes_cipher_top_tb/dut/text_in_r_reg_72_
 # ** Warning: (vsim-3722) /home/dtatest/DTA-aes/workdir/aes_netlist.v(9392): [TFMPC] - Missing connection for port 'QN'.
 # ** Warning: (vsim-3017) /home/dtatest/DTA-aes/workdir/aes_netlist.v(9394): [TFMPC] - Too few port connections. Expected 5, found 4.
-#         Region: /aes_cipher_top_tb/dut/\text_in_r_reg[71] 
+#         Region: /aes_cipher_top_tb/dut/text_in_r_reg_71_
 # ** Warning: (vsim-3722) /home/dtatest/DTA-aes/workdir/aes_netlist.v(9394): [TFMPC] - Missing connection for port 'QN'.
 # ** Warning: (vsim-3017) /home/dtatest/DTA-aes/workdir/aes_netlist.v(9396): [TFMPC] - Too few port connections. Expected 5, found 4.
-#         Region: /aes_cipher_top_tb/dut/\text_in_r_reg[70] 
+#         Region: /aes_cipher_top_tb/dut/text_in_r_reg_70_
 # ** Warning: (vsim-3722) /home/dtatest/DTA-aes/workdir/aes_netlist.v(9396): [TFMPC] - Missing connection for port 'QN'.
 # ** Warning: (vsim-3017) /home/dtatest/DTA-aes/workdir/aes_netlist.v(9398): [TFMPC] - Too few port connections. Expected 5, found 4.
-#         Region: /aes_cipher_top_tb/dut/\text_in_r_reg[69] 
+#         Region: /aes_cipher_top_tb/dut/text_in_r_reg_69_
 # ** Warning: (vsim-3722) /home/dtatest/DTA-aes/workdir/aes_netlist.v(9398): [TFMPC] - Missing connection for port 'QN'.
 # ** Warning: (vsim-3017) /home/dtatest/DTA-aes/workdir/aes_netlist.v(9400): [TFMPC] - Too few port connections. Expected 5, found 4.
-#         Region: /aes_cipher_top_tb/dut/\text_in_r_reg[68] 
+#         Region: /aes_cipher_top_tb/dut/text_in_r_reg_68_
 # ** Warning: (vsim-3722) /home/dtatest/DTA-aes/workdir/aes_netlist.v(9400): [TFMPC] - Missing connection for port 'QN'.
 # ** Warning: (vsim-3017) /home/dtatest/DTA-aes/workdir/aes_netlist.v(9402): [TFMPC] - Too few port connections. Expected 5, found 4.
-#         Region: /aes_cipher_top_tb/dut/\text_in_r_reg[67] 
+#         Region: /aes_cipher_top_tb/dut/text_in_r_reg_67_
 # ** Warning: (vsim-3722) /home/dtatest/DTA-aes/workdir/aes_netlist.v(9402): [TFMPC] - Missing connection for port 'QN'.
 # ** Warning: (vsim-3017) /home/dtatest/DTA-aes/workdir/aes_netlist.v(9404): [TFMPC] - Too few port connections. Expected 5, found 4.
-#         Region: /aes_cipher_top_tb/dut/\text_in_r_reg[66] 
+#         Region: /aes_cipher_top_tb/dut/text_in_r_reg_66_
 # ** Warning: (vsim-3722) /home/dtatest/DTA-aes/workdir/aes_netlist.v(9404): [TFMPC] - Missing connection for port 'QN'.
 # ** Warning: (vsim-3017) /home/dtatest/DTA-aes/workdir/aes_netlist.v(9406): [TFMPC] - Too few port connections. Expected 5, found 4.
-#         Region: /aes_cipher_top_tb/dut/\text_in_r_reg[65] 
+#         Region: /aes_cipher_top_tb/dut/text_in_r_reg_65_
 # ** Warning: (vsim-3722) /home/dtatest/DTA-aes/workdir/aes_netlist.v(9406): [TFMPC] - Missing connection for port 'QN'.
 # ** Warning: (vsim-3017) /home/dtatest/DTA-aes/workdir/aes_netlist.v(9408): [TFMPC] - Too few port connections. Expected 5, found 4.
-#         Region: /aes_cipher_top_tb/dut/\text_in_r_reg[64] 
+#         Region: /aes_cipher_top_tb/dut/text_in_r_reg_64_
 # ** Warning: (vsim-3722) /home/dtatest/DTA-aes/workdir/aes_netlist.v(9408): [TFMPC] - Missing connection for port 'QN'.
 # ** Warning: (vsim-3017) /home/dtatest/DTA-aes/workdir/aes_netlist.v(9410): [TFMPC] - Too few port connections. Expected 5, found 4.
-#         Region: /aes_cipher_top_tb/dut/\text_in_r_reg[63] 
+#         Region: /aes_cipher_top_tb/dut/text_in_r_reg_63_
 # ** Warning: (vsim-3722) /home/dtatest/DTA-aes/workdir/aes_netlist.v(9410): [TFMPC] - Missing connection for port 'QN'.
 # ** Warning: (vsim-3017) /home/dtatest/DTA-aes/workdir/aes_netlist.v(9412): [TFMPC] - Too few port connections. Expected 5, found 4.
-#         Region: /aes_cipher_top_tb/dut/\text_in_r_reg[62] 
+#         Region: /aes_cipher_top_tb/dut/text_in_r_reg_62_
 # ** Warning: (vsim-3722) /home/dtatest/DTA-aes/workdir/aes_netlist.v(9412): [TFMPC] - Missing connection for port 'QN'.
 # ** Warning: (vsim-3017) /home/dtatest/DTA-aes/workdir/aes_netlist.v(9414): [TFMPC] - Too few port connections. Expected 5, found 4.
-#         Region: /aes_cipher_top_tb/dut/\text_in_r_reg[61] 
+#         Region: /aes_cipher_top_tb/dut/text_in_r_reg_61_
 # ** Warning: (vsim-3722) /home/dtatest/DTA-aes/workdir/aes_netlist.v(9414): [TFMPC] - Missing connection for port 'QN'.
 # ** Warning: (vsim-3017) /home/dtatest/DTA-aes/workdir/aes_netlist.v(9416): [TFMPC] - Too few port connections. Expected 5, found 4.
-#         Region: /aes_cipher_top_tb/dut/\text_in_r_reg[60] 
+#         Region: /aes_cipher_top_tb/dut/text_in_r_reg_60_
 # ** Warning: (vsim-3722) /home/dtatest/DTA-aes/workdir/aes_netlist.v(9416): [TFMPC] - Missing connection for port 'QN'.
 # ** Warning: (vsim-3017) /home/dtatest/DTA-aes/workdir/aes_netlist.v(9418): [TFMPC] - Too few port connections. Expected 5, found 4.
-#         Region: /aes_cipher_top_tb/dut/\text_in_r_reg[59] 
+#         Region: /aes_cipher_top_tb/dut/text_in_r_reg_59_
 # ** Warning: (vsim-3722) /home/dtatest/DTA-aes/workdir/aes_netlist.v(9418): [TFMPC] - Missing connection for port 'QN'.
 # ** Warning: (vsim-3017) /home/dtatest/DTA-aes/workdir/aes_netlist.v(9420): [TFMPC] - Too few port connections. Expected 5, found 4.
-#         Region: /aes_cipher_top_tb/dut/\text_in_r_reg[58] 
+#         Region: /aes_cipher_top_tb/dut/text_in_r_reg_58_
 # ** Warning: (vsim-3722) /home/dtatest/DTA-aes/workdir/aes_netlist.v(9420): [TFMPC] - Missing connection for port 'QN'.
 # ** Warning: (vsim-3017) /home/dtatest/DTA-aes/workdir/aes_netlist.v(9422): [TFMPC] - Too few port connections. Expected 5, found 4.
-#         Region: /aes_cipher_top_tb/dut/\text_in_r_reg[57] 
+#         Region: /aes_cipher_top_tb/dut/text_in_r_reg_57_
 # ** Warning: (vsim-3722) /home/dtatest/DTA-aes/workdir/aes_netlist.v(9422): [TFMPC] - Missing connection for port 'QN'.
 # ** Warning: (vsim-3017) /home/dtatest/DTA-aes/workdir/aes_netlist.v(9424): [TFMPC] - Too few port connections. Expected 5, found 4.
-#         Region: /aes_cipher_top_tb/dut/\text_in_r_reg[56] 
+#         Region: /aes_cipher_top_tb/dut/text_in_r_reg_56_
 # ** Warning: (vsim-3722) /home/dtatest/DTA-aes/workdir/aes_netlist.v(9424): [TFMPC] - Missing connection for port 'QN'.
 # ** Warning: (vsim-3017) /home/dtatest/DTA-aes/workdir/aes_netlist.v(9426): [TFMPC] - Too few port connections. Expected 5, found 4.
-#         Region: /aes_cipher_top_tb/dut/\text_in_r_reg[55] 
+#         Region: /aes_cipher_top_tb/dut/text_in_r_reg_55_
 # ** Warning: (vsim-3722) /home/dtatest/DTA-aes/workdir/aes_netlist.v(9426): [TFMPC] - Missing connection for port 'QN'.
 # ** Warning: (vsim-3017) /home/dtatest/DTA-aes/workdir/aes_netlist.v(9428): [TFMPC] - Too few port connections. Expected 5, found 4.
-#         Region: /aes_cipher_top_tb/dut/\text_in_r_reg[54] 
+#         Region: /aes_cipher_top_tb/dut/text_in_r_reg_54_
 # ** Warning: (vsim-3722) /home/dtatest/DTA-aes/workdir/aes_netlist.v(9428): [TFMPC] - Missing connection for port 'QN'.
 # ** Warning: (vsim-3017) /home/dtatest/DTA-aes/workdir/aes_netlist.v(9430): [TFMPC] - Too few port connections. Expected 5, found 4.
-#         Region: /aes_cipher_top_tb/dut/\text_in_r_reg[53] 
+#         Region: /aes_cipher_top_tb/dut/text_in_r_reg_53_
 # ** Warning: (vsim-3722) /home/dtatest/DTA-aes/workdir/aes_netlist.v(9430): [TFMPC] - Missing connection for port 'QN'.
 # ** Warning: (vsim-3017) /home/dtatest/DTA-aes/workdir/aes_netlist.v(9432): [TFMPC] - Too few port connections. Expected 5, found 4.
-#         Region: /aes_cipher_top_tb/dut/\text_in_r_reg[52] 
+#         Region: /aes_cipher_top_tb/dut/text_in_r_reg_52_
 # ** Warning: (vsim-3722) /home/dtatest/DTA-aes/workdir/aes_netlist.v(9432): [TFMPC] - Missing connection for port 'QN'.
 # ** Warning: (vsim-3017) /home/dtatest/DTA-aes/workdir/aes_netlist.v(9434): [TFMPC] - Too few port connections. Expected 5, found 4.
-#         Region: /aes_cipher_top_tb/dut/\text_in_r_reg[51] 
+#         Region: /aes_cipher_top_tb/dut/text_in_r_reg_51_
 # ** Warning: (vsim-3722) /home/dtatest/DTA-aes/workdir/aes_netlist.v(9434): [TFMPC] - Missing connection for port 'QN'.
 # ** Warning: (vsim-3017) /home/dtatest/DTA-aes/workdir/aes_netlist.v(9436): [TFMPC] - Too few port connections. Expected 5, found 4.
-#         Region: /aes_cipher_top_tb/dut/\text_in_r_reg[50] 
+#         Region: /aes_cipher_top_tb/dut/text_in_r_reg_50_
 # ** Warning: (vsim-3722) /home/dtatest/DTA-aes/workdir/aes_netlist.v(9436): [TFMPC] - Missing connection for port 'QN'.
 # ** Warning: (vsim-3017) /home/dtatest/DTA-aes/workdir/aes_netlist.v(9438): [TFMPC] - Too few port connections. Expected 5, found 4.
-#         Region: /aes_cipher_top_tb/dut/\text_in_r_reg[49] 
+#         Region: /aes_cipher_top_tb/dut/text_in_r_reg_49_
 # ** Warning: (vsim-3722) /home/dtatest/DTA-aes/workdir/aes_netlist.v(9438): [TFMPC] - Missing connection for port 'QN'.
 # ** Warning: (vsim-3017) /home/dtatest/DTA-aes/workdir/aes_netlist.v(9440): [TFMPC] - Too few port connections. Expected 5, found 4.
-#         Region: /aes_cipher_top_tb/dut/\text_in_r_reg[48] 
+#         Region: /aes_cipher_top_tb/dut/text_in_r_reg_48_
 # ** Warning: (vsim-3722) /home/dtatest/DTA-aes/workdir/aes_netlist.v(9440): [TFMPC] - Missing connection for port 'QN'.
 # ** Warning: (vsim-3017) /home/dtatest/DTA-aes/workdir/aes_netlist.v(9442): [TFMPC] - Too few port connections. Expected 5, found 4.
-#         Region: /aes_cipher_top_tb/dut/\text_in_r_reg[47] 
+#         Region: /aes_cipher_top_tb/dut/text_in_r_reg_47_
 # ** Warning: (vsim-3722) /home/dtatest/DTA-aes/workdir/aes_netlist.v(9442): [TFMPC] - Missing connection for port 'QN'.
 # ** Warning: (vsim-3017) /home/dtatest/DTA-aes/workdir/aes_netlist.v(9444): [TFMPC] - Too few port connections. Expected 5, found 4.
-#         Region: /aes_cipher_top_tb/dut/\text_in_r_reg[46] 
+#         Region: /aes_cipher_top_tb/dut/text_in_r_reg_46_
 # ** Warning: (vsim-3722) /home/dtatest/DTA-aes/workdir/aes_netlist.v(9444): [TFMPC] - Missing connection for port 'QN'.
 # ** Warning: (vsim-3017) /home/dtatest/DTA-aes/workdir/aes_netlist.v(9446): [TFMPC] - Too few port connections. Expected 5, found 4.
-#         Region: /aes_cipher_top_tb/dut/\text_in_r_reg[45] 
+#         Region: /aes_cipher_top_tb/dut/text_in_r_reg_45_
 # ** Warning: (vsim-3722) /home/dtatest/DTA-aes/workdir/aes_netlist.v(9446): [TFMPC] - Missing connection for port 'QN'.
 # ** Warning: (vsim-3017) /home/dtatest/DTA-aes/workdir/aes_netlist.v(9448): [TFMPC] - Too few port connections. Expected 5, found 4.
-#         Region: /aes_cipher_top_tb/dut/\text_in_r_reg[44] 
+#         Region: /aes_cipher_top_tb/dut/text_in_r_reg_44_
 # ** Warning: (vsim-3722) /home/dtatest/DTA-aes/workdir/aes_netlist.v(9448): [TFMPC] - Missing connection for port 'QN'.
 # ** Warning: (vsim-3017) /home/dtatest/DTA-aes/workdir/aes_netlist.v(9450): [TFMPC] - Too few port connections. Expected 5, found 4.
-#         Region: /aes_cipher_top_tb/dut/\text_in_r_reg[43] 
+#         Region: /aes_cipher_top_tb/dut/text_in_r_reg_43_
 # ** Warning: (vsim-3722) /home/dtatest/DTA-aes/workdir/aes_netlist.v(9450): [TFMPC] - Missing connection for port 'QN'.
 # ** Warning: (vsim-3017) /home/dtatest/DTA-aes/workdir/aes_netlist.v(9452): [TFMPC] - Too few port connections. Expected 5, found 4.
-#         Region: /aes_cipher_top_tb/dut/\text_in_r_reg[42] 
+#         Region: /aes_cipher_top_tb/dut/text_in_r_reg_42_
 # ** Warning: (vsim-3722) /home/dtatest/DTA-aes/workdir/aes_netlist.v(9452): [TFMPC] - Missing connection for port 'QN'.
 # ** Warning: (vsim-3017) /home/dtatest/DTA-aes/workdir/aes_netlist.v(9454): [TFMPC] - Too few port connections. Expected 5, found 4.
-#         Region: /aes_cipher_top_tb/dut/\text_in_r_reg[41] 
+#         Region: /aes_cipher_top_tb/dut/text_in_r_reg_41_
 # ** Warning: (vsim-3722) /home/dtatest/DTA-aes/workdir/aes_netlist.v(9454): [TFMPC] - Missing connection for port 'QN'.
 # ** Warning: (vsim-3017) /home/dtatest/DTA-aes/workdir/aes_netlist.v(9456): [TFMPC] - Too few port connections. Expected 5, found 4.
-#         Region: /aes_cipher_top_tb/dut/\text_in_r_reg[40] 
+#         Region: /aes_cipher_top_tb/dut/text_in_r_reg_40_
 # ** Warning: (vsim-3722) /home/dtatest/DTA-aes/workdir/aes_netlist.v(9456): [TFMPC] - Missing connection for port 'QN'.
 # ** Warning: (vsim-3017) /home/dtatest/DTA-aes/workdir/aes_netlist.v(9458): [TFMPC] - Too few port connections. Expected 5, found 4.
-#         Region: /aes_cipher_top_tb/dut/\text_in_r_reg[39] 
+#         Region: /aes_cipher_top_tb/dut/text_in_r_reg_39_
 # ** Warning: (vsim-3722) /home/dtatest/DTA-aes/workdir/aes_netlist.v(9458): [TFMPC] - Missing connection for port 'QN'.
 # ** Warning: (vsim-3017) /home/dtatest/DTA-aes/workdir/aes_netlist.v(9460): [TFMPC] - Too few port connections. Expected 5, found 4.
-#         Region: /aes_cipher_top_tb/dut/\text_in_r_reg[38] 
+#         Region: /aes_cipher_top_tb/dut/text_in_r_reg_38_
 # ** Warning: (vsim-3722) /home/dtatest/DTA-aes/workdir/aes_netlist.v(9460): [TFMPC] - Missing connection for port 'QN'.
 # ** Warning: (vsim-3017) /home/dtatest/DTA-aes/workdir/aes_netlist.v(9462): [TFMPC] - Too few port connections. Expected 5, found 4.
-#         Region: /aes_cipher_top_tb/dut/\text_in_r_reg[37] 
+#         Region: /aes_cipher_top_tb/dut/text_in_r_reg_37_
 # ** Warning: (vsim-3722) /home/dtatest/DTA-aes/workdir/aes_netlist.v(9462): [TFMPC] - Missing connection for port 'QN'.
 # ** Warning: (vsim-3017) /home/dtatest/DTA-aes/workdir/aes_netlist.v(9464): [TFMPC] - Too few port connections. Expected 5, found 4.
-#         Region: /aes_cipher_top_tb/dut/\text_in_r_reg[36] 
+#         Region: /aes_cipher_top_tb/dut/text_in_r_reg_36_
 # ** Warning: (vsim-3722) /home/dtatest/DTA-aes/workdir/aes_netlist.v(9464): [TFMPC] - Missing connection for port 'QN'.
 # ** Warning: (vsim-3017) /home/dtatest/DTA-aes/workdir/aes_netlist.v(9466): [TFMPC] - Too few port connections. Expected 5, found 4.
-#         Region: /aes_cipher_top_tb/dut/\text_in_r_reg[7] 
+#         Region: /aes_cipher_top_tb/dut/text_in_r_reg_7_
 # ** Warning: (vsim-3722) /home/dtatest/DTA-aes/workdir/aes_netlist.v(9466): [TFMPC] - Missing connection for port 'QN'.
 # ** Warning: (vsim-3017) /home/dtatest/DTA-aes/workdir/aes_netlist.v(9468): [TFMPC] - Too few port connections. Expected 5, found 4.
-#         Region: /aes_cipher_top_tb/dut/\text_in_r_reg[6] 
+#         Region: /aes_cipher_top_tb/dut/text_in_r_reg_6_
 # ** Warning: (vsim-3722) /home/dtatest/DTA-aes/workdir/aes_netlist.v(9468): [TFMPC] - Missing connection for port 'QN'.
 # ** Warning: (vsim-3017) /home/dtatest/DTA-aes/workdir/aes_netlist.v(9470): [TFMPC] - Too few port connections. Expected 5, found 4.
-#         Region: /aes_cipher_top_tb/dut/\text_in_r_reg[5] 
+#         Region: /aes_cipher_top_tb/dut/text_in_r_reg_5_
 # ** Warning: (vsim-3722) /home/dtatest/DTA-aes/workdir/aes_netlist.v(9470): [TFMPC] - Missing connection for port 'QN'.
 # ** Warning: (vsim-3017) /home/dtatest/DTA-aes/workdir/aes_netlist.v(9472): [TFMPC] - Too few port connections. Expected 5, found 4.
-#         Region: /aes_cipher_top_tb/dut/\text_in_r_reg[4] 
+#         Region: /aes_cipher_top_tb/dut/text_in_r_reg_4_
 # ** Warning: (vsim-3722) /home/dtatest/DTA-aes/workdir/aes_netlist.v(9472): [TFMPC] - Missing connection for port 'QN'.
 # ** Warning: (vsim-3017) /home/dtatest/DTA-aes/workdir/aes_netlist.v(9474): [TFMPC] - Too few port connections. Expected 5, found 4.
-#         Region: /aes_cipher_top_tb/dut/\text_in_r_reg[3] 
+#         Region: /aes_cipher_top_tb/dut/text_in_r_reg_3_
 # ** Warning: (vsim-3722) /home/dtatest/DTA-aes/workdir/aes_netlist.v(9474): [TFMPC] - Missing connection for port 'QN'.
 # ** Warning: (vsim-3017) /home/dtatest/DTA-aes/workdir/aes_netlist.v(9476): [TFMPC] - Too few port connections. Expected 5, found 4.
-#         Region: /aes_cipher_top_tb/dut/\text_in_r_reg[2] 
+#         Region: /aes_cipher_top_tb/dut/text_in_r_reg_2_
 # ** Warning: (vsim-3722) /home/dtatest/DTA-aes/workdir/aes_netlist.v(9476): [TFMPC] - Missing connection for port 'QN'.
 # ** Warning: (vsim-3017) /home/dtatest/DTA-aes/workdir/aes_netlist.v(9478): [TFMPC] - Too few port connections. Expected 5, found 4.
-#         Region: /aes_cipher_top_tb/dut/\text_in_r_reg[1] 
+#         Region: /aes_cipher_top_tb/dut/text_in_r_reg_1_
 # ** Warning: (vsim-3722) /home/dtatest/DTA-aes/workdir/aes_netlist.v(9478): [TFMPC] - Missing connection for port 'QN'.
 # ** Warning: (vsim-3017) /home/dtatest/DTA-aes/workdir/aes_netlist.v(9480): [TFMPC] - Too few port connections. Expected 5, found 4.
-#         Region: /aes_cipher_top_tb/dut/\text_in_r_reg[0] 
+#         Region: /aes_cipher_top_tb/dut/text_in_r_reg_0_
 # ** Warning: (vsim-3722) /home/dtatest/DTA-aes/workdir/aes_netlist.v(9480): [TFMPC] - Missing connection for port 'QN'.
 # ** Warning: (vsim-3017) /home/dtatest/DTA-aes/workdir/aes_netlist.v(9482): [TFMPC] - Too few port connections. Expected 5, found 4.
-#         Region: /aes_cipher_top_tb/dut/\text_in_r_reg[35] 
+#         Region: /aes_cipher_top_tb/dut/text_in_r_reg_35_
 # ** Warning: (vsim-3722) /home/dtatest/DTA-aes/workdir/aes_netlist.v(9482): [TFMPC] - Missing connection for port 'QN'.
 # ** Warning: (vsim-3017) /home/dtatest/DTA-aes/workdir/aes_netlist.v(9484): [TFMPC] - Too few port connections. Expected 5, found 4.
-#         Region: /aes_cipher_top_tb/dut/\text_in_r_reg[34] 
+#         Region: /aes_cipher_top_tb/dut/text_in_r_reg_34_
 # ** Warning: (vsim-3722) /home/dtatest/DTA-aes/workdir/aes_netlist.v(9484): [TFMPC] - Missing connection for port 'QN'.
 # ** Warning: (vsim-3017) /home/dtatest/DTA-aes/workdir/aes_netlist.v(9486): [TFMPC] - Too few port connections. Expected 5, found 4.
-#         Region: /aes_cipher_top_tb/dut/\text_in_r_reg[33] 
+#         Region: /aes_cipher_top_tb/dut/text_in_r_reg_33_
 # ** Warning: (vsim-3722) /home/dtatest/DTA-aes/workdir/aes_netlist.v(9486): [TFMPC] - Missing connection for port 'QN'.
 # ** Warning: (vsim-3017) /home/dtatest/DTA-aes/workdir/aes_netlist.v(9488): [TFMPC] - Too few port connections. Expected 5, found 4.
-#         Region: /aes_cipher_top_tb/dut/\text_in_r_reg[32] 
+#         Region: /aes_cipher_top_tb/dut/text_in_r_reg_32_
 # ** Warning: (vsim-3722) /home/dtatest/DTA-aes/workdir/aes_netlist.v(9488): [TFMPC] - Missing connection for port 'QN'.
 # ** Warning: (vsim-3017) /home/dtatest/DTA-aes/workdir/aes_netlist.v(9490): [TFMPC] - Too few port connections. Expected 5, found 4.
-#         Region: /aes_cipher_top_tb/dut/\text_in_r_reg[31] 
+#         Region: /aes_cipher_top_tb/dut/text_in_r_reg_31_
 # ** Warning: (vsim-3722) /home/dtatest/DTA-aes/workdir/aes_netlist.v(9490): [TFMPC] - Missing connection for port 'QN'.
 # ** Warning: (vsim-3017) /home/dtatest/DTA-aes/workdir/aes_netlist.v(9492): [TFMPC] - Too few port connections. Expected 5, found 4.
-#         Region: /aes_cipher_top_tb/dut/\text_in_r_reg[30] 
+#         Region: /aes_cipher_top_tb/dut/text_in_r_reg_30_
 # ** Warning: (vsim-3722) /home/dtatest/DTA-aes/workdir/aes_netlist.v(9492): [TFMPC] - Missing connection for port 'QN'.
 # ** Warning: (vsim-3017) /home/dtatest/DTA-aes/workdir/aes_netlist.v(9494): [TFMPC] - Too few port connections. Expected 5, found 4.
-#         Region: /aes_cipher_top_tb/dut/\text_in_r_reg[29] 
+#         Region: /aes_cipher_top_tb/dut/text_in_r_reg_29_
 # ** Warning: (vsim-3722) /home/dtatest/DTA-aes/workdir/aes_netlist.v(9494): [TFMPC] - Missing connection for port 'QN'.
 # ** Warning: (vsim-3017) /home/dtatest/DTA-aes/workdir/aes_netlist.v(9496): [TFMPC] - Too few port connections. Expected 5, found 4.
-#         Region: /aes_cipher_top_tb/dut/\text_in_r_reg[28] 
+#         Region: /aes_cipher_top_tb/dut/text_in_r_reg_28_
 # ** Warning: (vsim-3722) /home/dtatest/DTA-aes/workdir/aes_netlist.v(9496): [TFMPC] - Missing connection for port 'QN'.
 # ** Warning: (vsim-3017) /home/dtatest/DTA-aes/workdir/aes_netlist.v(9498): [TFMPC] - Too few port connections. Expected 5, found 4.
-#         Region: /aes_cipher_top_tb/dut/\text_in_r_reg[27] 
+#         Region: /aes_cipher_top_tb/dut/text_in_r_reg_27_
 # ** Warning: (vsim-3722) /home/dtatest/DTA-aes/workdir/aes_netlist.v(9498): [TFMPC] - Missing connection for port 'QN'.
 # ** Warning: (vsim-3017) /home/dtatest/DTA-aes/workdir/aes_netlist.v(9500): [TFMPC] - Too few port connections. Expected 5, found 4.
-#         Region: /aes_cipher_top_tb/dut/\text_in_r_reg[26] 
+#         Region: /aes_cipher_top_tb/dut/text_in_r_reg_26_
 # ** Warning: (vsim-3722) /home/dtatest/DTA-aes/workdir/aes_netlist.v(9500): [TFMPC] - Missing connection for port 'QN'.
 # ** Warning: (vsim-3017) /home/dtatest/DTA-aes/workdir/aes_netlist.v(9502): [TFMPC] - Too few port connections. Expected 5, found 4.
-#         Region: /aes_cipher_top_tb/dut/\text_in_r_reg[25] 
+#         Region: /aes_cipher_top_tb/dut/text_in_r_reg_25_
 # ** Warning: (vsim-3722) /home/dtatest/DTA-aes/workdir/aes_netlist.v(9502): [TFMPC] - Missing connection for port 'QN'.
 # ** Warning: (vsim-3017) /home/dtatest/DTA-aes/workdir/aes_netlist.v(9504): [TFMPC] - Too few port connections. Expected 5, found 4.
-#         Region: /aes_cipher_top_tb/dut/\text_in_r_reg[24] 
+#         Region: /aes_cipher_top_tb/dut/text_in_r_reg_24_
 # ** Warning: (vsim-3722) /home/dtatest/DTA-aes/workdir/aes_netlist.v(9504): [TFMPC] - Missing connection for port 'QN'.
 # ** Warning: (vsim-3017) /home/dtatest/DTA-aes/workdir/aes_netlist.v(9506): [TFMPC] - Too few port connections. Expected 5, found 4.
-#         Region: /aes_cipher_top_tb/dut/\text_in_r_reg[23] 
+#         Region: /aes_cipher_top_tb/dut/text_in_r_reg_23_
 # ** Warning: (vsim-3722) /home/dtatest/DTA-aes/workdir/aes_netlist.v(9506): [TFMPC] - Missing connection for port 'QN'.
 # ** Warning: (vsim-3017) /home/dtatest/DTA-aes/workdir/aes_netlist.v(9508): [TFMPC] - Too few port connections. Expected 5, found 4.
-#         Region: /aes_cipher_top_tb/dut/\text_in_r_reg[22] 
+#         Region: /aes_cipher_top_tb/dut/text_in_r_reg_22_
 # ** Warning: (vsim-3722) /home/dtatest/DTA-aes/workdir/aes_netlist.v(9508): [TFMPC] - Missing connection for port 'QN'.
 # ** Warning: (vsim-3017) /home/dtatest/DTA-aes/workdir/aes_netlist.v(9510): [TFMPC] - Too few port connections. Expected 5, found 4.
-#         Region: /aes_cipher_top_tb/dut/\text_in_r_reg[21] 
+#         Region: /aes_cipher_top_tb/dut/text_in_r_reg_21_
 # ** Warning: (vsim-3722) /home/dtatest/DTA-aes/workdir/aes_netlist.v(9510): [TFMPC] - Missing connection for port 'QN'.
 # ** Warning: (vsim-3017) /home/dtatest/DTA-aes/workdir/aes_netlist.v(9512): [TFMPC] - Too few port connections. Expected 5, found 4.
-#         Region: /aes_cipher_top_tb/dut/\text_in_r_reg[20] 
+#         Region: /aes_cipher_top_tb/dut/text_in_r_reg_20_
 # ** Warning: (vsim-3722) /home/dtatest/DTA-aes/workdir/aes_netlist.v(9512): [TFMPC] - Missing connection for port 'QN'.
 # ** Warning: (vsim-3017) /home/dtatest/DTA-aes/workdir/aes_netlist.v(9514): [TFMPC] - Too few port connections. Expected 5, found 4.
-#         Region: /aes_cipher_top_tb/dut/\text_in_r_reg[19] 
+#         Region: /aes_cipher_top_tb/dut/text_in_r_reg_19_
 # ** Warning: (vsim-3722) /home/dtatest/DTA-aes/workdir/aes_netlist.v(9514): [TFMPC] - Missing connection for port 'QN'.
 # ** Warning: (vsim-3017) /home/dtatest/DTA-aes/workdir/aes_netlist.v(9516): [TFMPC] - Too few port connections. Expected 5, found 4.
-#         Region: /aes_cipher_top_tb/dut/\text_in_r_reg[18] 
+#         Region: /aes_cipher_top_tb/dut/text_in_r_reg_18_
 # ** Warning: (vsim-3722) /home/dtatest/DTA-aes/workdir/aes_netlist.v(9516): [TFMPC] - Missing connection for port 'QN'.
 # ** Warning: (vsim-3017) /home/dtatest/DTA-aes/workdir/aes_netlist.v(9518): [TFMPC] - Too few port connections. Expected 5, found 4.
-#         Region: /aes_cipher_top_tb/dut/\text_in_r_reg[17] 
+#         Region: /aes_cipher_top_tb/dut/text_in_r_reg_17_
 # ** Warning: (vsim-3722) /home/dtatest/DTA-aes/workdir/aes_netlist.v(9518): [TFMPC] - Missing connection for port 'QN'.
 # ** Warning: (vsim-3017) /home/dtatest/DTA-aes/workdir/aes_netlist.v(9520): [TFMPC] - Too few port connections. Expected 5, found 4.
-#         Region: /aes_cipher_top_tb/dut/\text_in_r_reg[16] 
+#         Region: /aes_cipher_top_tb/dut/text_in_r_reg_16_
 # ** Warning: (vsim-3722) /home/dtatest/DTA-aes/workdir/aes_netlist.v(9520): [TFMPC] - Missing connection for port 'QN'.
 # ** Warning: (vsim-3017) /home/dtatest/DTA-aes/workdir/aes_netlist.v(9522): [TFMPC] - Too few port connections. Expected 5, found 4.
-#         Region: /aes_cipher_top_tb/dut/\text_in_r_reg[15] 
+#         Region: /aes_cipher_top_tb/dut/text_in_r_reg_15_
 # ** Warning: (vsim-3722) /home/dtatest/DTA-aes/workdir/aes_netlist.v(9522): [TFMPC] - Missing connection for port 'QN'.
 # ** Warning: (vsim-3017) /home/dtatest/DTA-aes/workdir/aes_netlist.v(9524): [TFMPC] - Too few port connections. Expected 5, found 4.
-#         Region: /aes_cipher_top_tb/dut/\text_in_r_reg[14] 
+#         Region: /aes_cipher_top_tb/dut/text_in_r_reg_14_
 # ** Warning: (vsim-3722) /home/dtatest/DTA-aes/workdir/aes_netlist.v(9524): [TFMPC] - Missing connection for port 'QN'.
 # ** Warning: (vsim-3017) /home/dtatest/DTA-aes/workdir/aes_netlist.v(9526): [TFMPC] - Too few port connections. Expected 5, found 4.
-#         Region: /aes_cipher_top_tb/dut/\text_in_r_reg[13] 
+#         Region: /aes_cipher_top_tb/dut/text_in_r_reg_13_
 # ** Warning: (vsim-3722) /home/dtatest/DTA-aes/workdir/aes_netlist.v(9526): [TFMPC] - Missing connection for port 'QN'.
 # ** Warning: (vsim-3017) /home/dtatest/DTA-aes/workdir/aes_netlist.v(9528): [TFMPC] - Too few port connections. Expected 5, found 4.
-#         Region: /aes_cipher_top_tb/dut/\text_in_r_reg[12] 
+#         Region: /aes_cipher_top_tb/dut/text_in_r_reg_12_
 # ** Warning: (vsim-3722) /home/dtatest/DTA-aes/workdir/aes_netlist.v(9528): [TFMPC] - Missing connection for port 'QN'.
 # ** Warning: (vsim-3017) /home/dtatest/DTA-aes/workdir/aes_netlist.v(9530): [TFMPC] - Too few port connections. Expected 5, found 4.
-#         Region: /aes_cipher_top_tb/dut/\text_in_r_reg[11] 
+#         Region: /aes_cipher_top_tb/dut/text_in_r_reg_11_
 # ** Warning: (vsim-3722) /home/dtatest/DTA-aes/workdir/aes_netlist.v(9530): [TFMPC] - Missing connection for port 'QN'.
 # ** Warning: (vsim-3017) /home/dtatest/DTA-aes/workdir/aes_netlist.v(9532): [TFMPC] - Too few port connections. Expected 5, found 4.
-#         Region: /aes_cipher_top_tb/dut/\text_in_r_reg[10] 
+#         Region: /aes_cipher_top_tb/dut/text_in_r_reg_10_
 # ** Warning: (vsim-3722) /home/dtatest/DTA-aes/workdir/aes_netlist.v(9532): [TFMPC] - Missing connection for port 'QN'.
 # ** Warning: (vsim-3017) /home/dtatest/DTA-aes/workdir/aes_netlist.v(9534): [TFMPC] - Too few port connections. Expected 5, found 4.
-#         Region: /aes_cipher_top_tb/dut/\text_in_r_reg[9] 
+#         Region: /aes_cipher_top_tb/dut/text_in_r_reg_9_
 # ** Warning: (vsim-3722) /home/dtatest/DTA-aes/workdir/aes_netlist.v(9534): [TFMPC] - Missing connection for port 'QN'.
 # ** Warning: (vsim-3017) /home/dtatest/DTA-aes/workdir/aes_netlist.v(9536): [TFMPC] - Too few port connections. Expected 5, found 4.
-#         Region: /aes_cipher_top_tb/dut/\text_in_r_reg[8] 
+#         Region: /aes_cipher_top_tb/dut/text_in_r_reg_8_
 # ** Warning: (vsim-3722) /home/dtatest/DTA-aes/workdir/aes_netlist.v(9536): [TFMPC] - Missing connection for port 'QN'.
 # ** Warning: (vsim-3017) /home/dtatest/DTA-aes/workdir/aes_netlist.v(9537): [TFMPC] - Too few port connections. Expected 4, found 3.
-#         Region: /aes_cipher_top_tb/dut/\dcnt_reg[1] 
+#         Region: /aes_cipher_top_tb/dut/dcnt_reg_1_
 # ** Warning: (vsim-3722) /home/dtatest/DTA-aes/workdir/aes_netlist.v(9537): [TFMPC] - Missing connection for port 'Q'.
 # ** Warning: (vsim-3017) /home/dtatest/DTA-aes/workdir/aes_netlist.v(10165): [TFMPC] - Too few port connections. Expected 5, found 4.
-#         Region: /aes_cipher_top_tb/dut/\dcnt_reg[3] 
+#         Region: /aes_cipher_top_tb/dut/dcnt_reg_3_
 # ** Warning: (vsim-3722) /home/dtatest/DTA-aes/workdir/aes_netlist.v(10165): [TFMPC] - Missing connection for port 'Q'.
 # Loading timing data from /home/dtatest/DTA-aes/workdir/aes_synthesis.sdf
 # ** Note: (vsim-3587) SDF Backannotation Successfully Completed.
-#    Time: 0 ps  Iteration: 0  Region: /aes_cipher_top_tb  File: aes_cipher_top_tb.v
+#    Time: 0 fs  Iteration: 0  Region: /aes_cipher_top_tb  File: aes_cipher_top_tb.v
 # do gtl_aes_gui.do 
-# Initial plaintext fedcba98765432100123456789abcdef
-# Final ciphertext 2e96fb21ff418b0b8f9753fef48e1c8d
-quit
+run 6000ns
+# Initial plaintext ed601a47199a4bebf815da96db76bee8
+# Final ciphertext 629e23eeff977c4dd4fe882091f458de

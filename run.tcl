@@ -96,6 +96,7 @@ compile_ultra -no_autoungroup
 
 #ungroup -all ##check solvnet
 #uniquify ##before compile
+change_names -rules verilog
 
 write_sdc workdir/aes_synthesis.sdc
 write -f ddc -hier aes_cipher_top -output workdir/aes_synthesis.ddc
