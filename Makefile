@@ -14,11 +14,12 @@ gtl-vsim:
 	#vlog -work work /home/bilgiday/sram_new/verilog/sram12x8.v  
 	#vlog -work work /home/bilgiday/sram_new/verilog/sram13x8.v  
 	
-	vlog -work work /home/dtatest/DTA-aes/workdir/aes_netlist.v
+	#vlog -work work /home/dtatest/DTA-aes/workdir/aes_netlist.v
 	
 	vlog -work work aes_cipher_top_tb.v
 
 aes-gui: gtl-vsim
+	vlog -work work /home/dtatest/DTA-aes/workdir/aes_netlist.v
 	#make -C "../../software/test_soft/fault_tests/dtatest" prog.mem
 	vsim -L work -novopt -i work.aes_cipher_top_tb -do gtl_aes_gui.do +notimingchecks -sdfmax /aes_cipher_top_tb/dut=/home/dtatest/DTA-aes/workdir/aes_synthesis.sdf
 	#vsim -L work -novopt -i work.aes_cipher_top_tb +notimingchecks -sdfmax /aes_cipher_top_tb/dut=/home/dtatest/DTA-aes/workdir/aes_synthesis.sdf
@@ -26,5 +27,24 @@ aes-gui: gtl-vsim
 	#make -C "../../software/test_soft/fault_tests/dtatest" clean
 
 aes-commandline: gtl-vsim
+	vlog -work work /home/dtatest/DTA-aes/workdir/aes_netlist.v
 	#make -C "../../software/test_soft/fault_tests/dtatest" prog.mem
 	vsim -L work -novopt -c work.aes_cipher_top_tb -do gtl_aes_commandline.do +notimingchecks -sdfmax /aes_cipher_top_tb/dut=/home/dtatest/DTA-aes/workdir/aes_synthesis.sdf
+
+aes-gui-wddl: gtl-vsim
+	 vlog -work work /home/dtatest/DTA-aes/workdir/aes_netlist_wddl.v
+	#make -C "../../software/test_soft/fault_tests/dtatest" prog.mem
+	dc_shell -f wddl_sdfupdate.tcl
+	vsim -L work -novopt -i work.aes_cipher_top_tb -do gtl_aes_gui.do +notimingchecks -sdfmax /aes_cipher_top_tb/dut=/home/dtatest/DTA-aes/workdir/wddl_aes.sdf
+	#vsim -L work -novopt -i work.aes_cipher_top_tb +notimingchecks -sdfmax /aes_cipher_top_tb/dut=/home/dtatest/DTA-aes/workdir/aes_synthesis.sdf
+
+	#make -C "../../software/test_soft/fault_tests/dtatest" clean
+
+aes-commandline-wddl: gtl-vsim
+	 vlog -work work /home/dtatest/DTA-aes/workdir/aes_netlist_wddl.v
+	#make -C "../../software/test_soft/fault_tests/dtatest" prog.mem
+	#dc_shell -f wddl_sdfupdate.tcl
+	vsim -L work -novopt -c work.aes_cipher_top_tb -do gtl_aes_commandline.do +notimingchecks -sdfmax /aes_cipher_top_tb/dut=/home/dtatest/DTA-aes/workdir/wddl_aes.sdf
+	#vsim -L work -novopt -i work.aes_cipher_top_tb +notimingchecks -sdfmax /aes_cipher_top_tb/dut=/home/dtatest/DTA-aes/workdir/aes_synthesis.sdf
+
+	#make -C "../../software/test_soft/fault_tests/dtatest" clean

@@ -1,141 +1,140 @@
 vcd file test.vcd
 #vcd add -r /aes_cipher_top_tb/*
-##add wave \
-##{sim:/aes_cipher_top_tb/dut/\sa21_reg[6] /Q } 
-#{{sim:/aes_cipher_top_tb/dut/\sa21_reg[6] /Q} {-format Default -height 17}}
 add wave sim:/aes_cipher_top_tb/*
 # add aes_coprocessor signals
-#if 0 {
-add wave -radix hex {state_reg {
-sim:/aes_cipher_top_tb/dut/\sa00_reg[7] /Q 
-sim:/aes_cipher_top_tb/dut/\sa00_reg[6] /Q 
-sim:/aes_cipher_top_tb/dut/\sa00_reg[5] /Q 
-sim:/aes_cipher_top_tb/dut/\sa00_reg[4] /Q 
-sim:/aes_cipher_top_tb/dut/\sa00_reg[3] /Q 
-sim:/aes_cipher_top_tb/dut/\sa00_reg[2] /Q 
-sim:/aes_cipher_top_tb/dut/\sa00_reg[1] /Q 
-sim:/aes_cipher_top_tb/dut/\sa00_reg[0] /Q 
-}}
 #run 639990ps
+#if 0 {
+add wave -radix hex { State_reg {
+sim:/aes_cipher_top_tb/dut/sa00_reg_7_/Q
+sim:/aes_cipher_top_tb/dut/sa00_reg_6_/Q
+sim:/aes_cipher_top_tb/dut/sa00_reg_5_/Q
+sim:/aes_cipher_top_tb/dut/sa00_reg_4_/Q
+sim:/aes_cipher_top_tb/dut/sa00_reg_3_/Q
+sim:/aes_cipher_top_tb/dut/sa00_reg_2_/Q
+sim:/aes_cipher_top_tb/dut/sa00_reg_1_/Q
+sim:/aes_cipher_top_tb/dut/sa00_reg_0_/Q
+sim:/aes_cipher_top_tb/dut/sa10_reg_7_/Q
+sim:/aes_cipher_top_tb/dut/sa10_reg_6_/Q
+sim:/aes_cipher_top_tb/dut/sa10_reg_5_/Q
+sim:/aes_cipher_top_tb/dut/sa10_reg_4_/Q
+sim:/aes_cipher_top_tb/dut/sa10_reg_3_/Q
+sim:/aes_cipher_top_tb/dut/sa10_reg_2_/Q
+sim:/aes_cipher_top_tb/dut/sa10_reg_1_/Q
+sim:/aes_cipher_top_tb/dut/sa10_reg_0_/Q
+sim:/aes_cipher_top_tb/dut/sa20_reg_7_/Q
+sim:/aes_cipher_top_tb/dut/sa20_reg_6_/Q
+sim:/aes_cipher_top_tb/dut/sa20_reg_5_/Q
+sim:/aes_cipher_top_tb/dut/sa20_reg_4_/Q
+sim:/aes_cipher_top_tb/dut/sa20_reg_3_/Q
+sim:/aes_cipher_top_tb/dut/sa20_reg_2_/Q
+sim:/aes_cipher_top_tb/dut/sa20_reg_1_/Q
+sim:/aes_cipher_top_tb/dut/sa20_reg_0_/Q
+sim:/aes_cipher_top_tb/dut/sa30_reg_7_/Q
+sim:/aes_cipher_top_tb/dut/sa30_reg_6_/Q
+sim:/aes_cipher_top_tb/dut/sa30_reg_5_/Q
+sim:/aes_cipher_top_tb/dut/sa30_reg_4_/Q
+sim:/aes_cipher_top_tb/dut/sa30_reg_3_/Q
+sim:/aes_cipher_top_tb/dut/sa30_reg_2_/Q
+sim:/aes_cipher_top_tb/dut/sa30_reg_1_/Q
+sim:/aes_cipher_top_tb/dut/sa30_reg_0_/Q
+sim:/aes_cipher_top_tb/dut/sa01_reg_7_/Q
+sim:/aes_cipher_top_tb/dut/sa01_reg_6_/Q
+sim:/aes_cipher_top_tb/dut/sa01_reg_5_/Q
+sim:/aes_cipher_top_tb/dut/sa01_reg_4_/Q
+sim:/aes_cipher_top_tb/dut/sa01_reg_3_/Q
+sim:/aes_cipher_top_tb/dut/sa01_reg_2_/Q
+sim:/aes_cipher_top_tb/dut/sa01_reg_1_/Q
+sim:/aes_cipher_top_tb/dut/sa01_reg_0_/Q
+sim:/aes_cipher_top_tb/dut/sa11_reg_7_/Q
+sim:/aes_cipher_top_tb/dut/sa11_reg_6_/Q
+sim:/aes_cipher_top_tb/dut/sa11_reg_5_/Q
+sim:/aes_cipher_top_tb/dut/sa11_reg_4_/Q
+sim:/aes_cipher_top_tb/dut/sa11_reg_3_/Q
+sim:/aes_cipher_top_tb/dut/sa11_reg_2_/Q
+sim:/aes_cipher_top_tb/dut/sa11_reg_1_/Q
+sim:/aes_cipher_top_tb/dut/sa11_reg_0_/Q
+sim:/aes_cipher_top_tb/dut/sa21_reg_7_/Q
+sim:/aes_cipher_top_tb/dut/sa21_reg_6_/Q
+sim:/aes_cipher_top_tb/dut/sa21_reg_5_/Q
+sim:/aes_cipher_top_tb/dut/sa21_reg_4_/Q
+sim:/aes_cipher_top_tb/dut/sa21_reg_3_/Q
+sim:/aes_cipher_top_tb/dut/sa21_reg_2_/Q
+sim:/aes_cipher_top_tb/dut/sa21_reg_1_/Q
+sim:/aes_cipher_top_tb/dut/sa21_reg_0_/Q
+sim:/aes_cipher_top_tb/dut/sa31_reg_7_/Q
+sim:/aes_cipher_top_tb/dut/sa31_reg_6_/Q
+sim:/aes_cipher_top_tb/dut/sa31_reg_5_/Q
+sim:/aes_cipher_top_tb/dut/sa31_reg_4_/Q
+sim:/aes_cipher_top_tb/dut/sa31_reg_3_/Q
+sim:/aes_cipher_top_tb/dut/sa31_reg_2_/Q
+sim:/aes_cipher_top_tb/dut/sa31_reg_1_/Q
+sim:/aes_cipher_top_tb/dut/sa31_reg_0_/Q
+sim:/aes_cipher_top_tb/dut/sa02_reg_7_/Q
+sim:/aes_cipher_top_tb/dut/sa02_reg_6_/Q
+sim:/aes_cipher_top_tb/dut/sa02_reg_5_/Q
+sim:/aes_cipher_top_tb/dut/sa02_reg_4_/Q
+sim:/aes_cipher_top_tb/dut/sa02_reg_3_/Q
+sim:/aes_cipher_top_tb/dut/sa02_reg_2_/Q
+sim:/aes_cipher_top_tb/dut/sa02_reg_1_/Q
+sim:/aes_cipher_top_tb/dut/sa02_reg_0_/Q
+sim:/aes_cipher_top_tb/dut/sa12_reg_7_/Q
+sim:/aes_cipher_top_tb/dut/sa12_reg_6_/Q
+sim:/aes_cipher_top_tb/dut/sa12_reg_5_/Q
+sim:/aes_cipher_top_tb/dut/sa12_reg_4_/Q
+sim:/aes_cipher_top_tb/dut/sa12_reg_3_/Q
+sim:/aes_cipher_top_tb/dut/sa12_reg_2_/Q
+sim:/aes_cipher_top_tb/dut/sa12_reg_1_/Q
+sim:/aes_cipher_top_tb/dut/sa12_reg_0_/Q
+sim:/aes_cipher_top_tb/dut/sa22_reg_7_/Q
+sim:/aes_cipher_top_tb/dut/sa22_reg_6_/Q
+sim:/aes_cipher_top_tb/dut/sa22_reg_5_/Q
+sim:/aes_cipher_top_tb/dut/sa22_reg_4_/Q
+sim:/aes_cipher_top_tb/dut/sa22_reg_3_/Q
+sim:/aes_cipher_top_tb/dut/sa22_reg_2_/Q
+sim:/aes_cipher_top_tb/dut/sa22_reg_1_/Q
+sim:/aes_cipher_top_tb/dut/sa22_reg_0_/Q
+sim:/aes_cipher_top_tb/dut/sa32_reg_7_/Q
+sim:/aes_cipher_top_tb/dut/sa32_reg_6_/Q
+sim:/aes_cipher_top_tb/dut/sa32_reg_5_/Q
+sim:/aes_cipher_top_tb/dut/sa32_reg_4_/Q
+sim:/aes_cipher_top_tb/dut/sa32_reg_3_/Q
+sim:/aes_cipher_top_tb/dut/sa32_reg_2_/Q
+sim:/aes_cipher_top_tb/dut/sa32_reg_1_/Q
+sim:/aes_cipher_top_tb/dut/sa32_reg_0_/Q
+sim:/aes_cipher_top_tb/dut/sa03_reg_7_/Q
+sim:/aes_cipher_top_tb/dut/sa03_reg_6_/Q
+sim:/aes_cipher_top_tb/dut/sa03_reg_5_/Q
+sim:/aes_cipher_top_tb/dut/sa03_reg_4_/Q
+sim:/aes_cipher_top_tb/dut/sa03_reg_3_/Q
+sim:/aes_cipher_top_tb/dut/sa03_reg_2_/Q
+sim:/aes_cipher_top_tb/dut/sa03_reg_1_/Q
+sim:/aes_cipher_top_tb/dut/sa03_reg_0_/Q
+sim:/aes_cipher_top_tb/dut/sa13_reg_7_/Q
+sim:/aes_cipher_top_tb/dut/sa13_reg_6_/Q
+sim:/aes_cipher_top_tb/dut/sa13_reg_5_/Q
+sim:/aes_cipher_top_tb/dut/sa13_reg_4_/Q
+sim:/aes_cipher_top_tb/dut/sa13_reg_3_/Q
+sim:/aes_cipher_top_tb/dut/sa13_reg_2_/Q
+sim:/aes_cipher_top_tb/dut/sa13_reg_1_/Q
+sim:/aes_cipher_top_tb/dut/sa13_reg_0_/Q
+sim:/aes_cipher_top_tb/dut/sa23_reg_7_/Q
+sim:/aes_cipher_top_tb/dut/sa23_reg_6_/Q
+sim:/aes_cipher_top_tb/dut/sa23_reg_5_/Q
+sim:/aes_cipher_top_tb/dut/sa23_reg_4_/Q
+sim:/aes_cipher_top_tb/dut/sa23_reg_3_/Q
+sim:/aes_cipher_top_tb/dut/sa23_reg_2_/Q
+sim:/aes_cipher_top_tb/dut/sa23_reg_1_/Q
+sim:/aes_cipher_top_tb/dut/sa23_reg_0_/Q
+sim:/aes_cipher_top_tb/dut/sa33_reg_7_/Q
+sim:/aes_cipher_top_tb/dut/sa33_reg_6_/Q
+sim:/aes_cipher_top_tb/dut/sa33_reg_5_/Q
+sim:/aes_cipher_top_tb/dut/sa33_reg_4_/Q
+sim:/aes_cipher_top_tb/dut/sa33_reg_3_/Q
+sim:/aes_cipher_top_tb/dut/sa33_reg_2_/Q
+sim:/aes_cipher_top_tb/dut/sa33_reg_1_/Q
+sim:/aes_cipher_top_tb/dut/sa33_reg_0_/Q
 
-##sim:/aes_cipher_top_tb/dut/\sa10_reg[7] /Q
-##sim:/aes_cipher_top_tb/dut/\sa10_reg[6] /Q
-##sim:/aes_cipher_top_tb/dut/\sa10_reg[5] /Q
-##sim:/aes_cipher_top_tb/dut/\sa10_reg[4] /Q
-##sim:/aes_cipher_top_tb/dut/\sa10_reg[3] /Q
-##sim:/aes_cipher_top_tb/dut/\sa10_reg[2] /Q
-##sim:/aes_cipher_top_tb/dut/\sa10_reg[1] /Q
-##sim:/aes_cipher_top_tb/dut/\sa10_reg[0] /Q
-##sim:/aes_cipher_top_tb/dut/\sa20_reg[7] /Q
-##sim:/aes_cipher_top_tb/dut/\sa20_reg[6] /Q
-##sim:/aes_cipher_top_tb/dut/\sa20_reg[5] /Q
-##sim:/aes_cipher_top_tb/dut/\sa20_reg[4] /Q
-##sim:/aes_cipher_top_tb/dut/\sa20_reg[3] /Q
-##sim:/aes_cipher_top_tb/dut/\sa20_reg[2] /Q
-##sim:/aes_cipher_top_tb/dut/\sa20_reg[1] /Q
-##sim:/aes_cipher_top_tb/dut/\sa20_reg[0] /Q
-##sim:/aes_cipher_top_tb/dut/\sa30_reg[7] /Q
-##sim:/aes_cipher_top_tb/dut/\sa30_reg[6] /Q
-##sim:/aes_cipher_top_tb/dut/\sa30_reg[5] /Q
-##sim:/aes_cipher_top_tb/dut/\sa30_reg[4] /Q
-##sim:/aes_cipher_top_tb/dut/\sa30_reg[3] /Q
-##sim:/aes_cipher_top_tb/dut/\sa30_reg[2] /Q
-##sim:/aes_cipher_top_tb/dut/\sa30_reg[1] /Q
-##sim:/aes_cipher_top_tb/dut/\sa30_reg[0] /Q
-##sim:/aes_cipher_top_tb/dut/\sa01_reg[7] /Q
-##sim:/aes_cipher_top_tb/dut/\sa01_reg[6] /Q
-##sim:/aes_cipher_top_tb/dut/\sa01_reg[5] /Q
-##sim:/aes_cipher_top_tb/dut/\sa01_reg[4] /Q
-##sim:/aes_cipher_top_tb/dut/\sa01_reg[3] /Q
-##sim:/aes_cipher_top_tb/dut/\sa01_reg[2] /Q
-##sim:/aes_cipher_top_tb/dut/\sa01_reg[1] /Q
-##sim:/aes_cipher_top_tb/dut/\sa01_reg[0] /Q
-##sim:/aes_cipher_top_tb/dut/\sa11_reg[7] /Q
-##sim:/aes_cipher_top_tb/dut/\sa11_reg[6] /Q
-##sim:/aes_cipher_top_tb/dut/\sa11_reg[5] /Q
-##sim:/aes_cipher_top_tb/dut/\sa11_reg[4] /Q
-##sim:/aes_cipher_top_tb/dut/\sa11_reg[3] /Q
-##sim:/aes_cipher_top_tb/dut/\sa11_reg[2] /Q
-##sim:/aes_cipher_top_tb/dut/\sa11_reg[1] /Q
-##sim:/aes_cipher_top_tb/dut/\sa11_reg[0] /Q
-##sim:/aes_cipher_top_tb/dut/\sa21_reg[7] /Q
-##sim:/aes_cipher_top_tb/dut/\sa21_reg[6] /Q
-##sim:/aes_cipher_top_tb/dut/\sa21_reg[5] /Q
-##sim:/aes_cipher_top_tb/dut/\sa21_reg[4] /Q
-##sim:/aes_cipher_top_tb/dut/\sa21_reg[3] /Q
-##sim:/aes_cipher_top_tb/dut/\sa21_reg[2] /Q
-##sim:/aes_cipher_top_tb/dut/\sa21_reg[1] /Q
-##sim:/aes_cipher_top_tb/dut/\sa21_reg[0] /Q
-##sim:/aes_cipher_top_tb/dut/\sa31_reg[7] /Q
-##sim:/aes_cipher_top_tb/dut/\sa31_reg[6] /Q
-##sim:/aes_cipher_top_tb/dut/\sa31_reg[5] /Q
-##sim:/aes_cipher_top_tb/dut/\sa31_reg[4] /Q
-##sim:/aes_cipher_top_tb/dut/\sa31_reg[3] /Q
-##sim:/aes_cipher_top_tb/dut/\sa31_reg[2] /Q
-##sim:/aes_cipher_top_tb/dut/\sa31_reg[1] /Q
-##sim:/aes_cipher_top_tb/dut/\sa31_reg[0] /Q
-##sim:/aes_cipher_top_tb/dut/\sa02_reg[7] /Q
-##sim:/aes_cipher_top_tb/dut/\sa02_reg[6] /Q
-##sim:/aes_cipher_top_tb/dut/\sa02_reg[5] /Q
-##sim:/aes_cipher_top_tb/dut/\sa02_reg[4] /Q
-##sim:/aes_cipher_top_tb/dut/\sa02_reg[3] /Q
-##sim:/aes_cipher_top_tb/dut/\sa02_reg[2] /Q
-##sim:/aes_cipher_top_tb/dut/\sa02_reg[1] /Q
-##sim:/aes_cipher_top_tb/dut/\sa02_reg[0] /Q
-##sim:/aes_cipher_top_tb/dut/\sa12_reg[7] /Q
-##sim:/aes_cipher_top_tb/dut/\sa12_reg[6] /Q
-##sim:/aes_cipher_top_tb/dut/\sa12_reg[5] /Q
-##sim:/aes_cipher_top_tb/dut/\sa12_reg[4] /Q
-##sim:/aes_cipher_top_tb/dut/\sa12_reg[3] /Q
-##sim:/aes_cipher_top_tb/dut/\sa12_reg[2] /Q
-##sim:/aes_cipher_top_tb/dut/\sa12_reg[1] /Q
-##sim:/aes_cipher_top_tb/dut/\sa12_reg[0] /Q
-##sim:/aes_cipher_top_tb/dut/\sa22_reg[7] /Q
-##sim:/aes_cipher_top_tb/dut/\sa22_reg[6] /Q
-##sim:/aes_cipher_top_tb/dut/\sa22_reg[5] /Q
-##sim:/aes_cipher_top_tb/dut/\sa22_reg[4] /Q
-##sim:/aes_cipher_top_tb/dut/\sa22_reg[3] /Q
-##sim:/aes_cipher_top_tb/dut/\sa22_reg[2] /Q
-##sim:/aes_cipher_top_tb/dut/\sa22_reg[1] /Q
-##sim:/aes_cipher_top_tb/dut/\sa22_reg[0] /Q
-##sim:/aes_cipher_top_tb/dut/\sa32_reg[7] /Q
-##sim:/aes_cipher_top_tb/dut/\sa32_reg[6] /Q
-##sim:/aes_cipher_top_tb/dut/\sa32_reg[5] /Q
-##sim:/aes_cipher_top_tb/dut/\sa32_reg[4] /Q
-##sim:/aes_cipher_top_tb/dut/\sa32_reg[3] /Q
-##sim:/aes_cipher_top_tb/dut/\sa32_reg[2] /Q
-##sim:/aes_cipher_top_tb/dut/\sa32_reg[1] /Q
-##sim:/aes_cipher_top_tb/dut/\sa32_reg[0] /Q
-##sim:/aes_cipher_top_tb/dut/\sa03_reg[7] /Q
-##sim:/aes_cipher_top_tb/dut/\sa03_reg[6] /Q
-##sim:/aes_cipher_top_tb/dut/\sa03_reg[5] /Q
-##sim:/aes_cipher_top_tb/dut/\sa03_reg[4] /Q
-##sim:/aes_cipher_top_tb/dut/\sa03_reg[3] /Q
-##sim:/aes_cipher_top_tb/dut/\sa03_reg[2] /Q
-##sim:/aes_cipher_top_tb/dut/\sa03_reg[1] /Q
-##sim:/aes_cipher_top_tb/dut/\sa03_reg[0] /Q
-##sim:/aes_cipher_top_tb/dut/\sa13_reg[7] /Q
-##sim:/aes_cipher_top_tb/dut/\sa13_reg[6] /Q
-##sim:/aes_cipher_top_tb/dut/\sa13_reg[5] /Q
-##sim:/aes_cipher_top_tb/dut/\sa13_reg[4] /Q
-##sim:/aes_cipher_top_tb/dut/\sa13_reg[3] /Q
-##sim:/aes_cipher_top_tb/dut/\sa13_reg[2] /Q
-##sim:/aes_cipher_top_tb/dut/\sa13_reg[1] /Q
-##sim:/aes_cipher_top_tb/dut/\sa13_reg[0] /Q
-##sim:/aes_cipher_top_tb/dut/\sa23_reg[7] /Q
-##sim:/aes_cipher_top_tb/dut/\sa23_reg[6] /Q
-##sim:/aes_cipher_top_tb/dut/\sa23_reg[5] /Q
-##sim:/aes_cipher_top_tb/dut/\sa23_reg[4] /Q
-##sim:/aes_cipher_top_tb/dut/\sa23_reg[3] /Q
-##sim:/aes_cipher_top_tb/dut/\sa23_reg[2] /Q
-##sim:/aes_cipher_top_tb/dut/\sa23_reg[1] /Q
-##sim:/aes_cipher_top_tb/dut/\sa23_reg[0] /Q
-##sim:/aes_cipher_top_tb/dut/\sa33_reg[7] /Q
-##sim:/aes_cipher_top_tb/dut/\sa33_reg[6] /Q
-##sim:/aes_cipher_top_tb/dut/\sa33_reg[5] /Q
-##sim:/aes_cipher_top_tb/dut/\sa33_reg[4] /Q
-##sim:/aes_cipher_top_tb/dut/\sa33_reg[3] /Q
-##sim:/aes_cipher_top_tb/dut/\sa33_reg[2] /Q
-##sim:/aes_cipher_top_tb/dut/\sa33_reg[1] /Q
-##sim:/aes_cipher_top_tb/dut/\sa33_reg[0] /Q
+}}
+#}
+run 639990ps
 

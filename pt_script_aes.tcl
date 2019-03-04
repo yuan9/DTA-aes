@@ -35,7 +35,8 @@ set technology_file_path "$cell_path/milkyway/"
 set technology_file "$technology_file_path/tech_sage-x_tsmc_cl018g_6lm.tf"
 
 
-read_ddc /home/dtatest/DTA-aes/workdir/aes_synthesis.ddc
+#read_ddc /home/dtatest/DTA-aes/workdir/aes_synthesis.ddc
+read_ddc /home/dtatest/DTA-aes/workdir/wddl_aes_test.ddc
 
 set power_enable_analysis "true"
 
@@ -43,7 +44,7 @@ link
 
 set power_analysis_mode "time_based"
 
-read_vcd test.vcd -strip_path /aes_cipher_top_tb/dut
+read_vcd test_wddl.vcd -strip_path /aes_cipher_top_tb/dut
 #read_vcd test.vcd -strip_path /testbench/d3 -path core0_leon3core0_cp2_v0 
 #set_power_analysis_options -waveform_interval 0.001 -waveform_format out -waveform_output "yuan_power" -include all_without_leaf
 #set_power_analysis_options -waveform_interval 0.01 -waveform_format out -waveform_output "yuan_power" -include all_with_leaf

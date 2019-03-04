@@ -1,10 +1,11 @@
 //`timescale 1ps/1ps
 `timescale 100fs/100fs
+`define clkperi 213333
 
 module clkgen(input reset, output reg clk);
 	always
 		begin
-		#213333
+		#`clkperi
 		if(reset==1'b0)
 			clk=1'b0;
 		else
@@ -32,7 +33,7 @@ initial begin
     rst = 1'b1;
 	#1000
 	rst = 1'b0;
-	#213333
+	#`clkperi
 	rst = 1'b1;
 	key = 128'hcafebabedeadbeefdeadbeef00000000;
 	text_in = 128'hFEDCBA98765432100123456789ABCDEF;
