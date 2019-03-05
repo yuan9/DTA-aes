@@ -4,7 +4,7 @@ import sys
 import operator
 import numpy as np
 
-threshold =200
+threshold =400
 gatelist={}
 reglist=[]
 tracenum = 600
@@ -20,8 +20,10 @@ tracenum = 600
 #leakend= int(130896215)
 #leakstart= int(1706400)
 #leakend=int(1719800)
-leakstart= int(1713600)
-leakend=int(1716900)
+#leakstart= int(1713600)
+#leakend=int(1716900)
+leakstart=int(170160)
+leakend=int(171730)
 
 print leakstart
 print leakend
@@ -35,7 +37,7 @@ dic_gatepower_merge={}
 def extract_reggate():
 	
 	#F1 = open('aes_byte14bit6.txt','r')
-        F1 = open('sm_aes_wddl_byte14bit6.txt','r')
+        F1 = open('rank_nowddl.txt','r')
 	#F1 = open('test.txt','r')
 	file_string = F1.read()
 	F1.close()
@@ -173,11 +175,11 @@ if __name__ == '__main__':
 	for i in range(0,tracenum):
 		#infile = "/home/dtatest/gtl_sim/fame_v2/designs/leon3-asic/final_results_lowfrequency_10ps_allwithleaf/inFiles_result_sync/yuan_power_"+str(i)+".out"	
 		#infile = "/home/dtatest/DTA-aes/final_results_100fs_netlist2_allwithleaf/inFiles_result_sync/yuan_power_"+str(i)+".out"
-                infile = "/home/dtatest/DTA-aes/final_results_100fs_netlist2_wddl/inFiles_wddl_newddc/yuan_power_"+str(i)+".out"
+                infile = "/home/dtatest/DTA-aes/final_results_1ps_nowddl/inFiles_result_sync/yuan_power_"+str(i)+".out"
        		extract_pwr_multi(infile, "testout", leakstart, leakend)
 		print "finish processing trace-" + str(i)
  	for id in dic_gateid:		
 		dic_gatepower_merge[dic_gateid[id]] = dic_gatepower[id][4]
 	#print dic_gatepower_merge
         dic_gatepower_merge = sorted(dic_gatepower_merge.items(), key=operator.itemgetter(1),reverse=True)
-	np.savetxt('aes_wddlsm_powerrank_weighted_norm'+'.txt', dic_gatepower_merge, fmt='%s')
+	np.savetxt('final_rank_nowddl'+'.txt', dic_gatepower_merge, fmt='%s')
