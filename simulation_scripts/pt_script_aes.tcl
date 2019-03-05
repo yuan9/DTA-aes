@@ -35,8 +35,8 @@ set technology_file_path "$cell_path/milkyway/"
 set technology_file "$technology_file_path/tech_sage-x_tsmc_cl018g_6lm.tf"
 
 
-#read_ddc /home/dtatest/DTA-aes/workdir/aes_synthesis.ddc
-read_ddc /home/dtatest/DTA-aes/workdir/wddl_aes.ddc
+read_ddc /home/dtatest/DTA-aes/workdir/aes_synthesis.ddc
+#read_ddc /home/dtatest/DTA-aes/workdir/wddl_aes.ddc
 
 set power_enable_analysis "true"
 
