@@ -30,5 +30,5 @@ read_verilog -netlist workdir/aes_netlist_wddl.v
 elaborate aes_cipher_top -library work -update
 current_design aes_cipher_top
 write_sdf -version 2.1 workdir/wddl_aes.sdf
-#write -f ddc -hier aes_cipher_top -output workdir/wddl_aes_test.ddc
+write -f ddc -hier aes_cipher_top -output workdir/wddl_aes.ddc
 quit

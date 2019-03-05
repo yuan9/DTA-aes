@@ -1,5 +1,5 @@
 #!/bin/bash
-results_folder=result_aes_100fs_netlist2_wddl
+results_folder=result_aes_1ps_wddl_RegFixLD
 
 for counter in {0..599}
 do

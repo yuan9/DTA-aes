@@ -1,6 +1,6 @@
 #@ # 
 #@ # Running pt_shell Version N-2017.12-SP3-2 for linux64 -- Aug 10, 2018
-#@ # Date:   Fri Mar  1 22:27:47 2019
+#@ # Date:   Mon Mar  4 21:19:05 2019
 #@ # Run by: dtatest@keccak
 #@ 
 
@@ -912,7 +912,8 @@ source -echo -verbose /home/dtatest/DTA-aes/simulation_scripts/pt_script_aes.tcl
 #@ set technology_file "$technology_file_path/tech_sage-x_tsmc_cl018g_6lm.tf"
 #@ 
 #@ 
-#@ read_ddc /home/dtatest/DTA-aes/workdir/aes_synthesis.ddc
+#@ #read_ddc /home/dtatest/DTA-aes/workdir/aes_synthesis.ddc
+#@ read_ddc /home/dtatest/DTA-aes/workdir/wddl_aes.ddc
 #@ 
 #@ set power_enable_analysis "true"
 #@ 
@@ -921,13 +922,15 @@ source -echo -verbose /home/dtatest/DTA-aes/simulation_scripts/pt_script_aes.tcl
 #@ set power_analysis_mode "time_based"
 #@ 
 #@ read_vcd test.vcd -strip_path /aes_cipher_top_tb/dut
+#@ #read_vcd test.vcd -strip_path /aes_cipher_top_tb/dut
 #@ #read_vcd test.vcd -strip_path /testbench/d3 -path core0_leon3core0_cp2_v0 
 #@ #set_power_analysis_options -waveform_interval 0.001 -waveform_format out -waveform_output "yuan_power" -include all_without_leaf
 #@ #set_power_analysis_options -waveform_interval 0.01 -waveform_format out -waveform_output "yuan_power" -include all_with_leaf
 #@ #set_power_analysis_options -waveform_format out -waveform_output "yuan_power" -include all_with_leaf
 #@ #set_power_analysis_options -waveform_format fsdb -waveform_output "yuan_power" -include all_with_leaf
 #@ #set_power_analysis_options -waveform_interval 0.0001 -waveform_format out -waveform_output "yuan_power" -include top
-#@ set_power_analysis_options -waveform_interval 0.0001 -waveform_format out -waveform_output "yuan_power" -include all_with_leaf
+#@ #set_power_analysis_options -waveform_interval 0.0001 -waveform_format out -waveform_output "yuan_power" -include all_with_leaf
+#@ set_power_analysis_options -waveform_interval 0.001 -waveform_format out -waveform_output "yuan_power" -include all_with_leaf
 #@ update_timing
 #@ 
 #@ update_power  

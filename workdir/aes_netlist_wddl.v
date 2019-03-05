@@ -4402,17 +4402,17 @@ module WDDLNAND2X (A,B,clkinv,Y);
   input A, B,clkinv;
   output Y;
   wire Ainv, Binv, Apre, Bpre, Ainvpre, Binvpre, y, y_bar, y_buf, y_barinv;
-  AND2X2 U1 ( .A(A), .B(clkinv), .Y(Apre));
-  AND2X2 U2 ( .A(B), .B(clkinv), .Y(Bpre));
-  INVX3 U3 ( .A(A), .Y(Ainv) );
-  INVX3 U4 ( .A(B), .Y(Binv) );
-  AND2X2 U5 ( .A(Ainv), .B(clkinv), .Y(Ainvpre));
-  AND2X2 U6 ( .A(Binv), .B(clkinv), .Y(Binvpre));
-  AND2X2 U7 ( .A(Apre), .B(Bpre), .Y(y_bar));
-  OR2X2 U8 ( .A(Ainvpre), .B(Binvpre), .Y(y));
-  BUFX3 U9 ( .A(y), .Y(y_buf) );
-  INVX3 U10 ( .A(y_bar), .Y(y_barinv));
-  OR2X2 U11 ( .A(y_buf), .B(y_barinv), .Y(Y));
+  AND2X1 U1 ( .A(A), .B(clkinv), .Y(Apre));
+  AND2X1 U2 ( .A(B), .B(clkinv), .Y(Bpre));
+  INVX1 U3 ( .A(A), .Y(Ainv) );
+  INVX1 U4 ( .A(B), .Y(Binv) );
+  AND2X1 U5 ( .A(Ainv), .B(clkinv), .Y(Ainvpre));
+  AND2X1 U6 ( .A(Binv), .B(clkinv), .Y(Binvpre));
+  AND2X1 U7 ( .A(Apre), .B(Bpre), .Y(y_bar));
+  OR2X1 U8 ( .A(Ainvpre), .B(Binvpre), .Y(y));
+  BUFX1 U9 ( .A(y), .Y(y_buf) );
+  INVX1 U10 ( .A(y_bar), .Y(y_barinv));
+  OR2X1 U11 ( .A(y_buf), .B(y_barinv), .Y(Y));
   
   
 endmodule
@@ -4421,17 +4421,17 @@ module WDDLNOR2X (A,B,clkinv,Y);
   input A, B,clkinv;
   output Y;
   wire Ainv, Binv, Apre, Bpre, Ainvpre, Binvpre, y, y_bar, y_buf, y_barinv;
-  AND2X2 U1 ( .A(A), .B(clkinv), .Y(Apre));
-  AND2X2 U2 ( .A(B), .B(clkinv), .Y(Bpre));
-  INVX3 U3 ( .A(A), .Y(Ainv) );
-  INVX3 U4 ( .A(B), .Y(Binv) );
-  AND2X2 U5 ( .A(Ainv), .B(clkinv), .Y(Ainvpre));
-  AND2X2 U6 ( .A(Binv), .B(clkinv), .Y(Binvpre));
-  OR2X2 U7 ( .A(Apre), .B(Bpre), .Y(y_bar));
-  AND2X2 U8 ( .A(Ainvpre), .B(Binvpre), .Y(y));
-  BUFX3 U9 ( .A(y), .Y(y_buf) );
-  INVX3 U10 ( .A(y_bar), .Y(y_barinv));
-  OR2X2 U11 ( .A(y_buf), .B(y_barinv), .Y(Y));
+  AND2X1 U1 ( .A(A), .B(clkinv), .Y(Apre));
+  AND2X1 U2 ( .A(B), .B(clkinv), .Y(Bpre));
+  INVX1 U3 ( .A(A), .Y(Ainv) );
+  INVX1 U4 ( .A(B), .Y(Binv) );
+  AND2X1 U5 ( .A(Ainv), .B(clkinv), .Y(Ainvpre));
+  AND2X1 U6 ( .A(Binv), .B(clkinv), .Y(Binvpre));
+  OR2X1 U7 ( .A(Apre), .B(Bpre), .Y(y_bar));
+  AND2X1 U8 ( .A(Ainvpre), .B(Binvpre), .Y(y));
+  BUFX1 U9 ( .A(y), .Y(y_buf) );
+  INVX1 U10 ( .A(y_bar), .Y(y_barinv));
+  OR2X1 U11 ( .A(y_buf), .B(y_barinv), .Y(Y));
   
   
 endmodule
@@ -4440,12 +4440,12 @@ module WDDLINV (A,clkinv,Y);
   input A, clkinv;
   output Y;
   wire Ainv, y_bar, y, y_barinv, y_buf;
-  AND2X2 U1 ( .A(A), .B(clkinv), .Y(y_bar));
-  INVX3 U2 ( .A(A), .Y(Ainv) );
-  AND2X2 U3 ( .A(Ainv), .B(clkinv), .Y(y));
-  BUFX3 U4 ( .A(y), .Y(y_buf) );
-  INVX3 U5 ( .A(y_bar), .Y(y_barinv));
-  OR2X2 U6 ( .A(y_buf), .B(y_barinv), .Y(Y));
+  AND2X1 U1 ( .A(A), .B(clkinv), .Y(y_bar));
+  INVX1 U2 ( .A(A), .Y(Ainv) );
+  AND2X1 U3 ( .A(Ainv), .B(clkinv), .Y(y));
+  BUFX1 U4 ( .A(y), .Y(y_buf) );
+  INVX1 U5 ( .A(y_bar), .Y(y_barinv));
+  OR2X1 U6 ( .A(y_buf), .B(y_barinv), .Y(Y));
 
 endmodule
 
@@ -4458,15 +4458,15 @@ module WDDLDFFHQX2 ( D, CLK, Q );
   wire dinv,q, qinv, clkinv, qpre, qinvpre, qbuf, qbarinv;
   //wire dinv, clkinv, qpre, qinvpre, qbuf, qbarinv;
   //reg q, qinv;
-  INVX3 U1 ( .A(D), .Y(dinv));
-  DFFHQX2 reg_1 ( .D(D), .CK(CLK), .Q(q));
-  DFFHQX2 reg_2 ( .D(dinv), .CK(CLK), .Q(qinv));
-  CLKINVX3 U2 ( .A(CLK), .Y(clkinv));
-  AND2X2 U3 ( .A(q), .B(clkinv), .Y(qpre));
-  AND2X2 U4 ( .A(qinv), .B(clkinv), .Y(qinvpre));
-  BUFX3 U5 ( .A(qpre), .Y(qbuf));
-  INVX3 U6 ( .A(qinvpre), .Y(qbarinv));
-  OR2X2 U7 ( .A(qbuf), .B(qbarinv), .Y(Q));
+  INVX1 U1 ( .A(D), .Y(dinv));
+  DFFHQX1 reg_1 ( .D(D), .CK(CLK), .Q(q));
+  DFFHQX1 reg_2 ( .D(dinv), .CK(CLK), .Q(qinv));
+  CLKINVX1 U2 ( .A(CLK), .Y(clkinv));
+  AND2X1 U3 ( .A(q), .B(clkinv), .Y(qpre));
+  AND2X1 U4 ( .A(qinv), .B(clkinv), .Y(qinvpre));
+  BUFX1 U5 ( .A(qpre), .Y(qbuf));
+  INVX1 U6 ( .A(qinvpre), .Y(qbarinv));
+  OR2X1 U7 ( .A(qbuf), .B(qbarinv), .Y(Q));
 endmodule
 
 
