@@ -4530,7 +4530,9 @@ module aes_sbox_8 ( a, d, clk);
 //wddlgate
   //NAND2XL U17 ( .A(n109), .B(n78), .Y(n158) );
   WDDLNAND2X U17 ( .A(n109), .B(n78), .clkinv(clk_bar), .Y(n158) );
-  NOR2XL U18 ( .A(n324), .B(n131), .Y(n262) );
+//wddlgate  
+  //NOR2XL U18 ( .A(n324), .B(n131), .Y(n262) );
+  WDDLNOR2X U18 ( .A(n324), .B(n131), .clkinv(clk_bar), .Y(n262) );
   NOR2XL U19 ( .A(n181), .B(n95), .Y(n174) );
 //wddlgate
   //NAND2XL U20 ( .A(a[1]), .B(n293), .Y(n82) );
@@ -4630,7 +4632,9 @@ module aes_sbox_8 ( a, d, clk);
   AOI22XL U98 ( .A0(n188), .A1(n273), .B0(n233), .B1(n314), .Y(n189) );
   AOI211XL U99 ( .A0(n345), .A1(n265), .B0(n139), .C0(n115), .Y(n121) );
   AOI211XL U100 ( .A0(n328), .A1(n263), .B0(n212), .C0(n211), .Y(n214) );
-  INVXL U101 ( .A(n152), .Y(n222) );
+//wddlgate
+  //INVXL U101 ( .A(n152), .Y(n222) );
+  WDDLINV U101 ( .A(n152),  .clkinv(clk_bar), .Y(n222) );
   AOI2BB2XL U102 ( .B0(n350), .B1(n100), .A0N(n192), .A1N(n99), .Y(n106) );
   NAND2XL U103 ( .A(n265), .B(n348), .Y(n247) );
   AOI211XL U104 ( .A0(n359), .A1(n358), .B0(n357), .C0(n356), .Y(n361) );
@@ -4679,7 +4683,9 @@ module aes_sbox_8 ( a, d, clk);
   AND2X2 U144 ( .A(n303), .B(n78), .Y(n221) );
   AOI22XL U145 ( .A0(n349), .A1(n226), .B0(n249), .B1(n328), .Y(n229) );
   NAND2XL U146 ( .A(n311), .B(n236), .Y(n346) );
-  NOR2XL U147 ( .A(n181), .B(n269), .Y(n315) );
+//wddlgate
+  //NOR2XL U147 ( .A(n181), .B(n269), .Y(n315) );
+  WDDLNOR2X U147 ( .A(n181), .B(n269), .clkinv(clk_bar), .Y(n315) );
 //wddlgate
   //INVXL U148 ( .A(n131), .Y(n351) );
   WDDLINV U148 ( .A(n131),.clkinv(clk_bar), .Y(n351) );
@@ -4864,7 +4870,9 @@ module aes_sbox_8 ( a, d, clk);
   WDDLNAND2X U286 ( .A(a[3]), .B(n323), .clkinv(clk_bar), .Y(n267) );
   AOI22X1 U287 ( .A0(n1), .A1(n39), .B0(n345), .B1(n61), .Y(n19) );
   INVX1 U288 ( .A(n103), .Y(n37) );
-  NOR2X1 U289 ( .A(n195), .B(n270), .Y(n161) );
+//wddlgate
+  //NOR2X1 U289 ( .A(n195), .B(n270), .Y(n161) );
+  WDDLNOR2X U289 ( .A(n195), .B(n270), .clkinv(clk_bar), .Y(n161) );
   INVX1 U290 ( .A(n311), .Y(n268) );
   INVX1 U291 ( .A(n293), .Y(n209) );
 //wddlgate
@@ -4919,7 +4927,9 @@ module aes_sbox_8 ( a, d, clk);
   INVX1 U335 ( .A(n125), .Y(n319) );
   NAND2X1 U336 ( .A(n107), .B(n267), .Y(n159) );
   OAI21XL U337 ( .A0(n116), .A1(n309), .B0(n79), .Y(n80) );
-  NOR2X1 U338 ( .A(n145), .B(n318), .Y(n152) );
+//wddlgate
+  //NOR2X1 U338 ( .A(n145), .B(n318), .Y(n152) );
+  WDDLNOR2X U338 ( .A(n145), .B(n318), .clkinv(clk_bar), .Y(n152) );
   NAND4X1 U339 ( .A(n96), .B(n95), .C(n94), .D(n93), .Y(n97) );
   AOI211X1 U340 ( .A0(n349), .A1(n152), .B0(n98), .C0(n97), .Y(n127) );
   OAI21XL U341 ( .A0(n249), .A1(n288), .B0(n176), .Y(n102) );
