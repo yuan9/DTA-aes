@@ -9501,7 +9501,7 @@ module aes_cipher_top ( clk, rst, ld, done, key, text_in, text_out );
          n1162, n1163, n1164, n1165, n1166, n1167, n1168, n1169, n1170, n1171,
          n1172, n1173, n1174, n1175, n1176, n1177, n1178, n1179, n1180, n1181,
          n1182, n1183, n1184, n1185, n1186, n1187, n1188, n1189, n1190, n1191,
-         n1192;
+         n1192,ssss,clk_bar;
   wire   [127:0] text_in_r;
   wire   [31:0] w3;
   wire   [7:0] sa33;
@@ -10788,7 +10788,11 @@ module aes_cipher_top ( clk, rst, ld, done, key, text_in, text_out );
   OAI2BB1XL U1370 ( .A0N(n4), .A1N(sa02_next[2]), .B0(n1006), .Y(N146) );
   OAI2BB1XL U1371 ( .A0N(n4), .A1N(sa21_next[2]), .B0(n1032), .Y(N178) );
   OAI2BB1XL U1372 ( .A0N(n4), .A1N(sa03_next[2]), .B0(n1175), .Y(N82) );
-  OAI2BB1XL U1373 ( .A0N(n4), .A1N(sa23_next[1]), .B0(n1143), .Y(N49) );
+//wddl
+  //OAI2BB1XL U1373 ( .A0N(n4), .A1N(sa23_next[1]), .B0(n1143), .Y(N49) );
+  CLKINVX3 Uwddlclk ( .A(clk), .Y(clk_bar));
+  WDDLNAND2X U1373a ( .A(n4), .B(sa23_next[1]), .clkinv(clk_bar), .Y(ssss) );
+  WDDLNAND2X U1373b ( .A(ssss), .B(n1143), .clkinv(clk_bar), .Y(N49) );
   OAI2BB1XL U1374 ( .A0N(n4), .A1N(sa01_next[2]), .B0(n1059), .Y(N210) );
   OAI2BB1XL U1375 ( .A0N(n4), .A1N(sa30_next[1]), .B0(n1071), .Y(N225) );
   OAI2BB1XL U1376 ( .A0N(n4), .A1N(sa31_next[1]), .B0(n1018), .Y(N161) );
