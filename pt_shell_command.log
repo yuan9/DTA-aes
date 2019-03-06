@@ -1,6 +1,6 @@
 #@ # 
 #@ # Running pt_shell Version N-2017.12-SP3-2 for linux64 -- Aug 10, 2018
-#@ # Date:   Tue Mar  5 00:12:50 2019
+#@ # Date:   Tue Mar  5 22:11:31 2019
 #@ # Run by: dtatest@keccak
 #@ 
 
@@ -912,8 +912,8 @@ source -echo -verbose /home/dtatest/DTA-aes/simulation_scripts/pt_script_aes.tcl
 #@ set technology_file "$technology_file_path/tech_sage-x_tsmc_cl018g_6lm.tf"
 #@ 
 #@ 
-#@ read_ddc /home/dtatest/DTA-aes/workdir/aes_synthesis.ddc
-#@ #read_ddc /home/dtatest/DTA-aes/workdir/wddl_aes.ddc
+#@ #read_ddc /home/dtatest/DTA-aes/workdir/aes_synthesis.ddc
+#@ read_ddc /home/dtatest/DTA-aes/workdir/wddl_aes.ddc
 #@ 
 #@ set power_enable_analysis "true"
 #@ 

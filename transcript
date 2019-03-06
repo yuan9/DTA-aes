@@ -1,3 +1,4 @@
+# vsim +notimingchecks -L work -do gtl_aes_commandline.do -c -sdfmax /aes_cipher_top_tb/dut=/home/dtatest/DTA-aes/workdir/wddl_aes.sdf -novopt work.aes_cipher_top_tb 
 # //  ModelSim SE-64 6.5 Jan 22 2009 Linux 4.2.0-42-generic
 # //
 # //  Copyright 1991-2009 Mentor Graphics Corporation
@@ -8,7 +9,6 @@
 # //  OF MENTOR GRAPHICS CORPORATION OR ITS LICENSORS
 # //  AND IS SUBJECT TO LICENSE TERMS.
 # //
-# vsim +notimingchecks -L work -do gtl_aes_gui.do -i -sdfmax /aes_cipher_top_tb/dut=/home/dtatest/DTA-aes/workdir/wddl_aes.sdf -novopt work.aes_cipher_top_tb 
 # Refreshing /home/dtatest/DTA-aes/work.aes_cipher_top_tb
 # Loading work.aes_cipher_top_tb
 # Refreshing /home/dtatest/DTA-aes/work.aes_cipher_top
@@ -239,7 +239,6 @@
 # Loading work.NOR2BXL
 # Refreshing /home/dtatest/DTA-aes/work.clkgen
 # Loading work.clkgen
-# SDF 6.5 Compiler 2009.01 Jan 22 2009
 # Loading instances from /home/dtatest/DTA-aes/workdir/wddl_aes.sdf
 # Refreshing /home/dtatest/DTA-aes/work.udp_dff
 # Loading work.udp_dff
@@ -682,6 +681,6 @@
 # Loading timing data from /home/dtatest/DTA-aes/workdir/wddl_aes.sdf
 # ** Note: (vsim-3587) SDF Backannotation Successfully Completed.
 #    Time: 0 ps  Iteration: 0  Region: /aes_cipher_top_tb  File: aes_cipher_top_tb.v
-# do gtl_aes_gui.do 
-# Initial plaintext 9f79a3bf6656a9853e1238a132cb5a2b
-# Final ciphertext 5848da3c4c62055541d5cbfeb663a545
+# do gtl_aes_commandline.do 
+# Initial plaintext 2e843f6715c78279aa52ab6e01483432
+# Final ciphertext 1304e2a29565b5ebd921619de63376ba
