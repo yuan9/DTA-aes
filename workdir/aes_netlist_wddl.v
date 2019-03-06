@@ -4452,15 +4452,15 @@ endmodule
 //module WDDLDFFHQX2 ( .D(N113), .CK(clk), .Q(sa22[1]) );
 //wddl flip-flop
 
-module WDDLDFFHQX2 ( D, CLK, Q );
-  input D, CLK;
+module WDDLDFFHQX2 ( D, Dinv , CLK, Q );
+  input D, Dinv, CLK;
   output Q;
-  wire dinv,q, qinv, clkinv, qpre, qinvpre, qbuf, qbarinv;
+  wire q, qinv, clkinv, qpre, qinvpre, qbuf, qbarinv;
   //wire dinv, clkinv, qpre, qinvpre, qbuf, qbarinv;
   //reg q, qinv;
-  INVX1 U1 ( .A(D), .Y(dinv));
+  //INVX1 U1 ( .A(D), .Y(dinv));
   DFFHQX1 reg_1 ( .D(D), .CK(CLK), .Q(q));
-  DFFHQX1 reg_2 ( .D(dinv), .CK(CLK), .Q(qinv));
+  DFFHQX1 reg_2 ( .D(Dinv), .CK(CLK), .Q(qinv));
   CLKINVX1 U2 ( .A(CLK), .Y(clkinv));
   AND2X1 U3 ( .A(q), .B(clkinv), .Y(qpre));
   AND2X1 U4 ( .A(qinv), .B(clkinv), .Y(qinvpre));
@@ -4469,6 +4469,25 @@ module WDDLDFFHQX2 ( D, CLK, Q );
   OR2X1 U7 ( .A(qbuf), .B(qbarinv), .Y(Q));
 endmodule
 
+//OAI2BB1XL U1373 ( .A0N(n4), .A1N(sa23_next[1]), .B0(n1143), .Y(N49) );
+module WDDLNANDCOMP ( A, B , C, clkinv, Y, Y_bar);
+  input A, B, C, clkinv;
+  output Y, Y_bar;
+  wire Ainv, Binv, Apre, Bpre, Ainvpre, Binvpre, z, z_bar;
+  AND2X1 U1 ( .A(A), .B(clkinv), .Y(Apre));
+  AND2X1 U2 ( .A(B), .B(clkinv), .Y(Bpre));
+  AND2X1 U3 ( .A(C), .B(clkinv), .Y(Cpre));
+  INVX1 U4 ( .A(A), .Y(Ainv) );
+  INVX1 U5 ( .A(B), .Y(Binv) );
+  INVX1 U6 ( .A(C), .Y(Cinv) );
+  AND2X1 U7 ( .A(Ainv), .B(clkinv), .Y(Ainvpre));
+  AND2X1 U8 ( .A(Binv), .B(clkinv), .Y(Binvpre));
+  AND2X1 U9 ( .A(Cinv), .B(clkinv), .Y(Cinvpre));
+  AND2X1 U10 ( .A(Apre), .B(Bpre), .Y(z_bar));
+  OR2X1 U11 ( .A(Ainvpre), .B(Binvpre), .Y(z));
+  AND2X1 U12 ( .A(z), .B(Cpre), .Y(Y_bar));
+  OR2X1 U13 ( .A(z_bar), .B(Cinvpre), .Y(Y));
+endmodule
 
 module aes_sbox_8 ( a, d, clk);
   input [7:0] a;
@@ -9501,7 +9520,7 @@ module aes_cipher_top ( clk, rst, ld, done, key, text_in, text_out );
          n1162, n1163, n1164, n1165, n1166, n1167, n1168, n1169, n1170, n1171,
          n1172, n1173, n1174, n1175, n1176, n1177, n1178, n1179, n1180, n1181,
          n1182, n1183, n1184, n1185, n1186, n1187, n1188, n1189, n1190, n1191,
-         n1192,ssss,clk_bar;
+         n1192,ssss,clk_bar,N49inv;
   wire   [127:0] text_in_r;
   wire   [31:0] w3;
   wire   [7:0] sa33;
@@ -10249,7 +10268,7 @@ module aes_cipher_top ( clk, rst, ld, done, key, text_in, text_out );
   DFFHQX2 sa21_reg_1_ ( .D(N177), .CK(clk), .Q(sa21[1]) );
   DFFHQX2 sa20_reg_1_ ( .D(N241), .CK(clk), .Q(sa20[1]) );
   //DFFHQX2 sa23_reg_1_ ( .D(N49), .CK(clk), .Q(sa23[1]) );
-  WDDLDFFHQX2 sa23_reg_1_ ( .D(N49), .CLK(clk), .Q(sa23[1]) );
+  WDDLDFFHQX2 sa23_reg_1_ ( .D(N49), .Dinv(N49inv), .CLK(clk), .Q(sa23[1]) );
   DFFHQX2 sa22_reg_1_ ( .D(N113), .CK(clk), .Q(sa22[1]) );
   DFFHQX2 sa10_reg_1_ ( .D(N257), .CK(clk), .Q(sa10[1]) );
   DFFHQX2 sa13_reg_1_ ( .D(N65), .CK(clk), .Q(sa13[1]) );
@@ -10791,8 +10810,9 @@ module aes_cipher_top ( clk, rst, ld, done, key, text_in, text_out );
 //wddl
   //OAI2BB1XL U1373 ( .A0N(n4), .A1N(sa23_next[1]), .B0(n1143), .Y(N49) );
   CLKINVX3 Uwddlclk ( .A(clk), .Y(clk_bar));
-  WDDLNAND2X U1373a ( .A(n4), .B(sa23_next[1]), .clkinv(clk_bar), .Y(ssss) );
-  WDDLNAND2X U1373b ( .A(ssss), .B(n1143), .clkinv(clk_bar), .Y(N49) );
+//  WDDLNAND2X U1373a ( .A(n4), .B(sa23_next[1]), .clkinv(clk_bar), .Y(ssss) );
+//  WDDLNAND2X U1373b ( .A(ssss), .B(n1143), .clkinv(clk_bar), .Y(N49) );
+  WDDLNANDCOMP U1373 ( .A(n4), .B(sa23_next[1]) , .C(n1143), .clkinv(clk_bar), .Y(N49) , .Y_bar(N49inv));  
   OAI2BB1XL U1374 ( .A0N(n4), .A1N(sa01_next[2]), .B0(n1059), .Y(N210) );
   OAI2BB1XL U1375 ( .A0N(n4), .A1N(sa30_next[1]), .B0(n1071), .Y(N225) );
   OAI2BB1XL U1376 ( .A0N(n4), .A1N(sa31_next[1]), .B0(n1018), .Y(N161) );

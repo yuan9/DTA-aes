@@ -1,0 +1,176 @@
+****************************************
+Report : Time Based Power
+	-hierarchy
+	-verbose
+Design : aes_cipher_top
+Version: N-2017.12-SP3-2
+Date   : Wed Mar  6 13:55:32 2019
+****************************************
+
+Sampling Interval: 0.001 ns
+
+Library(s) Used:
+
+    sage-x_tsmc_cl018g_rvt_ss_1p62v_125c (File: /opt/libs/tsmc180/extracted/tsmc/cl018g/sc9_base_rvt/2008q3v01/db/sage-x_tsmc_cl018g_rvt_ss_1p62v_125c.db)
+    tpz018nvwc (File: /opt/libs/tsmc180/extracted/gpio/TPZ018NV/TS02IG502/fb_tpz018nv_280a_r6p0-02eac0/timing_power_noise/NLDM/tpz018nv_280a/tpz018nvwc.db)
+    sram12x8 (File: /home/bilgiday/sram_new/db/sram12x8_slow_syn.db)
+    USERLIB (File: /home/bilgiday/sram_new/db/sram6x26_slow_syn.db)
+    sram8x25 (File: /home/bilgiday/sram_new/db/sram8x25_slow_syn.db)
+    sram9x32 (File: /home/bilgiday/sram_new/db/sram9x32_slow_syn.db)
+    sram6x32 (File: /home/bilgiday/sram_new/db/sram6x32_slow_syn.db)
+    sram8x32 (File: /home/bilgiday/sram_new/db/sram8x32_slow_syn.db)
+    USERLIB (File: /home/bilgiday/sram_new/db/sram2p8x32_slow_syn.db)
+    sram13x8 (File: /home/bilgiday/sram_new/db/sram13x8_slow_syn.db)
+
+
+Operating Conditions: ss_1p62v_125c   Library: sage-x_tsmc_cl018g_rvt_ss_1p62v_125c
+Wire Load Model Mode: top
+
+Cell               Design       Wire_model  Library       Selection_type
+--------------------------------------------------------------------------------
+                   aes_cipher_top
+                                TSMC16K_Conservative
+                                            tpz018nvwc    automatic-by-area
+
+Power-specific unit information :
+    Voltage Units = 1 V
+    Capacitance Units = 1 pf
+    Time Units = 1 ns
+    Dynamic Power Units = 1 W
+    Leakage Power Units = 1 W
+
+
+
+                                      Int      Switch   Leak      Total
+Hierarchy                             Power    Power    Power     Power    %
+--------------------------------------------------------------------------------
+aes_cipher_top                        3.70e-03 2.99e-03 2.81e-06  6.69e-03 100.0
+  us00 (aes_sbox_19)                  3.54e-05 6.97e-05 7.26e-08  1.05e-04   1.6
+  us01 (aes_sbox_18)                  4.48e-05 8.83e-05 7.18e-08  1.33e-04   2.0
+  us02 (aes_sbox_17)                  4.30e-05 8.48e-05 7.27e-08  1.28e-04   1.9
+  us03 (aes_sbox_16)                  4.29e-05 8.03e-05 7.20e-08  1.23e-04   1.8
+  us10 (aes_sbox_15)                  4.02e-05 7.95e-05 7.26e-08  1.20e-04   1.8
+  us11 (aes_sbox_14)                  4.72e-05 9.41e-05 7.27e-08  1.41e-04   2.1
+  us12 (aes_sbox_13)                  4.03e-05 8.07e-05 7.26e-08  1.21e-04   1.8
+  us13 (aes_sbox_12)                  4.51e-05 8.74e-05 7.24e-08  1.33e-04   2.0
+  us20 (aes_sbox_11)                  4.47e-05 8.63e-05 7.27e-08  1.31e-04   2.0
+  us21 (aes_sbox_10)                  4.39e-05 8.49e-05 7.28e-08  1.29e-04   1.9
+  us22 (aes_sbox_9)                   4.36e-05 8.52e-05 7.28e-08  1.29e-04   1.9
+  us23 (aes_sbox_8)                   2.98e-04 3.71e-04 1.55e-07  6.69e-04  10.0
+    U257 (WDDLINV)                    3.35e-06 4.63e-06 1.27e-09  7.99e-06   0.1
+    U259 (WDDLNOR2X)                  4.66e-06 4.24e-06 2.52e-09  8.91e-06   0.1
+    U262 (WDDLNOR2X)                  4.79e-06 5.12e-06 2.52e-09  9.91e-06   0.1
+    U174 (WDDLNOR2X)                  6.27e-06 4.99e-06 2.53e-09  1.13e-05   0.2
+    U178 (WDDLNOR2X)                  6.21e-06 5.29e-06 2.53e-09  1.15e-05   0.2
+    U179 (WDDLNOR2X)                  6.28e-06 5.45e-06 2.53e-09  1.17e-05   0.2
+    U271 (WDDLNOR2X)                  4.83e-06 4.75e-06 2.52e-09  9.58e-06   0.1
+    U277 (WDDLNOR2X)                  4.61e-06 4.14e-06 2.51e-09  8.76e-06   0.1
+    U81 (WDDLNOR2X)                   9.01e-06 8.88e-06 2.55e-09  1.79e-05   0.3
+    U186 (WDDLNAND2X)                 4.19e-06 2.55e-06 2.44e-09  6.75e-06   0.1
+    U188 (WDDLNAND2X)                 5.57e-06 3.96e-06 2.42e-09  9.53e-06   0.1
+    U280 (WDDLNAND2X)                 4.40e-06 3.25e-06 2.53e-09  7.65e-06   0.1
+    U286 (WDDLNAND2X)                 4.52e-06 4.08e-06 2.57e-09  8.60e-06   0.1
+    U194 (WDDLNOR2X)                  6.01e-06 4.52e-06 2.53e-09  1.05e-05   0.2
+    U199 (WDDLNOR2X)                  5.68e-06 4.86e-06 2.55e-09  1.05e-05   0.2
+    U292 (WDDLNOR2X)                  6.17e-06 6.14e-06 2.53e-09  1.23e-05   0.2
+    U294 (WDDLNAND2X)                 4.49e-06 3.53e-06 2.50e-09  8.02e-06   0.1
+    U296 (WDDLINV)                    5.04e-06 6.21e-06 1.34e-09  1.12e-05   0.2
+    U6 (WDDLINV)                      6.36e-06 6.68e-06 1.29e-09  1.30e-05   0.2
+    U200 (WDDLNAND2X)                 5.77e-06 4.46e-06 2.44e-09  1.02e-05   0.2
+    U201 (WDDLNAND2X)                 5.72e-06 4.17e-06 2.42e-09  9.89e-06   0.1
+    U16 (WDDLNOR2X)                   7.61e-06 5.86e-06 2.54e-09  1.35e-05   0.2
+    U17 (WDDLNAND2X)                  7.96e-06 6.14e-06 2.60e-09  1.41e-05   0.2
+    U211 (WDDLNOR2X)                  4.81e-06 5.41e-06 2.55e-09  1.02e-05   0.2
+    U214 (WDDLNOR2X)                  4.91e-06 5.82e-06 2.55e-09  1.07e-05   0.2
+    U215 (WDDLNAND2X)                 4.41e-06 4.54e-06 2.49e-09  8.95e-06   0.1
+    U121 (WDDLNAND2X)                 1.03e-05 7.99e-06 2.49e-09  1.83e-05   0.3
+    U20 (WDDLNAND2X)                  5.74e-06 4.27e-06 2.44e-09  1.00e-05   0.1
+    U21 (WDDLNOR2X)                   4.85e-06 5.28e-06 2.52e-09  1.01e-05   0.2
+    U22 (WDDLNOR2X)                   5.82e-06 5.43e-06 2.54e-09  1.13e-05   0.2
+    U23 (WDDLNAND2X)                  7.88e-06 7.04e-06 2.56e-09  1.49e-05   0.2
+    U26 (WDDLNOR2X)                   5.69e-06 5.46e-06 2.55e-09  1.12e-05   0.2
+    U27 (WDDLNOR2X)                   5.69e-06 4.82e-06 2.55e-09  1.05e-05   0.2
+    U29 (WDDLNAND2X)                  5.16e-06 3.57e-06 2.41e-09  8.73e-06   0.1
+    U234 (WDDLNAND2X)                 5.53e-06 4.11e-06 2.45e-09  9.64e-06   0.1
+    U148 (WDDLINV)                    4.95e-06 6.61e-06 1.33e-09  1.16e-05   0.2
+    U342 (WDDLNOR2X)                  4.72e-06 4.56e-06 2.51e-09  9.29e-06   0.1
+  us30 (aes_sbox_7)                   4.46e-05 8.65e-05 7.14e-08  1.31e-04   2.0
+  us31 (aes_sbox_6)                   4.26e-05 8.58e-05 7.10e-08  1.29e-04   1.9
+  us32 (aes_sbox_5)                   4.38e-05 8.62e-05 7.10e-08  1.30e-04   1.9
+  us33 (aes_sbox_4)                   4.49e-05 8.77e-05 7.11e-08  1.33e-04   2.0
+  U1373 (WDDLNANDCOMP)                4.09e-06 2.90e-06 3.07e-09  6.99e-06   0.1
+  sa23_reg_1_ (WDDLDFFHQX2)           7.12e-06 1.17e-05 3.39e-09  1.88e-05   0.3
+  u0 (aes_key_expand_128)             9.39e-04 7.23e-04 5.85e-07  1.66e-03  24.8
+    r0 (aes_rcon)                     2.67e-05 7.53e-06 1.71e-08  3.43e-05   0.5
+    u0 (aes_sbox_3)                   4.28e-05 7.77e-05 7.05e-08  1.21e-04   1.8
+    u1 (aes_sbox_2)                   4.38e-05 7.98e-05 6.99e-08  1.24e-04   1.8
+    u2 (aes_sbox_1)                   4.80e-05 8.89e-05 7.05e-08  1.37e-04   2.0
+    u3 (aes_sbox_0)                   4.62e-05 8.57e-05 7.01e-08  1.32e-04   2.0
+
+
+                                      Peak     Peak            Glitch   X-tran
+Hierarchy                             Power    Time            Power    Power
+--------------------------------------------------------------------------------
+aes_cipher_top                           1.183  85.331-85.332  2.66e-04 8.09e-05
+  us00 (aes_sbox_19)                  1.11e-02 342.106-342.107 7.13e-06    0.000
+  us01 (aes_sbox_18)                  1.27e-02 214.289-214.290 1.12e-05    0.000
+  us02 (aes_sbox_17)                  1.03e-02 256.945-256.946 6.69e-06    0.000
+  us03 (aes_sbox_16)                  1.36e-02 598.283-598.284 1.00e-05    0.000
+  us10 (aes_sbox_15)                  1.13e-02 598.140-598.141 7.90e-06    0.000
+  us11 (aes_sbox_14)                  1.18e-02 342.256-342.257 1.27e-05    0.000
+  us12 (aes_sbox_13)                  1.46e-02 598.135-598.136 5.78e-06    0.000
+  us13 (aes_sbox_12)                  1.10e-02 427.568-427.569 7.45e-06    0.000
+  us20 (aes_sbox_11)                  1.19e-02 427.680-427.681 9.96e-06    0.000
+  us21 (aes_sbox_10)                  1.23e-02 171.566-171.567 1.08e-05    0.000
+  us22 (aes_sbox_9)                   1.48e-02 171.475-171.476 9.02e-06    0.000
+  us23 (aes_sbox_8)                   4.28e-02 598.411-598.412 2.19e-05 5.25e-05
+    U257 (WDDLINV)                    5.22e-04 598.514-598.515    0.000 1.33e-06
+    U259 (WDDLNOR2X)                  8.26e-04 598.365-598.366    0.000 1.07e-06
+    U262 (WDDLNOR2X)                  5.56e-04 535.663-535.664    0.000 1.13e-06
+    U174 (WDDLNOR2X)                  7.38e-04 257.230-257.231    0.000 1.05e-06
+    U178 (WDDLNOR2X)                  7.35e-04 342.518-342.519    0.000 1.07e-06
+    U179 (WDDLNOR2X)                  7.20e-04 427.865-427.866    0.000 1.08e-06
+    U271 (WDDLNOR2X)                  5.75e-04 214.280-214.281    0.000 1.10e-06
+    U277 (WDDLNOR2X)                  5.63e-04 214.290-214.291    0.000 1.07e-06
+    U81 (WDDLNOR2X)                   7.59e-04 364.826-364.827    0.000 1.05e-06
+    U186 (WDDLNAND2X)                 5.56e-04 257.309-257.310    0.000 1.05e-06
+    U188 (WDDLNAND2X)                 3.01e-02 598.411-598.412 6.52e-07 1.06e-06
+    U280 (WDDLNAND2X)                 5.74e-04 214.280-214.281    0.000 1.08e-06
+    U286 (WDDLNAND2X)                 5.66e-04 535.625-535.626    0.000 1.11e-06
+    U194 (WDDLNOR2X)                  5.42e-04 577.136-577.137    0.000 1.02e-06
+    U199 (WDDLNOR2X)                  6.04e-04 427.850-427.851    0.000 1.08e-06
+    U292 (WDDLNOR2X)                  5.61e-04 620.338-620.339    0.000 1.14e-06
+    U294 (WDDLNAND2X)                 5.72e-04 257.309-257.310    0.000 1.07e-06
+    U296 (WDDLINV)                    7.24e-04 577.905-577.906    0.000 5.97e-07
+    U6 (WDDLINV)                      5.29e-04 152.237-152.238    0.000 5.45e-07
+    U200 (WDDLNAND2X)                 4.87e-04 598.514-598.515 8.41e-07 1.09e-06
+    U201 (WDDLNAND2X)                 4.87e-04 257.186-257.187 8.55e-07 1.06e-06
+    U16 (WDDLNOR2X)                   5.40e-04 151.998-151.999    0.000 1.41e-06
+    U17 (WDDLNAND2X)                  6.59e-04 449.785-449.786    0.000 1.05e-06
+    U211 (WDDLNOR2X)                  5.66e-04 535.663-535.664    0.000 1.17e-06
+    U214 (WDDLNOR2X)                  5.78e-04 535.663-535.664    0.000 1.19e-06
+    U215 (WDDLNAND2X)                 6.05e-04 535.625-535.626    0.000 1.27e-06
+    U121 (WDDLNAND2X)                 7.19e-04 492.544-492.545    0.000 9.97e-07
+    U20 (WDDLNAND2X)                  7.49e-04 299.859-299.860 6.65e-07 1.10e-06
+    U21 (WDDLNOR2X)                   5.74e-04 535.663-535.664    0.000 1.15e-06
+    U22 (WDDLNOR2X)                   7.49e-04 299.859-299.860 6.81e-07 1.10e-06
+    U23 (WDDLNAND2X)                  7.57e-04 322.044-322.045    0.000 1.03e-06
+    U26 (WDDLNOR2X)                   6.93e-04 427.666-427.667    0.000 1.14e-06
+    U27 (WDDLNOR2X)                   8.60e-04 342.408-342.409    0.000 1.08e-06
+    U29 (WDDLNAND2X)                  4.94e-04 257.186-257.187    0.000 1.21e-06
+    U234 (WDDLNAND2X)                 7.63e-04 598.408-598.409    0.000 1.25e-06
+    U148 (WDDLINV)                    7.48e-04 151.220-151.221    0.000 6.25e-07
+    U342 (WDDLNOR2X)                  7.09e-04 427.666-427.667    0.000 1.10e-06
+  us30 (aes_sbox_7)                   1.06e-02 214.114-214.115 7.86e-06    0.000
+  us31 (aes_sbox_6)                   1.12e-02 256.875-256.876 8.31e-06    0.000
+  us32 (aes_sbox_5)                   1.25e-02 555.563-555.564 9.50e-06    0.000
+  us33 (aes_sbox_4)                   1.62e-02 214.131-214.132 1.14e-05    0.000
+  U1373 (WDDLNANDCOMP)                5.09e-04  85.378-85.379     0.000 5.25e-07
+  sa23_reg_1_ (WDDLDFFHQX2)           2.17e-03 554.657-554.658    0.000 1.45e-06
+  u0 (aes_key_expand_128)             7.65e-02  85.411-85.412  5.91e-05 1.39e-05
+    r0 (aes_rcon)                     4.15e-03 426.659-426.660 6.67e-07 6.10e-07
+    u0 (aes_sbox_3)                   1.08e-02 427.862-427.863 7.79e-06    0.000
+    u1 (aes_sbox_2)                   1.14e-02 257.198-257.199 7.48e-06    0.000
+    u2 (aes_sbox_1)                   1.22e-02 513.018-513.019 7.28e-06    0.000
+    u3 (aes_sbox_0)                   1.41e-02 555.721-555.722 9.15e-06    0.000
+1

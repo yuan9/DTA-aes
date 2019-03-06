@@ -1,9 +1,11 @@
 #!/bin/bash
 numtrace=600
 #results_dir=../result_aes_100fs_netlist2_wddl
-results_dir=../result_aes_1ps_wddl_RegFixLD
+#results_dir=../result_aes_1ps_wddl_RegFixLD
+results_dir=../result_aes_1ps_wddl_RegPrecharge2input
 #final_dir=../final_results_100fs_netlist2_wddl
-final_dir=../final_results_1ps_wddl_RegFixLD
+#final_dir=../final_results_1ps_wddl_RegFixLD
+final_dir=../final_results_1ps_wddl_RegPrecharge2input
 
 #create the final directories
 mkdir $final_dir
@@ -16,7 +18,7 @@ cp $results_dir/result_$counter/yuan_power_$counter.out $final_dir/inFiles_resul
 echo "Extract Trace-$counter for design $design"
 done
 
-#extract plain text and cipher text
+#extract plain text and cipher textsh
 for (( counter=0; counter<$numtrace; counter++ ))
 do
 #plain_text=$(tail -2 $results_dir/result_$counter/simulation_$counter.log | head -1 |tr -d "# " | tr -d "\n")
