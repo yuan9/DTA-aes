@@ -4462,14 +4462,13 @@ module WDDLDFFHQX2 ( D, Dinv , CLK, Q );
   DFFHQX1 reg_1 ( .D(D), .CK(CLK), .Q(q));
   DFFHQX1 reg_2 ( .D(Dinv), .CK(CLK), .Q(qinv));
   CLKINVX1 U2 ( .A(CLK), .Y(clkinv));
-  AND2X1 U3 ( .A(q), .B(clkinv), .Y(qpre));
-  AND2X1 U4 ( .A(qinv), .B(clkinv), .Y(qinvpre));
-  BUFX1 U5 ( .A(qpre), .Y(qbuf));
-  INVX1 U6 ( .A(qinvpre), .Y(qbarinv));
+//  AND2X1 U3 ( .A(q), .B(clkinv), .Y(qpre));
+//  AND2X1 U4 ( .A(qinv), .B(clkinv), .Y(qinvpre));
+  BUFX1 U5 ( .A(q), .Y(qbuf));
+  INVX1 U6 ( .A(qinv), .Y(qbarinv));
   OR2X1 U7 ( .A(qbuf), .B(qbarinv), .Y(Q));
 endmodule
 
-//OAI2BB1XL U1373 ( .A0N(n4), .A1N(sa23_next[1]), .B0(n1143), .Y(N49) );
 module WDDLNANDCOMP ( A, B , C, clkinv, Y, Y_bar);
   input A, B, C, clkinv;
   output Y, Y_bar;
@@ -4487,6 +4486,28 @@ module WDDLNANDCOMP ( A, B , C, clkinv, Y, Y_bar);
   OR2X1 U11 ( .A(Ainvpre), .B(Binvpre), .Y(z));
   AND2X1 U12 ( .A(z), .B(Cpre), .Y(Y_bar));
   OR2X1 U13 ( .A(z_bar), .B(Cinvpre), .Y(Y));
+endmodule
+
+module WDDLXOR2X (A,B,clkinv,Y);
+  input A, B,clkinv;
+  output Y;
+  wire Ainv, Binv, Apre, Bpre, Ainvpre, Binvpre, y, y_bar, y_buf, y_barinv, z1, z2, z3, z4;
+  AND2X1 U1 ( .A(A), .B(clkinv), .Y(Apre));
+  AND2X1 U2 ( .A(B), .B(clkinv), .Y(Bpre));
+  INVX1 U3 ( .A(A), .Y(Ainv) );
+  INVX1 U4 ( .A(B), .Y(Binv) );
+  AND2X1 U5 ( .A(Ainv), .B(clkinv), .Y(Ainvpre));
+  AND2X1 U6 ( .A(Binv), .B(clkinv), .Y(Binvpre));
+  AND2X1 U7 ( .A(Apre), .B(Binvpre), .Y(z1));
+  AND2X1 U8 ( .A(Ainvpre), .B(Bpre), .Y(z2));
+  OR2X1 U9 ( .A(z1), .B(z2), .Y(y));
+  OR2X1 U10 ( .A(Ainvpre), .B(Bpre), .Y(z3));
+  OR2X1 U11 ( .A(Apre), .B(Binvpre), .Y(z4));
+  AND2X1 U12 ( .A(z3), .B(z4), .Y(y_bar));
+  BUFX1 U13 ( .A(y), .Y(y_buf) );
+  INVX1 U14 ( .A(y_bar), .Y(y_barinv));
+  OR2X1 U15 ( .A(y_buf), .B(y_barinv), .Y(Y));
+  
 endmodule
 
 module aes_sbox_8 ( a, d, clk);
@@ -10601,7 +10622,9 @@ module aes_cipher_top ( clk, rst, ld, done, key, text_in, text_out );
   XOR2X1 U869 ( .A(n620), .B(n619), .Y(sa21_next[2]) );
   XOR2X1 U865 ( .A(n622), .B(n621), .Y(sa21_next[1]) );
   XOR2X1 U946 ( .A(n575), .B(n574), .Y(sa02_next[2]) );
-  XOR2X1 U1145 ( .A(n442), .B(n441), .Y(sa23_next[1]) );
+//wddlgate
+  //XOR2X1 U1145 ( .A(n442), .B(n441), .Y(sa23_next[1]) );
+  WDDLXOR2X U1145 ( .A(n442), .B(n441), .clkinv(clk_bar), .Y(sa23_next[1]) );
   XOR2X1 U943 ( .A(n577), .B(n576), .Y(sa02_next[1]) );
   XOR2X1 U688 ( .A(sa10_sr[0]), .B(sa20_sr[0]), .Y(n738) );
   XOR2X1 U1108 ( .A(sa13_sr[0]), .B(sa23_sr[0]), .Y(n468) );
