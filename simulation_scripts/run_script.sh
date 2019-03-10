@@ -1,6 +1,6 @@
 #!/bin/bash
 
-results_folder=result_aes_1ps_wddl_RegPrechargeremoved2inputxor
+results_folder=result_aes_1ps_wddl_MSReg
 mkdir ../$results_folder/
 
 for counter in {0..599}

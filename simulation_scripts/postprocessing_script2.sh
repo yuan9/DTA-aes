@@ -2,10 +2,10 @@
 numtrace=600
 #results_dir=../result_aes_100fs_netlist2_wddl
 #results_dir=../result_aes_1ps_wddl_RegFixLD
-results_dir=../result_aes_1ps_wddl_RegPrechargeremoved2inputxor
+results_dir=../result_aes_1ps_wddl_MSReg
 #final_dir=../final_results_100fs_netlist2_wddl
 #final_dir=../final_results_1ps_wddl_RegFixLD
-final_dir=../final_results_1ps_wddl_RegPrechargeremoved2inputxor
+final_dir=../final_results_1ps_wddl_MSReg
 
 #create the final directories
 mkdir $final_dir
