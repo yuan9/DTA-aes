@@ -42,6 +42,8 @@ initial begin
 	@(posedge clk);
 	ld = 1'b0;
 	@(posedge done);
+	@(posedge clk);
+        @(posedge clk);
 	data_output_encrypt = text_out;
 	$display("Initial plaintext %x", text_in);
 	$display("Final ciphertext %x", data_output_encrypt);

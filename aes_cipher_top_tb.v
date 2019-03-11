@@ -36,12 +36,14 @@ initial begin
 	#`clkperi
 	rst = 1'b1;
 	key = 128'hcafebabedeadbeefdeadbeef00000000;
-	text_in = 128'h670EA11B97537A368C6F16F3439FC5FF;
+	text_in = 128'hCC65D8EE9A7D23BBB42E2769AFCB64AE;
 	@(posedge clk);
 	ld = 1'b1;
 	@(posedge clk);
 	ld = 1'b0;
 	@(posedge done);
+	@(posedge clk);
+        @(posedge clk);
 	data_output_encrypt = text_out;
 	$display("Initial plaintext %x", text_in);
 	$display("Final ciphertext %x", data_output_encrypt);

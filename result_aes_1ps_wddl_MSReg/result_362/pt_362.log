@@ -86,7 +86,7 @@ Information: 1 (100.00%) library cells are unused in library USERLIB..... (LNK-0
 Information: 1 (100.00%) library cells are unused in library sram13x8..... (LNK-045)
 Information: total 549 library cells are unused (LNK-046)
 Design 'aes_cipher_top' was successfully linked.
-Information: There are 10275 leaf cells, ports, hiers and 11003 nets in the design (LNK-047)
+Information: There are 10532 leaf cells, ports, hiers and 11516 nets in the design (LNK-047)
 Information: Removing 26 unneeded designs..... (LNK-034)
 1
 set power_analysis_mode "time_based"
@@ -96,10 +96,10 @@ Information: Checked out license 'PrimeTime-PX' (PT-019)
 
 ======================================================================
 Summary:
-Total number of nets = 10020
-Number of annotated nets = 10020 (100.00%)
-Total number of leaf cells = 9734
-Number of fully annotated leaf cells = 9734 (100.00%)
+Total number of nets = 10149
+Number of annotated nets = 10149 (100.00%)
+Total number of leaf cells = 9863
+Number of fully annotated leaf cells = 9863 (100.00%)
 ======================================================================
 
 1
@@ -126,7 +126,7 @@ Information: The waveform options are:
 
 Information: Power analysis is running, please wait ...
 
- Last event time =  214.696 ns  Last event time =  257.678 ns  Last event time =  300.236 ns  Last event time =  344.217 ns  Last event time =  426.914 ns  Last event time =  470.115 ns  Last event time =  512.989 ns  Last event time =  555.767 ns  Last event time =  598.594 ns Information: analysis is done for time window (0ns - 639.99ns)
+ Last event time =  258.079 ns  Last event time =  342.946 ns  Last event time =  427.711 ns  Last event time =  512.246 ns  Last event time =  557.882 ns  Last event time =  641.924 ns  Last event time =  726.727 ns  Last event time =  811.761 ns  Last event time =  856.161 ns  Last event time =  940.365 ns  Last event time =  1025.27 ns Information: analysis is done for time window (0ns - 1109.32ns)
 
 1
 report_power_analysis_options
@@ -134,7 +134,7 @@ report_power_analysis_options
 Report : Power Analysis Options
 Design : aes_cipher_top
 Version: N-2017.12-SP3-2
-Date   : Sat Mar  9 00:41:23 2019
+Date   : Sun Mar 10 23:28:42 2019
 ****************************************
 
 Power Analysis Mode: Time_based
@@ -173,7 +173,7 @@ Information: Defining new variable 'grtechtargetlib'. (CMD-041)
 
 Timing updates: 1 (0 implicit, 1 explicit) (0 incremental, 1 full, 0 logical)
 Noise updates: 0 (0 implicit, 0 explicit) (0 incremental, 0 full)
-Maximum memory usage for this session: 703.59 MB
+Maximum memory usage for this session: 698.07 MB
 CPU usage for this session: 6 seconds 
 Elapsed time for this session: 5 seconds
 Diagnostics summary: 1 warning, 33 informationals

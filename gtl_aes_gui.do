@@ -1,6 +1,12 @@
 vcd file test.vcd
 #vcd add -r /aes_cipher_top_tb/*
 add wave sim:/aes_cipher_top_tb/*
+add wave -radix hex { dcnt {
+sim:/aes_cipher_top_tb/dut/dcnt_reg_3_/Q
+sim:/aes_cipher_top_tb/dut/dcnt_reg_2_/Q
+sim:/aes_cipher_top_tb/dut/dcnt_reg_1_/Q
+sim:/aes_cipher_top_tb/dut/dcnt_reg_0_/Q
+}}
 # add aes_coprocessor signals
 #run 639990ps
 #if 0 {
@@ -268,5 +274,6 @@ sim:/aes_cipher_top_tb/dut/text_in_r_reg_0_/Q
 
 }}
 
-run 639990ps
+##run 639990ps
+run 1109316ps
 

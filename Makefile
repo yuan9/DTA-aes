@@ -48,3 +48,13 @@ aes-commandline-wddl: gtl-vsim
 	#vsim -L work -novopt -i work.aes_cipher_top_tb +notimingchecks -sdfmax /aes_cipher_top_tb/dut=/home/dtatest/DTA-aes/workdir/aes_synthesis.sdf
 
 	#make -C "../../software/test_soft/fault_tests/dtatest" clean
+
+aes-gui-wddl-test: gtl-vsim
+	 vlog -work work /home/dtatest/DTA-aes/workdir/aes_netlist_wddl_bp.v
+	#make -C "../../software/test_soft/fault_tests/dtatest" prog.mem
+	dc_shell -f wddl_sdfupdate_bp.tcl
+	vsim -L work -novopt -i work.aes_cipher_top_tb -do gtl_aes_gui.do +notimingchecks -sdfmax /aes_cipher_top_tb/dut=/home/dtatest/DTA-aes/workdir/wddl_aes_bp.sdf
+	#vsim -L work -novopt -i work.aes_cipher_top_tb +notimingchecks -sdfmax /aes_cipher_top_tb/dut=/home/dtatest/DTA-aes/workdir/aes_synthesis.sdf
+
+	#make -C "../../software/test_soft/fault_tests/dtatest" clean
+
