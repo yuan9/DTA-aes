@@ -172,31 +172,31 @@ n@a@d@d@h@x@l
 !s100 i303D7Q`nQ9BMcnAa;<743
 !s85 0
 vaes_cipher_top
-V5QeTdbSERQ<2UC688KVn53
+V6;oZ9PHIcIlm;[jiUJ]jT2
 r1
 31
-InLf9M2mmSjjf^igzfeHZU3
-Z6 w1552267186
+IbS3oBCLBn5NhcUO>W^o;S2
+Z6 w1553619952
 Z7 8/home/dtatest/DTA-aes/workdir/aes_netlist_wddl.v
 Z8 F/home/dtatest/DTA-aes/workdir/aes_netlist_wddl.v
-L0 9040
+L0 9079
 R4
 R5
 !s85 0
-!s100 >]OU@@_Q^WGQBI80ShLO^0
+!s100 :EZ4YfbnO9NFGBRH1IIc_0
 vaes_cipher_top_tb
 V>d95MLhXNER:XCeo;`bN?2
 r1
 31
-IVmNNHGUAaz;ncTF:H8Aa01
-Z9 w1552278538
+IMc_:TAIb3fA=@i`<5V@8Q1
+Z9 w1553621457
 Z10 8aes_cipher_top_tb.v
 Z11 Faes_cipher_top_tb.v
-L0 18
+L0 36
 R4
 R5
 !s85 0
-!s100 8zGXNkLPKLW2I6H6;4LF@1
+!s100 DWI`1KCg5R>NdDgAOnM;32
 vaes_key_expand_128
 VEF0AL<nW;fiDPK_6j[V222
 r1
@@ -1705,15 +1705,28 @@ vclkgen
 VhLkGe:_oM:i=k0Wi5ebmL3
 r1
 31
-I9ToCe<=QQg=UCF@aLOd3e3
+I7E@BgC<5`B4oNL1`_i]lZ2
 R9
 R10
 R11
-L0 5
+L0 7
 R4
 R5
 !s85 0
-!s100 f3KPIaP>CUR?f_eRLgi]h2
+!s100 2:lT?3Fz^:?@Y:<==H7l_3
+vclkgen2
+VYK1K@hU?5[P:0BRHTML]:0
+r1
+31
+IBDeg96zXlRP^iPI]L2:V>1
+R9
+R10
+R11
+L0 19
+R4
+R5
+!s85 0
+!s100 hKZ=OkNTL;GSB`zTz^@H40
 vCLKINVX1
 V?KC4UF@AnBRCAdTo0h`jA1
 r1
@@ -2261,19 +2274,19 @@ n@d@f@f@r@x2
 !s100 87;dCR@O^dDLS>V5=CzCn3
 !s85 0
 vDFFRX4
-VITiVNVVjGz7?WBP8ESKe^3
-r1
-31
 I>;Hn@gW5O;0eM=[`G_4=z1
+VITiVNVVjGz7?WBP8ESKe^3
 R1
 R2
 R3
 L0 11218
 R4
+r1
+31
 R5
 n@d@f@f@r@x4
-!s85 0
 !s100 ORd4lNO5PBSOYoA9iT]^V0
+!s85 0
 vDFFRXL
 I=n1lYT[@hh=A6EjCI2fXb2
 V61ECP7]OoS_TdoSIYmU672
@@ -3156,6 +3169,20 @@ R5
 n@j@k@f@f@x@l
 !s100 GTR7^=O8]aO`G1dROMA^B3
 !s85 0
+vMUX2X
+V@]BVg6aF[eTM1L<da];E80
+r1
+31
+I0ZRBAMJ?>dFDle>6Taa[c1
+R6
+R7
+R8
+L0 8978
+R4
+R5
+n@m@u@x2@x
+!s85 0
+!s100 gEAfAMc=81]1g>ZJ^HMTm3
 vMX2X1
 IY^M5k^OP97GX:^9FKGXLC1
 Vz:^XVL;_UC9o19HhdCJDX2
@@ -6279,18 +6306,18 @@ n@p@r@d@w24@d@g@z
 !s100 >`h`CQAGJDEaLgY`5X[YA0
 !s85 0
 vprecharge
+I;I4EHe6^0UOloN1BY1G;71
 VY0QAAlS_iL<NgZMcN^UNk0
-r1
-31
-I@X1kA[PWH95ES;Q0>incA0
 R6
 R7
 R8
-L0 9008
+L0 9046
 R4
+r1
+31
 R5
+!s100 RDoIPAA]dZ0ZhJ1SH]>kh1
 !s85 0
-!s100 hbj;IWLS?Vfh3VF<mGNcO0
 vPRO08CDG
 IQQo77OIlQNTB7mHS;YD3X2
 VHm=o[940_c<?G36@EZnIi1
@@ -8824,30 +8851,30 @@ vWDDLDFFHQX2
 Vnck:>BX`<O=PD2kZ:3;o_3
 r1
 31
-IDGWg3_4dYMG=mafd<F?mH3
+IngGR7QnR`TRQ^M:7=]m@k3
 R6
 R7
 R8
-L0 8987
+L0 9019
 R4
 R5
 n@w@d@d@l@d@f@f@h@q@x2
 !s85 0
-!s100 W`FPNVg:a8CgJK;z9:4RI1
+!s100 E:O7dCI[dceCg<aCWIFmo1
 vWDDLDFFMS
 V:n4YQfIUjTUCEb;3CP`jL2
 r1
 31
-IoSPZ@Cz27Pj[;UnmeRUKJ2
+IJh3`bK0;RR;FK^jCN_b=V3
 R6
 R7
 R8
-L0 8978
+L0 8989
 R4
 R5
 n@w@d@d@l@d@f@f@m@s
 !s85 0
-!s100 A0N?T`ZUF2?5SlVhRON7A3
+!s100 OEHZeCZ`^zhC2S[4DeWd=1
 vWDDLINV
 V337TAzfganXHOHY6f>E180
 r1
@@ -8894,16 +8921,16 @@ vWDDLNANDCOMP
 VzR4EKFbLWkHkB6Hb7Lzch3
 r1
 31
-IL]?92]2@WPmhL:70eU4_W0
+Im:fOB8_dg7=_H]^DFnGHV0
 R6
 R7
 R8
-L0 9019
+L0 9057
 R4
 R5
 n@w@d@d@l@n@a@n@d@c@o@m@p
 !s85 0
-!s100 mPVYRGSNj:mP0aaY`<WUD2
+!s100 b1[M:X6CFNMa=6fYT`K071
 vWDDLNOR2X
 V<KQRWG1bSjAgVmfdQGiV]0
 r1

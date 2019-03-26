@@ -2,7 +2,8 @@ library verilog;
 use verilog.vl_types.all;
 entity aes_cipher_top is
     port(
-        clk_orig        : in     vl_logic;
+        divclk          : in     vl_logic;
+        clk             : in     vl_logic;
         rst             : in     vl_logic;
         ld              : in     vl_logic;
         done            : out    vl_logic;

@@ -8974,6 +8974,17 @@ module aes_sbox_18 ( a, d );
   OAI21XL U375 ( .A0(n355), .A1(n354), .B0(n353), .Y(n356) );
 endmodule
 
+//wddl: mux
+module MUX2X(S, A, B, Y);
+  input S, A, B;
+  output Y;
+  wire z1, z2, Sinv;
+  AND2X1 U1 ( .A(A), .B(S), .Y(z1));
+  INVX1 U2 ( .A(S), .Y(Sinv) );
+  AND2X1 U3 ( .A(B), .B(Sinv), .Y(z2));
+  OR2X1 U4 ( .A(z1), .B(z2), .Y(Y));
+endmodule
+
 //m master slave DFF
 module WDDLDFFMS ( D,CK,Q );
   input D, CK;
@@ -8981,27 +8992,54 @@ module WDDLDFFMS ( D,CK,Q );
   wire z;
   DFFHQX1 reg_1 ( .D(D), .CK(CK), .Q(z));
   DFFHQX1 reg_2 ( .D(z), .CK(CK), .Q(Q));
+  
 endmodule
 
 // WDDL register with DFF
-module WDDLDFFHQX2 ( D, Dinv,CLK, PRECLK, Q );
+/*
+module WDDLDFFHQX2 ( D, Dinv, CLK, PRECLK, Q );
   input D, Dinv, CLK, PRECLK;
   output Q;
   wire q, qinv,z, zinv, clkinv,preclkinv, qpre, qinvpre, qbuf, qbarinv;
   //wire dinv, clkinv, qpre, qinvpre, qbuf, qbarinv;
   //reg q, qinv;
-  //INVX1 U1 ( .A(D), .Y(dinv));
+//  INVX1 U1 ( .A(D), .Y(Dinv));
   DFFHQX1 reg_11 ( .D(D), .CK(CLK), .Q(z));
   DFFHQX1 reg_12 ( .D(z), .CK(CLK), .Q(q));
   DFFHQX1 reg_21 ( .D(Dinv), .CK(CLK), .Q(zinv));
   DFFHQX1 reg_22 ( .D(zinv), .CK(CLK), .Q(qinv));
   CLKINVX1 U2 ( .A(PRECLK), .Y(preclkinv));
-  AND2X1 U3 ( .A(q), .B(preclkinv), .Y(qpre));
-  AND2X1 U4 ( .A(qinv), .B(preclkinv), .Y(qinvpre));
+//  AND2X1 U3 ( .A(q), .B(preclkinv), .Y(qpre));
+//  AND2X1 U4 ( .A(qinv), .B(preclkinv), .Y(qinvpre));
+  BUFX1 U5 ( .A(q), .Y(qbuf));
+  INVX1 U6 ( .A(qinv), .Y(qbarinv));
+  OR2X1 U7 ( .A(qbuf), .B(qbarinv), .Y(Q));
+endmodule */
+
+module WDDLDFFHQX2 ( D, Dinv, CLK, PRECLK, Q );
+  input D, Dinv, CLK, PRECLK;
+  output Q;
+  wire q, qinv,z, zinv, clkinv,preclkinv, qpre, qinvpre, qbuf, qbarinv;
+ // assign qpre = PRECLK?q:z;
+  //assign qinvpre = PRECLK?qinv:zinv;
+  //wire dinv, clkinv, qpre, qinvpre, qbuf, qbarinv;
+  //reg q, qinv;
+//  INVX1 U1 ( .A(D), .Y(Dinv));
+  DFFHQX1 reg_11 ( .D(D), .CK(CLK), .Q(z));
+  DFFHQX1 reg_12 ( .D(z), .CK(CLK), .Q(q));
+  DFFHQX1 reg_21 ( .D(Dinv), .CK(CLK), .Q(zinv));
+  DFFHQX1 reg_22 ( .D(zinv), .CK(CLK), .Q(qinv));
+  CLKINVX1 U2 ( .A(PRECLK), .Y(preclkinv));
+  MUX2X m1 (.S(PRECLK), .A(z), .B(q), .Y(qpre));
+  MUX2X m2 (.S(PRECLK), .A(zinv), .B(qinv), .Y(qinvpre));
+//  AND2X1 U3 ( .A(q), .B(preclkinv), .Y(qpre));
+//  AND2X1 U4 ( .A(qinv), .B(preclkinv), .Y(qinvpre));
   BUFX1 U5 ( .A(qpre), .Y(qbuf));
   INVX1 U6 ( .A(qinvpre), .Y(qbarinv));
   OR2X1 U7 ( .A(qbuf), .B(qbarinv), .Y(Q));
 endmodule
+
+
 
 // wddl precharge signal, half the clock signal
 
@@ -9019,7 +9057,7 @@ endmodule
 module WDDLNANDCOMP ( A, B , C, clkinv, Y, Y_bar);
   input A, B, C, clkinv;
   output Y, Y_bar;
-  wire Ainv, Binv, Apre, Bpre, Ainvpre, Binvpre, z, z_bar;
+  wire Ainv, Binv, Apre, Bpre, Ainvpre, Binvpre, z, z_bar, Cpre, Cinvpre, Cinv;
   AND2X1 U1 ( .A(A), .B(clkinv), .Y(Apre));
   AND2X1 U2 ( .A(B), .B(clkinv), .Y(Bpre));
   AND2X1 U3 ( .A(C), .B(clkinv), .Y(Cpre));
@@ -9037,12 +9075,14 @@ endmodule
 
 
 //module aes_cipher_top ( clk, rst, ld, done, key, text_in, text_out );
-module aes_cipher_top ( clk_orig, rst, ld, done, key, text_in, text_out );
+//module aes_cipher_top ( clk, rst, ld, done, key, text_in, text_out );
+module aes_cipher_top ( divclk,clk, rst, ld, done, key, text_in, text_out );
   input [127:0] key;
   input [127:0] text_in;
   output [127:0] text_out;
-  //input clk, rst, ld;
-  input clk_orig, rst, ld;
+  input divclk;
+  //input divclk, rst, ld;
+  input clk, rst, ld;
   output done;
   wire   dcnt_2_, N21, N32, N33, N34, N35, N36, N37, N38, N39, N48, N49, N50,
          N51, N52, N53, N54, N55, N64, N65, N66, N67, N68, N69, N70, N71, N80,
@@ -9137,7 +9177,7 @@ module aes_cipher_top ( clk_orig, rst, ld, done, key, text_in, text_out );
          n1162, n1163, n1164, n1165, n1166, n1167, n1168, n1169, n1170, n1171,
          n1172, n1173, n1174, n1175, n1176, n1177, n1178, n1179, n1180, n1181,
          n1182, n1183, n1184, n1185, n1186, n1187, n1188, n1189, n1190, n1191,
-         n1192, preclk, N49inv, clk,clk_originv, clk_bar;
+         n1192, preclk, N49inv, clk_originv, clk_bar;
   wire   [127:0] text_in_r;
   wire   [31:0] w3;
   wire   [7:0] sa33;
@@ -9192,7 +9232,7 @@ module aes_cipher_top ( clk_orig, rst, ld, done, key, text_in, text_out );
   wire   [7:0] sa32_sr;
   wire   [7:0] sa33_sr;
 
-  aes_key_expand_128 u0 ( .clk(clk), .kld(ld), .key(key), .wo_0(w0), .wo_1(w1), 
+  aes_key_expand_128 u0 ( .clk(divclk), .kld(ld), .key(key), .wo_0(w0), .wo_1(w1), 
         .wo_2(w2), .wo_3(w3) );
  // aes_key_expand_128 u0 ( .clk(preclk), .kld(ld), .key(key), .wo_0(w0), .wo_1(w1), 
        // .wo_2(w2), .wo_3(w3) );
@@ -9213,509 +9253,509 @@ module aes_cipher_top ( clk_orig, rst, ld, done, key, text_in, text_out );
   aes_sbox_5 us32 ( .a(sa32), .d(sa33_sr) );
   aes_sbox_4 us33 ( .a(sa33), .d(sa30_sr) );
  //wddl: generate precharge clock
- // assign clkinput = rst ? clk : 1'b0;
- // CLKINVX3 Uinv (.A(clk_orig), .Y(clk_originv));
-  precharge pre(.clk(clk_orig), .preclk(clk),.rst(rst));
-  DFFTRX1 dcnt_reg_0_ ( .D(n139), .RN(n137), .CK(clk), .Q(n959) );
-  DFFHQX1 done_reg ( .D(N21), .CK(clk), .Q(done) );
-WDDLDFFMS text_out_reg_127_ ( .D(N376), .CK(clk_orig), .Q(text_out[127]) );
-WDDLDFFMS text_out_reg_126_ ( .D(N377), .CK(clk_orig), .Q(text_out[126]) );
-WDDLDFFMS text_out_reg_125_ ( .D(N378), .CK(clk_orig), .Q(text_out[125]) );
-WDDLDFFMS text_out_reg_124_ ( .D(N379), .CK(clk_orig), .Q(text_out[124]) );
-WDDLDFFMS text_out_reg_123_ ( .D(N380), .CK(clk_orig), .Q(text_out[123]) );
-WDDLDFFMS text_out_reg_122_ ( .D(N381), .CK(clk_orig), .Q(text_out[122]) );
-WDDLDFFMS text_out_reg_121_ ( .D(N382), .CK(clk_orig), .Q(text_out[121]) );
-WDDLDFFMS text_out_reg_120_ ( .D(N383), .CK(clk_orig), .Q(text_out[120]) );
-WDDLDFFMS text_out_reg_95_ ( .D(N384), .CK(clk_orig), .Q(text_out[95]) );
-WDDLDFFMS text_out_reg_94_ ( .D(N385), .CK(clk_orig), .Q(text_out[94]) );
-WDDLDFFMS text_out_reg_93_ ( .D(N386), .CK(clk_orig), .Q(text_out[93]) );
-WDDLDFFMS text_out_reg_92_ ( .D(N387), .CK(clk_orig), .Q(text_out[92]) );
-WDDLDFFMS text_out_reg_91_ ( .D(N388), .CK(clk_orig), .Q(text_out[91]) );
-WDDLDFFMS text_out_reg_90_ ( .D(N389), .CK(clk_orig), .Q(text_out[90]) );
-WDDLDFFMS text_out_reg_89_ ( .D(N390), .CK(clk_orig), .Q(text_out[89]) );
-WDDLDFFMS text_out_reg_88_ ( .D(N391), .CK(clk_orig), .Q(text_out[88]) );
-WDDLDFFMS text_out_reg_63_ ( .D(N392), .CK(clk_orig), .Q(text_out[63]) );
-WDDLDFFMS text_out_reg_62_ ( .D(N393), .CK(clk_orig), .Q(text_out[62]) );
-WDDLDFFMS text_out_reg_61_ ( .D(N394), .CK(clk_orig), .Q(text_out[61]) );
-WDDLDFFMS text_out_reg_60_ ( .D(N395), .CK(clk_orig), .Q(text_out[60]) );
-WDDLDFFMS text_out_reg_59_ ( .D(N396), .CK(clk_orig), .Q(text_out[59]) );
-WDDLDFFMS text_out_reg_58_ ( .D(N397), .CK(clk_orig), .Q(text_out[58]) );
-WDDLDFFMS text_out_reg_57_ ( .D(N398), .CK(clk_orig), .Q(text_out[57]) );
-WDDLDFFMS text_out_reg_56_ ( .D(N399), .CK(clk_orig), .Q(text_out[56]) );
-WDDLDFFMS text_out_reg_31_ ( .D(N400), .CK(clk_orig), .Q(text_out[31]) );
-WDDLDFFMS text_out_reg_30_ ( .D(N401), .CK(clk_orig), .Q(text_out[30]) );
-WDDLDFFMS text_out_reg_29_ ( .D(N402), .CK(clk_orig), .Q(text_out[29]) );
-WDDLDFFMS text_out_reg_28_ ( .D(N403), .CK(clk_orig), .Q(text_out[28]) );
-WDDLDFFMS text_out_reg_27_ ( .D(N404), .CK(clk_orig), .Q(text_out[27]) );
-WDDLDFFMS text_out_reg_26_ ( .D(N405), .CK(clk_orig), .Q(text_out[26]) );
-WDDLDFFMS text_out_reg_25_ ( .D(N406), .CK(clk_orig), .Q(text_out[25]) );
-WDDLDFFMS text_out_reg_24_ ( .D(N407), .CK(clk_orig), .Q(text_out[24]) );
-WDDLDFFMS text_out_reg_119_ ( .D(N408), .CK(clk_orig), .Q(text_out[119]) );
-WDDLDFFMS text_out_reg_118_ ( .D(N409), .CK(clk_orig), .Q(text_out[118]) );
-WDDLDFFMS text_out_reg_117_ ( .D(N410), .CK(clk_orig), .Q(text_out[117]) );
-WDDLDFFMS text_out_reg_116_ ( .D(N411), .CK(clk_orig), .Q(text_out[116]) );
-WDDLDFFMS text_out_reg_115_ ( .D(N412), .CK(clk_orig), .Q(text_out[115]) );
-WDDLDFFMS text_out_reg_114_ ( .D(N413), .CK(clk_orig), .Q(text_out[114]) );
-WDDLDFFMS text_out_reg_113_ ( .D(N414), .CK(clk_orig), .Q(text_out[113]) );
-WDDLDFFMS text_out_reg_112_ ( .D(N415), .CK(clk_orig), .Q(text_out[112]) );
-WDDLDFFMS text_out_reg_87_ ( .D(N416), .CK(clk_orig), .Q(text_out[87]) );
-WDDLDFFMS text_out_reg_86_ ( .D(N417), .CK(clk_orig), .Q(text_out[86]) );
-WDDLDFFMS text_out_reg_85_ ( .D(N418), .CK(clk_orig), .Q(text_out[85]) );
-WDDLDFFMS text_out_reg_84_ ( .D(N419), .CK(clk_orig), .Q(text_out[84]) );
-WDDLDFFMS text_out_reg_83_ ( .D(N420), .CK(clk_orig), .Q(text_out[83]) );
-WDDLDFFMS text_out_reg_82_ ( .D(N421), .CK(clk_orig), .Q(text_out[82]) );
-WDDLDFFMS text_out_reg_81_ ( .D(N422), .CK(clk_orig), .Q(text_out[81]) );
-WDDLDFFMS text_out_reg_80_ ( .D(N423), .CK(clk_orig), .Q(text_out[80]) );
-WDDLDFFMS text_out_reg_55_ ( .D(N424), .CK(clk_orig), .Q(text_out[55]) );
-WDDLDFFMS text_out_reg_54_ ( .D(N425), .CK(clk_orig), .Q(text_out[54]) );
-WDDLDFFMS text_out_reg_53_ ( .D(N426), .CK(clk_orig), .Q(text_out[53]) );
-WDDLDFFMS text_out_reg_52_ ( .D(N427), .CK(clk_orig), .Q(text_out[52]) );
-WDDLDFFMS text_out_reg_51_ ( .D(N428), .CK(clk_orig), .Q(text_out[51]) );
-WDDLDFFMS text_out_reg_50_ ( .D(N429), .CK(clk_orig), .Q(text_out[50]) );
-WDDLDFFMS text_out_reg_49_ ( .D(N430), .CK(clk_orig), .Q(text_out[49]) );
-WDDLDFFMS text_out_reg_48_ ( .D(N431), .CK(clk_orig), .Q(text_out[48]) );
-WDDLDFFMS text_out_reg_23_ ( .D(N432), .CK(clk_orig), .Q(text_out[23]) );
-WDDLDFFMS text_out_reg_22_ ( .D(N433), .CK(clk_orig), .Q(text_out[22]) );
-WDDLDFFMS text_out_reg_21_ ( .D(N434), .CK(clk_orig), .Q(text_out[21]) );
-WDDLDFFMS text_out_reg_20_ ( .D(N435), .CK(clk_orig), .Q(text_out[20]) );
-WDDLDFFMS text_out_reg_19_ ( .D(N436), .CK(clk_orig), .Q(text_out[19]) );
-WDDLDFFMS text_out_reg_18_ ( .D(N437), .CK(clk_orig), .Q(text_out[18]) );
-WDDLDFFMS text_out_reg_17_ ( .D(N438), .CK(clk_orig), .Q(text_out[17]) );
-WDDLDFFMS text_out_reg_16_ ( .D(N439), .CK(clk_orig), .Q(text_out[16]) );
-WDDLDFFMS text_out_reg_111_ ( .D(N440), .CK(clk_orig), .Q(text_out[111]) );
-WDDLDFFMS text_out_reg_110_ ( .D(N441), .CK(clk_orig), .Q(text_out[110]) );
-WDDLDFFMS text_out_reg_109_ ( .D(N442), .CK(clk_orig), .Q(text_out[109]) );
-WDDLDFFMS text_out_reg_108_ ( .D(N443), .CK(clk_orig), .Q(text_out[108]) );
-WDDLDFFMS text_out_reg_107_ ( .D(N444), .CK(clk_orig), .Q(text_out[107]) );
-WDDLDFFMS text_out_reg_106_ ( .D(N445), .CK(clk_orig), .Q(text_out[106]) );
-WDDLDFFMS text_out_reg_105_ ( .D(N446), .CK(clk_orig), .Q(text_out[105]) );
-WDDLDFFMS text_out_reg_104_ ( .D(N447), .CK(clk_orig), .Q(text_out[104]) );
-WDDLDFFMS text_out_reg_79_ ( .D(N448), .CK(clk_orig), .Q(text_out[79]) );
-WDDLDFFMS text_out_reg_78_ ( .D(N449), .CK(clk_orig), .Q(text_out[78]) );
-WDDLDFFMS text_out_reg_77_ ( .D(N450), .CK(clk_orig), .Q(text_out[77]) );
-WDDLDFFMS text_out_reg_76_ ( .D(N451), .CK(clk_orig), .Q(text_out[76]) );
-WDDLDFFMS text_out_reg_75_ ( .D(N452), .CK(clk_orig), .Q(text_out[75]) );
-WDDLDFFMS text_out_reg_74_ ( .D(N453), .CK(clk_orig), .Q(text_out[74]) );
-WDDLDFFMS text_out_reg_73_ ( .D(N454), .CK(clk_orig), .Q(text_out[73]) );
-WDDLDFFMS text_out_reg_72_ ( .D(N455), .CK(clk_orig), .Q(text_out[72]) );
-WDDLDFFMS text_out_reg_47_ ( .D(N456), .CK(clk_orig), .Q(text_out[47]) );
-WDDLDFFMS text_out_reg_46_ ( .D(N457), .CK(clk_orig), .Q(text_out[46]) );
-WDDLDFFMS text_out_reg_45_ ( .D(N458), .CK(clk_orig), .Q(text_out[45]) );
-WDDLDFFMS text_out_reg_44_ ( .D(N459), .CK(clk_orig), .Q(text_out[44]) );
-WDDLDFFMS text_out_reg_43_ ( .D(N460), .CK(clk_orig), .Q(text_out[43]) );
-WDDLDFFMS text_out_reg_42_ ( .D(N461), .CK(clk_orig), .Q(text_out[42]) );
-WDDLDFFMS text_out_reg_41_ ( .D(N462), .CK(clk_orig), .Q(text_out[41]) );
-WDDLDFFMS text_out_reg_40_ ( .D(N463), .CK(clk_orig), .Q(text_out[40]) );
-WDDLDFFMS text_out_reg_15_ ( .D(N464), .CK(clk_orig), .Q(text_out[15]) );
-WDDLDFFMS text_out_reg_14_ ( .D(N465), .CK(clk_orig), .Q(text_out[14]) );
-WDDLDFFMS text_out_reg_13_ ( .D(N466), .CK(clk_orig), .Q(text_out[13]) );
-WDDLDFFMS text_out_reg_12_ ( .D(N467), .CK(clk_orig), .Q(text_out[12]) );
-WDDLDFFMS text_out_reg_11_ ( .D(N468), .CK(clk_orig), .Q(text_out[11]) );
-WDDLDFFMS text_out_reg_10_ ( .D(N469), .CK(clk_orig), .Q(text_out[10]) );
-WDDLDFFMS text_out_reg_9_ ( .D(N470), .CK(clk_orig), .Q(text_out[9]) );
-WDDLDFFMS text_out_reg_8_ ( .D(N471), .CK(clk_orig), .Q(text_out[8]) );
-WDDLDFFMS text_out_reg_103_ ( .D(N472), .CK(clk_orig), .Q(text_out[103]) );
-WDDLDFFMS text_out_reg_102_ ( .D(N473), .CK(clk_orig), .Q(text_out[102]) );
-WDDLDFFMS text_out_reg_101_ ( .D(N474), .CK(clk_orig), .Q(text_out[101]) );
-WDDLDFFMS text_out_reg_100_ ( .D(N475), .CK(clk_orig), .Q(text_out[100]) );
-WDDLDFFMS text_out_reg_99_ ( .D(N476), .CK(clk_orig), .Q(text_out[99]) );
-WDDLDFFMS text_out_reg_98_ ( .D(N477), .CK(clk_orig), .Q(text_out[98]) );
-WDDLDFFMS text_out_reg_97_ ( .D(N478), .CK(clk_orig), .Q(text_out[97]) );
-WDDLDFFMS text_out_reg_96_ ( .D(N479), .CK(clk_orig), .Q(text_out[96]) );
-WDDLDFFMS text_out_reg_71_ ( .D(N480), .CK(clk_orig), .Q(text_out[71]) );
-WDDLDFFMS text_out_reg_70_ ( .D(N481), .CK(clk_orig), .Q(text_out[70]) );
-WDDLDFFMS text_out_reg_69_ ( .D(N482), .CK(clk_orig), .Q(text_out[69]) );
-WDDLDFFMS text_out_reg_68_ ( .D(N483), .CK(clk_orig), .Q(text_out[68]) );
-WDDLDFFMS text_out_reg_67_ ( .D(N484), .CK(clk_orig), .Q(text_out[67]) );
-WDDLDFFMS text_out_reg_66_ ( .D(N485), .CK(clk_orig), .Q(text_out[66]) );
-WDDLDFFMS text_out_reg_65_ ( .D(N486), .CK(clk_orig), .Q(text_out[65]) );
-WDDLDFFMS text_out_reg_64_ ( .D(N487), .CK(clk_orig), .Q(text_out[64]) );
-WDDLDFFMS text_out_reg_39_ ( .D(N488), .CK(clk_orig), .Q(text_out[39]) );
-WDDLDFFMS text_out_reg_38_ ( .D(N489), .CK(clk_orig), .Q(text_out[38]) );
-WDDLDFFMS text_out_reg_37_ ( .D(N490), .CK(clk_orig), .Q(text_out[37]) );
-WDDLDFFMS text_out_reg_36_ ( .D(N491), .CK(clk_orig), .Q(text_out[36]) );
-WDDLDFFMS text_out_reg_35_ ( .D(N492), .CK(clk_orig), .Q(text_out[35]) );
-WDDLDFFMS text_out_reg_34_ ( .D(N493), .CK(clk_orig), .Q(text_out[34]) );
-WDDLDFFMS text_out_reg_33_ ( .D(N494), .CK(clk_orig), .Q(text_out[33]) );
-WDDLDFFMS text_out_reg_32_ ( .D(N495), .CK(clk_orig), .Q(text_out[32]) );
-WDDLDFFMS text_out_reg_7_ ( .D(N496), .CK(clk_orig), .Q(text_out[7]) );
-WDDLDFFMS text_out_reg_6_ ( .D(N497), .CK(clk_orig), .Q(text_out[6]) );
-WDDLDFFMS text_out_reg_5_ ( .D(N498), .CK(clk_orig), .Q(text_out[5]) );
-WDDLDFFMS text_out_reg_4_ ( .D(N499), .CK(clk_orig), .Q(text_out[4]) );
-WDDLDFFMS text_out_reg_3_ ( .D(N500), .CK(clk_orig), .Q(text_out[3]) );
-WDDLDFFMS text_out_reg_2_ ( .D(N501), .CK(clk_orig), .Q(text_out[2]) );
-WDDLDFFMS text_out_reg_1_ ( .D(N502), .CK(clk_orig), .Q(text_out[1]) );
-WDDLDFFMS text_out_reg_0_ ( .D(N503), .CK(clk_orig), .Q(text_out[0]) );
-  EDFFX1 text_in_r_reg_127_ ( .D(text_in[127]), .E(ld), .CK(clk), .Q(
+ // assign clkinput = rst ? divclk : 1'b0;
+ // CLKINVX3 Uinv (.A(clk), .Y(clk_originv));
+ // precharge pre(.clk(clk), .preclk(divclk),.rst(rst));
+  DFFTRX1 dcnt_reg_0_ ( .D(n139), .RN(n137), .CK(divclk), .Q(n959) );
+  DFFHQX1 done_reg ( .D(N21), .CK(divclk), .Q(done) );
+WDDLDFFMS text_out_reg_127_ ( .D(N376), .CK(clk), .Q(text_out[127]) );
+WDDLDFFMS text_out_reg_126_ ( .D(N377), .CK(clk), .Q(text_out[126]) );
+WDDLDFFMS text_out_reg_125_ ( .D(N378), .CK(clk), .Q(text_out[125]) );
+WDDLDFFMS text_out_reg_124_ ( .D(N379), .CK(clk), .Q(text_out[124]) );
+WDDLDFFMS text_out_reg_123_ ( .D(N380), .CK(clk), .Q(text_out[123]) );
+WDDLDFFMS text_out_reg_122_ ( .D(N381), .CK(clk), .Q(text_out[122]) );
+WDDLDFFMS text_out_reg_121_ ( .D(N382), .CK(clk), .Q(text_out[121]) );
+WDDLDFFMS text_out_reg_120_ ( .D(N383), .CK(clk), .Q(text_out[120]) );
+WDDLDFFMS text_out_reg_95_ ( .D(N384), .CK(clk), .Q(text_out[95]) );
+WDDLDFFMS text_out_reg_94_ ( .D(N385), .CK(clk), .Q(text_out[94]) );
+WDDLDFFMS text_out_reg_93_ ( .D(N386), .CK(clk), .Q(text_out[93]) );
+WDDLDFFMS text_out_reg_92_ ( .D(N387), .CK(clk), .Q(text_out[92]) );
+WDDLDFFMS text_out_reg_91_ ( .D(N388), .CK(clk), .Q(text_out[91]) );
+WDDLDFFMS text_out_reg_90_ ( .D(N389), .CK(clk), .Q(text_out[90]) );
+WDDLDFFMS text_out_reg_89_ ( .D(N390), .CK(clk), .Q(text_out[89]) );
+WDDLDFFMS text_out_reg_88_ ( .D(N391), .CK(clk), .Q(text_out[88]) );
+WDDLDFFMS text_out_reg_63_ ( .D(N392), .CK(clk), .Q(text_out[63]) );
+WDDLDFFMS text_out_reg_62_ ( .D(N393), .CK(clk), .Q(text_out[62]) );
+WDDLDFFMS text_out_reg_61_ ( .D(N394), .CK(clk), .Q(text_out[61]) );
+WDDLDFFMS text_out_reg_60_ ( .D(N395), .CK(clk), .Q(text_out[60]) );
+WDDLDFFMS text_out_reg_59_ ( .D(N396), .CK(clk), .Q(text_out[59]) );
+WDDLDFFMS text_out_reg_58_ ( .D(N397), .CK(clk), .Q(text_out[58]) );
+WDDLDFFMS text_out_reg_57_ ( .D(N398), .CK(clk), .Q(text_out[57]) );
+WDDLDFFMS text_out_reg_56_ ( .D(N399), .CK(clk), .Q(text_out[56]) );
+WDDLDFFMS text_out_reg_31_ ( .D(N400), .CK(clk), .Q(text_out[31]) );
+WDDLDFFMS text_out_reg_30_ ( .D(N401), .CK(clk), .Q(text_out[30]) );
+WDDLDFFMS text_out_reg_29_ ( .D(N402), .CK(clk), .Q(text_out[29]) );
+WDDLDFFMS text_out_reg_28_ ( .D(N403), .CK(clk), .Q(text_out[28]) );
+WDDLDFFMS text_out_reg_27_ ( .D(N404), .CK(clk), .Q(text_out[27]) );
+WDDLDFFMS text_out_reg_26_ ( .D(N405), .CK(clk), .Q(text_out[26]) );
+WDDLDFFMS text_out_reg_25_ ( .D(N406), .CK(clk), .Q(text_out[25]) );
+WDDLDFFMS text_out_reg_24_ ( .D(N407), .CK(clk), .Q(text_out[24]) );
+WDDLDFFMS text_out_reg_119_ ( .D(N408), .CK(clk), .Q(text_out[119]) );
+WDDLDFFMS text_out_reg_118_ ( .D(N409), .CK(clk), .Q(text_out[118]) );
+WDDLDFFMS text_out_reg_117_ ( .D(N410), .CK(clk), .Q(text_out[117]) );
+WDDLDFFMS text_out_reg_116_ ( .D(N411), .CK(clk), .Q(text_out[116]) );
+WDDLDFFMS text_out_reg_115_ ( .D(N412), .CK(clk), .Q(text_out[115]) );
+WDDLDFFMS text_out_reg_114_ ( .D(N413), .CK(clk), .Q(text_out[114]) );
+WDDLDFFMS text_out_reg_113_ ( .D(N414), .CK(clk), .Q(text_out[113]) );
+WDDLDFFMS text_out_reg_112_ ( .D(N415), .CK(clk), .Q(text_out[112]) );
+WDDLDFFMS text_out_reg_87_ ( .D(N416), .CK(clk), .Q(text_out[87]) );
+WDDLDFFMS text_out_reg_86_ ( .D(N417), .CK(clk), .Q(text_out[86]) );
+WDDLDFFMS text_out_reg_85_ ( .D(N418), .CK(clk), .Q(text_out[85]) );
+WDDLDFFMS text_out_reg_84_ ( .D(N419), .CK(clk), .Q(text_out[84]) );
+WDDLDFFMS text_out_reg_83_ ( .D(N420), .CK(clk), .Q(text_out[83]) );
+WDDLDFFMS text_out_reg_82_ ( .D(N421), .CK(clk), .Q(text_out[82]) );
+WDDLDFFMS text_out_reg_81_ ( .D(N422), .CK(clk), .Q(text_out[81]) );
+WDDLDFFMS text_out_reg_80_ ( .D(N423), .CK(clk), .Q(text_out[80]) );
+WDDLDFFMS text_out_reg_55_ ( .D(N424), .CK(clk), .Q(text_out[55]) );
+WDDLDFFMS text_out_reg_54_ ( .D(N425), .CK(clk), .Q(text_out[54]) );
+WDDLDFFMS text_out_reg_53_ ( .D(N426), .CK(clk), .Q(text_out[53]) );
+WDDLDFFMS text_out_reg_52_ ( .D(N427), .CK(clk), .Q(text_out[52]) );
+WDDLDFFMS text_out_reg_51_ ( .D(N428), .CK(clk), .Q(text_out[51]) );
+WDDLDFFMS text_out_reg_50_ ( .D(N429), .CK(clk), .Q(text_out[50]) );
+WDDLDFFMS text_out_reg_49_ ( .D(N430), .CK(clk), .Q(text_out[49]) );
+WDDLDFFMS text_out_reg_48_ ( .D(N431), .CK(clk), .Q(text_out[48]) );
+WDDLDFFMS text_out_reg_23_ ( .D(N432), .CK(clk), .Q(text_out[23]) );
+WDDLDFFMS text_out_reg_22_ ( .D(N433), .CK(clk), .Q(text_out[22]) );
+WDDLDFFMS text_out_reg_21_ ( .D(N434), .CK(clk), .Q(text_out[21]) );
+WDDLDFFMS text_out_reg_20_ ( .D(N435), .CK(clk), .Q(text_out[20]) );
+WDDLDFFMS text_out_reg_19_ ( .D(N436), .CK(clk), .Q(text_out[19]) );
+WDDLDFFMS text_out_reg_18_ ( .D(N437), .CK(clk), .Q(text_out[18]) );
+WDDLDFFMS text_out_reg_17_ ( .D(N438), .CK(clk), .Q(text_out[17]) );
+WDDLDFFMS text_out_reg_16_ ( .D(N439), .CK(clk), .Q(text_out[16]) );
+WDDLDFFMS text_out_reg_111_ ( .D(N440), .CK(clk), .Q(text_out[111]) );
+WDDLDFFMS text_out_reg_110_ ( .D(N441), .CK(clk), .Q(text_out[110]) );
+WDDLDFFMS text_out_reg_109_ ( .D(N442), .CK(clk), .Q(text_out[109]) );
+WDDLDFFMS text_out_reg_108_ ( .D(N443), .CK(clk), .Q(text_out[108]) );
+WDDLDFFMS text_out_reg_107_ ( .D(N444), .CK(clk), .Q(text_out[107]) );
+WDDLDFFMS text_out_reg_106_ ( .D(N445), .CK(clk), .Q(text_out[106]) );
+WDDLDFFMS text_out_reg_105_ ( .D(N446), .CK(clk), .Q(text_out[105]) );
+WDDLDFFMS text_out_reg_104_ ( .D(N447), .CK(clk), .Q(text_out[104]) );
+WDDLDFFMS text_out_reg_79_ ( .D(N448), .CK(clk), .Q(text_out[79]) );
+WDDLDFFMS text_out_reg_78_ ( .D(N449), .CK(clk), .Q(text_out[78]) );
+WDDLDFFMS text_out_reg_77_ ( .D(N450), .CK(clk), .Q(text_out[77]) );
+WDDLDFFMS text_out_reg_76_ ( .D(N451), .CK(clk), .Q(text_out[76]) );
+WDDLDFFMS text_out_reg_75_ ( .D(N452), .CK(clk), .Q(text_out[75]) );
+WDDLDFFMS text_out_reg_74_ ( .D(N453), .CK(clk), .Q(text_out[74]) );
+WDDLDFFMS text_out_reg_73_ ( .D(N454), .CK(clk), .Q(text_out[73]) );
+WDDLDFFMS text_out_reg_72_ ( .D(N455), .CK(clk), .Q(text_out[72]) );
+WDDLDFFMS text_out_reg_47_ ( .D(N456), .CK(clk), .Q(text_out[47]) );
+WDDLDFFMS text_out_reg_46_ ( .D(N457), .CK(clk), .Q(text_out[46]) );
+WDDLDFFMS text_out_reg_45_ ( .D(N458), .CK(clk), .Q(text_out[45]) );
+WDDLDFFMS text_out_reg_44_ ( .D(N459), .CK(clk), .Q(text_out[44]) );
+WDDLDFFMS text_out_reg_43_ ( .D(N460), .CK(clk), .Q(text_out[43]) );
+WDDLDFFMS text_out_reg_42_ ( .D(N461), .CK(clk), .Q(text_out[42]) );
+WDDLDFFMS text_out_reg_41_ ( .D(N462), .CK(clk), .Q(text_out[41]) );
+WDDLDFFMS text_out_reg_40_ ( .D(N463), .CK(clk), .Q(text_out[40]) );
+WDDLDFFMS text_out_reg_15_ ( .D(N464), .CK(clk), .Q(text_out[15]) );
+WDDLDFFMS text_out_reg_14_ ( .D(N465), .CK(clk), .Q(text_out[14]) );
+WDDLDFFMS text_out_reg_13_ ( .D(N466), .CK(clk), .Q(text_out[13]) );
+WDDLDFFMS text_out_reg_12_ ( .D(N467), .CK(clk), .Q(text_out[12]) );
+WDDLDFFMS text_out_reg_11_ ( .D(N468), .CK(clk), .Q(text_out[11]) );
+WDDLDFFMS text_out_reg_10_ ( .D(N469), .CK(clk), .Q(text_out[10]) );
+WDDLDFFMS text_out_reg_9_ ( .D(N470), .CK(clk), .Q(text_out[9]) );
+WDDLDFFMS text_out_reg_8_ ( .D(N471), .CK(clk), .Q(text_out[8]) );
+WDDLDFFMS text_out_reg_103_ ( .D(N472), .CK(clk), .Q(text_out[103]) );
+WDDLDFFMS text_out_reg_102_ ( .D(N473), .CK(clk), .Q(text_out[102]) );
+WDDLDFFMS text_out_reg_101_ ( .D(N474), .CK(clk), .Q(text_out[101]) );
+WDDLDFFMS text_out_reg_100_ ( .D(N475), .CK(clk), .Q(text_out[100]) );
+WDDLDFFMS text_out_reg_99_ ( .D(N476), .CK(clk), .Q(text_out[99]) );
+WDDLDFFMS text_out_reg_98_ ( .D(N477), .CK(clk), .Q(text_out[98]) );
+WDDLDFFMS text_out_reg_97_ ( .D(N478), .CK(clk), .Q(text_out[97]) );
+WDDLDFFMS text_out_reg_96_ ( .D(N479), .CK(clk), .Q(text_out[96]) );
+WDDLDFFMS text_out_reg_71_ ( .D(N480), .CK(clk), .Q(text_out[71]) );
+WDDLDFFMS text_out_reg_70_ ( .D(N481), .CK(clk), .Q(text_out[70]) );
+WDDLDFFMS text_out_reg_69_ ( .D(N482), .CK(clk), .Q(text_out[69]) );
+WDDLDFFMS text_out_reg_68_ ( .D(N483), .CK(clk), .Q(text_out[68]) );
+WDDLDFFMS text_out_reg_67_ ( .D(N484), .CK(clk), .Q(text_out[67]) );
+WDDLDFFMS text_out_reg_66_ ( .D(N485), .CK(clk), .Q(text_out[66]) );
+WDDLDFFMS text_out_reg_65_ ( .D(N486), .CK(clk), .Q(text_out[65]) );
+WDDLDFFMS text_out_reg_64_ ( .D(N487), .CK(clk), .Q(text_out[64]) );
+WDDLDFFMS text_out_reg_39_ ( .D(N488), .CK(clk), .Q(text_out[39]) );
+WDDLDFFMS text_out_reg_38_ ( .D(N489), .CK(clk), .Q(text_out[38]) );
+WDDLDFFMS text_out_reg_37_ ( .D(N490), .CK(clk), .Q(text_out[37]) );
+WDDLDFFMS text_out_reg_36_ ( .D(N491), .CK(clk), .Q(text_out[36]) );
+WDDLDFFMS text_out_reg_35_ ( .D(N492), .CK(clk), .Q(text_out[35]) );
+WDDLDFFMS text_out_reg_34_ ( .D(N493), .CK(clk), .Q(text_out[34]) );
+WDDLDFFMS text_out_reg_33_ ( .D(N494), .CK(clk), .Q(text_out[33]) );
+WDDLDFFMS text_out_reg_32_ ( .D(N495), .CK(clk), .Q(text_out[32]) );
+WDDLDFFMS text_out_reg_7_ ( .D(N496), .CK(clk), .Q(text_out[7]) );
+WDDLDFFMS text_out_reg_6_ ( .D(N497), .CK(clk), .Q(text_out[6]) );
+WDDLDFFMS text_out_reg_5_ ( .D(N498), .CK(clk), .Q(text_out[5]) );
+WDDLDFFMS text_out_reg_4_ ( .D(N499), .CK(clk), .Q(text_out[4]) );
+WDDLDFFMS text_out_reg_3_ ( .D(N500), .CK(clk), .Q(text_out[3]) );
+WDDLDFFMS text_out_reg_2_ ( .D(N501), .CK(clk), .Q(text_out[2]) );
+WDDLDFFMS text_out_reg_1_ ( .D(N502), .CK(clk), .Q(text_out[1]) );
+WDDLDFFMS text_out_reg_0_ ( .D(N503), .CK(clk), .Q(text_out[0]) );
+  EDFFX1 text_in_r_reg_127_ ( .D(text_in[127]), .E(ld), .CK(divclk), .Q(
         text_in_r[127]) );
-  EDFFX1 text_in_r_reg_126_ ( .D(text_in[126]), .E(ld), .CK(clk), .Q(
+  EDFFX1 text_in_r_reg_126_ ( .D(text_in[126]), .E(ld), .CK(divclk), .Q(
         text_in_r[126]) );
-  EDFFX1 text_in_r_reg_125_ ( .D(text_in[125]), .E(ld), .CK(clk), .Q(
+  EDFFX1 text_in_r_reg_125_ ( .D(text_in[125]), .E(ld), .CK(divclk), .Q(
         text_in_r[125]) );
-  EDFFX1 text_in_r_reg_124_ ( .D(text_in[124]), .E(ld), .CK(clk), .Q(
+  EDFFX1 text_in_r_reg_124_ ( .D(text_in[124]), .E(ld), .CK(divclk), .Q(
         text_in_r[124]) );
-  EDFFX1 text_in_r_reg_123_ ( .D(text_in[123]), .E(ld), .CK(clk), .Q(
+  EDFFX1 text_in_r_reg_123_ ( .D(text_in[123]), .E(ld), .CK(divclk), .Q(
         text_in_r[123]) );
-  EDFFX1 text_in_r_reg_122_ ( .D(text_in[122]), .E(ld), .CK(clk), .Q(
+  EDFFX1 text_in_r_reg_122_ ( .D(text_in[122]), .E(ld), .CK(divclk), .Q(
         text_in_r[122]) );
-  EDFFX1 text_in_r_reg_121_ ( .D(text_in[121]), .E(ld), .CK(clk), .Q(
+  EDFFX1 text_in_r_reg_121_ ( .D(text_in[121]), .E(ld), .CK(divclk), .Q(
         text_in_r[121]) );
-  EDFFX1 text_in_r_reg_120_ ( .D(text_in[120]), .E(ld), .CK(clk), .Q(
+  EDFFX1 text_in_r_reg_120_ ( .D(text_in[120]), .E(ld), .CK(divclk), .Q(
         text_in_r[120]) );
-  EDFFX1 text_in_r_reg_119_ ( .D(text_in[119]), .E(ld), .CK(clk), .Q(
+  EDFFX1 text_in_r_reg_119_ ( .D(text_in[119]), .E(ld), .CK(divclk), .Q(
         text_in_r[119]) );
-  EDFFX1 text_in_r_reg_118_ ( .D(text_in[118]), .E(ld), .CK(clk), .Q(
+  EDFFX1 text_in_r_reg_118_ ( .D(text_in[118]), .E(ld), .CK(divclk), .Q(
         text_in_r[118]) );
-  EDFFX1 text_in_r_reg_117_ ( .D(text_in[117]), .E(ld), .CK(clk), .Q(
+  EDFFX1 text_in_r_reg_117_ ( .D(text_in[117]), .E(ld), .CK(divclk), .Q(
         text_in_r[117]) );
-  EDFFX1 text_in_r_reg_116_ ( .D(text_in[116]), .E(ld), .CK(clk), .Q(
+  EDFFX1 text_in_r_reg_116_ ( .D(text_in[116]), .E(ld), .CK(divclk), .Q(
         text_in_r[116]) );
-  EDFFX1 text_in_r_reg_115_ ( .D(text_in[115]), .E(ld), .CK(clk), .Q(
+  EDFFX1 text_in_r_reg_115_ ( .D(text_in[115]), .E(ld), .CK(divclk), .Q(
         text_in_r[115]) );
-  EDFFX1 text_in_r_reg_114_ ( .D(text_in[114]), .E(ld), .CK(clk), .Q(
+  EDFFX1 text_in_r_reg_114_ ( .D(text_in[114]), .E(ld), .CK(divclk), .Q(
         text_in_r[114]) );
-  EDFFX1 text_in_r_reg_113_ ( .D(text_in[113]), .E(ld), .CK(clk), .Q(
+  EDFFX1 text_in_r_reg_113_ ( .D(text_in[113]), .E(ld), .CK(divclk), .Q(
         text_in_r[113]) );
-  EDFFX1 text_in_r_reg_112_ ( .D(text_in[112]), .E(ld), .CK(clk), .Q(
+  EDFFX1 text_in_r_reg_112_ ( .D(text_in[112]), .E(ld), .CK(divclk), .Q(
         text_in_r[112]) );
-  EDFFX1 text_in_r_reg_111_ ( .D(text_in[111]), .E(ld), .CK(clk), .Q(
+  EDFFX1 text_in_r_reg_111_ ( .D(text_in[111]), .E(ld), .CK(divclk), .Q(
         text_in_r[111]) );
-  EDFFX1 text_in_r_reg_110_ ( .D(text_in[110]), .E(ld), .CK(clk), .Q(
+  EDFFX1 text_in_r_reg_110_ ( .D(text_in[110]), .E(ld), .CK(divclk), .Q(
         text_in_r[110]) );
-  EDFFX1 text_in_r_reg_109_ ( .D(text_in[109]), .E(ld), .CK(clk), .Q(
+  EDFFX1 text_in_r_reg_109_ ( .D(text_in[109]), .E(ld), .CK(divclk), .Q(
         text_in_r[109]) );
-  EDFFX1 text_in_r_reg_108_ ( .D(text_in[108]), .E(ld), .CK(clk), .Q(
+  EDFFX1 text_in_r_reg_108_ ( .D(text_in[108]), .E(ld), .CK(divclk), .Q(
         text_in_r[108]) );
-  EDFFX1 text_in_r_reg_107_ ( .D(text_in[107]), .E(ld), .CK(clk), .Q(
+  EDFFX1 text_in_r_reg_107_ ( .D(text_in[107]), .E(ld), .CK(divclk), .Q(
         text_in_r[107]) );
-  EDFFX1 text_in_r_reg_106_ ( .D(text_in[106]), .E(ld), .CK(clk), .Q(
+  EDFFX1 text_in_r_reg_106_ ( .D(text_in[106]), .E(ld), .CK(divclk), .Q(
         text_in_r[106]) );
-  EDFFX1 text_in_r_reg_105_ ( .D(text_in[105]), .E(ld), .CK(clk), .Q(
+  EDFFX1 text_in_r_reg_105_ ( .D(text_in[105]), .E(ld), .CK(divclk), .Q(
         text_in_r[105]) );
-  EDFFX1 text_in_r_reg_104_ ( .D(text_in[104]), .E(ld), .CK(clk), .Q(
+  EDFFX1 text_in_r_reg_104_ ( .D(text_in[104]), .E(ld), .CK(divclk), .Q(
         text_in_r[104]) );
-  EDFFX1 text_in_r_reg_103_ ( .D(text_in[103]), .E(ld), .CK(clk), .Q(
+  EDFFX1 text_in_r_reg_103_ ( .D(text_in[103]), .E(ld), .CK(divclk), .Q(
         text_in_r[103]) );
-  EDFFX1 text_in_r_reg_102_ ( .D(text_in[102]), .E(ld), .CK(clk), .Q(
+  EDFFX1 text_in_r_reg_102_ ( .D(text_in[102]), .E(ld), .CK(divclk), .Q(
         text_in_r[102]) );
-  EDFFX1 text_in_r_reg_101_ ( .D(text_in[101]), .E(ld), .CK(clk), .Q(
+  EDFFX1 text_in_r_reg_101_ ( .D(text_in[101]), .E(ld), .CK(divclk), .Q(
         text_in_r[101]) );
-  EDFFX1 text_in_r_reg_100_ ( .D(text_in[100]), .E(ld), .CK(clk), .Q(
+  EDFFX1 text_in_r_reg_100_ ( .D(text_in[100]), .E(ld), .CK(divclk), .Q(
         text_in_r[100]) );
-  EDFFX1 text_in_r_reg_99_ ( .D(text_in[99]), .E(ld), .CK(clk), .Q(
+  EDFFX1 text_in_r_reg_99_ ( .D(text_in[99]), .E(ld), .CK(divclk), .Q(
         text_in_r[99]) );
-  EDFFX1 text_in_r_reg_98_ ( .D(text_in[98]), .E(ld), .CK(clk), .Q(
+  EDFFX1 text_in_r_reg_98_ ( .D(text_in[98]), .E(ld), .CK(divclk), .Q(
         text_in_r[98]) );
-  EDFFX1 text_in_r_reg_97_ ( .D(text_in[97]), .E(ld), .CK(clk), .Q(
+  EDFFX1 text_in_r_reg_97_ ( .D(text_in[97]), .E(ld), .CK(divclk), .Q(
         text_in_r[97]) );
-  EDFFX1 text_in_r_reg_96_ ( .D(text_in[96]), .E(ld), .CK(clk), .Q(
+  EDFFX1 text_in_r_reg_96_ ( .D(text_in[96]), .E(ld), .CK(divclk), .Q(
         text_in_r[96]) );
-  EDFFX1 text_in_r_reg_95_ ( .D(text_in[95]), .E(ld), .CK(clk), .Q(
+  EDFFX1 text_in_r_reg_95_ ( .D(text_in[95]), .E(ld), .CK(divclk), .Q(
         text_in_r[95]) );
-  EDFFX1 text_in_r_reg_94_ ( .D(text_in[94]), .E(ld), .CK(clk), .Q(
+  EDFFX1 text_in_r_reg_94_ ( .D(text_in[94]), .E(ld), .CK(divclk), .Q(
         text_in_r[94]) );
-  EDFFX1 text_in_r_reg_93_ ( .D(text_in[93]), .E(ld), .CK(clk), .Q(
+  EDFFX1 text_in_r_reg_93_ ( .D(text_in[93]), .E(ld), .CK(divclk), .Q(
         text_in_r[93]) );
-  EDFFX1 text_in_r_reg_92_ ( .D(text_in[92]), .E(ld), .CK(clk), .Q(
+  EDFFX1 text_in_r_reg_92_ ( .D(text_in[92]), .E(ld), .CK(divclk), .Q(
         text_in_r[92]) );
-  EDFFX1 text_in_r_reg_91_ ( .D(text_in[91]), .E(ld), .CK(clk), .Q(
+  EDFFX1 text_in_r_reg_91_ ( .D(text_in[91]), .E(ld), .CK(divclk), .Q(
         text_in_r[91]) );
-  EDFFX1 text_in_r_reg_90_ ( .D(text_in[90]), .E(ld), .CK(clk), .Q(
+  EDFFX1 text_in_r_reg_90_ ( .D(text_in[90]), .E(ld), .CK(divclk), .Q(
         text_in_r[90]) );
-  EDFFX1 text_in_r_reg_89_ ( .D(text_in[89]), .E(ld), .CK(clk), .Q(
+  EDFFX1 text_in_r_reg_89_ ( .D(text_in[89]), .E(ld), .CK(divclk), .Q(
         text_in_r[89]) );
-  EDFFX1 text_in_r_reg_88_ ( .D(text_in[88]), .E(ld), .CK(clk), .Q(
+  EDFFX1 text_in_r_reg_88_ ( .D(text_in[88]), .E(ld), .CK(divclk), .Q(
         text_in_r[88]) );
-  EDFFX1 text_in_r_reg_87_ ( .D(text_in[87]), .E(ld), .CK(clk), .Q(
+  EDFFX1 text_in_r_reg_87_ ( .D(text_in[87]), .E(ld), .CK(divclk), .Q(
         text_in_r[87]) );
-  EDFFX1 text_in_r_reg_86_ ( .D(text_in[86]), .E(ld), .CK(clk), .Q(
+  EDFFX1 text_in_r_reg_86_ ( .D(text_in[86]), .E(ld), .CK(divclk), .Q(
         text_in_r[86]) );
-  EDFFX1 text_in_r_reg_85_ ( .D(text_in[85]), .E(ld), .CK(clk), .Q(
+  EDFFX1 text_in_r_reg_85_ ( .D(text_in[85]), .E(ld), .CK(divclk), .Q(
         text_in_r[85]) );
-  EDFFX1 text_in_r_reg_84_ ( .D(text_in[84]), .E(ld), .CK(clk), .Q(
+  EDFFX1 text_in_r_reg_84_ ( .D(text_in[84]), .E(ld), .CK(divclk), .Q(
         text_in_r[84]) );
-  EDFFX1 text_in_r_reg_83_ ( .D(text_in[83]), .E(ld), .CK(clk), .Q(
+  EDFFX1 text_in_r_reg_83_ ( .D(text_in[83]), .E(ld), .CK(divclk), .Q(
         text_in_r[83]) );
-  EDFFX1 text_in_r_reg_82_ ( .D(text_in[82]), .E(ld), .CK(clk), .Q(
+  EDFFX1 text_in_r_reg_82_ ( .D(text_in[82]), .E(ld), .CK(divclk), .Q(
         text_in_r[82]) );
-  EDFFX1 text_in_r_reg_81_ ( .D(text_in[81]), .E(ld), .CK(clk), .Q(
+  EDFFX1 text_in_r_reg_81_ ( .D(text_in[81]), .E(ld), .CK(divclk), .Q(
         text_in_r[81]) );
-  EDFFX1 text_in_r_reg_80_ ( .D(text_in[80]), .E(ld), .CK(clk), .Q(
+  EDFFX1 text_in_r_reg_80_ ( .D(text_in[80]), .E(ld), .CK(divclk), .Q(
         text_in_r[80]) );
-  EDFFX1 text_in_r_reg_79_ ( .D(text_in[79]), .E(ld), .CK(clk), .Q(
+  EDFFX1 text_in_r_reg_79_ ( .D(text_in[79]), .E(ld), .CK(divclk), .Q(
         text_in_r[79]) );
-  EDFFX1 text_in_r_reg_78_ ( .D(text_in[78]), .E(ld), .CK(clk), .Q(
+  EDFFX1 text_in_r_reg_78_ ( .D(text_in[78]), .E(ld), .CK(divclk), .Q(
         text_in_r[78]) );
-  EDFFX1 text_in_r_reg_77_ ( .D(text_in[77]), .E(ld), .CK(clk), .Q(
+  EDFFX1 text_in_r_reg_77_ ( .D(text_in[77]), .E(ld), .CK(divclk), .Q(
         text_in_r[77]) );
-  EDFFX1 text_in_r_reg_76_ ( .D(text_in[76]), .E(ld), .CK(clk), .Q(
+  EDFFX1 text_in_r_reg_76_ ( .D(text_in[76]), .E(ld), .CK(divclk), .Q(
         text_in_r[76]) );
-  EDFFX1 text_in_r_reg_75_ ( .D(text_in[75]), .E(ld), .CK(clk), .Q(
+  EDFFX1 text_in_r_reg_75_ ( .D(text_in[75]), .E(ld), .CK(divclk), .Q(
         text_in_r[75]) );
-  EDFFX1 text_in_r_reg_74_ ( .D(text_in[74]), .E(ld), .CK(clk), .Q(
+  EDFFX1 text_in_r_reg_74_ ( .D(text_in[74]), .E(ld), .CK(divclk), .Q(
         text_in_r[74]) );
-  EDFFX1 text_in_r_reg_73_ ( .D(text_in[73]), .E(ld), .CK(clk), .Q(
+  EDFFX1 text_in_r_reg_73_ ( .D(text_in[73]), .E(ld), .CK(divclk), .Q(
         text_in_r[73]) );
-  EDFFX1 text_in_r_reg_72_ ( .D(text_in[72]), .E(ld), .CK(clk), .Q(
+  EDFFX1 text_in_r_reg_72_ ( .D(text_in[72]), .E(ld), .CK(divclk), .Q(
         text_in_r[72]) );
-  EDFFX1 text_in_r_reg_71_ ( .D(text_in[71]), .E(ld), .CK(clk), .Q(
+  EDFFX1 text_in_r_reg_71_ ( .D(text_in[71]), .E(ld), .CK(divclk), .Q(
         text_in_r[71]) );
-  EDFFX1 text_in_r_reg_70_ ( .D(text_in[70]), .E(ld), .CK(clk), .Q(
+  EDFFX1 text_in_r_reg_70_ ( .D(text_in[70]), .E(ld), .CK(divclk), .Q(
         text_in_r[70]) );
-  EDFFX1 text_in_r_reg_69_ ( .D(text_in[69]), .E(ld), .CK(clk), .Q(
+  EDFFX1 text_in_r_reg_69_ ( .D(text_in[69]), .E(ld), .CK(divclk), .Q(
         text_in_r[69]) );
-  EDFFX1 text_in_r_reg_68_ ( .D(text_in[68]), .E(ld), .CK(clk), .Q(
+  EDFFX1 text_in_r_reg_68_ ( .D(text_in[68]), .E(ld), .CK(divclk), .Q(
         text_in_r[68]) );
-  EDFFX1 text_in_r_reg_67_ ( .D(text_in[67]), .E(ld), .CK(clk), .Q(
+  EDFFX1 text_in_r_reg_67_ ( .D(text_in[67]), .E(ld), .CK(divclk), .Q(
         text_in_r[67]) );
-  EDFFX1 text_in_r_reg_66_ ( .D(text_in[66]), .E(ld), .CK(clk), .Q(
+  EDFFX1 text_in_r_reg_66_ ( .D(text_in[66]), .E(ld), .CK(divclk), .Q(
         text_in_r[66]) );
-  EDFFX1 text_in_r_reg_65_ ( .D(text_in[65]), .E(ld), .CK(clk), .Q(
+  EDFFX1 text_in_r_reg_65_ ( .D(text_in[65]), .E(ld), .CK(divclk), .Q(
         text_in_r[65]) );
-  EDFFX1 text_in_r_reg_64_ ( .D(text_in[64]), .E(ld), .CK(clk), .Q(
+  EDFFX1 text_in_r_reg_64_ ( .D(text_in[64]), .E(ld), .CK(divclk), .Q(
         text_in_r[64]) );
-  EDFFX1 text_in_r_reg_63_ ( .D(text_in[63]), .E(ld), .CK(clk), .Q(
+  EDFFX1 text_in_r_reg_63_ ( .D(text_in[63]), .E(ld), .CK(divclk), .Q(
         text_in_r[63]) );
-  EDFFX1 text_in_r_reg_62_ ( .D(text_in[62]), .E(ld), .CK(clk), .Q(
+  EDFFX1 text_in_r_reg_62_ ( .D(text_in[62]), .E(ld), .CK(divclk), .Q(
         text_in_r[62]) );
-  EDFFX1 text_in_r_reg_61_ ( .D(text_in[61]), .E(ld), .CK(clk), .Q(
+  EDFFX1 text_in_r_reg_61_ ( .D(text_in[61]), .E(ld), .CK(divclk), .Q(
         text_in_r[61]) );
-  EDFFX1 text_in_r_reg_60_ ( .D(text_in[60]), .E(ld), .CK(clk), .Q(
+  EDFFX1 text_in_r_reg_60_ ( .D(text_in[60]), .E(ld), .CK(divclk), .Q(
         text_in_r[60]) );
-  EDFFX1 text_in_r_reg_59_ ( .D(text_in[59]), .E(ld), .CK(clk), .Q(
+  EDFFX1 text_in_r_reg_59_ ( .D(text_in[59]), .E(ld), .CK(divclk), .Q(
         text_in_r[59]) );
-  EDFFX1 text_in_r_reg_58_ ( .D(text_in[58]), .E(ld), .CK(clk), .Q(
+  EDFFX1 text_in_r_reg_58_ ( .D(text_in[58]), .E(ld), .CK(divclk), .Q(
         text_in_r[58]) );
-  EDFFX1 text_in_r_reg_57_ ( .D(text_in[57]), .E(ld), .CK(clk), .Q(
+  EDFFX1 text_in_r_reg_57_ ( .D(text_in[57]), .E(ld), .CK(divclk), .Q(
         text_in_r[57]) );
-  EDFFX1 text_in_r_reg_56_ ( .D(text_in[56]), .E(ld), .CK(clk), .Q(
+  EDFFX1 text_in_r_reg_56_ ( .D(text_in[56]), .E(ld), .CK(divclk), .Q(
         text_in_r[56]) );
-  EDFFX1 text_in_r_reg_55_ ( .D(text_in[55]), .E(ld), .CK(clk), .Q(
+  EDFFX1 text_in_r_reg_55_ ( .D(text_in[55]), .E(ld), .CK(divclk), .Q(
         text_in_r[55]) );
-  EDFFX1 text_in_r_reg_54_ ( .D(text_in[54]), .E(ld), .CK(clk), .Q(
+  EDFFX1 text_in_r_reg_54_ ( .D(text_in[54]), .E(ld), .CK(divclk), .Q(
         text_in_r[54]) );
-  EDFFX1 text_in_r_reg_53_ ( .D(text_in[53]), .E(ld), .CK(clk), .Q(
+  EDFFX1 text_in_r_reg_53_ ( .D(text_in[53]), .E(ld), .CK(divclk), .Q(
         text_in_r[53]) );
-  EDFFX1 text_in_r_reg_52_ ( .D(text_in[52]), .E(ld), .CK(clk), .Q(
+  EDFFX1 text_in_r_reg_52_ ( .D(text_in[52]), .E(ld), .CK(divclk), .Q(
         text_in_r[52]) );
-  EDFFX1 text_in_r_reg_51_ ( .D(text_in[51]), .E(ld), .CK(clk), .Q(
+  EDFFX1 text_in_r_reg_51_ ( .D(text_in[51]), .E(ld), .CK(divclk), .Q(
         text_in_r[51]) );
-  EDFFX1 text_in_r_reg_50_ ( .D(text_in[50]), .E(ld), .CK(clk), .Q(
+  EDFFX1 text_in_r_reg_50_ ( .D(text_in[50]), .E(ld), .CK(divclk), .Q(
         text_in_r[50]) );
-  EDFFX1 text_in_r_reg_49_ ( .D(text_in[49]), .E(ld), .CK(clk), .Q(
+  EDFFX1 text_in_r_reg_49_ ( .D(text_in[49]), .E(ld), .CK(divclk), .Q(
         text_in_r[49]) );
-  EDFFX1 text_in_r_reg_48_ ( .D(text_in[48]), .E(ld), .CK(clk), .Q(
+  EDFFX1 text_in_r_reg_48_ ( .D(text_in[48]), .E(ld), .CK(divclk), .Q(
         text_in_r[48]) );
-  EDFFX1 text_in_r_reg_47_ ( .D(text_in[47]), .E(ld), .CK(clk), .Q(
+  EDFFX1 text_in_r_reg_47_ ( .D(text_in[47]), .E(ld), .CK(divclk), .Q(
         text_in_r[47]) );
-  EDFFX1 text_in_r_reg_46_ ( .D(text_in[46]), .E(ld), .CK(clk), .Q(
+  EDFFX1 text_in_r_reg_46_ ( .D(text_in[46]), .E(ld), .CK(divclk), .Q(
         text_in_r[46]) );
-  EDFFX1 text_in_r_reg_45_ ( .D(text_in[45]), .E(ld), .CK(clk), .Q(
+  EDFFX1 text_in_r_reg_45_ ( .D(text_in[45]), .E(ld), .CK(divclk), .Q(
         text_in_r[45]) );
-  EDFFX1 text_in_r_reg_44_ ( .D(text_in[44]), .E(ld), .CK(clk), .Q(
+  EDFFX1 text_in_r_reg_44_ ( .D(text_in[44]), .E(ld), .CK(divclk), .Q(
         text_in_r[44]) );
-  EDFFX1 text_in_r_reg_43_ ( .D(text_in[43]), .E(ld), .CK(clk), .Q(
+  EDFFX1 text_in_r_reg_43_ ( .D(text_in[43]), .E(ld), .CK(divclk), .Q(
         text_in_r[43]) );
-  EDFFX1 text_in_r_reg_42_ ( .D(text_in[42]), .E(ld), .CK(clk), .Q(
+  EDFFX1 text_in_r_reg_42_ ( .D(text_in[42]), .E(ld), .CK(divclk), .Q(
         text_in_r[42]) );
-  EDFFX1 text_in_r_reg_41_ ( .D(text_in[41]), .E(ld), .CK(clk), .Q(
+  EDFFX1 text_in_r_reg_41_ ( .D(text_in[41]), .E(ld), .CK(divclk), .Q(
         text_in_r[41]) );
-  EDFFX1 text_in_r_reg_40_ ( .D(text_in[40]), .E(ld), .CK(clk), .Q(
+  EDFFX1 text_in_r_reg_40_ ( .D(text_in[40]), .E(ld), .CK(divclk), .Q(
         text_in_r[40]) );
-  EDFFX1 text_in_r_reg_39_ ( .D(text_in[39]), .E(ld), .CK(clk), .Q(
+  EDFFX1 text_in_r_reg_39_ ( .D(text_in[39]), .E(ld), .CK(divclk), .Q(
         text_in_r[39]) );
-  EDFFX1 text_in_r_reg_38_ ( .D(text_in[38]), .E(ld), .CK(clk), .Q(
+  EDFFX1 text_in_r_reg_38_ ( .D(text_in[38]), .E(ld), .CK(divclk), .Q(
         text_in_r[38]) );
-  EDFFX1 text_in_r_reg_37_ ( .D(text_in[37]), .E(ld), .CK(clk), .Q(
+  EDFFX1 text_in_r_reg_37_ ( .D(text_in[37]), .E(ld), .CK(divclk), .Q(
         text_in_r[37]) );
-  EDFFX1 text_in_r_reg_36_ ( .D(text_in[36]), .E(ld), .CK(clk), .Q(
+  EDFFX1 text_in_r_reg_36_ ( .D(text_in[36]), .E(ld), .CK(divclk), .Q(
         text_in_r[36]) );
-  EDFFX1 text_in_r_reg_7_ ( .D(text_in[7]), .E(ld), .CK(clk), .Q(text_in_r[7])
+  EDFFX1 text_in_r_reg_7_ ( .D(text_in[7]), .E(ld), .CK(divclk), .Q(text_in_r[7])
          );
-  EDFFX1 text_in_r_reg_6_ ( .D(text_in[6]), .E(ld), .CK(clk), .Q(text_in_r[6])
+  EDFFX1 text_in_r_reg_6_ ( .D(text_in[6]), .E(ld), .CK(divclk), .Q(text_in_r[6])
          );
-  EDFFX1 text_in_r_reg_5_ ( .D(text_in[5]), .E(ld), .CK(clk), .Q(text_in_r[5])
+  EDFFX1 text_in_r_reg_5_ ( .D(text_in[5]), .E(ld), .CK(divclk), .Q(text_in_r[5])
          );
-  EDFFX1 text_in_r_reg_4_ ( .D(text_in[4]), .E(ld), .CK(clk), .Q(text_in_r[4])
+  EDFFX1 text_in_r_reg_4_ ( .D(text_in[4]), .E(ld), .CK(divclk), .Q(text_in_r[4])
          );
-  EDFFX1 text_in_r_reg_3_ ( .D(text_in[3]), .E(ld), .CK(clk), .Q(text_in_r[3])
+  EDFFX1 text_in_r_reg_3_ ( .D(text_in[3]), .E(ld), .CK(divclk), .Q(text_in_r[3])
          );
-  EDFFX1 text_in_r_reg_2_ ( .D(text_in[2]), .E(ld), .CK(clk), .Q(text_in_r[2])
+  EDFFX1 text_in_r_reg_2_ ( .D(text_in[2]), .E(ld), .CK(divclk), .Q(text_in_r[2])
          );
-  EDFFX1 text_in_r_reg_1_ ( .D(text_in[1]), .E(ld), .CK(clk), .Q(text_in_r[1])
+  EDFFX1 text_in_r_reg_1_ ( .D(text_in[1]), .E(ld), .CK(divclk), .Q(text_in_r[1])
          );
-  EDFFX1 text_in_r_reg_0_ ( .D(text_in[0]), .E(ld), .CK(clk), .Q(text_in_r[0])
+  EDFFX1 text_in_r_reg_0_ ( .D(text_in[0]), .E(ld), .CK(divclk), .Q(text_in_r[0])
          );
-  EDFFX1 text_in_r_reg_35_ ( .D(text_in[35]), .E(ld), .CK(clk), .Q(
+  EDFFX1 text_in_r_reg_35_ ( .D(text_in[35]), .E(ld), .CK(divclk), .Q(
         text_in_r[35]) );
-  EDFFX1 text_in_r_reg_34_ ( .D(text_in[34]), .E(ld), .CK(clk), .Q(
+  EDFFX1 text_in_r_reg_34_ ( .D(text_in[34]), .E(ld), .CK(divclk), .Q(
         text_in_r[34]) );
-  EDFFX1 text_in_r_reg_33_ ( .D(text_in[33]), .E(ld), .CK(clk), .Q(
+  EDFFX1 text_in_r_reg_33_ ( .D(text_in[33]), .E(ld), .CK(divclk), .Q(
         text_in_r[33]) );
-  EDFFX1 text_in_r_reg_32_ ( .D(text_in[32]), .E(ld), .CK(clk), .Q(
+  EDFFX1 text_in_r_reg_32_ ( .D(text_in[32]), .E(ld), .CK(divclk), .Q(
         text_in_r[32]) );
-  EDFFX1 text_in_r_reg_31_ ( .D(text_in[31]), .E(ld), .CK(clk), .Q(
+  EDFFX1 text_in_r_reg_31_ ( .D(text_in[31]), .E(ld), .CK(divclk), .Q(
         text_in_r[31]) );
-  EDFFX1 text_in_r_reg_30_ ( .D(text_in[30]), .E(ld), .CK(clk), .Q(
+  EDFFX1 text_in_r_reg_30_ ( .D(text_in[30]), .E(ld), .CK(divclk), .Q(
         text_in_r[30]) );
-  EDFFX1 text_in_r_reg_29_ ( .D(text_in[29]), .E(ld), .CK(clk), .Q(
+  EDFFX1 text_in_r_reg_29_ ( .D(text_in[29]), .E(ld), .CK(divclk), .Q(
         text_in_r[29]) );
-  EDFFX1 text_in_r_reg_28_ ( .D(text_in[28]), .E(ld), .CK(clk), .Q(
+  EDFFX1 text_in_r_reg_28_ ( .D(text_in[28]), .E(ld), .CK(divclk), .Q(
         text_in_r[28]) );
-  EDFFX1 text_in_r_reg_27_ ( .D(text_in[27]), .E(ld), .CK(clk), .Q(
+  EDFFX1 text_in_r_reg_27_ ( .D(text_in[27]), .E(ld), .CK(divclk), .Q(
         text_in_r[27]) );
-  EDFFX1 text_in_r_reg_26_ ( .D(text_in[26]), .E(ld), .CK(clk), .Q(
+  EDFFX1 text_in_r_reg_26_ ( .D(text_in[26]), .E(ld), .CK(divclk), .Q(
         text_in_r[26]) );
-  EDFFX1 text_in_r_reg_25_ ( .D(text_in[25]), .E(ld), .CK(clk), .Q(
+  EDFFX1 text_in_r_reg_25_ ( .D(text_in[25]), .E(ld), .CK(divclk), .Q(
         text_in_r[25]) );
-  EDFFX1 text_in_r_reg_24_ ( .D(text_in[24]), .E(ld), .CK(clk), .Q(
+  EDFFX1 text_in_r_reg_24_ ( .D(text_in[24]), .E(ld), .CK(divclk), .Q(
         text_in_r[24]) );
-  EDFFX1 text_in_r_reg_23_ ( .D(text_in[23]), .E(ld), .CK(clk), .Q(
+  EDFFX1 text_in_r_reg_23_ ( .D(text_in[23]), .E(ld), .CK(divclk), .Q(
         text_in_r[23]) );
-  EDFFX1 text_in_r_reg_22_ ( .D(text_in[22]), .E(ld), .CK(clk), .Q(
+  EDFFX1 text_in_r_reg_22_ ( .D(text_in[22]), .E(ld), .CK(divclk), .Q(
         text_in_r[22]) );
-  EDFFX1 text_in_r_reg_21_ ( .D(text_in[21]), .E(ld), .CK(clk), .Q(
+  EDFFX1 text_in_r_reg_21_ ( .D(text_in[21]), .E(ld), .CK(divclk), .Q(
         text_in_r[21]) );
-  EDFFX1 text_in_r_reg_20_ ( .D(text_in[20]), .E(ld), .CK(clk), .Q(
+  EDFFX1 text_in_r_reg_20_ ( .D(text_in[20]), .E(ld), .CK(divclk), .Q(
         text_in_r[20]) );
-  EDFFX1 text_in_r_reg_19_ ( .D(text_in[19]), .E(ld), .CK(clk), .Q(
+  EDFFX1 text_in_r_reg_19_ ( .D(text_in[19]), .E(ld), .CK(divclk), .Q(
         text_in_r[19]) );
-  EDFFX1 text_in_r_reg_18_ ( .D(text_in[18]), .E(ld), .CK(clk), .Q(
+  EDFFX1 text_in_r_reg_18_ ( .D(text_in[18]), .E(ld), .CK(divclk), .Q(
         text_in_r[18]) );
-  EDFFX1 text_in_r_reg_17_ ( .D(text_in[17]), .E(ld), .CK(clk), .Q(
+  EDFFX1 text_in_r_reg_17_ ( .D(text_in[17]), .E(ld), .CK(divclk), .Q(
         text_in_r[17]) );
-  EDFFX1 text_in_r_reg_16_ ( .D(text_in[16]), .E(ld), .CK(clk), .Q(
+  EDFFX1 text_in_r_reg_16_ ( .D(text_in[16]), .E(ld), .CK(divclk), .Q(
         text_in_r[16]) );
-  EDFFX1 text_in_r_reg_15_ ( .D(text_in[15]), .E(ld), .CK(clk), .Q(
+  EDFFX1 text_in_r_reg_15_ ( .D(text_in[15]), .E(ld), .CK(divclk), .Q(
         text_in_r[15]) );
-  EDFFX1 text_in_r_reg_14_ ( .D(text_in[14]), .E(ld), .CK(clk), .Q(
+  EDFFX1 text_in_r_reg_14_ ( .D(text_in[14]), .E(ld), .CK(divclk), .Q(
         text_in_r[14]) );
-  EDFFX1 text_in_r_reg_13_ ( .D(text_in[13]), .E(ld), .CK(clk), .Q(
+  EDFFX1 text_in_r_reg_13_ ( .D(text_in[13]), .E(ld), .CK(divclk), .Q(
         text_in_r[13]) );
-  EDFFX1 text_in_r_reg_12_ ( .D(text_in[12]), .E(ld), .CK(clk), .Q(
+  EDFFX1 text_in_r_reg_12_ ( .D(text_in[12]), .E(ld), .CK(divclk), .Q(
         text_in_r[12]) );
-  EDFFX1 text_in_r_reg_11_ ( .D(text_in[11]), .E(ld), .CK(clk), .Q(
+  EDFFX1 text_in_r_reg_11_ ( .D(text_in[11]), .E(ld), .CK(divclk), .Q(
         text_in_r[11]) );
-  EDFFX1 text_in_r_reg_10_ ( .D(text_in[10]), .E(ld), .CK(clk), .Q(
+  EDFFX1 text_in_r_reg_10_ ( .D(text_in[10]), .E(ld), .CK(divclk), .Q(
         text_in_r[10]) );
-  EDFFX1 text_in_r_reg_9_ ( .D(text_in[9]), .E(ld), .CK(clk), .Q(text_in_r[9])
+  EDFFX1 text_in_r_reg_9_ ( .D(text_in[9]), .E(ld), .CK(divclk), .Q(text_in_r[9])
          );
-  EDFFX1 text_in_r_reg_8_ ( .D(text_in[8]), .E(ld), .CK(clk), .Q(text_in_r[8])
+  EDFFX1 text_in_r_reg_8_ ( .D(text_in[8]), .E(ld), .CK(divclk), .Q(text_in_r[8])
          );
-  DFFX1 dcnt_reg_1_ ( .D(n399), .CK(clk), .QN(n3) );
-  DFFHQX1 dcnt_reg_2_ ( .D(n398), .CK(clk), .Q(dcnt_2_) );
-WDDLDFFMS  sa21_reg_6_ ( .D(N182), .CK(clk_orig), .Q(sa21[6]) );
-WDDLDFFMS  sa11_reg_6_ ( .D(N198), .CK(clk_orig), .Q(sa11[6]) );
-WDDLDFFMS  sa01_reg_6_ ( .D(N214), .CK(clk_orig), .Q(sa01[6]) );
-WDDLDFFMS  sa12_reg_6_ ( .D(N134), .CK(clk_orig), .Q(sa12[6]) );
-WDDLDFFMS  sa02_reg_6_ ( .D(N150), .CK(clk_orig), .Q(sa02[6]) );
-WDDLDFFMS  sa22_reg_6_ ( .D(N118), .CK(clk_orig), .Q(sa22[6]) );
-WDDLDFFMS  sa13_reg_6_ ( .D(N70), .CK(clk_orig), .Q(sa13[6]) );
-WDDLDFFMS  sa03_reg_6_ ( .D(N86), .CK(clk_orig), .Q(sa03[6]) );
-WDDLDFFMS  sa23_reg_6_ ( .D(N54), .CK(clk_orig), .Q(sa23[6]) );
-WDDLDFFMS  sa10_reg_6_ ( .D(N262), .CK(clk_orig), .Q(sa10[6]) );
-WDDLDFFMS  sa00_reg_6_ ( .D(N278), .CK(clk_orig), .Q(sa00[6]) );
-WDDLDFFMS  sa20_reg_6_ ( .D(N246), .CK(clk_orig), .Q(sa20[6]) );
-WDDLDFFMS  sa00_reg_0_ ( .D(N272), .CK(clk_orig), .Q(sa00[0]) );
-WDDLDFFMS  sa22_reg_0_ ( .D(N112), .CK(clk_orig), .Q(sa22[0]) );
-WDDLDFFMS  sa21_reg_0_ ( .D(N176), .CK(clk_orig), .Q(sa21[0]) );
-WDDLDFFMS  sa23_reg_0_ ( .D(N48), .CK(clk_orig), .Q(sa23[0]) );
-WDDLDFFMS  sa31_reg_0_ ( .D(N160), .CK(clk_orig), .Q(sa31[0]) );
-WDDLDFFMS  sa01_reg_0_ ( .D(N208), .CK(clk_orig), .Q(sa01[0]) );
-WDDLDFFMS  sa02_reg_0_ ( .D(N144), .CK(clk_orig), .Q(sa02[0]) );
-WDDLDFFMS  sa32_reg_0_ ( .D(N96), .CK(clk_orig), .Q(sa32[0]) );
-WDDLDFFMS  sa03_reg_0_ ( .D(N80), .CK(clk_orig), .Q(sa03[0]) );
-WDDLDFFMS  sa33_reg_0_ ( .D(N32), .CK(clk_orig), .Q(sa33[0]) );
-WDDLDFFMS  sa30_reg_0_ ( .D(N224), .CK(clk_orig), .Q(sa30[0]) );
-WDDLDFFMS  sa11_reg_0_ ( .D(N192), .CK(clk_orig), .Q(sa11[0]) );
-WDDLDFFMS  sa13_reg_0_ ( .D(N64), .CK(clk_orig), .Q(sa13[0]) );
-WDDLDFFMS  sa20_reg_0_ ( .D(N240), .CK(clk_orig), .Q(sa20[0]) );
-WDDLDFFMS  sa12_reg_0_ ( .D(N128), .CK(clk_orig), .Q(sa12[0]) );
-WDDLDFFMS  sa10_reg_0_ ( .D(N256), .CK(clk_orig), .Q(sa10[0]) );
-WDDLDFFMS  sa31_reg_6_ ( .D(N166), .CK(clk_orig), .Q(sa31[6]) );
-WDDLDFFMS  sa32_reg_6_ ( .D(N102), .CK(clk_orig), .Q(sa32[6]) );
-WDDLDFFMS  sa33_reg_6_ ( .D(N38), .CK(clk_orig), .Q(sa33[6]) );
-WDDLDFFMS  sa30_reg_6_ ( .D(N230), .CK(clk_orig), .Q(sa30[6]) );
-WDDLDFFMS  sa21_reg_5_ ( .D(N181), .CK(clk_orig), .Q(sa21[5]) );
-WDDLDFFMS  sa22_reg_5_ ( .D(N117), .CK(clk_orig), .Q(sa22[5]) );
-WDDLDFFMS  sa23_reg_5_ ( .D(N53), .CK(clk_orig), .Q(sa23[5]) );
-WDDLDFFMS  sa20_reg_5_ ( .D(N245), .CK(clk_orig), .Q(sa20[5]) );
-WDDLDFFMS  sa21_reg_2_ ( .D(N178), .CK(clk_orig), .Q(sa21[2]) );
-WDDLDFFMS  sa11_reg_2_ ( .D(N194), .CK(clk_orig), .Q(sa11[2]) );
-WDDLDFFMS  sa12_reg_2_ ( .D(N130), .CK(clk_orig), .Q(sa12[2]) );
-WDDLDFFMS  sa22_reg_2_ ( .D(N114), .CK(clk_orig), .Q(sa22[2]) );
-WDDLDFFMS  sa13_reg_2_ ( .D(N66), .CK(clk_orig), .Q(sa13[2]) );
-WDDLDFFMS  sa23_reg_2_ ( .D(N50), .CK(clk_orig), .Q(sa23[2]) );
-WDDLDFFMS  sa10_reg_2_ ( .D(N258), .CK(clk_orig), .Q(sa10[2]) );
-WDDLDFFMS  sa20_reg_2_ ( .D(N242), .CK(clk_orig), .Q(sa20[2]) );
-WDDLDFFMS  sa10_reg_7_ ( .D(N263), .CK(clk_orig), .Q(sa10[7]) );
-WDDLDFFMS  sa03_reg_7_ ( .D(N87), .CK(clk_orig), .Q(sa03[7]) );
-WDDLDFFMS  sa13_reg_7_ ( .D(N71), .CK(clk_orig), .Q(sa13[7]) );
-WDDLDFFMS  sa02_reg_7_ ( .D(N151), .CK(clk_orig), .Q(sa02[7]) );
-WDDLDFFMS  sa12_reg_7_ ( .D(N135), .CK(clk_orig), .Q(sa12[7]) );
-WDDLDFFMS  sa01_reg_7_ ( .D(N215), .CK(clk_orig), .Q(sa01[7]) );
-WDDLDFFMS  sa11_reg_7_ ( .D(N199), .CK(clk_orig), .Q(sa11[7]) );
-WDDLDFFMS  sa20_reg_7_ ( .D(N247), .CK(clk_orig), .Q(sa20[7]) );
-WDDLDFFMS  sa21_reg_7_ ( .D(N183), .CK(clk_orig), .Q(sa21[7]) );
-WDDLDFFMS  sa23_reg_7_ ( .D(N55), .CK(clk_orig), .Q(sa23[7]) );
-WDDLDFFMS  sa22_reg_7_ ( .D(N119), .CK(clk_orig), .Q(sa22[7]) );
-WDDLDFFMS  sa00_reg_7_ ( .D(N279), .CK(clk_orig), .Q(sa00[7]) );
-WDDLDFFMS  sa31_reg_5_ ( .D(N165), .CK(clk_orig), .Q(sa31[5]) );
-WDDLDFFMS  sa11_reg_5_ ( .D(N197), .CK(clk_orig), .Q(sa11[5]) );
-WDDLDFFMS  sa01_reg_5_ ( .D(N213), .CK(clk_orig), .Q(sa01[5]) );
-WDDLDFFMS  sa32_reg_5_ ( .D(N101), .CK(clk_orig), .Q(sa32[5]) );
-WDDLDFFMS  sa12_reg_5_ ( .D(N133), .CK(clk_orig), .Q(sa12[5]) );
-WDDLDFFMS  sa02_reg_5_ ( .D(N149), .CK(clk_orig), .Q(sa02[5]) );
-WDDLDFFMS  sa33_reg_5_ ( .D(N37), .CK(clk_orig), .Q(sa33[5]) );
-WDDLDFFMS  sa13_reg_5_ ( .D(N69), .CK(clk_orig), .Q(sa13[5]) );
-WDDLDFFMS  sa03_reg_5_ ( .D(N85), .CK(clk_orig), .Q(sa03[5]) );
-WDDLDFFMS  sa30_reg_5_ ( .D(N229), .CK(clk_orig), .Q(sa30[5]) );
-WDDLDFFMS  sa10_reg_5_ ( .D(N261), .CK(clk_orig), .Q(sa10[5]) );
-WDDLDFFMS  sa00_reg_5_ ( .D(N277), .CK(clk_orig), .Q(sa00[5]) );
-WDDLDFFMS  sa21_reg_4_ ( .D(N180), .CK(clk_orig), .Q(sa21[4]) );
-WDDLDFFMS  sa22_reg_4_ ( .D(N116), .CK(clk_orig), .Q(sa22[4]) );
-WDDLDFFMS  sa23_reg_4_ ( .D(N52), .CK(clk_orig), .Q(sa23[4]) );
-WDDLDFFMS  sa11_reg_4_ ( .D(N196), .CK(clk_orig), .Q(sa11[4]) );
-WDDLDFFMS  sa13_reg_4_ ( .D(N68), .CK(clk_orig), .Q(sa13[4]) );
-WDDLDFFMS  sa20_reg_4_ ( .D(N244), .CK(clk_orig), .Q(sa20[4]) );
-WDDLDFFMS  sa12_reg_4_ ( .D(N132), .CK(clk_orig), .Q(sa12[4]) );
-WDDLDFFMS  sa10_reg_4_ ( .D(N260), .CK(clk_orig), .Q(sa10[4]) );
-WDDLDFFMS  sa21_reg_3_ ( .D(N179), .CK(clk_orig), .Q(sa21[3]) );
-WDDLDFFMS  sa31_reg_3_ ( .D(N163), .CK(clk_orig), .Q(sa31[3]) );
-WDDLDFFMS  sa01_reg_3_ ( .D(N211), .CK(clk_orig), .Q(sa01[3]) );
-WDDLDFFMS  sa02_reg_3_ ( .D(N147), .CK(clk_orig), .Q(sa02[3]) );
-WDDLDFFMS  sa22_reg_3_ ( .D(N115), .CK(clk_orig), .Q(sa22[3]) );
-WDDLDFFMS  sa32_reg_3_ ( .D(N99), .CK(clk_orig), .Q(sa32[3]) );
-WDDLDFFMS  sa03_reg_3_ ( .D(N83), .CK(clk_orig), .Q(sa03[3]) );
-WDDLDFFMS  sa23_reg_3_ ( .D(N51), .CK(clk_orig), .Q(sa23[3]) );
-WDDLDFFMS  sa33_reg_3_ ( .D(N35), .CK(clk_orig), .Q(sa33[3]) );
-WDDLDFFMS  sa30_reg_3_ ( .D(N227), .CK(clk_orig), .Q(sa30[3]) );
-WDDLDFFMS  sa11_reg_3_ ( .D(N195), .CK(clk_orig), .Q(sa11[3]) );
-WDDLDFFMS  sa13_reg_3_ ( .D(N67), .CK(clk_orig), .Q(sa13[3]) );
-WDDLDFFMS  sa20_reg_3_ ( .D(N243), .CK(clk_orig), .Q(sa20[3]) );
-WDDLDFFMS  sa12_reg_3_ ( .D(N131), .CK(clk_orig), .Q(sa12[3]) );
-WDDLDFFMS  sa00_reg_3_ ( .D(N275), .CK(clk_orig), .Q(sa00[3]) );
-WDDLDFFMS  sa10_reg_3_ ( .D(N259), .CK(clk_orig), .Q(sa10[3]) );
-WDDLDFFMS  sa31_reg_2_ ( .D(N162), .CK(clk_orig), .Q(sa31[2]) );
-WDDLDFFMS  sa01_reg_2_ ( .D(N210), .CK(clk_orig), .Q(sa01[2]) );
-WDDLDFFMS  sa32_reg_2_ ( .D(N98), .CK(clk_orig), .Q(sa32[2]) );
-WDDLDFFMS  sa02_reg_2_ ( .D(N146), .CK(clk_orig), .Q(sa02[2]) );
-WDDLDFFMS  sa33_reg_2_ ( .D(N34), .CK(clk_orig), .Q(sa33[2]) );
-WDDLDFFMS  sa03_reg_2_ ( .D(N82), .CK(clk_orig), .Q(sa03[2]) );
-WDDLDFFMS  sa30_reg_2_ ( .D(N226), .CK(clk_orig), .Q(sa30[2]) );
-WDDLDFFMS  sa00_reg_2_ ( .D(N274), .CK(clk_orig), .Q(sa00[2]) );
-WDDLDFFMS  sa30_reg_7_ ( .D(N231), .CK(clk_orig), .Q(sa30[7]) );
-WDDLDFFMS  sa31_reg_7_ ( .D(N167), .CK(clk_orig), .Q(sa31[7]) );
-WDDLDFFMS  sa32_reg_7_ ( .D(N103), .CK(clk_orig), .Q(sa32[7]) );
-WDDLDFFMS  sa33_reg_7_ ( .D(N39), .CK(clk_orig), .Q(sa33[7]) );
-WDDLDFFMS  sa31_reg_4_ ( .D(N164), .CK(clk_orig), .Q(sa31[4]) );
-WDDLDFFMS  sa01_reg_4_ ( .D(N212), .CK(clk_orig), .Q(sa01[4]) );
-WDDLDFFMS  sa02_reg_4_ ( .D(N148), .CK(clk_orig), .Q(sa02[4]) );
-WDDLDFFMS  sa32_reg_4_ ( .D(N100), .CK(clk_orig), .Q(sa32[4]) );
-WDDLDFFMS  sa03_reg_4_ ( .D(N84), .CK(clk_orig), .Q(sa03[4]) );
-WDDLDFFMS  sa33_reg_4_ ( .D(N36), .CK(clk_orig), .Q(sa33[4]) );
-WDDLDFFMS  sa30_reg_4_ ( .D(N228), .CK(clk_orig), .Q(sa30[4]) );
-WDDLDFFMS  sa00_reg_4_ ( .D(N276), .CK(clk_orig), .Q(sa00[4]) );
+  DFFX1 dcnt_reg_1_ ( .D(n399), .CK(divclk), .QN(n3) );
+  DFFHQX1 dcnt_reg_2_ ( .D(n398), .CK(divclk), .Q(dcnt_2_) );
+WDDLDFFMS  sa21_reg_6_ ( .D(N182), .CK(clk), .Q(sa21[6]) );
+WDDLDFFMS  sa11_reg_6_ ( .D(N198), .CK(clk), .Q(sa11[6]) );
+WDDLDFFMS  sa01_reg_6_ ( .D(N214), .CK(clk), .Q(sa01[6]) );
+WDDLDFFMS  sa12_reg_6_ ( .D(N134), .CK(clk), .Q(sa12[6]) );
+WDDLDFFMS  sa02_reg_6_ ( .D(N150), .CK(clk), .Q(sa02[6]) );
+WDDLDFFMS  sa22_reg_6_ ( .D(N118), .CK(clk), .Q(sa22[6]) );
+WDDLDFFMS  sa13_reg_6_ ( .D(N70), .CK(clk), .Q(sa13[6]) );
+WDDLDFFMS  sa03_reg_6_ ( .D(N86), .CK(clk), .Q(sa03[6]) );
+WDDLDFFMS  sa23_reg_6_ ( .D(N54), .CK(clk), .Q(sa23[6]) );
+WDDLDFFMS  sa10_reg_6_ ( .D(N262), .CK(clk), .Q(sa10[6]) );
+WDDLDFFMS  sa00_reg_6_ ( .D(N278), .CK(clk), .Q(sa00[6]) );
+WDDLDFFMS  sa20_reg_6_ ( .D(N246), .CK(clk), .Q(sa20[6]) );
+WDDLDFFMS  sa00_reg_0_ ( .D(N272), .CK(clk), .Q(sa00[0]) );
+WDDLDFFMS  sa22_reg_0_ ( .D(N112), .CK(clk), .Q(sa22[0]) );
+WDDLDFFMS  sa21_reg_0_ ( .D(N176), .CK(clk), .Q(sa21[0]) );
+WDDLDFFMS  sa23_reg_0_ ( .D(N48), .CK(clk), .Q(sa23[0]) );
+WDDLDFFMS  sa31_reg_0_ ( .D(N160), .CK(clk), .Q(sa31[0]) );
+WDDLDFFMS  sa01_reg_0_ ( .D(N208), .CK(clk), .Q(sa01[0]) );
+WDDLDFFMS  sa02_reg_0_ ( .D(N144), .CK(clk), .Q(sa02[0]) );
+WDDLDFFMS  sa32_reg_0_ ( .D(N96), .CK(clk), .Q(sa32[0]) );
+WDDLDFFMS  sa03_reg_0_ ( .D(N80), .CK(clk), .Q(sa03[0]) );
+WDDLDFFMS  sa33_reg_0_ ( .D(N32), .CK(clk), .Q(sa33[0]) );
+WDDLDFFMS  sa30_reg_0_ ( .D(N224), .CK(clk), .Q(sa30[0]) );
+WDDLDFFMS  sa11_reg_0_ ( .D(N192), .CK(clk), .Q(sa11[0]) );
+WDDLDFFMS  sa13_reg_0_ ( .D(N64), .CK(clk), .Q(sa13[0]) );
+WDDLDFFMS  sa20_reg_0_ ( .D(N240), .CK(clk), .Q(sa20[0]) );
+WDDLDFFMS  sa12_reg_0_ ( .D(N128), .CK(clk), .Q(sa12[0]) );
+WDDLDFFMS  sa10_reg_0_ ( .D(N256), .CK(clk), .Q(sa10[0]) );
+WDDLDFFMS  sa31_reg_6_ ( .D(N166), .CK(clk), .Q(sa31[6]) );
+WDDLDFFMS  sa32_reg_6_ ( .D(N102), .CK(clk), .Q(sa32[6]) );
+WDDLDFFMS  sa33_reg_6_ ( .D(N38), .CK(clk), .Q(sa33[6]) );
+WDDLDFFMS  sa30_reg_6_ ( .D(N230), .CK(clk), .Q(sa30[6]) );
+WDDLDFFMS  sa21_reg_5_ ( .D(N181), .CK(clk), .Q(sa21[5]) );
+WDDLDFFMS  sa22_reg_5_ ( .D(N117), .CK(clk), .Q(sa22[5]) );
+WDDLDFFMS  sa23_reg_5_ ( .D(N53), .CK(clk), .Q(sa23[5]) );
+WDDLDFFMS  sa20_reg_5_ ( .D(N245), .CK(clk), .Q(sa20[5]) );
+WDDLDFFMS  sa21_reg_2_ ( .D(N178), .CK(clk), .Q(sa21[2]) );
+WDDLDFFMS  sa11_reg_2_ ( .D(N194), .CK(clk), .Q(sa11[2]) );
+WDDLDFFMS  sa12_reg_2_ ( .D(N130), .CK(clk), .Q(sa12[2]) );
+WDDLDFFMS  sa22_reg_2_ ( .D(N114), .CK(clk), .Q(sa22[2]) );
+WDDLDFFMS  sa13_reg_2_ ( .D(N66), .CK(clk), .Q(sa13[2]) );
+WDDLDFFMS  sa23_reg_2_ ( .D(N50), .CK(clk), .Q(sa23[2]) );
+WDDLDFFMS  sa10_reg_2_ ( .D(N258), .CK(clk), .Q(sa10[2]) );
+WDDLDFFMS  sa20_reg_2_ ( .D(N242), .CK(clk), .Q(sa20[2]) );
+WDDLDFFMS  sa10_reg_7_ ( .D(N263), .CK(clk), .Q(sa10[7]) );
+WDDLDFFMS  sa03_reg_7_ ( .D(N87), .CK(clk), .Q(sa03[7]) );
+WDDLDFFMS  sa13_reg_7_ ( .D(N71), .CK(clk), .Q(sa13[7]) );
+WDDLDFFMS  sa02_reg_7_ ( .D(N151), .CK(clk), .Q(sa02[7]) );
+WDDLDFFMS  sa12_reg_7_ ( .D(N135), .CK(clk), .Q(sa12[7]) );
+WDDLDFFMS  sa01_reg_7_ ( .D(N215), .CK(clk), .Q(sa01[7]) );
+WDDLDFFMS  sa11_reg_7_ ( .D(N199), .CK(clk), .Q(sa11[7]) );
+WDDLDFFMS  sa20_reg_7_ ( .D(N247), .CK(clk), .Q(sa20[7]) );
+WDDLDFFMS  sa21_reg_7_ ( .D(N183), .CK(clk), .Q(sa21[7]) );
+WDDLDFFMS  sa23_reg_7_ ( .D(N55), .CK(clk), .Q(sa23[7]) );
+WDDLDFFMS  sa22_reg_7_ ( .D(N119), .CK(clk), .Q(sa22[7]) );
+WDDLDFFMS  sa00_reg_7_ ( .D(N279), .CK(clk), .Q(sa00[7]) );
+WDDLDFFMS  sa31_reg_5_ ( .D(N165), .CK(clk), .Q(sa31[5]) );
+WDDLDFFMS  sa11_reg_5_ ( .D(N197), .CK(clk), .Q(sa11[5]) );
+WDDLDFFMS  sa01_reg_5_ ( .D(N213), .CK(clk), .Q(sa01[5]) );
+WDDLDFFMS  sa32_reg_5_ ( .D(N101), .CK(clk), .Q(sa32[5]) );
+WDDLDFFMS  sa12_reg_5_ ( .D(N133), .CK(clk), .Q(sa12[5]) );
+WDDLDFFMS  sa02_reg_5_ ( .D(N149), .CK(clk), .Q(sa02[5]) );
+WDDLDFFMS  sa33_reg_5_ ( .D(N37), .CK(clk), .Q(sa33[5]) );
+WDDLDFFMS  sa13_reg_5_ ( .D(N69), .CK(clk), .Q(sa13[5]) );
+WDDLDFFMS  sa03_reg_5_ ( .D(N85), .CK(clk), .Q(sa03[5]) );
+WDDLDFFMS  sa30_reg_5_ ( .D(N229), .CK(clk), .Q(sa30[5]) );
+WDDLDFFMS  sa10_reg_5_ ( .D(N261), .CK(clk), .Q(sa10[5]) );
+WDDLDFFMS  sa00_reg_5_ ( .D(N277), .CK(clk), .Q(sa00[5]) );
+WDDLDFFMS  sa21_reg_4_ ( .D(N180), .CK(clk), .Q(sa21[4]) );
+WDDLDFFMS  sa22_reg_4_ ( .D(N116), .CK(clk), .Q(sa22[4]) );
+WDDLDFFMS  sa23_reg_4_ ( .D(N52), .CK(clk), .Q(sa23[4]) );
+WDDLDFFMS  sa11_reg_4_ ( .D(N196), .CK(clk), .Q(sa11[4]) );
+WDDLDFFMS  sa13_reg_4_ ( .D(N68), .CK(clk), .Q(sa13[4]) );
+WDDLDFFMS  sa20_reg_4_ ( .D(N244), .CK(clk), .Q(sa20[4]) );
+WDDLDFFMS  sa12_reg_4_ ( .D(N132), .CK(clk), .Q(sa12[4]) );
+WDDLDFFMS  sa10_reg_4_ ( .D(N260), .CK(clk), .Q(sa10[4]) );
+WDDLDFFMS  sa21_reg_3_ ( .D(N179), .CK(clk), .Q(sa21[3]) );
+WDDLDFFMS  sa31_reg_3_ ( .D(N163), .CK(clk), .Q(sa31[3]) );
+WDDLDFFMS  sa01_reg_3_ ( .D(N211), .CK(clk), .Q(sa01[3]) );
+WDDLDFFMS  sa02_reg_3_ ( .D(N147), .CK(clk), .Q(sa02[3]) );
+WDDLDFFMS  sa22_reg_3_ ( .D(N115), .CK(clk), .Q(sa22[3]) );
+WDDLDFFMS  sa32_reg_3_ ( .D(N99), .CK(clk), .Q(sa32[3]) );
+WDDLDFFMS  sa03_reg_3_ ( .D(N83), .CK(clk), .Q(sa03[3]) );
+WDDLDFFMS  sa23_reg_3_ ( .D(N51), .CK(clk), .Q(sa23[3]) );
+WDDLDFFMS  sa33_reg_3_ ( .D(N35), .CK(clk), .Q(sa33[3]) );
+WDDLDFFMS  sa30_reg_3_ ( .D(N227), .CK(clk), .Q(sa30[3]) );
+WDDLDFFMS  sa11_reg_3_ ( .D(N195), .CK(clk), .Q(sa11[3]) );
+WDDLDFFMS  sa13_reg_3_ ( .D(N67), .CK(clk), .Q(sa13[3]) );
+WDDLDFFMS  sa20_reg_3_ ( .D(N243), .CK(clk), .Q(sa20[3]) );
+WDDLDFFMS  sa12_reg_3_ ( .D(N131), .CK(clk), .Q(sa12[3]) );
+WDDLDFFMS  sa00_reg_3_ ( .D(N275), .CK(clk), .Q(sa00[3]) );
+WDDLDFFMS  sa10_reg_3_ ( .D(N259), .CK(clk), .Q(sa10[3]) );
+WDDLDFFMS  sa31_reg_2_ ( .D(N162), .CK(clk), .Q(sa31[2]) );
+WDDLDFFMS  sa01_reg_2_ ( .D(N210), .CK(clk), .Q(sa01[2]) );
+WDDLDFFMS  sa32_reg_2_ ( .D(N98), .CK(clk), .Q(sa32[2]) );
+WDDLDFFMS  sa02_reg_2_ ( .D(N146), .CK(clk), .Q(sa02[2]) );
+WDDLDFFMS  sa33_reg_2_ ( .D(N34), .CK(clk), .Q(sa33[2]) );
+WDDLDFFMS  sa03_reg_2_ ( .D(N82), .CK(clk), .Q(sa03[2]) );
+WDDLDFFMS  sa30_reg_2_ ( .D(N226), .CK(clk), .Q(sa30[2]) );
+WDDLDFFMS  sa00_reg_2_ ( .D(N274), .CK(clk), .Q(sa00[2]) );
+WDDLDFFMS  sa30_reg_7_ ( .D(N231), .CK(clk), .Q(sa30[7]) );
+WDDLDFFMS  sa31_reg_7_ ( .D(N167), .CK(clk), .Q(sa31[7]) );
+WDDLDFFMS  sa32_reg_7_ ( .D(N103), .CK(clk), .Q(sa32[7]) );
+WDDLDFFMS  sa33_reg_7_ ( .D(N39), .CK(clk), .Q(sa33[7]) );
+WDDLDFFMS  sa31_reg_4_ ( .D(N164), .CK(clk), .Q(sa31[4]) );
+WDDLDFFMS  sa01_reg_4_ ( .D(N212), .CK(clk), .Q(sa01[4]) );
+WDDLDFFMS  sa02_reg_4_ ( .D(N148), .CK(clk), .Q(sa02[4]) );
+WDDLDFFMS  sa32_reg_4_ ( .D(N100), .CK(clk), .Q(sa32[4]) );
+WDDLDFFMS  sa03_reg_4_ ( .D(N84), .CK(clk), .Q(sa03[4]) );
+WDDLDFFMS  sa33_reg_4_ ( .D(N36), .CK(clk), .Q(sa33[4]) );
+WDDLDFFMS  sa30_reg_4_ ( .D(N228), .CK(clk), .Q(sa30[4]) );
+WDDLDFFMS  sa00_reg_4_ ( .D(N276), .CK(clk), .Q(sa00[4]) );
   XOR2XL U1091 ( .A(w3[28]), .B(sa13_sr[4]), .Y(n480) );
   XOR2XL U671 ( .A(w0[28]), .B(sa10_sr[4]), .Y(n750) );
   XOR2XL U811 ( .A(w1[28]), .B(sa11_sr[4]), .Y(n660) );
@@ -9878,27 +9918,27 @@ WDDLDFFMS  sa00_reg_4_ ( .D(N276), .CK(clk_orig), .Q(sa00[4]) );
   XOR2XL U972 ( .A(w2[18]), .B(sa02_sr[2]), .Y(n555) );
   XOR2XL U1113 ( .A(sa13_sr[1]), .B(sa23_sr[1]), .Y(n464) );
   XOR2XL U1112 ( .A(w3[18]), .B(sa03_sr[2]), .Y(n465) );
-  DFFX4 ld_r_reg ( .D(ld), .CK(clk), .Q(n960), .QN(n4) );
-WDDLDFFMS sa32_reg_1_ ( .D(N97), .CK(clk_orig), .Q(sa32[1]) );
-WDDLDFFMS sa31_reg_1_ ( .D(N161), .CK(clk_orig), .Q(sa31[1]) );
-WDDLDFFMS sa30_reg_1_ ( .D(N225), .CK(clk_orig), .Q(sa30[1]) );
-WDDLDFFMS sa33_reg_1_ ( .D(N33), .CK(clk_orig), .Q(sa33[1]) );
-WDDLDFFMS sa21_reg_1_ ( .D(N177), .CK(clk_orig), .Q(sa21[1]) );
-WDDLDFFMS sa20_reg_1_ ( .D(N241), .CK(clk_orig), .Q(sa20[1]) );
+  DFFX4 ld_r_reg ( .D(ld), .CK(divclk), .Q(n960), .QN(n4) );
+WDDLDFFMS sa32_reg_1_ ( .D(N97), .CK(clk), .Q(sa32[1]) );
+WDDLDFFMS sa31_reg_1_ ( .D(N161), .CK(clk), .Q(sa31[1]) );
+WDDLDFFMS sa30_reg_1_ ( .D(N225), .CK(clk), .Q(sa30[1]) );
+WDDLDFFMS sa33_reg_1_ ( .D(N33), .CK(clk), .Q(sa33[1]) );
+WDDLDFFMS sa21_reg_1_ ( .D(N177), .CK(clk), .Q(sa21[1]) );
+WDDLDFFMS sa20_reg_1_ ( .D(N241), .CK(clk), .Q(sa20[1]) );
   //wddl
-  //DFFHQX2 sa23_reg_1_ ( .D(N49), .CK(clk), .Q(sa23[1]) );
-WDDLDFFHQX2 sa23_reg_1_ ( .D(N49), .Dinv(N49inv),.CLK(clk_orig), .PRECLK(clk), .Q(sa23[1]));
-//DFFHQX1 sa23_reg_1_ ( .D(N49), .CK(clk), .Q(sa23[1]) );
-//WDDLDFFMS sa23_reg_1_ ( .D(N49), .CK(clk_orig), .Q(sa23[1]) );
-WDDLDFFMS sa22_reg_1_ ( .D(N113), .CK(clk_orig), .Q(sa22[1]) );
-WDDLDFFMS sa10_reg_1_ ( .D(N257), .CK(clk_orig), .Q(sa10[1]) );
-WDDLDFFMS sa13_reg_1_ ( .D(N65), .CK(clk_orig), .Q(sa13[1]) );
-WDDLDFFMS sa12_reg_1_ ( .D(N129), .CK(clk_orig), .Q(sa12[1]) );
-WDDLDFFMS sa11_reg_1_ ( .D(N193), .CK(clk_orig), .Q(sa11[1]) );
-WDDLDFFMS sa03_reg_1_ ( .D(N81), .CK(clk_orig), .Q(sa03[1]) );
-WDDLDFFMS sa02_reg_1_ ( .D(N145), .CK(clk_orig), .Q(sa02[1]) );
-WDDLDFFMS sa01_reg_1_ ( .D(N209), .CK(clk_orig), .Q(sa01[1]) );
-WDDLDFFMS sa00_reg_1_ ( .D(N273), .CK(clk_orig), .Q(sa00[1]) );
+  //DFFHQX2 sa23_reg_1_ ( .D(N49), .CK(divclk), .Q(sa23[1]) );
+WDDLDFFHQX2 sa23_reg_1_ ( .D(N49), .Dinv(N49inv), .CLK(clk), .PRECLK(divclk), .Q(sa23[1]));
+//DFFHQX1 sa23_reg_1_ ( .D(N49), .CK(divclk), .Q(sa23[1]) );
+//WDDLDFFMS sa23_reg_1_ ( .D(N49), .CK(clk), .Q(sa23[1]) );
+WDDLDFFMS sa22_reg_1_ ( .D(N113), .CK(clk), .Q(sa22[1]) );
+WDDLDFFMS sa10_reg_1_ ( .D(N257), .CK(clk), .Q(sa10[1]) );
+WDDLDFFMS sa13_reg_1_ ( .D(N65), .CK(clk), .Q(sa13[1]) );
+WDDLDFFMS sa12_reg_1_ ( .D(N129), .CK(clk), .Q(sa12[1]) );
+WDDLDFFMS sa11_reg_1_ ( .D(N193), .CK(clk), .Q(sa11[1]) );
+WDDLDFFMS sa03_reg_1_ ( .D(N81), .CK(clk), .Q(sa03[1]) );
+WDDLDFFMS sa02_reg_1_ ( .D(N145), .CK(clk), .Q(sa02[1]) );
+WDDLDFFMS sa01_reg_1_ ( .D(N209), .CK(clk), .Q(sa01[1]) );
+WDDLDFFMS sa00_reg_1_ ( .D(N273), .CK(clk), .Q(sa00[1]) );
   XOR2X1 U898 ( .A(w1[1]), .B(sa01_sr[0]), .Y(n604) );
   XOR2X1 U684 ( .A(w0[16]), .B(sa00_sr[0]), .Y(n741) );
   XOR2X1 U866 ( .A(sa21_sr[0]), .B(sa31_sr[0]), .Y(n813) );
@@ -10234,7 +10274,7 @@ WDDLDFFMS sa00_reg_1_ ( .D(N273), .CK(clk_orig), .Q(sa00[1]) );
   XOR2X1 U941 ( .A(n796), .B(n794), .Y(n577) );
   XOR2X1 U1102 ( .A(n764), .B(n763), .Y(n472) );
   XOR2X1 U661 ( .A(n832), .B(n830), .Y(n757) );
-  DFFTRXL dcnt_reg_3_ ( .D(n1187), .RN(rst), .CK(clk), .QN(n2) );
+  DFFTRXL dcnt_reg_3_ ( .D(n1187), .RN(rst), .CK(divclk), .QN(n2) );
   AOI21X1 U1217 ( .A0(w1[4]), .A1(text_in_r[68]), .B0(n4), .Y(n833) );
   OAI21XL U1218 ( .A0(w1[4]), .A1(text_in_r[68]), .B0(n833), .Y(n834) );
   AOI2BB2X1 U1219 ( .B0(w1[4]), .B1(sa01_sr[3]), .A0N(sa01_sr[3]), .A1N(w1[4]), 
@@ -10431,7 +10471,7 @@ WDDLDFFMS sa00_reg_1_ ( .D(N273), .CK(clk_orig), .Q(sa00[1]) );
 //wddl
  
 //  OAI2BB1XL U1373 ( .A0N(n4), .A1N(sa23_next[1]), .B0(n1143), .Y(N49) );
-  CLKINVX3 Uwddlclk ( .A(clk), .Y(clk_bar));
+  CLKINVX3 Uwddlclk ( .A(divclk), .Y(clk_bar));
   WDDLNANDCOMP U1373 ( .A(n4), .B(sa23_next[1]) , .C(n1143), .clkinv(clk_bar), .Y(N49) , .Y_bar(N49inv));  
   OAI2BB1XL U1374 ( .A0N(n4), .A1N(sa01_next[2]), .B0(n1059), .Y(N210) );
   OAI2BB1XL U1375 ( .A0N(n4), .A1N(sa30_next[1]), .B0(n1071), .Y(N225) );
@@ -11024,4 +11064,3 @@ WDDLDFFMS sa00_reg_1_ ( .D(N273), .CK(clk_orig), .Q(sa00[1]) );
   OAI21XL U1834 ( .A0(n1189), .A1(n2), .B0(n966), .Y(n1187) );
   OAI21XL U1835 ( .A0(n3), .A1(n959), .B0(n1190), .Y(n1188) );
 endmodule
-

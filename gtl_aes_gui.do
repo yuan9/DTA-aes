@@ -275,5 +275,6 @@ sim:/aes_cipher_top_tb/dut/text_in_r_reg_0_/Q
 }}
 
 ##run 639990ps
-run 1109316ps
+#run 1109316ps
+run 1151982ps
 

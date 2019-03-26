@@ -8974,6 +8974,17 @@ module aes_sbox_18 ( a, d );
   OAI21XL U375 ( .A0(n355), .A1(n354), .B0(n353), .Y(n356) );
 endmodule
 
+//wddl: mux
+module MUX2X(S, A, B, Y);
+  input S, A, B;
+  output Y;
+  wire z1, z2, Sinv;
+  AND2X1 U1 ( .A(A), .B(S), .Y(z1));
+  INVX1 U2 ( .A(S), .Y(Sinv) );
+  AND2X1 U3 ( .A(B), .B(Sinv), .Y(z2));
+  OR2X1 U4 ( .A(z1), .B(z2), .Y(Y));
+endmodule
+
 //m master slave DFF
 module WDDLDFFMS ( D,CK,Q );
   input D, CK;
@@ -8981,9 +8992,11 @@ module WDDLDFFMS ( D,CK,Q );
   wire z;
   DFFHQX1 reg_1 ( .D(D), .CK(CK), .Q(z));
   DFFHQX1 reg_2 ( .D(z), .CK(CK), .Q(Q));
+  
 endmodule
 
 // WDDL register with DFF
+/*
 module WDDLDFFHQX2 ( D, Dinv, CLK, PRECLK, Q );
   input D, Dinv, CLK, PRECLK;
   output Q;
@@ -9001,7 +9014,32 @@ module WDDLDFFHQX2 ( D, Dinv, CLK, PRECLK, Q );
   BUFX1 U5 ( .A(q), .Y(qbuf));
   INVX1 U6 ( .A(qinv), .Y(qbarinv));
   OR2X1 U7 ( .A(qbuf), .B(qbarinv), .Y(Q));
+endmodule */
+
+module WDDLDFFHQX2 ( D, Dinv, CLK, PRECLK, Q );
+  input D, Dinv, CLK, PRECLK;
+  output Q;
+  wire q, qinv,z, zinv, clkinv,preclkinv, qpre, qinvpre, qbuf, qbarinv;
+ // assign qpre = PRECLK?q:z;
+  //assign qinvpre = PRECLK?qinv:zinv;
+  //wire dinv, clkinv, qpre, qinvpre, qbuf, qbarinv;
+  //reg q, qinv;
+//  INVX1 U1 ( .A(D), .Y(Dinv));
+  DFFHQX1 reg_11 ( .D(D), .CK(CLK), .Q(z));
+  DFFHQX1 reg_12 ( .D(z), .CK(CLK), .Q(q));
+  DFFHQX1 reg_21 ( .D(Dinv), .CK(CLK), .Q(zinv));
+  DFFHQX1 reg_22 ( .D(zinv), .CK(CLK), .Q(qinv));
+  CLKINVX1 U2 ( .A(PRECLK), .Y(preclkinv));
+  MUX2X m1 (.S(PRECLK), .A(z), .B(q), .Y(qpre));
+  MUX2X m2 (.S(PRECLK), .A(zinv), .B(qinv), .Y(qinvpre));
+//  AND2X1 U3 ( .A(q), .B(preclkinv), .Y(qpre));
+//  AND2X1 U4 ( .A(qinv), .B(preclkinv), .Y(qinvpre));
+  BUFX1 U5 ( .A(qpre), .Y(qbuf));
+  INVX1 U6 ( .A(qinvpre), .Y(qbarinv));
+  OR2X1 U7 ( .A(qbuf), .B(qbarinv), .Y(Q));
 endmodule
+
+
 
 // wddl precharge signal, half the clock signal
 
@@ -9037,10 +9075,12 @@ endmodule
 
 
 //module aes_cipher_top ( clk, rst, ld, done, key, text_in, text_out );
-module aes_cipher_top ( clk, rst, ld, done, key, text_in, text_out );
+//module aes_cipher_top ( clk, rst, ld, done, key, text_in, text_out );
+module aes_cipher_top ( divclk,clk, rst, ld, done, key, text_in, text_out );
   input [127:0] key;
   input [127:0] text_in;
   output [127:0] text_out;
+  input divclk;
   //input divclk, rst, ld;
   input clk, rst, ld;
   output done;
@@ -9137,7 +9177,7 @@ module aes_cipher_top ( clk, rst, ld, done, key, text_in, text_out );
          n1162, n1163, n1164, n1165, n1166, n1167, n1168, n1169, n1170, n1171,
          n1172, n1173, n1174, n1175, n1176, n1177, n1178, n1179, n1180, n1181,
          n1182, n1183, n1184, n1185, n1186, n1187, n1188, n1189, n1190, n1191,
-         n1192, preclk, N49inv, divclk,clk_originv, clk_bar;
+         n1192, preclk, N49inv, clk_originv, clk_bar;
   wire   [127:0] text_in_r;
   wire   [31:0] w3;
   wire   [7:0] sa33;
@@ -9215,7 +9255,7 @@ module aes_cipher_top ( clk, rst, ld, done, key, text_in, text_out );
  //wddl: generate precharge clock
  // assign clkinput = rst ? divclk : 1'b0;
  // CLKINVX3 Uinv (.A(clk), .Y(clk_originv));
-  precharge pre(.clk(clk), .preclk(divclk),.rst(rst));
+ // precharge pre(.clk(clk), .preclk(divclk),.rst(rst));
   DFFTRX1 dcnt_reg_0_ ( .D(n139), .RN(n137), .CK(divclk), .Q(n959) );
   DFFHQX1 done_reg ( .D(N21), .CK(divclk), .Q(done) );
 WDDLDFFMS text_out_reg_127_ ( .D(N376), .CK(clk), .Q(text_out[127]) );
