@@ -1,3 +1,4 @@
+# vsim +notimingchecks -L work -do gtl_aes_commandline.do -c -sdfmax /aes_cipher_top_tb/dut=/home/dtatest/DTA-aes/workdir/wddl_aes.sdf -novopt work.aes_cipher_top_tb 
 # //  ModelSim SE-64 6.5 Jan 22 2009 Linux 4.2.0-42-generic
 # //
 # //  Copyright 1991-2009 Mentor Graphics Corporation
@@ -8,7 +9,6 @@
 # //  OF MENTOR GRAPHICS CORPORATION OR ITS LICENSORS
 # //  AND IS SUBJECT TO LICENSE TERMS.
 # //
-# vsim +notimingchecks -L work -do gtl_aes_gui.do -i -sdfmax /aes_cipher_top_tb/dut=/home/dtatest/DTA-aes/workdir/wddl_aes.sdf -novopt work.aes_cipher_top_tb 
 # Refreshing /home/dtatest/DTA-aes/work.aes_cipher_top_tb
 # Loading work.aes_cipher_top_tb
 # Refreshing /home/dtatest/DTA-aes/work.aes_cipher_top
@@ -219,12 +219,14 @@
 # Loading work.MUX2X
 # ** Warning: (vsim-3009) [TSCALE] - Module 'MUX2X' does not have a `timescale directive in effect, but previous modules do.
 #         Region: /aes_cipher_top_tb/dut/sa23_reg_1_/m1
-# Refreshing /home/dtatest/DTA-aes/work.AND2X1
-# Loading work.AND2X1
-# Refreshing /home/dtatest/DTA-aes/work.OR2X1
-# Loading work.OR2X1
+# Refreshing /home/dtatest/DTA-aes/work.AND2XL
+# Loading work.AND2XL
+# Refreshing /home/dtatest/DTA-aes/work.OR2XL
+# Loading work.OR2XL
 # Refreshing /home/dtatest/DTA-aes/work.BUFX1
 # Loading work.BUFX1
+# Refreshing /home/dtatest/DTA-aes/work.OR2X1
+# Loading work.OR2X1
 # Refreshing /home/dtatest/DTA-aes/work.AOI2BB2X1
 # Loading work.AOI2BB2X1
 # Refreshing /home/dtatest/DTA-aes/work.XNOR2X1
@@ -233,13 +235,14 @@
 # Loading work.WDDLNANDCOMP
 # ** Warning: (vsim-3009) [TSCALE] - Module 'WDDLNANDCOMP' does not have a `timescale directive in effect, but previous modules do.
 #         Region: /aes_cipher_top_tb/dut/U1373
+# Refreshing /home/dtatest/DTA-aes/work.AND2X1
+# Loading work.AND2X1
 # Refreshing /home/dtatest/DTA-aes/work.NOR2BXL
 # Loading work.NOR2BXL
 # Refreshing /home/dtatest/DTA-aes/work.clkgen
 # Loading work.clkgen
 # Refreshing /home/dtatest/DTA-aes/work.clkgen2
 # Loading work.clkgen2
-# SDF 6.5 Compiler 2009.01 Jan 22 2009
 # Loading instances from /home/dtatest/DTA-aes/workdir/wddl_aes.sdf
 # Refreshing /home/dtatest/DTA-aes/work.udp_dff
 # Loading work.udp_dff
@@ -682,6 +685,6 @@
 # Loading timing data from /home/dtatest/DTA-aes/workdir/wddl_aes.sdf
 # ** Note: (vsim-3587) SDF Backannotation Successfully Completed.
 #    Time: 0 ps  Iteration: 0  Region: /aes_cipher_top_tb  File: aes_cipher_top_tb.v
-# do gtl_aes_gui.do 
-# Initial plaintext 037d560146ecbe412260a1c9c05cd58d
-# Final ciphertext 27a9e85b8e97a12fb73b304f2e2c8b94
+# do gtl_aes_commandline.do 
+# Initial plaintext b4fde97f5fbfd5bc6ae980df7b110c5a
+# Final ciphertext 1eab798dee34d683a15f99055272f326

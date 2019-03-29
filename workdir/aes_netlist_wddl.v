@@ -8979,10 +8979,10 @@ module MUX2X(S, A, B, Y);
   input S, A, B;
   output Y;
   wire z1, z2, Sinv;
-  AND2X1 U1 ( .A(A), .B(S), .Y(z1));
-  INVX1 U2 ( .A(S), .Y(Sinv) );
-  AND2X1 U3 ( .A(B), .B(Sinv), .Y(z2));
-  OR2X1 U4 ( .A(z1), .B(z2), .Y(Y));
+  AND2XL U1 ( .A(A), .B(S), .Y(z1));
+  INVXL U2 ( .A(S), .Y(Sinv) );
+  AND2XL U3 ( .A(B), .B(Sinv), .Y(z2));
+  OR2XL U4 ( .A(z1), .B(z2), .Y(Y));
 endmodule
 
 //m master slave DFF

@@ -54,7 +54,7 @@ initial begin
 	#`clkperi2
 	rst = 1'b1;
 	key = 128'hcafebabedeadbeefdeadbeef00000000;
-	text_in = 128'h37D560146ECBE412260A1C9C05CD58D;
+	text_in = 128'hB4FDE97F5FBFD5BC6AE980DF7B110C5A;
 	@(posedge clk);
 	ld = 1'b1;
 	@(posedge clk);
