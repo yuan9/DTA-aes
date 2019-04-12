@@ -1,0 +1,732 @@
+****************************************
+Report : Time Based Power
+	-hierarchy
+	-verbose
+Design : aes_cipher_top
+Version: N-2017.12-SP3-2
+Date   : Sun Mar 31 19:43:27 2019
+****************************************
+
+Sampling Interval: 0.001 ns
+
+Library(s) Used:
+
+    sage-x_tsmc_cl018g_rvt_ss_1p62v_125c (File: /opt/libs/tsmc180/extracted/tsmc/cl018g/sc9_base_rvt/2008q3v01/db/sage-x_tsmc_cl018g_rvt_ss_1p62v_125c.db)
+    tpz018nvwc (File: /opt/libs/tsmc180/extracted/gpio/TPZ018NV/TS02IG502/fb_tpz018nv_280a_r6p0-02eac0/timing_power_noise/NLDM/tpz018nv_280a/tpz018nvwc.db)
+    sram12x8 (File: /home/bilgiday/sram_new/db/sram12x8_slow_syn.db)
+    USERLIB (File: /home/bilgiday/sram_new/db/sram6x26_slow_syn.db)
+    sram8x25 (File: /home/bilgiday/sram_new/db/sram8x25_slow_syn.db)
+    sram9x32 (File: /home/bilgiday/sram_new/db/sram9x32_slow_syn.db)
+    sram6x32 (File: /home/bilgiday/sram_new/db/sram6x32_slow_syn.db)
+    sram8x32 (File: /home/bilgiday/sram_new/db/sram8x32_slow_syn.db)
+    USERLIB (File: /home/bilgiday/sram_new/db/sram2p8x32_slow_syn.db)
+    sram13x8 (File: /home/bilgiday/sram_new/db/sram13x8_slow_syn.db)
+
+
+Operating Conditions: ss_1p62v_125c   Library: sage-x_tsmc_cl018g_rvt_ss_1p62v_125c
+Wire Load Model Mode: top
+
+Cell               Design       Wire_model  Library       Selection_type
+--------------------------------------------------------------------------------
+                   aes_cipher_top
+                                TSMC16K_Conservative
+                                            tpz018nvwc    automatic-by-area
+
+Power-specific unit information :
+    Voltage Units = 1 V
+    Capacitance Units = 1 pf
+    Time Units = 1 ns
+    Dynamic Power Units = 1 W
+    Leakage Power Units = 1 W
+
+
+
+                                      Int      Switch   Leak      Total
+Hierarchy                             Power    Power    Power     Power    %
+--------------------------------------------------------------------------------
+aes_cipher_top                        3.52e-03 2.53e-03 3.05e-06  6.05e-03 100.0
+  sa31_reg_3_ (WDDLDFFMS)             5.89e-06 9.32e-07 2.10e-09  6.82e-06   0.1
+  text_out_reg_35_ (WDDLDFFMS)        5.46e-06 1.70e-07 2.11e-09  5.63e-06   0.1
+  text_out_reg_75_ (WDDLDFFMS)        5.77e-06 2.04e-07 2.11e-09  5.98e-06   0.1
+  text_out_reg_107_ (WDDLDFFMS)       4.64e-06 1.02e-07 2.04e-09  4.75e-06   0.1
+  sa10_reg_4_ (WDDLDFFMS)             5.82e-06 6.70e-07 2.09e-09  6.49e-06   0.1
+  sa31_reg_4_ (WDDLDFFMS)             5.89e-06 7.94e-07 2.09e-09  6.69e-06   0.1
+  text_out_reg_36_ (WDDLDFFMS)        4.91e-06 1.70e-07 2.07e-09  5.08e-06   0.1
+  text_out_reg_76_ (WDDLDFFMS)        4.93e-06 1.70e-07 2.08e-09  5.10e-06   0.1
+  text_out_reg_108_ (WDDLDFFMS)       4.88e-06 1.36e-07 2.07e-09  5.02e-06   0.1
+  sa10_reg_5_ (WDDLDFFMS)             5.93e-06 4.99e-07 2.10e-09  6.43e-06   0.1
+  sa00_reg_0_ (WDDLDFFMS)             5.99e-06 4.98e-07 2.10e-09  6.49e-06   0.1
+  sa31_reg_5_ (WDDLDFFMS)             5.34e-06 3.00e-07 2.05e-09  5.64e-06   0.1
+  sa21_reg_0_ (WDDLDFFMS)             6.72e-06 6.97e-07 2.13e-09  7.42e-06   0.1
+  text_out_reg_37_ (WDDLDFFMS)        4.98e-06 1.36e-07 2.07e-09  5.12e-06   0.1
+  text_out_reg_77_ (WDDLDFFMS)        5.43e-06 2.04e-07 2.08e-09  5.63e-06   0.1
+  text_out_reg_109_ (WDDLDFFMS)       4.69e-06 1.36e-07 2.06e-09  4.83e-06   0.1
+  sa10_reg_6_ (WDDLDFFMS)             5.55e-06 3.22e-07 2.07e-09  5.87e-06   0.1
+  sa00_reg_1_ (WDDLDFFMS)             5.40e-06 1.54e-06 2.04e-09  6.93e-06   0.1
+  sa31_reg_6_ (WDDLDFFMS)             6.36e-06 5.55e-07 2.14e-09  6.92e-06   0.1
+  sa21_reg_1_ (WDDLDFFMS)             6.60e-06 1.94e-06 2.11e-09  8.54e-06   0.1
+  text_out_reg_38_ (WDDLDFFMS)        5.01e-06 1.70e-07 2.07e-09  5.18e-06   0.1
+  text_out_reg_78_ (WDDLDFFMS)        5.76e-06 2.04e-07 2.11e-09  5.96e-06   0.1
+  sa10_reg_7_ (WDDLDFFMS)             5.86e-06 1.69e-06 2.11e-09  7.56e-06   0.1
+  sa00_reg_2_ (WDDLDFFMS)             5.69e-06 9.63e-07 2.07e-09  6.65e-06   0.1
+  sa31_reg_7_ (WDDLDFFMS)             6.27e-06 1.98e-06 2.12e-09  8.25e-06   0.1
+  sa21_reg_2_ (WDDLDFFMS)             6.68e-06 1.35e-06 2.14e-09  8.03e-06   0.1
+  text_out_reg_39_ (WDDLDFFMS)        5.44e-06 1.70e-07 2.11e-09  5.62e-06   0.1
+  text_out_reg_79_ (WDDLDFFMS)        5.37e-06 1.70e-07 2.10e-09  5.54e-06   0.1
+  sa00_reg_3_ (WDDLDFFMS)             6.79e-06 1.12e-06 2.13e-09  7.91e-06   0.1
+  sa21_reg_3_ (WDDLDFFMS)             5.73e-06 1.12e-06 2.10e-09  6.85e-06   0.1
+  text_out_reg_20_ (WDDLDFFMS)        4.08e-06 1.02e-07 2.07e-09  4.18e-06   0.1
+  text_out_reg_60_ (WDDLDFFMS)        4.45e-06 1.21e-07 2.06e-09  4.58e-06   0.1
+  sa00_reg_4_ (WDDLDFFMS)             5.89e-06 8.57e-07 2.11e-09  6.75e-06   0.1
+  sa21_reg_4_ (WDDLDFFMS)             5.97e-06 1.01e-06 2.11e-09  6.98e-06   0.1
+  text_out_reg_21_ (WDDLDFFMS)        4.74e-06 1.36e-07 2.08e-09  4.88e-06   0.1
+  text_out_reg_61_ (WDDLDFFMS)        5.24e-06 1.89e-07 2.09e-09  5.43e-06   0.1
+  sa00_reg_5_ (WDDLDFFMS)             6.13e-06 5.19e-07 2.11e-09  6.65e-06   0.1
+  sa21_reg_5_ (WDDLDFFMS)             5.52e-06 4.99e-07 2.06e-09  6.02e-06   0.1
+  sa11_reg_0_ (WDDLDFFMS)             5.36e-06 4.98e-07 2.08e-09  5.86e-06   0.1
+  text_out_reg_22_ (WDDLDFFMS)        5.15e-06 1.70e-07 2.10e-09  5.33e-06   0.1
+  sa32_reg_0_ (WDDLDFFMS)             5.63e-06 4.43e-07 2.08e-09  6.07e-06   0.1
+  text_out_reg_62_ (WDDLDFFMS)        4.98e-06 1.70e-07 2.08e-09  5.15e-06   0.1
+  sa00_reg_6_ (WDDLDFFMS)             5.51e-06 2.61e-07 2.07e-09  5.77e-06   0.1
+  sa21_reg_6_ (WDDLDFFMS)             5.75e-06 4.22e-07 2.11e-09  6.17e-06   0.1
+  sa11_reg_1_ (WDDLDFFMS)             6.13e-06 2.30e-06 2.11e-09  8.43e-06   0.1
+  text_out_reg_23_ (WDDLDFFMS)        4.69e-06 1.02e-07 2.06e-09  4.80e-06   0.1
+  sa32_reg_1_ (WDDLDFFMS)             5.38e-06 1.54e-06 2.04e-09  6.91e-06   0.1
+  text_out_reg_63_ (WDDLDFFMS)        4.46e-06 1.36e-07 2.07e-09  4.59e-06   0.1
+  sa00_reg_7_ (WDDLDFFMS)             6.11e-06 1.41e-06 2.10e-09  7.52e-06   0.1
+  sa21_reg_7_ (WDDLDFFMS)             7.42e-06 2.54e-06 2.19e-09  9.96e-06   0.2
+  us00 (aes_sbox_19)                  4.52e-05 8.75e-05 7.25e-08  1.33e-04   2.2
+  us01 (aes_sbox_18)                  4.52e-05 8.78e-05 7.25e-08  1.33e-04   2.2
+  us02 (aes_sbox_17)                  4.67e-05 9.01e-05 7.26e-08  1.37e-04   2.3
+  us03 (aes_sbox_16)                  4.98e-05 9.57e-05 7.27e-08  1.46e-04   2.4
+  sa11_reg_2_ (WDDLDFFMS)             6.68e-06 1.35e-06 2.13e-09  8.03e-06   0.1
+  text_out_reg_24_ (WDDLDFFMS)        5.53e-06 2.23e-07 2.13e-09  5.76e-06   0.1
+  sa32_reg_2_ (WDDLDFFMS)             6.21e-06 1.17e-06 2.12e-09  7.39e-06   0.1
+  text_out_reg_64_ (WDDLDFFMS)        3.99e-06 1.02e-07 2.05e-09  4.09e-06   0.1
+  us10 (aes_sbox_15)                  4.41e-05 8.69e-05 7.28e-08  1.31e-04   2.2
+  us11 (aes_sbox_14)                  4.71e-05 9.05e-05 7.26e-08  1.38e-04   2.3
+  us12 (aes_sbox_13)                  4.53e-05 8.67e-05 7.28e-08  1.32e-04   2.2
+  us13 (aes_sbox_12)                  4.64e-05 9.08e-05 7.27e-08  1.37e-04   2.3
+  sa11_reg_3_ (WDDLDFFMS)             5.78e-06 7.65e-07 2.06e-09  6.55e-06   0.1
+  text_out_reg_25_ (WDDLDFFMS)        5.39e-06 1.70e-07 2.12e-09  5.56e-06   0.1
+  sa32_reg_3_ (WDDLDFFMS)             5.83e-06 9.51e-07 2.10e-09  6.78e-06   0.1
+  text_out_reg_65_ (WDDLDFFMS)        4.33e-06 1.21e-07 2.06e-09  4.45e-06   0.1
+  us20 (aes_sbox_11)                  4.57e-05 8.75e-05 7.26e-08  1.33e-04   2.2
+  us21 (aes_sbox_10)                  5.16e-05 9.96e-05 7.28e-08  1.51e-04   2.5
+  us22 (aes_sbox_9)                   4.22e-05 8.32e-05 7.24e-08  1.25e-04   2.1
+  us23 (aes_sbox_8)                   1.22e-04 1.68e-04 1.27e-07  2.91e-04   4.8
+    U257 (WDDLINV)                    9.26e-07 2.75e-06 1.20e-09  3.68e-06   0.1
+    U259 (WDDLNOR2X)                  2.18e-06 2.26e-06 2.31e-09  4.45e-06   0.1
+    U165 (WDDLNOR2X)                  2.90e-06 2.60e-06 2.33e-09  5.51e-06   0.1
+    U262 (WDDLNOR2X)                  2.26e-06 2.80e-06 2.32e-09  5.06e-06   0.1
+    U177 (WDDLNAND2X)                 2.64e-06 2.38e-06 2.32e-09  5.02e-06   0.1
+    U271 (WDDLNOR2X)                  2.38e-06 2.87e-06 2.33e-09  5.25e-06   0.1
+    U277 (WDDLNOR2X)                  2.18e-06 2.32e-06 2.31e-09  4.50e-06   0.1
+    U180 (WDDLNAND2X)                 2.95e-06 2.73e-06 2.34e-09  5.69e-06   0.1
+    U280 (WDDLNAND2X)                 2.07e-06 1.47e-06 2.22e-09  3.54e-06   0.1
+    U284 (WDDLNAND2X)                 2.28e-06 2.21e-06 2.37e-09  4.48e-06   0.1
+    U286 (WDDLNAND2X)                 2.09e-06 2.03e-06 2.27e-09  4.13e-06   0.1
+    U294 (WDDLNAND2X)                 2.51e-06 2.46e-06 2.32e-09  4.97e-06   0.1
+    U298 (WDDLINV)                    1.86e-06 2.61e-06 1.18e-09  4.47e-06   0.1
+    U8 (WDDLINV)                      1.91e-06 4.07e-06 1.19e-09  5.98e-06   0.1
+    U308 (WDDLINV)                    1.80e-06 2.65e-06 1.17e-09  4.45e-06   0.1
+    U211 (WDDLNOR2X)                  2.47e-06 3.24e-06 2.33e-09  5.72e-06   0.1
+    U18 (WDDLNOR2X)                   3.05e-06 3.33e-06 2.34e-09  6.39e-06   0.1
+    U214 (WDDLNOR2X)                  2.37e-06 3.36e-06 2.33e-09  5.74e-06   0.1
+    U215 (WDDLNAND2X)                 2.18e-06 3.11e-06 2.30e-09  5.29e-06   0.1
+    U310 (WDDLNAND2X)                 3.68e-06 3.65e-06 2.32e-09  7.34e-06   0.1
+    U316 (WDDLINV)                    1.12e-06 1.65e-06 1.22e-09  2.77e-06   0.0
+    U121 (WDDLNAND2X)                 2.70e-06 2.15e-06 2.30e-09  4.85e-06   0.1
+    U21 (WDDLNOR2X)                   2.43e-06 2.80e-06 2.32e-09  5.23e-06   0.1
+    U23 (WDDLNAND2X)                  2.74e-06 2.68e-06 2.30e-09  5.43e-06   0.1
+    U234 (WDDLNAND2X)                 1.76e-06 1.78e-06 2.27e-09  3.54e-06   0.1
+    U332 (WDDLINV)                    9.75e-07 8.60e-07 1.18e-09  1.84e-06   0.0
+    U338 (WDDLNOR2X)                  2.89e-06 2.73e-06 2.34e-09  5.62e-06   0.1
+    U148 (WDDLINV)                    1.02e-06 1.19e-06 1.18e-09  2.21e-06   0.0
+    U342 (WDDLNOR2X)                  2.34e-06 2.55e-06 2.31e-09  4.89e-06   0.1
+  sa11_reg_4_ (WDDLDFFMS)             6.33e-06 1.01e-06 2.11e-09  7.33e-06   0.1
+  text_out_reg_26_ (WDDLDFFMS)        5.12e-06 1.70e-07 2.10e-09  5.30e-06   0.1
+  sa32_reg_4_ (WDDLDFFMS)             6.99e-06 1.09e-06 2.15e-09  8.08e-06   0.1
+  text_out_reg_66_ (WDDLDFFMS)        4.52e-06 1.36e-07 2.03e-09  4.66e-06   0.1
+  us30 (aes_sbox_7)                   4.61e-05 9.10e-05 7.13e-08  1.37e-04   2.3
+  us31 (aes_sbox_6)                   4.50e-05 8.76e-05 7.12e-08  1.33e-04   2.2
+  us32 (aes_sbox_5)                   4.33e-05 8.40e-05 7.09e-08  1.27e-04   2.1
+  us33 (aes_sbox_4)                   4.04e-05 7.87e-05 7.09e-08  1.19e-04   2.0
+  sa11_reg_5_ (WDDLDFFMS)             6.52e-06 5.99e-07 2.12e-09  7.12e-06   0.1
+  sa01_reg_0_ (WDDLDFFMS)             6.88e-06 7.96e-07 2.16e-09  7.68e-06   0.1
+  text_out_reg_27_ (WDDLDFFMS)        5.47e-06 2.04e-07 2.10e-09  5.68e-06   0.1
+  sa32_reg_5_ (WDDLDFFMS)             6.08e-06 5.99e-07 2.11e-09  6.68e-06   0.1
+  sa22_reg_0_ (WDDLDFFMS)             6.08e-06 5.97e-07 2.12e-09  6.68e-06   0.1
+  text_out_reg_67_ (WDDLDFFMS)        5.45e-06 1.89e-07 2.12e-09  5.64e-06   0.1
+  sa11_reg_6_ (WDDLDFFMS)             5.99e-06 4.83e-07 2.11e-09  6.48e-06   0.1
+  sa01_reg_1_ (WDDLDFFMS)             5.92e-06 2.30e-06 2.08e-09  8.22e-06   0.1
+  text_out_reg_28_ (WDDLDFFMS)        4.50e-06 1.21e-07 2.05e-09  4.62e-06   0.1
+  sa32_reg_6_ (WDDLDFFMS)             5.76e-06 4.47e-07 2.10e-09  6.21e-06   0.1
+  sa22_reg_1_ (WDDLDFFMS)             5.23e-06 1.92e-06 2.05e-09  7.15e-06   0.1
+  text_out_reg_68_ (WDDLDFFMS)        4.78e-06 1.36e-07 2.04e-09  4.91e-06   0.1
+  sa11_reg_7_ (WDDLDFFMS)             6.22e-06 1.43e-06 2.08e-09  7.66e-06   0.1
+  sa01_reg_2_ (WDDLDFFMS)             5.34e-06 9.63e-07 2.06e-09  6.30e-06   0.1
+  text_out_reg_29_ (WDDLDFFMS)        4.83e-06 1.36e-07 2.07e-09  4.97e-06   0.1
+  sa32_reg_7_ (WDDLDFFMS)             5.12e-06 1.41e-06 2.08e-09  6.53e-06   0.1
+  text_out_reg_120_ (WDDLDFFMS)       5.96e-06 2.38e-07 2.14e-09  6.20e-06   0.1
+  sa22_reg_2_ (WDDLDFFMS)             6.51e-06 1.35e-06 2.11e-09  7.86e-06   0.1
+  text_out_reg_69_ (WDDLDFFMS)        4.36e-06 1.02e-07 2.04e-09  4.46e-06   0.1
+  sa01_reg_3_ (WDDLDFFMS)             6.01e-06 1.12e-06 2.10e-09  7.13e-06   0.1
+  text_out_reg_121_ (WDDLDFFMS)       4.82e-06 1.36e-07 2.07e-09  4.96e-06   0.1
+  text_out_reg_10_ (WDDLDFFMS)        5.73e-06 2.23e-07 2.14e-09  5.95e-06   0.1
+  sa22_reg_3_ (WDDLDFFMS)             5.38e-06 5.59e-07 2.06e-09  5.94e-06   0.1
+  text_out_reg_50_ (WDDLDFFMS)        4.46e-06 1.36e-07 2.07e-09  4.60e-06   0.1
+  sa01_reg_4_ (WDDLDFFMS)             5.22e-06 5.03e-07 2.06e-09  5.73e-06   0.1
+  text_out_reg_90_ (WDDLDFFMS)        4.56e-06 1.02e-07 2.04e-09  4.67e-06   0.1
+  text_out_reg_122_ (WDDLDFFMS)       5.04e-06 1.70e-07 2.10e-09  5.21e-06   0.1
+  text_out_reg_11_ (WDDLDFFMS)        4.94e-06 1.70e-07 2.06e-09  5.11e-06   0.1
+  sa22_reg_4_ (WDDLDFFMS)             5.69e-06 6.90e-07 2.08e-09  6.38e-06   0.1
+  text_out_reg_51_ (WDDLDFFMS)        4.59e-06 1.36e-07 2.04e-09  4.72e-06   0.1
+  sa01_reg_5_ (WDDLDFFMS)             6.30e-06 5.99e-07 2.13e-09  6.90e-06   0.1
+  text_out_reg_91_ (WDDLDFFMS)        4.93e-06 1.21e-07 2.07e-09  5.06e-06   0.1
+  text_out_reg_123_ (WDDLDFFMS)       5.32e-06 2.04e-07 2.10e-09  5.53e-06   0.1
+  text_out_reg_12_ (WDDLDFFMS)        5.04e-06 1.70e-07 2.09e-09  5.21e-06   0.1
+  sa22_reg_5_ (WDDLDFFMS)             5.17e-06 4.19e-07 2.07e-09  5.59e-06   0.1
+  sa12_reg_0_ (WDDLDFFMS)             5.41e-06 4.17e-07 2.04e-09  5.82e-06   0.1
+  text_out_reg_52_ (WDDLDFFMS)        4.99e-06 1.70e-07 2.07e-09  5.16e-06   0.1
+  sa33_reg_0_ (WDDLDFFMS)             6.59e-06 6.83e-07 2.15e-09  7.27e-06   0.1
+  sa01_reg_6_ (WDDLDFFMS)             5.66e-06 4.02e-07 2.05e-09  6.06e-06   0.1
+  text_out_reg_92_ (WDDLDFFMS)        4.55e-06 1.02e-07 2.03e-09  4.65e-06   0.1
+  text_out_reg_124_ (WDDLDFFMS)       4.99e-06 1.36e-07 2.08e-09  5.13e-06   0.1
+  text_out_reg_13_ (WDDLDFFMS)        4.92e-06 1.36e-07 2.06e-09  5.06e-06   0.1
+  sa22_reg_6_ (WDDLDFFMS)             5.76e-06 4.22e-07 2.10e-09  6.18e-06   0.1
+  sa12_reg_1_ (WDDLDFFMS)             4.78e-06 1.54e-06 2.05e-09  6.31e-06   0.1
+  text_out_reg_53_ (WDDLDFFMS)        4.75e-06 1.36e-07 2.07e-09  4.89e-06   0.1
+  sa33_reg_1_ (WDDLDFFMS)             5.22e-06 1.92e-06 2.09e-09  7.14e-06   0.1
+  sa01_reg_7_ (WDDLDFFMS)             4.90e-06 8.47e-07 2.05e-09  5.75e-06   0.1
+  text_out_reg_93_ (WDDLDFFMS)        5.73e-06 2.04e-07 2.14e-09  5.94e-06   0.1
+  text_out_reg_125_ (WDDLDFFMS)       4.73e-06 1.36e-07 2.07e-09  4.86e-06   0.1
+  text_out_reg_14_ (WDDLDFFMS)        5.65e-06 2.04e-07 2.13e-09  5.86e-06   0.1
+  sa22_reg_7_ (WDDLDFFMS)             5.45e-06 8.66e-07 2.04e-09  6.32e-06   0.1
+  sa12_reg_2_ (WDDLDFFMS)             4.58e-06 3.85e-07 1.99e-09  4.97e-06   0.1
+  text_out_reg_54_ (WDDLDFFMS)        4.95e-06 1.36e-07 2.07e-09  5.08e-06   0.1
+  sa33_reg_2_ (WDDLDFFMS)             6.25e-06 1.35e-06 2.15e-09  7.60e-06   0.1
+  text_out_reg_94_ (WDDLDFFMS)        4.57e-06 1.36e-07 2.05e-09  4.71e-06   0.1
+  text_out_reg_126_ (WDDLDFFMS)       5.24e-06 1.89e-07 2.11e-09  5.43e-06   0.1
+  text_out_reg_15_ (WDDLDFFMS)        5.14e-06 1.36e-07 2.09e-09  5.27e-06   0.1
+  sa12_reg_3_ (WDDLDFFMS)             5.50e-06 7.65e-07 2.06e-09  6.26e-06   0.1
+  U1373 (WDDLNANDCOMP)                4.34e-06 2.85e-06 3.05e-09  7.19e-06   0.1
+  text_out_reg_55_ (WDDLDFFMS)        4.65e-06 1.02e-07 2.05e-09  4.75e-06   0.1
+  sa33_reg_3_ (WDDLDFFMS)             5.95e-06 9.32e-07 2.10e-09  6.88e-06   0.1
+  text_out_reg_95_ (WDDLDFFMS)        5.60e-06 1.89e-07 2.12e-09  5.79e-06   0.1
+  text_out_reg_127_ (WDDLDFFMS)       5.45e-06 1.70e-07 2.12e-09  5.62e-06   0.1
+  text_out_reg_16_ (WDDLDFFMS)        5.05e-06 1.55e-07 2.08e-09  5.20e-06   0.1
+  sa12_reg_4_ (WDDLDFFMS)             6.47e-06 1.17e-06 2.13e-09  7.64e-06   0.1
+  text_out_reg_56_ (WDDLDFFMS)        4.68e-06 1.70e-07 2.07e-09  4.85e-06   0.1
+  sa33_reg_4_ (WDDLDFFMS)             5.47e-06 6.23e-07 2.06e-09  6.10e-06   0.1
+  text_out_reg_96_ (WDDLDFFMS)        5.04e-06 1.89e-07 2.09e-09  5.23e-06   0.1
+  text_out_reg_17_ (WDDLDFFMS)        4.89e-06 1.70e-07 2.10e-09  5.06e-06   0.1
+  sa12_reg_5_ (WDDLDFFMS)             6.54e-06 5.99e-07 2.10e-09  7.14e-06   0.1
+  sa02_reg_0_ (WDDLDFFMS)             5.40e-06 4.17e-07 2.06e-09  5.82e-06   0.1
+  text_out_reg_57_ (WDDLDFFMS)        4.92e-06 1.55e-07 2.08e-09  5.07e-06   0.1
+  sa33_reg_5_ (WDDLDFFMS)             5.64e-06 4.99e-07 2.08e-09  6.14e-06   0.1
+  sa23_reg_0_ (WDDLDFFMS)             6.97e-06 7.16e-07 2.17e-09  7.68e-06   0.1
+  text_out_reg_97_ (WDDLDFFMS)        4.41e-06 1.36e-07 2.07e-09  4.55e-06   0.1
+  text_out_reg_18_ (WDDLDFFMS)        5.75e-06 2.04e-07 2.13e-09  5.95e-06   0.1
+  sa12_reg_6_ (WDDLDFFMS)             5.30e-06 4.02e-07 2.08e-09  5.71e-06   0.1
+  sa02_reg_1_ (WDDLDFFMS)             6.17e-06 1.94e-06 2.12e-09  8.11e-06   0.1
+  text_out_reg_58_ (WDDLDFFMS)        4.24e-06 1.36e-07 2.07e-09  4.38e-06   0.1
+  sa33_reg_6_ (WDDLDFFMS)             6.38e-06 4.66e-07 2.11e-09  6.84e-06   0.1
+  sa23_reg_1_ (WDDLDFFHQX2)           1.27e-05 3.23e-06 6.63e-09  1.59e-05   0.3
+    m1 (MUX2X)                        7.07e-07 6.65e-07 8.63e-10  1.37e-06   0.0
+    m2 (MUX2X)                        7.87e-07 7.92e-07 8.48e-10  1.58e-06   0.0
+  text_out_reg_98_ (WDDLDFFMS)        4.42e-06 1.02e-07 2.02e-09  4.52e-06   0.1
+  text_out_reg_19_ (WDDLDFFMS)        4.83e-06 1.70e-07 2.09e-09  5.00e-06   0.1
+  text_out_reg_110_ (WDDLDFFMS)       5.19e-06 1.89e-07 2.08e-09  5.39e-06   0.1
+  sa12_reg_7_ (WDDLDFFMS)             5.69e-06 1.13e-06 2.09e-09  6.82e-06   0.1
+  sa02_reg_2_ (WDDLDFFMS)             5.74e-06 7.70e-07 2.09e-09  6.52e-06   0.1
+  text_out_reg_59_ (WDDLDFFMS)        5.26e-06 1.89e-07 2.10e-09  5.45e-06   0.1
+  sa33_reg_7_ (WDDLDFFMS)             5.00e-06 8.47e-07 2.05e-09  5.85e-06   0.1
+  sa23_reg_2_ (WDDLDFFMS)             5.51e-06 9.63e-07 2.05e-09  6.48e-06   0.1
+  text_out_reg_99_ (WDDLDFFMS)        5.45e-06 2.04e-07 2.11e-09  5.66e-06   0.1
+  text_out_reg_111_ (WDDLDFFMS)       4.42e-06 1.36e-07 2.06e-09  4.56e-06   0.1
+  sa02_reg_3_ (WDDLDFFMS)             6.27e-06 1.12e-06 2.12e-09  7.39e-06   0.1
+  sa23_reg_3_ (WDDLDFFMS)             6.44e-06 1.37e-06 2.14e-09  7.81e-06   0.1
+  text_out_reg_40_ (WDDLDFFMS)        5.10e-06 1.70e-07 2.08e-09  5.27e-06   0.1
+  text_out_reg_80_ (WDDLDFFMS)        5.01e-06 1.70e-07 2.09e-09  5.18e-06   0.1
+  text_out_reg_112_ (WDDLDFFMS)       5.59e-06 1.89e-07 2.10e-09  5.78e-06   0.1
+  sa02_reg_4_ (WDDLDFFMS)             5.44e-06 8.38e-07 2.09e-09  6.28e-06   0.1
+  sa23_reg_4_ (WDDLDFFMS)             6.23e-06 1.23e-06 2.11e-09  7.47e-06   0.1
+  text_out_reg_41_ (WDDLDFFMS)        4.72e-06 1.55e-07 2.07e-09  4.88e-06   0.1
+  text_out_reg_81_ (WDDLDFFMS)        3.94e-06 6.80e-08 1.99e-09  4.01e-06   0.1
+  text_out_reg_113_ (WDDLDFFMS)       4.89e-06 1.70e-07 2.07e-09  5.06e-06   0.1
+  sa30_reg_0_ (WDDLDFFMS)             5.36e-06 3.51e-07 2.07e-09  5.71e-06   0.1
+  sa02_reg_5_ (WDDLDFFMS)             6.49e-06 5.99e-07 2.13e-09  7.09e-06   0.1
+  sa23_reg_5_ (WDDLDFFMS)             5.30e-06 4.99e-07 2.09e-09  5.80e-06   0.1
+  sa13_reg_0_ (WDDLDFFMS)             5.50e-06 3.98e-07 2.07e-09  5.90e-06   0.1
+  text_out_reg_42_ (WDDLDFFMS)        4.87e-06 1.21e-07 2.05e-09  4.99e-06   0.1
+  text_out_reg_82_ (WDDLDFFMS)        4.56e-06 1.36e-07 2.08e-09  4.70e-06   0.1
+  text_out_reg_114_ (WDDLDFFMS)       5.14e-06 1.89e-07 2.10e-09  5.33e-06   0.1
+  sa30_reg_1_ (WDDLDFFMS)             6.88e-06 2.32e-06 2.14e-09  9.20e-06   0.2
+  sa02_reg_6_ (WDDLDFFMS)             5.44e-06 3.22e-07 2.06e-09  5.77e-06   0.1
+  sa23_reg_6_ (WDDLDFFMS)             5.52e-06 3.22e-07 2.07e-09  5.85e-06   0.1
+  sa13_reg_1_ (WDDLDFFMS)             5.85e-06 1.94e-06 2.08e-09  7.79e-06   0.1
+  text_out_reg_43_ (WDDLDFFMS)        4.43e-06 6.80e-08 2.01e-09  4.50e-06   0.1
+  text_out_reg_83_ (WDDLDFFMS)        5.07e-06 1.36e-07 2.08e-09  5.21e-06   0.1
+  text_out_reg_115_ (WDDLDFFMS)       5.01e-06 1.55e-07 2.09e-09  5.17e-06   0.1
+  sa30_reg_2_ (WDDLDFFMS)             5.57e-06 7.70e-07 2.07e-09  6.34e-06   0.1
+  sa02_reg_7_ (WDDLDFFMS)             5.52e-06 1.41e-06 2.09e-09  6.93e-06   0.1
+  sa23_reg_7_ (WDDLDFFMS)             6.09e-06 1.41e-06 2.10e-09  7.50e-06   0.1
+  sa13_reg_2_ (WDDLDFFMS)             5.27e-06 7.70e-07 2.05e-09  6.04e-06   0.1
+  text_out_reg_44_ (WDDLDFFMS)        5.04e-06 1.70e-07 2.08e-09  5.22e-06   0.1
+  text_out_reg_84_ (WDDLDFFMS)        4.31e-06 1.02e-07 2.05e-09  4.41e-06   0.1
+  text_out_reg_116_ (WDDLDFFMS)       5.07e-06 1.36e-07 2.07e-09  5.21e-06   0.1
+  sa30_reg_3_ (WDDLDFFMS)             6.55e-06 1.14e-06 2.12e-09  7.69e-06   0.1
+  sa13_reg_3_ (WDDLDFFMS)             6.22e-06 9.32e-07 2.10e-09  7.16e-06   0.1
+  text_out_reg_45_ (WDDLDFFMS)        6.46e-06 2.72e-07 2.19e-09  6.73e-06   0.1
+  text_out_reg_0_ (WDDLDFFMS)         4.59e-06 1.21e-07 2.06e-09  4.71e-06   0.1
+  text_out_reg_85_ (WDDLDFFMS)        5.79e-06 2.04e-07 2.13e-09  6.00e-06   0.1
+  text_out_reg_117_ (WDDLDFFMS)       5.83e-06 2.23e-07 2.12e-09  6.05e-06   0.1
+  sa30_reg_4_ (WDDLDFFMS)             5.65e-06 6.35e-07 2.06e-09  6.29e-06   0.1
+  sa13_reg_4_ (WDDLDFFMS)             5.03e-06 6.70e-07 2.06e-09  5.70e-06   0.1
+  text_out_reg_46_ (WDDLDFFMS)        4.96e-06 1.36e-07 2.06e-09  5.09e-06   0.1
+  text_out_reg_1_ (WDDLDFFMS)         4.83e-06 1.36e-07 2.07e-09  4.97e-06   0.1
+  text_out_reg_86_ (WDDLDFFMS)        4.44e-06 8.73e-08 2.02e-09  4.53e-06   0.1
+  text_out_reg_118_ (WDDLDFFMS)       5.20e-06 2.04e-07 2.10e-09  5.41e-06   0.1
+  sa30_reg_5_ (WDDLDFFMS)             5.84e-06 4.99e-07 2.10e-09  6.34e-06   0.1
+  sa20_reg_0_ (WDDLDFFMS)             5.97e-06 5.97e-07 2.09e-09  6.57e-06   0.1
+  sa13_reg_5_ (WDDLDFFMS)             6.26e-06 6.18e-07 2.11e-09  6.88e-06   0.1
+  text_out_reg_47_ (WDDLDFFMS)        4.25e-06 1.02e-07 2.02e-09  4.35e-06   0.1
+  text_out_reg_2_ (WDDLDFFMS)         4.87e-06 1.36e-07 2.09e-09  5.01e-06   0.1
+  sa03_reg_0_ (WDDLDFFMS)             5.25e-06 4.17e-07 2.08e-09  5.67e-06   0.1
+  text_out_reg_87_ (WDDLDFFMS)        5.38e-06 2.04e-07 2.10e-09  5.59e-06   0.1
+  text_out_reg_119_ (WDDLDFFMS)       5.38e-06 1.70e-07 2.10e-09  5.55e-06   0.1
+  sa30_reg_6_ (WDDLDFFMS)             5.89e-06 5.36e-07 2.10e-09  6.43e-06   0.1
+  sa20_reg_1_ (WDDLDFFMS)             6.52e-06 2.32e-06 2.15e-09  8.84e-06   0.1
+  sa13_reg_6_ (WDDLDFFMS)             4.99e-06 2.61e-07 2.05e-09  5.25e-06   0.1
+  text_out_reg_48_ (WDDLDFFMS)        4.59e-06 1.55e-07 2.07e-09  4.75e-06   0.1
+  text_out_reg_3_ (WDDLDFFMS)         4.64e-06 1.21e-07 2.04e-09  4.76e-06   0.1
+  sa03_reg_1_ (WDDLDFFMS)             6.32e-06 2.69e-06 2.12e-09  9.01e-06   0.1
+  text_out_reg_88_ (WDDLDFFMS)        5.22e-06 2.04e-07 2.13e-09  5.42e-06   0.1
+  sa30_reg_7_ (WDDLDFFMS)             5.46e-06 1.15e-06 2.09e-09  6.62e-06   0.1
+  text_out_reg_100_ (WDDLDFFMS)       5.41e-06 2.04e-07 2.10e-09  5.61e-06   0.1
+  sa20_reg_2_ (WDDLDFFMS)             5.66e-06 9.63e-07 2.09e-09  6.63e-06   0.1
+  sa13_reg_7_ (WDDLDFFMS)             6.11e-06 1.43e-06 2.11e-09  7.55e-06   0.1
+  text_out_reg_49_ (WDDLDFFMS)        3.83e-06 8.73e-08 2.02e-09  3.92e-06   0.1
+  text_out_reg_4_ (WDDLDFFMS)         4.73e-06 1.36e-07 2.06e-09  4.86e-06   0.1
+  sa03_reg_2_ (WDDLDFFMS)             5.19e-06 7.70e-07 2.04e-09  5.96e-06   0.1
+  text_out_reg_89_ (WDDLDFFMS)        5.50e-06 2.04e-07 2.12e-09  5.71e-06   0.1
+  text_out_reg_101_ (WDDLDFFMS)       4.91e-06 1.70e-07 2.08e-09  5.08e-06   0.1
+  sa20_reg_3_ (WDDLDFFMS)             5.16e-06 7.45e-07 2.07e-09  5.90e-06   0.1
+  u0 (aes_key_expand_128)             5.05e-04 4.02e-04 5.86e-07  9.07e-04  15.0
+    r0 (aes_rcon)                     1.38e-05 4.18e-06 1.71e-08  1.80e-05   0.3
+    u0 (aes_sbox_3)                   2.38e-05 4.32e-05 7.06e-08  6.71e-05   1.1
+    u1 (aes_sbox_2)                   2.44e-05 4.43e-05 7.01e-08  6.88e-05   1.1
+    u2 (aes_sbox_1)                   2.67e-05 4.94e-05 7.07e-08  7.61e-05   1.3
+    u3 (aes_sbox_0)                   2.57e-05 4.76e-05 7.05e-08  7.34e-05   1.2
+  text_out_reg_5_ (WDDLDFFMS)         4.28e-06 1.36e-07 2.03e-09  4.42e-06   0.1
+  sa03_reg_3_ (WDDLDFFMS)             5.21e-06 5.78e-07 2.06e-09  5.79e-06   0.1
+  text_out_reg_30_ (WDDLDFFMS)        5.56e-06 1.89e-07 2.13e-09  5.76e-06   0.1
+  text_out_reg_70_ (WDDLDFFMS)        5.31e-06 2.04e-07 2.11e-09  5.52e-06   0.1
+  text_out_reg_102_ (WDDLDFFMS)       5.04e-06 1.36e-07 2.07e-09  5.18e-06   0.1
+  sa20_reg_4_ (WDDLDFFMS)             5.07e-06 6.70e-07 2.06e-09  5.74e-06   0.1
+  text_out_reg_6_ (WDDLDFFMS)         5.34e-06 1.55e-07 2.08e-09  5.49e-06   0.1
+  sa03_reg_4_ (WDDLDFFMS)             5.98e-06 1.02e-06 2.11e-09  7.01e-06   0.1
+  text_out_reg_31_ (WDDLDFFMS)        4.44e-06 1.21e-07 2.04e-09  4.56e-06   0.1
+  text_out_reg_71_ (WDDLDFFMS)        5.15e-06 1.70e-07 2.11e-09  5.32e-06   0.1
+  text_out_reg_103_ (WDDLDFFMS)       4.74e-06 1.55e-07 2.09e-09  4.89e-06   0.1
+  sa20_reg_5_ (WDDLDFFMS)             6.28e-06 5.99e-07 2.11e-09  6.88e-06   0.1
+  sa10_reg_0_ (WDDLDFFMS)             5.54e-06 4.98e-07 2.10e-09  6.04e-06   0.1
+  text_out_reg_7_ (WDDLDFFMS)         4.74e-06 1.70e-07 2.08e-09  4.91e-06   0.1
+  sa31_reg_0_ (WDDLDFFMS)             5.57e-06 5.53e-07 2.06e-09  6.12e-06   0.1
+  sa03_reg_5_ (WDDLDFFMS)             6.15e-06 6.99e-07 2.13e-09  6.85e-06   0.1
+  text_out_reg_32_ (WDDLDFFMS)        4.83e-06 1.70e-07 2.09e-09  5.00e-06   0.1
+  text_out_reg_72_ (WDDLDFFMS)        4.84e-06 1.21e-07 2.06e-09  4.97e-06   0.1
+  text_out_reg_104_ (WDDLDFFMS)       4.80e-06 1.36e-07 2.08e-09  4.94e-06   0.1
+  sa20_reg_6_ (WDDLDFFMS)             6.41e-06 5.02e-07 2.14e-09  6.92e-06   0.1
+  sa10_reg_1_ (WDDLDFFMS)             5.07e-06 1.15e-06 2.03e-09  6.22e-06   0.1
+  text_out_reg_8_ (WDDLDFFMS)         4.50e-06 1.36e-07 2.06e-09  4.64e-06   0.1
+  sa31_reg_1_ (WDDLDFFMS)             5.50e-06 1.92e-06 2.10e-09  7.42e-06   0.1
+  sa03_reg_6_ (WDDLDFFMS)             5.89e-06 4.02e-07 2.08e-09  6.29e-06   0.1
+  text_out_reg_33_ (WDDLDFFMS)        5.24e-06 1.70e-07 2.08e-09  5.41e-06   0.1
+  text_out_reg_73_ (WDDLDFFMS)        4.94e-06 1.36e-07 2.09e-09  5.08e-06   0.1
+  text_out_reg_105_ (WDDLDFFMS)       5.82e-06 2.38e-07 2.14e-09  6.06e-06   0.1
+  sa20_reg_7_ (WDDLDFFMS)             5.71e-06 1.13e-06 2.08e-09  6.85e-06   0.1
+  sa10_reg_2_ (WDDLDFFMS)             6.48e-06 1.16e-06 2.12e-09  7.63e-06   0.1
+  text_out_reg_9_ (WDDLDFFMS)         5.03e-06 1.36e-07 2.07e-09  5.17e-06   0.1
+  sa31_reg_2_ (WDDLDFFMS)             5.90e-06 9.63e-07 2.09e-09  6.87e-06   0.1
+  sa03_reg_7_ (WDDLDFFMS)             6.13e-06 1.71e-06 2.13e-09  7.84e-06   0.1
+  text_out_reg_34_ (WDDLDFFMS)        4.77e-06 1.36e-07 2.07e-09  4.91e-06   0.1
+  text_out_reg_74_ (WDDLDFFMS)        5.05e-06 1.70e-07 2.10e-09  5.22e-06   0.1
+  text_out_reg_106_ (WDDLDFFMS)       6.15e-06 2.38e-07 2.15e-09  6.39e-06   0.1
+  sa10_reg_3_ (WDDLDFFMS)             6.00e-06 9.51e-07 2.10e-09  6.95e-06   0.1
+
+
+                                      Peak     Peak            Glitch   X-tran
+Hierarchy                             Power    Time            Power    Power
+--------------------------------------------------------------------------------
+aes_cipher_top                           1.227 106.664-106.665 2.23e-04 2.39e-05
+  sa31_reg_3_ (WDDLDFFMS)             1.66e-03 277.328-277.329 3.59e-08 2.55e-08
+  text_out_reg_35_ (WDDLDFFMS)        1.44e-03 746.654-746.655 6.87e-08    0.000
+  text_out_reg_75_ (WDDLDFFMS)        1.44e-03 362.660-362.661 1.15e-07    0.000
+  text_out_reg_107_ (WDDLDFFMS)       1.44e-03 661.322-661.323 1.08e-07    0.000
+  sa10_reg_4_ (WDDLDFFMS)             1.64e-03 789.320-789.321 7.68e-08 2.55e-08
+  sa31_reg_4_ (WDDLDFFMS)             1.78e-03 362.660-362.661 1.59e-07 2.54e-08
+  text_out_reg_36_ (WDDLDFFMS)        1.44e-03 533.324-533.325    0.000    0.000
+  text_out_reg_76_ (WDDLDFFMS)        1.44e-03 959.984-959.985 1.96e-07    0.000
+  text_out_reg_108_ (WDDLDFFMS)       1.44e-03 1087.982-1087.983
+                                                                  0.000    0.000
+  sa10_reg_5_ (WDDLDFFMS)             1.58e-03 917.318-917.319    0.000 2.55e-08
+  sa00_reg_0_ (WDDLDFFMS)             1.60e-03 789.320-789.321 4.78e-08 2.45e-08
+  sa31_reg_5_ (WDDLDFFMS)             1.58e-03 362.660-362.661    0.000 2.55e-08
+  sa21_reg_0_ (WDDLDFFMS)             1.87e-03 917.318-917.319    0.000 2.52e-08
+  text_out_reg_37_ (WDDLDFFMS)        1.44e-03 490.658-490.659    0.000    0.000
+  text_out_reg_77_ (WDDLDFFMS)        1.44e-03 447.992-447.993 1.15e-07    0.000
+  text_out_reg_109_ (WDDLDFFMS)       1.44e-03 1087.982-1087.983
+                                                                  0.000    0.000
+  sa10_reg_6_ (WDDLDFFMS)             1.62e-03 1045.316-1045.317
+                                                               3.61e-08 2.45e-08
+  sa00_reg_1_ (WDDLDFFMS)             1.75e-03 447.992-447.993 7.51e-08 2.45e-08
+  sa31_reg_6_ (WDDLDFFMS)             1.58e-03 319.994-319.995    0.000 2.55e-08
+  sa21_reg_1_ (WDDLDFFMS)             1.75e-03 319.994-319.995 4.50e-08 2.55e-08
+  text_out_reg_38_ (WDDLDFFMS)        1.44e-03 703.988-703.989 1.80e-08    0.000
+  text_out_reg_78_ (WDDLDFFMS)        1.44e-03 490.658-490.659 5.16e-08    0.000
+  sa10_reg_7_ (WDDLDFFMS)             1.67e-03 405.326-405.327 9.71e-08 2.55e-08
+  sa00_reg_2_ (WDDLDFFMS)             1.67e-03 661.322-661.323 7.40e-08 2.45e-08
+  sa31_reg_7_ (WDDLDFFMS)             1.67e-03 1045.316-1045.317
+                                                                  0.000 2.55e-08
+  sa21_reg_2_ (WDDLDFFMS)             1.64e-03 661.322-661.323    0.000 2.55e-08
+  text_out_reg_39_ (WDDLDFFMS)        1.44e-03 831.986-831.987    0.000    0.000
+  text_out_reg_79_ (WDDLDFFMS)        1.44e-03 447.992-447.993 6.79e-08    0.000
+  sa00_reg_3_ (WDDLDFFMS)             1.66e-03 405.326-405.327 8.97e-08 2.55e-08
+  sa21_reg_3_ (WDDLDFFMS)             1.66e-03 917.318-917.319 5.10e-08 2.55e-08
+  text_out_reg_20_ (WDDLDFFMS)        1.39e-03 575.990-575.991 4.24e-08    0.000
+  text_out_reg_60_ (WDDLDFFMS)        1.44e-03 746.654-746.655    0.000    0.000
+  sa00_reg_4_ (WDDLDFFMS)             1.64e-03 661.322-661.323    0.000 2.55e-08
+  sa21_reg_4_ (WDDLDFFMS)             1.64e-03 1087.982-1087.983
+                                                               8.11e-08 2.55e-08
+  text_out_reg_21_ (WDDLDFFMS)        1.42e-03 831.986-831.987 9.86e-08    0.000
+  text_out_reg_61_ (WDDLDFFMS)        1.44e-03 490.658-490.659 1.00e-07    0.000
+  sa00_reg_5_ (WDDLDFFMS)             1.58e-03 1130.648-1130.649
+                                                               1.43e-07 2.55e-08
+  sa21_reg_5_ (WDDLDFFMS)             1.61e-03 917.318-917.319 1.20e-07 2.55e-08
+  sa11_reg_0_ (WDDLDFFMS)             1.62e-03 917.318-917.319 6.87e-08 2.45e-08
+  text_out_reg_22_ (WDDLDFFMS)        1.44e-03 746.654-746.655 7.40e-08    0.000
+  sa32_reg_0_ (WDDLDFFMS)             1.63e-03 405.326-405.327 4.16e-08 2.45e-08
+  text_out_reg_62_ (WDDLDFFMS)        1.43e-03 831.986-831.987 1.40e-07    0.000
+  sa00_reg_6_ (WDDLDFFMS)             1.61e-03 533.324-533.325 1.03e-07 2.45e-08
+  sa21_reg_6_ (WDDLDFFMS)             1.58e-03 1045.316-1045.317
+                                                               1.66e-08 2.55e-08
+  sa11_reg_1_ (WDDLDFFMS)             1.75e-03 405.326-405.327 4.66e-08 2.55e-08
+  text_out_reg_23_ (WDDLDFFMS)        1.44e-03 447.992-447.993 8.76e-08    0.000
+  sa32_reg_1_ (WDDLDFFMS)             1.82e-03 789.320-789.321    0.000 2.54e-08
+  text_out_reg_63_ (WDDLDFFMS)        1.44e-03 533.324-533.325 7.17e-08    0.000
+  sa00_reg_7_ (WDDLDFFMS)             1.67e-03 405.326-405.327    0.000 2.45e-08
+  sa21_reg_7_ (WDDLDFFMS)             1.67e-03 319.994-319.995    0.000 2.45e-08
+  us00 (aes_sbox_19)                  1.26e-02 704.967-704.968 1.13e-05    0.000
+  us01 (aes_sbox_18)                  1.12e-02 662.276-662.277 8.36e-06    0.000
+  us02 (aes_sbox_17)                  1.15e-02 918.451-918.452 1.01e-05    0.000
+  us03 (aes_sbox_16)                  1.22e-02 1046.418-1046.419
+                                                               9.96e-06    0.000
+  sa11_reg_2_ (WDDLDFFMS)             1.64e-03 874.652-874.653 1.21e-07 2.45e-08
+  text_out_reg_24_ (WDDLDFFMS)        1.42e-03 618.656-618.657 2.99e-08    0.000
+  sa32_reg_2_ (WDDLDFFMS)             1.64e-03 362.660-362.661 1.22e-07 2.45e-08
+  text_out_reg_64_ (WDDLDFFMS)        1.43e-03 533.324-533.325    0.000    0.000
+  us10 (aes_sbox_15)                  1.18e-02 406.310-406.311 8.87e-06    0.000
+  us11 (aes_sbox_14)                  1.27e-02 1088.836-1088.837
+                                                               8.40e-06    0.000
+  us12 (aes_sbox_13)                  1.16e-02 278.349-278.350 9.37e-06    0.000
+  us13 (aes_sbox_12)                  1.11e-02 406.348-406.349 9.25e-06    0.000
+  sa11_reg_3_ (WDDLDFFMS)             1.66e-03 575.990-575.991 6.98e-08 2.66e-08
+  text_out_reg_25_ (WDDLDFFMS)        1.41e-03 661.322-661.323 5.61e-08    0.000
+  sa32_reg_3_ (WDDLDFFMS)             1.90e-03 405.326-405.327    0.000 2.52e-08
+  text_out_reg_65_ (WDDLDFFMS)        1.43e-03 490.658-490.659 2.99e-08    0.000
+  us20 (aes_sbox_11)                  1.22e-02 576.992-576.993 7.51e-06    0.000
+  us21 (aes_sbox_10)                  1.36e-02 321.140-321.141 1.19e-05    0.000
+  us22 (aes_sbox_9)                   1.18e-02 1046.318-1046.319
+                                                               7.31e-06    0.000
+  us23 (aes_sbox_8)                   1.58e-02 448.913-448.914 1.01e-05 9.24e-06
+    U257 (WDDLINV)                    4.52e-04 364.086-364.087    0.000 3.09e-07
+    U259 (WDDLNOR2X)                  4.79e-04 535.145-535.146    0.000 2.73e-07
+    U165 (WDDLNOR2X)                  7.39e-04 918.584-918.585 2.24e-07 2.43e-07
+    U262 (WDDLNOR2X)                  4.79e-04 535.145-535.146    0.000 2.92e-07
+    U177 (WDDLNAND2X)                 3.87e-04 834.084-834.085    0.000 2.63e-07
+    U271 (WDDLNOR2X)                  1.58e-03 704.890-704.891 3.93e-08 2.93e-07
+    U277 (WDDLNOR2X)                  4.02e-03 1046.241-1046.242
+                                                               5.61e-08 2.73e-07
+    U180 (WDDLNAND2X)                 5.82e-04 662.976-662.977    0.000 2.73e-07
+    U280 (WDDLNAND2X)                 1.80e-03 704.890-704.891 4.15e-08 2.82e-07
+    U284 (WDDLNAND2X)                 6.14e-04 491.697-491.698 4.89e-09 2.48e-07
+    U286 (WDDLNAND2X)                 4.80e-04 535.145-535.146    0.000 2.92e-07
+    U294 (WDDLNAND2X)                 5.63e-04 833.071-833.072 1.46e-07 2.74e-07
+    U298 (WDDLINV)                    3.67e-04 237.618-237.619    0.000 1.59e-07
+    U8 (WDDLINV)                      3.73e-04 321.786-321.787    0.000 1.97e-07
+    U308 (WDDLINV)                    3.67e-04 408.254-408.255    0.000 1.63e-07
+    U211 (WDDLNOR2X)                  6.23e-04 1003.802-1003.803
+                                                               2.24e-07 3.06e-07
+    U18 (WDDLNOR2X)                   4.53e-04 748.132-748.133 2.90e-09 2.60e-07
+    U214 (WDDLNOR2X)                  6.39e-04 833.087-833.088 3.36e-09 3.13e-07
+    U215 (WDDLNAND2X)                 5.00e-04 918.891-918.892    0.000 3.30e-07
+    U310 (WDDLNAND2X)                 5.82e-04 1004.144-1004.145
+                                                                  0.000 3.68e-07
+    U316 (WDDLINV)                    3.51e-04 236.630-236.631    0.000 1.59e-07
+    U121 (WDDLNAND2X)                 6.20e-04 1004.472-1004.473
+                                                                  0.000 2.35e-07
+    U21 (WDDLNOR2X)                   6.31e-04 1089.029-1089.030
+                                                               5.86e-08 2.88e-07
+    U23 (WDDLNAND2X)                  7.20e-04 834.468-834.469    0.000 2.51e-07
+    U234 (WDDLNAND2X)                 4.68e-04 364.086-364.087    0.000 3.11e-07
+    U332 (WDDLINV)                    3.67e-04 1089.640-1089.641
+                                                               2.93e-08 1.35e-07
+    U338 (WDDLNOR2X)                  7.28e-04 1089.248-1089.249
+                                                               4.30e-08 2.46e-07
+    U148 (WDDLINV)                    4.43e-04 747.824-747.825 2.90e-09 1.48e-07
+    U342 (WDDLNOR2X)                  6.16e-04 1003.697-1003.698
+                                                               1.25e-07 2.81e-07
+  sa11_reg_4_ (WDDLDFFMS)             1.64e-03 1087.982-1087.983
+                                                                  0.000 2.55e-08
+  text_out_reg_26_ (WDDLDFFMS)        1.39e-03 789.320-789.321 8.45e-08    0.000
+  sa32_reg_4_ (WDDLDFFMS)             1.64e-03 789.320-789.321 9.37e-08 2.45e-08
+  text_out_reg_66_ (WDDLDFFMS)        1.44e-03 917.318-917.319    0.000    0.000
+  us30 (aes_sbox_7)                   1.19e-02 1046.306-1046.307
+                                                               8.97e-06    0.000
+  us31 (aes_sbox_6)                   1.16e-02 363.646-363.647 7.54e-06    0.000
+  us32 (aes_sbox_5)                   1.24e-02 363.525-363.526 9.41e-06    0.000
+  us33 (aes_sbox_4)                   1.06e-02 918.326-918.327 5.48e-06    0.000
+  sa11_reg_5_ (WDDLDFFMS)             1.58e-03 490.658-490.659 2.75e-08 2.55e-08
+  sa01_reg_0_ (WDDLDFFMS)             1.62e-03 533.324-533.325 1.00e-07 2.55e-08
+  text_out_reg_27_ (WDDLDFFMS)        1.39e-03 490.658-490.659 4.43e-08    0.000
+  sa32_reg_5_ (WDDLDFFMS)             1.58e-03 1002.650-1002.651
+                                                                  0.000 2.45e-08
+  sa22_reg_0_ (WDDLDFFMS)             1.62e-03 533.324-533.325 8.81e-08 2.55e-08
+  text_out_reg_67_ (WDDLDFFMS)        1.44e-03 831.986-831.987    0.000    0.000
+  sa11_reg_6_ (WDDLDFFMS)             1.58e-03 447.992-447.993 6.90e-08 2.45e-08
+  sa01_reg_1_ (WDDLDFFMS)             1.75e-03 405.326-405.327 1.06e-07 2.55e-08
+  text_out_reg_28_ (WDDLDFFMS)        1.40e-03 1002.650-1002.651
+                                                               9.00e-08    0.000
+  sa32_reg_6_ (WDDLDFFMS)             1.62e-03 831.986-831.987 3.49e-08 2.54e-08
+  sa22_reg_1_ (WDDLDFFMS)             1.75e-03 490.658-490.659 4.62e-08 2.55e-08
+  text_out_reg_68_ (WDDLDFFMS)        1.44e-03 533.324-533.325 1.04e-07    0.000
+  sa11_reg_7_ (WDDLDFFMS)             1.67e-03 362.660-362.661 3.13e-08 2.45e-08
+  sa01_reg_2_ (WDDLDFFMS)             1.64e-03 1087.982-1087.983
+                                                                  0.000 2.45e-08
+  text_out_reg_29_ (WDDLDFFMS)        1.41e-03 618.656-618.657 1.73e-07    0.000
+  sa32_reg_7_ (WDDLDFFMS)             1.67e-03 1087.982-1087.983
+                                                               5.02e-08 2.55e-08
+  text_out_reg_120_ (WDDLDFFMS)       1.44e-03 618.656-618.657 2.96e-08    0.000
+  sa22_reg_2_ (WDDLDFFMS)             1.64e-03 831.986-831.987 5.02e-08 2.45e-08
+  text_out_reg_69_ (WDDLDFFMS)        1.44e-03 703.988-703.989    0.000    0.000
+  sa01_reg_3_ (WDDLDFFMS)             1.66e-03 789.320-789.321 9.59e-08 2.45e-08
+  text_out_reg_121_ (WDDLDFFMS)       1.44e-03 618.656-618.657 4.28e-08    0.000
+  text_out_reg_10_ (WDDLDFFMS)        1.39e-03 917.318-917.319 2.05e-08    0.000
+  sa22_reg_3_ (WDDLDFFMS)             1.66e-03 746.654-746.655    0.000 2.55e-08
+  text_out_reg_50_ (WDDLDFFMS)        1.43e-03 703.988-703.989    0.000    0.000
+  sa01_reg_4_ (WDDLDFFMS)             1.59e-03 661.322-661.323 4.13e-08 2.45e-08
+  text_out_reg_90_ (WDDLDFFMS)        1.44e-03 789.320-789.321 5.25e-08    0.000
+  text_out_reg_122_ (WDDLDFFMS)       1.44e-03 831.986-831.987    0.000    0.000
+  text_out_reg_11_ (WDDLDFFMS)        1.39e-03 1087.982-1087.983
+                                                               4.86e-08    0.000
+  sa22_reg_4_ (WDDLDFFMS)             1.64e-03 1130.648-1130.649
+                                                               6.32e-08 2.55e-08
+  text_out_reg_51_ (WDDLDFFMS)        1.44e-03 789.320-789.321 4.00e-08    0.000
+  sa01_reg_5_ (WDDLDFFMS)             1.58e-03 746.654-746.655 5.28e-08 2.55e-08
+  text_out_reg_91_ (WDDLDFFMS)        1.44e-03 703.988-703.989 1.65e-07    0.000
+  text_out_reg_123_ (WDDLDFFMS)       1.44e-03 490.658-490.659 1.50e-08    0.000
+  text_out_reg_12_ (WDDLDFFMS)        1.40e-03 618.656-618.657 1.87e-07    0.000
+  sa22_reg_5_ (WDDLDFFMS)             1.58e-03 447.992-447.993    0.000 2.55e-08
+  sa12_reg_0_ (WDDLDFFMS)             1.62e-03 1130.648-1130.649
+                                                               1.09e-07 2.45e-08
+  text_out_reg_52_ (WDDLDFFMS)        1.44e-03 447.992-447.993 7.51e-08    0.000
+  sa33_reg_0_ (WDDLDFFMS)             1.64e-03 746.654-746.655 8.47e-08 2.54e-08
+  sa01_reg_6_ (WDDLDFFMS)             1.61e-03 490.658-490.659 1.70e-07 2.45e-08
+  text_out_reg_92_ (WDDLDFFMS)        1.44e-03 362.660-362.661 3.39e-08    0.000
+  text_out_reg_124_ (WDDLDFFMS)       1.44e-03 959.984-959.985 9.29e-08    0.000
+  text_out_reg_13_ (WDDLDFFMS)        1.42e-03 917.318-917.319 9.60e-08    0.000
+  sa22_reg_6_ (WDDLDFFMS)             1.62e-03 618.656-618.657 5.61e-08 2.45e-08
+  sa12_reg_1_ (WDDLDFFMS)             1.65e-03 362.660-362.661 1.28e-07 2.55e-08
+  text_out_reg_53_ (WDDLDFFMS)        1.44e-03 490.658-490.659 2.39e-07    0.000
+  sa33_reg_1_ (WDDLDFFMS)             1.79e-03 490.658-490.659    0.000 2.54e-08
+  sa01_reg_7_ (WDDLDFFMS)             1.60e-03 533.324-533.325    0.000 2.55e-08
+  text_out_reg_93_ (WDDLDFFMS)        1.44e-03 533.324-533.325 9.93e-08    0.000
+  text_out_reg_125_ (WDDLDFFMS)       1.44e-03 1045.316-1045.317
+                                                               2.89e-08    0.000
+  text_out_reg_14_ (WDDLDFFMS)        1.44e-03 533.324-533.325 1.04e-07    0.000
+  sa22_reg_7_ (WDDLDFFMS)             1.67e-03 405.326-405.327 3.13e-08 2.45e-08
+  sa12_reg_2_ (WDDLDFFMS)             1.22e-03 831.986-831.987    0.000 2.64e-08
+  text_out_reg_54_ (WDDLDFFMS)        1.44e-03 703.988-703.989 1.55e-08    0.000
+  sa33_reg_2_ (WDDLDFFMS)             1.64e-03 874.652-874.653 7.54e-08 2.55e-08
+  text_out_reg_94_ (WDDLDFFMS)        1.44e-03 874.652-874.653 8.14e-08    0.000
+  text_out_reg_126_ (WDDLDFFMS)       1.44e-03 959.984-959.985 1.00e-07    0.000
+  text_out_reg_15_ (WDDLDFFMS)        1.44e-03 362.660-362.661 1.12e-07    0.000
+  sa12_reg_3_ (WDDLDFFMS)             1.66e-03 1130.648-1130.649
+                                                               4.46e-08 2.45e-08
+  U1373 (WDDLNANDCOMP)                6.31e-03 192.948-192.949 4.54e-08 6.60e-08
+  text_out_reg_55_ (WDDLDFFMS)        1.43e-03 1130.648-1130.649
+                                                               1.14e-07    0.000
+  sa33_reg_3_ (WDDLDFFMS)             1.70e-03 831.986-831.987    0.000 2.45e-08
+  text_out_reg_95_ (WDDLDFFMS)        1.44e-03 405.326-405.327    0.000    0.000
+  text_out_reg_127_ (WDDLDFFMS)       1.44e-03 575.990-575.991 1.14e-08    0.000
+  text_out_reg_16_ (WDDLDFFMS)        1.42e-03 533.324-533.325 1.61e-08    0.000
+  sa12_reg_4_ (WDDLDFFMS)             1.64e-03 917.318-917.319 1.03e-07 2.45e-08
+  text_out_reg_56_ (WDDLDFFMS)        1.44e-03 1087.982-1087.983
+                                                               4.84e-08    0.000
+  sa33_reg_4_ (WDDLDFFMS)             1.68e-03 703.988-703.989    0.000 2.45e-08
+  text_out_reg_96_ (WDDLDFFMS)        1.44e-03 447.992-447.993    0.000    0.000
+  text_out_reg_17_ (WDDLDFFMS)        1.41e-03 618.656-618.657 1.47e-08    0.000
+  sa12_reg_5_ (WDDLDFFMS)             1.62e-03 703.988-703.989 5.03e-08 2.45e-08
+  sa02_reg_0_ (WDDLDFFMS)             1.87e-03 874.652-874.653    0.000 2.52e-08
+  text_out_reg_57_ (WDDLDFFMS)        1.43e-03 789.320-789.321 4.49e-08    0.000
+  sa33_reg_5_ (WDDLDFFMS)             1.62e-03 917.318-917.319    0.000 2.54e-08
+  sa23_reg_0_ (WDDLDFFMS)             1.60e-03 1045.316-1045.317
+                                                               9.36e-08 2.55e-08
+  text_out_reg_97_ (WDDLDFFMS)        1.44e-03 1045.316-1045.317
+                                                                  0.000    0.000
+  text_out_reg_18_ (WDDLDFFMS)        1.39e-03 874.652-874.653 6.10e-08    0.000
+  sa12_reg_6_ (WDDLDFFMS)             1.58e-03 661.322-661.323    0.000 2.55e-08
+  sa02_reg_1_ (WDDLDFFMS)             1.75e-03 1130.648-1130.649
+                                                               7.74e-08 2.55e-08
+  text_out_reg_58_ (WDDLDFFMS)        1.43e-03 1002.650-1002.651
+                                                               1.20e-08    0.000
+  sa33_reg_6_ (WDDLDFFMS)             1.62e-03 1002.650-1002.651
+                                                                  0.000 2.54e-08
+  sa23_reg_1_ (WDDLDFFHQX2)           3.01e-03 917.318-917.319 3.00e-07 9.06e-08
+    m1 (MUX2X)                        5.21e-04 405.326-405.327 7.93e-08 4.53e-08
+    m2 (MUX2X)                        5.21e-04 575.990-575.991 1.51e-07 4.53e-08
+  text_out_reg_98_ (WDDLDFFMS)        1.44e-03 575.990-575.991    0.000    0.000
+  text_out_reg_19_ (WDDLDFFMS)        1.39e-03 1087.982-1087.983
+                                                               1.04e-07    0.000
+  text_out_reg_110_ (WDDLDFFMS)       1.44e-03 447.992-447.993    0.000    0.000
+  sa12_reg_7_ (WDDLDFFMS)             1.67e-03 405.326-405.327 2.97e-08 2.55e-08
+  sa02_reg_2_ (WDDLDFFMS)             1.64e-03 490.658-490.659 3.73e-08 2.55e-08
+  text_out_reg_59_ (WDDLDFFMS)        1.44e-03 490.658-490.659 6.69e-08    0.000
+  sa33_reg_7_ (WDDLDFFMS)             1.71e-03 1087.982-1087.983
+                                                                  0.000 2.45e-08
+  sa23_reg_2_ (WDDLDFFMS)             1.66e-03 575.990-575.991    0.000 2.45e-08
+  text_out_reg_99_ (WDDLDFFMS)        1.44e-03 447.992-447.993    0.000    0.000
+  text_out_reg_111_ (WDDLDFFMS)       1.43e-03 917.318-917.319 1.59e-07    0.000
+  sa02_reg_3_ (WDDLDFFMS)             1.66e-03 447.992-447.993 4.39e-08 2.55e-08
+  sa23_reg_3_ (WDDLDFFMS)             1.69e-03 831.986-831.987 1.18e-07 2.54e-08
+  text_out_reg_40_ (WDDLDFFMS)        1.44e-03 746.654-746.655 5.11e-08    0.000
+  text_out_reg_80_ (WDDLDFFMS)        1.44e-03 575.990-575.991 7.11e-08    0.000
+  text_out_reg_112_ (WDDLDFFMS)       1.44e-03 1002.650-1002.651
+                                                               8.75e-08    0.000
+  sa02_reg_4_ (WDDLDFFMS)             1.64e-03 874.652-874.653 5.02e-08 2.55e-08
+  sa23_reg_4_ (WDDLDFFMS)             1.68e-03 405.326-405.327    0.000 2.45e-08
+  text_out_reg_41_ (WDDLDFFMS)        1.44e-03 703.988-703.989    0.000    0.000
+  text_out_reg_81_ (WDDLDFFMS)        1.07e-03 447.992-447.993    0.000    0.000
+  text_out_reg_113_ (WDDLDFFMS)       1.44e-03 575.990-575.991    0.000    0.000
+  sa30_reg_0_ (WDDLDFFMS)             1.60e-03 405.326-405.327 8.72e-08 2.45e-08
+  sa02_reg_5_ (WDDLDFFMS)             1.58e-03 447.992-447.993    0.000 2.55e-08
+  sa23_reg_5_ (WDDLDFFMS)             1.60e-03 1002.650-1002.651
+                                                               3.49e-08 2.45e-08
+  sa13_reg_0_ (WDDLDFFMS)             1.70e-03 405.326-405.327 1.62e-07 2.63e-08
+  text_out_reg_42_ (WDDLDFFMS)        1.44e-03 789.320-789.321 4.98e-08    0.000
+  text_out_reg_82_ (WDDLDFFMS)        1.44e-03 533.324-533.325    0.000    0.000
+  text_out_reg_114_ (WDDLDFFMS)       1.44e-03 490.658-490.659    0.000    0.000
+  sa30_reg_1_ (WDDLDFFMS)             1.75e-03 405.326-405.327    0.000 2.55e-08
+  sa02_reg_6_ (WDDLDFFMS)             1.58e-03 703.988-703.989 9.30e-08 2.45e-08
+  sa23_reg_6_ (WDDLDFFMS)             1.63e-03 618.656-618.657 3.93e-08 2.54e-08
+  sa13_reg_1_ (WDDLDFFMS)             1.79e-03 789.320-789.321 4.08e-08 2.54e-08
+  text_out_reg_43_ (WDDLDFFMS)        1.07e-03 1130.648-1130.649
+                                                               1.84e-07    0.000
+  text_out_reg_83_ (WDDLDFFMS)        1.44e-03 874.652-874.653 1.72e-07    0.000
+  text_out_reg_115_ (WDDLDFFMS)       1.44e-03 1130.648-1130.649
+                                                               1.32e-07    0.000
+  sa30_reg_2_ (WDDLDFFMS)             1.64e-03 618.656-618.657 8.75e-08 2.45e-08
+  sa02_reg_7_ (WDDLDFFMS)             1.67e-03 362.660-362.661 9.99e-08 2.45e-08
+  sa23_reg_7_ (WDDLDFFMS)             1.73e-03 447.992-447.993 3.99e-08 2.63e-08
+  sa13_reg_2_ (WDDLDFFMS)             1.66e-03 405.326-405.327 4.74e-08 2.54e-08
+  text_out_reg_44_ (WDDLDFFMS)        1.44e-03 447.992-447.993 3.48e-08    0.000
+  text_out_reg_84_ (WDDLDFFMS)        1.07e-03 661.322-661.323    0.000    0.000
+  text_out_reg_116_ (WDDLDFFMS)       1.44e-03 533.324-533.325 1.83e-08    0.000
+  sa30_reg_3_ (WDDLDFFMS)             1.81e-03 789.320-789.321 8.99e-08 2.54e-08
+  sa13_reg_3_ (WDDLDFFMS)             1.68e-03 874.652-874.653 5.04e-08 2.54e-08
+  text_out_reg_45_ (WDDLDFFMS)        1.44e-03 1045.316-1045.317
+                                                               4.42e-08    0.000
+  text_out_reg_0_ (WDDLDFFMS)         1.41e-03 618.656-618.657 7.80e-08    0.000
+  text_out_reg_85_ (WDDLDFFMS)        1.44e-03 533.324-533.325 1.07e-07    0.000
+  text_out_reg_117_ (WDDLDFFMS)       1.44e-03 490.658-490.659 1.11e-08    0.000
+  sa30_reg_4_ (WDDLDFFMS)             1.64e-03 746.654-746.655 1.23e-07 2.45e-08
+  sa13_reg_4_ (WDDLDFFMS)             1.67e-03 405.326-405.327 4.71e-08 2.45e-08
+  text_out_reg_46_ (WDDLDFFMS)        1.44e-03 959.984-959.985    0.000    0.000
+  text_out_reg_1_ (WDDLDFFMS)         1.41e-03 1087.982-1087.983
+                                                               3.02e-08    0.000
+  text_out_reg_86_ (WDDLDFFMS)        1.44e-03 1130.648-1130.649
+                                                               3.53e-08    0.000
+  text_out_reg_118_ (WDDLDFFMS)       1.44e-03 874.652-874.653 4.83e-08    0.000
+  sa30_reg_5_ (WDDLDFFMS)             1.58e-03 831.986-831.987 7.29e-08 2.55e-08
+  sa20_reg_0_ (WDDLDFFMS)             1.60e-03 1045.316-1045.317
+                                                               4.55e-08 2.45e-08
+  sa13_reg_5_ (WDDLDFFMS)             1.63e-03 746.654-746.655    0.000 2.54e-08
+  text_out_reg_47_ (WDDLDFFMS)        1.44e-03 533.324-533.325 4.55e-08    0.000
+  text_out_reg_2_ (WDDLDFFMS)         1.39e-03 661.322-661.323 5.13e-08    0.000
+  sa03_reg_0_ (WDDLDFFMS)             1.64e-03 789.320-789.321 4.59e-08 2.54e-08
+  text_out_reg_87_ (WDDLDFFMS)        1.44e-03 618.656-618.657    0.000    0.000
+  text_out_reg_119_ (WDDLDFFMS)       1.44e-03 1002.650-1002.651
+                                                               1.29e-07    0.000
+  sa30_reg_6_ (WDDLDFFMS)             1.58e-03 789.320-789.321 1.66e-08 2.55e-08
+  sa20_reg_1_ (WDDLDFFMS)             1.75e-03 703.988-703.989    0.000 2.55e-08
+  sa13_reg_6_ (WDDLDFFMS)             1.63e-03 1130.648-1130.649
+                                                                  0.000 2.54e-08
+  text_out_reg_48_ (WDDLDFFMS)        1.43e-03 874.652-874.653 2.07e-08    0.000
+  text_out_reg_3_ (WDDLDFFMS)         1.39e-03 1002.650-1002.651
+                                                               1.90e-08    0.000
+  sa03_reg_1_ (WDDLDFFMS)             1.78e-03 490.658-490.659 4.98e-08 2.45e-08
+  text_out_reg_88_ (WDDLDFFMS)        1.44e-03 703.988-703.989    0.000    0.000
+  sa30_reg_7_ (WDDLDFFMS)             1.60e-03 533.324-533.325 3.73e-08 2.55e-08
+  text_out_reg_100_ (WDDLDFFMS)       1.44e-03 1002.650-1002.651
+                                                               7.93e-08    0.000
+  sa20_reg_2_ (WDDLDFFMS)             1.64e-03 703.988-703.989 6.32e-08 2.55e-08
+  sa13_reg_7_ (WDDLDFFMS)             1.67e-03 831.986-831.987 7.60e-08 2.55e-08
+  text_out_reg_49_ (WDDLDFFMS)        1.07e-03 746.654-746.655    0.000    0.000
+  text_out_reg_4_ (WDDLDFFMS)         1.40e-03 618.656-618.657 1.01e-07    0.000
+  sa03_reg_2_ (WDDLDFFMS)             1.64e-03 618.656-618.657 3.03e-08 2.45e-08
+  text_out_reg_89_ (WDDLDFFMS)        1.44e-03 447.992-447.993    0.000    0.000
+  text_out_reg_101_ (WDDLDFFMS)       1.44e-03 661.322-661.323    0.000    0.000
+  sa20_reg_3_ (WDDLDFFMS)             1.66e-03 447.992-447.993 4.43e-08 2.55e-08
+  u0 (aes_key_expand_128)             7.65e-02 106.744-106.745 3.28e-05 7.72e-06
+    r0 (aes_rcon)                     4.15e-03 789.320-789.321 3.70e-07 3.39e-07
+    u0 (aes_sbox_3)                   1.08e-02 790.523-790.524 4.33e-06    0.000
+    u1 (aes_sbox_2)                   1.14e-02 449.195-449.196 4.16e-06    0.000
+    u2 (aes_sbox_1)                   1.22e-02 961.011-961.012 4.04e-06    0.000
+    u3 (aes_sbox_0)                   1.41e-02 1046.380-1046.381
+                                                               5.09e-06    0.000
+  text_out_reg_5_ (WDDLDFFMS)         1.42e-03 1045.316-1045.317
+                                                               6.13e-08    0.000
+  sa03_reg_3_ (WDDLDFFMS)             1.66e-03 1130.648-1130.649
+                                                               4.31e-08 2.45e-08
+  text_out_reg_30_ (WDDLDFFMS)        1.42e-03 1130.648-1130.649
+                                                               1.21e-07    0.000
+  text_out_reg_70_ (WDDLDFFMS)        1.44e-03 917.318-917.319 1.40e-07    0.000
+  text_out_reg_102_ (WDDLDFFMS)       1.44e-03 447.992-447.993 1.68e-07    0.000
+  sa20_reg_4_ (WDDLDFFMS)             1.64e-03 575.990-575.991    0.000 2.55e-08
+  text_out_reg_6_ (WDDLDFFMS)         1.44e-03 874.652-874.653 1.50e-07    0.000
+  sa03_reg_4_ (WDDLDFFMS)             1.64e-03 661.322-661.323 9.04e-08 2.45e-08
+  text_out_reg_31_ (WDDLDFFMS)        1.44e-03 618.656-618.657 8.42e-08    0.000
+  text_out_reg_71_ (WDDLDFFMS)        1.44e-03 1087.982-1087.983
+                                                               8.68e-08    0.000
+  text_out_reg_103_ (WDDLDFFMS)       1.44e-03 959.984-959.985 2.04e-08    0.000
+  sa20_reg_5_ (WDDLDFFMS)             1.61e-03 405.326-405.327 1.02e-07 2.45e-08
+  sa10_reg_0_ (WDDLDFFMS)             1.60e-03 533.324-533.325 1.71e-08 2.55e-08
+  text_out_reg_7_ (WDDLDFFMS)         1.44e-03 575.990-575.991 1.15e-07    0.000
+  sa31_reg_0_ (WDDLDFFMS)             1.63e-03 618.656-618.657 1.45e-07 2.45e-08
+  sa03_reg_5_ (WDDLDFFMS)             1.71e-03 490.658-490.659 9.63e-08 2.45e-08
+  text_out_reg_32_ (WDDLDFFMS)        1.44e-03 1087.982-1087.983
+                                                                  0.000    0.000
+  text_out_reg_72_ (WDDLDFFMS)        1.44e-03 746.654-746.655 2.65e-08    0.000
+  text_out_reg_104_ (WDDLDFFMS)       1.44e-03 533.324-533.325    0.000    0.000
+  sa20_reg_6_ (WDDLDFFMS)             1.58e-03 362.660-362.661    0.000 2.45e-08
+  sa10_reg_1_ (WDDLDFFMS)             1.65e-03 362.660-362.661 1.25e-07 2.55e-08
+  text_out_reg_8_ (WDDLDFFMS)         1.42e-03 1087.982-1087.983
+                                                               8.99e-08    0.000
+  sa31_reg_1_ (WDDLDFFMS)             1.75e-03 917.318-917.319 4.86e-08 2.55e-08
+  sa03_reg_6_ (WDDLDFFMS)             1.71e-03 405.326-405.327 3.57e-08 2.45e-08
+  text_out_reg_33_ (WDDLDFFMS)        1.44e-03 575.990-575.991    0.000    0.000
+  text_out_reg_73_ (WDDLDFFMS)        1.44e-03 874.652-874.653 6.33e-08    0.000
+  text_out_reg_105_ (WDDLDFFMS)       1.44e-03 703.988-703.989 2.23e-08    0.000
+  sa20_reg_7_ (WDDLDFFMS)             1.67e-03 575.990-575.991 8.25e-08 2.45e-08
+  sa10_reg_2_ (WDDLDFFMS)             1.68e-03 917.318-917.319    0.000 2.45e-08
+  text_out_reg_9_ (WDDLDFFMS)         1.41e-03 533.324-533.325 2.98e-08    0.000
+  sa31_reg_2_ (WDDLDFFMS)             1.64e-03 661.322-661.323    0.000 2.45e-08
+  sa03_reg_7_ (WDDLDFFMS)             1.67e-03 362.660-362.661 8.25e-08 2.45e-08
+  text_out_reg_34_ (WDDLDFFMS)        1.44e-03 575.990-575.991 2.54e-08    0.000
+  text_out_reg_74_ (WDDLDFFMS)        1.43e-03 405.326-405.327 2.25e-08    0.000
+  text_out_reg_106_ (WDDLDFFMS)       1.44e-03 1087.982-1087.983
+                                                               4.92e-08    0.000
+  sa10_reg_3_ (WDDLDFFMS)             1.66e-03 490.658-490.659 1.55e-07 2.55e-08
+1

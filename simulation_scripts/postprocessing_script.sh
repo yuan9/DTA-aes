@@ -1,7 +1,7 @@
 #!/bin/bash
 numtrace=600
-results_dir=../result_aes_1ps_wddl_MSRegMuxLP
-final_dir=../final_results_1ps_wddl_MSRegMuxLP
+results_dir=../result_aes_1ps_wddl_MSRegmoreWDDLGates2PreDFF
+final_dir=../final_results_1ps_wddl_MSRegmoreWDDLGates2PreDFF
 
 #create the final directories
 mkdir $final_dir
