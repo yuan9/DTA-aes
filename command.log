@@ -1,6 +1,6 @@
 #@ # 
 #@ # Running dc_shell Version H-2013.03-SP4 for linux -- Sep 01, 2013
-#@ # Date:   Tue Mar  5 16:06:51 2019
+#@ # Date:   Wed Apr 24 22:24:28 2019
 #@ # Run by: dtatest@keccak
 #@ 
 
@@ -4801,8 +4801,8 @@ source /software/Synopsys_New/syn/CURRENT/admin/setup/.synopsys_dc.setup
 #@ 
 #@ # -- End source /software/Synopsys_New/syn/CURRENT/admin/setup/.synopsys_dc.setup
 
-source -echo -verbose /home/dtatest/DTA-aes/wddl_sdfupdate.tcl
-#@ # -- Starting source /home/dtatest/DTA-aes/wddl_sdfupdate.tcl
+source -echo -verbose /home/dtatest/DTA-aes/lowpower_sdfupdate.tcl
+#@ # -- Starting source /home/dtatest/DTA-aes/lowpower_sdfupdate.tcl
 
 #@ if {[catch {getenv "TSMC180_HOME"} msg]} {
 #@  echo "ERROR: Enviroment variable TSMC180_HOME should point at a tsmc180 lib installation "
@@ -4832,9 +4832,9 @@ source -echo -verbose /home/dtatest/DTA-aes/wddl_sdfupdate.tcl
 #@ # Technology File
 #@ set technology_file_path "$cell_path/milkyway/"
 #@ set technology_file "$technology_file_path/tech_sage-x_tsmc_cl018g_6lm.tf"
-#@ read_verilog -netlist workdir/aes_netlist_wddl.v
+#@ read_verilog -netlist workdir/aes_netlist_lowpower.v
 #@ elaborate aes_cipher_top -library work -update
 #@ current_design aes_cipher_top
-#@ write_sdf -version 2.1 workdir/wddl_aes.sdf
-#@ write -f ddc -hier aes_cipher_top -output workdir/wddl_aes.ddc
+#@ write_sdf -version 2.1 workdir/lowpower_aes.sdf
+#@ write -f ddc -hier aes_cipher_top -output workdir/lowpower_aes.ddc
 #@ quit

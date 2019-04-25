@@ -48,3 +48,21 @@ aes-commandline-wddl: gtl-vsim
 	#vsim -L work -novopt -i work.aes_cipher_top_tb +notimingchecks -sdfmax /aes_cipher_top_tb/dut=/home/dtatest/DTA-aes/workdir/aes_synthesis.sdf
 
 	#make -C "../../software/test_soft/fault_tests/dtatest" clean
+
+aes-gui-lowpower: gtl-vsim
+	 vlog -work work /home/dtatest/DTA-aes/workdir/aes_netlist_lowpower.v
+	#make -C "../../software/test_soft/fault_tests/dtatest" prog.mem
+	dc_shell -f lowpower_sdfupdate.tcl
+	vsim -L work -novopt -i work.aes_cipher_top_tb -do gtl_aes_gui.do +notimingchecks -sdfmax /aes_cipher_top_tb/dut=/home/dtatest/DTA-aes/workdir/lowpower_aes.sdf
+	#vsim -L work -novopt -i work.aes_cipher_top_tb +notimingchecks -sdfmax /aes_cipher_top_tb/dut=/home/dtatest/DTA-aes/workdir/aes_synthesis.sdf
+
+	#make -C "../../software/test_soft/fault_tests/dtatest" clean
+
+aes-commandline-lowpower: gtl-vsim
+	 vlog -work work /home/dtatest/DTA-aes/workdir/aes_netlist_lowpower.v
+	#make -C "../../software/test_soft/fault_tests/dtatest" prog.mem
+	#dc_shell -f lowpower_sdfupdate.tcl
+	vsim -L work -novopt -c work.aes_cipher_top_tb -do gtl_aes_commandline.do +notimingchecks -sdfmax /aes_cipher_top_tb/dut=/home/dtatest/DTA-aes/workdir/lowpower_aes.sdf
+	#vsim -L work -novopt -i work.aes_cipher_top_tb +notimingchecks -sdfmax /aes_cipher_top_tb/dut=/home/dtatest/DTA-aes/workdir/aes_synthesis.sdf
+
+	#make -C "../../software/test_soft/fault_tests/dtatest" clean

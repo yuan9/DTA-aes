@@ -1,9 +1,9 @@
 #!/bin/bash
 numtrace=600
 #results_dir=../result_aes_100fs_netlist2_wddl
-results_dir=../result_aes_1ps_wddl_RegFixLD_addgates
+results_dir=../result_aes_1ps_nowddl_lowpoweronlyReg
 #final_dir=../final_results_100fs_netlist2_wddl
-final_dir=../final_results_1ps_wddl_RegFixLD_addgates
+final_dir=../final_results_1ps_nowddl_lowpoweronlyReg
 
 #create the final directories
 mkdir $final_dir
