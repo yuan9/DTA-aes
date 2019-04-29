@@ -4,19 +4,17 @@ import re
 import sys
 import numpy as np
 
-tracenum = 1
-Gatelist = [0,1,2,3,4]
+tracenum = 600
+Gatelist = [0,1,2,3,4,5,6,7,8,9]
 for i in range(0,tracenum):
 	mergepower_dict = {}
 	for id in Gatelist:
-	
-	
 		F1 = open('individualGatePower/outFiles_gate-'+ str(id) +'/vector_'+ "{:03d}".format(i) +'.out' ,'r')
 		File_string1 = F1.read()
 		F1.close()
 		file_split1 = File_string1.split("\n")
-		print 'id:' + str(id)
-		print file_split1
+		#print 'id:' + str(id)
+		#print file_split1
 		
 		for j in range (0,len(file_split1)-1):
 			if file_split1:
@@ -33,7 +31,8 @@ for i in range(0,tracenum):
 				#print mergepower_dict
 
 	mergpower_dict_sorted = sorted(mergepower_dict.items())
-	print "merge:"
-	print mergpower_dict_sorted
+	#print "merge:"
+	#print mergpower_dict_sorted
 	np.savetxt('GatePowerMerge/vector_'+ "{:03d}".format(i) +'.out', mergpower_dict_sorted, fmt='%d %s')
+	print "finish processing trace-" + str(i)
 			
