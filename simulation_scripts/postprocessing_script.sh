@@ -1,8 +1,9 @@
 #!/bin/bash
 numtrace=600
-results_dir=../result_aes_1ps_wddl_MSRegmoreWDDLGates2PreDFF
-final_dir=../final_results_1ps_wddl_MSRegmoreWDDLGates2PreDFF
-
+#results_dir=../result_aes_1ps_wddl_MSRegmoreWDDLGates2PreDFF
+results_dir=../result_aes_1ps_wddl_MSRegWithLatestGates
+#final_dir=../final_results_1ps_wddl_MSRegmoreWDDLGates2PreDFF
+final_dir=../final_results_1ps_wddl_MSRegWithLatestGates
 #create the final directories
 mkdir $final_dir
 mkdir $final_dir/inFiles_result_sync

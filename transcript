@@ -696,5 +696,5 @@
 # ** Note: (vsim-3587) SDF Backannotation Successfully Completed.
 #    Time: 0 ps  Iteration: 0  Region: /aes_cipher_top_tb  File: aes_cipher_top_tb.v
 # do gtl_aes_commandline.do 
-# Initial plaintext 0c3b9493095d2539e1e3fc5d8cc8b7e2
-# Final ciphertext 662262ec0e9617657e0a42fad69dff0a
+# Initial plaintext dbe17f0684546c5571d034433d9a94b7
+# Final ciphertext 43da0832816fb90aa847085b4e690c0e

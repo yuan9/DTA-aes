@@ -4469,8 +4469,8 @@ module aes_sbox_8 ( a, d, preclkbar );
   //NOR2X1 U22 ( .A(a[1]), .B(n293), .Y(n318) );
   WDDLNOR2X U22 ( .A(a[1]), .B(n293), .Y(n318), .clkinv(preclkbar) );
   //wddl
-  //NAND2XL U23 ( .A(n140), .B(n20), .Y(n151) );
-  WDDLNAND2X U23 ( .A(n140), .B(n20), .Y(n151), .clkinv(preclkbar) );
+  NAND2XL U23 ( .A(n140), .B(n20), .Y(n151) );
+  //WDDLNAND2X U23 ( .A(n140), .B(n20), .Y(n151), .clkinv(preclkbar) );
   INVXL U24 ( .A(n352), .Y(n141) );
   INVXL U25 ( .A(n267), .Y(n333) );
   //wddl
@@ -4625,8 +4625,8 @@ module aes_sbox_8 ( a, d, preclkbar );
   NAND2XL U163 ( .A(n350), .B(n245), .Y(n180) );
   AOI22XL U164 ( .A0(n181), .A1(n350), .B0(n328), .B1(n269), .Y(n96) );
   //wddl
-  //NOR2XL U165 ( .A(n37), .B(n145), .Y(n99) );
-  WDDLNOR2X U165 ( .A(n37), .B(n145), .Y(n99), .clkinv(preclkbar) );
+  NOR2XL U165 ( .A(n37), .B(n145), .Y(n99) );
+  //WDDLNOR2X U165 ( .A(n37), .B(n145), .Y(n99), .clkinv(preclkbar) );
   AOI22XL U166 ( .A0(n350), .A1(n352), .B0(n108), .B1(n107), .Y(n114) );
   OAI22XL U167 ( .A0(n354), .A1(n194), .B0(n306), .B1(n314), .Y(n115) );
   AOI22XL U168 ( .A0(n226), .A1(n350), .B0(n339), .B1(n355), .Y(n120) );
@@ -4641,8 +4641,8 @@ module aes_sbox_8 ( a, d, preclkbar );
   AOI22XL U175 ( .A0(n325), .A1(n324), .B0(n1), .B1(n323), .Y(n343) );
   NAND2XL U176 ( .A(n311), .B(n303), .Y(n38) );
   //wddl
-  //NAND2XL U177 ( .A(n306), .B(n267), .Y(n61) );
-  WDDLNAND2X U177 ( .A(n306), .B(n267), .Y(n61), .clkinv(preclkbar) );
+  NAND2XL U177 ( .A(n306), .B(n267), .Y(n61) );
+  //WDDLNAND2X U177 ( .A(n306), .B(n267), .Y(n61), .clkinv(preclkbar) );
   //wddl
   //NOR2XL U178 ( .A(a[1]), .B(n249), .Y(n131) );
   WDDLNOR2X U178 ( .A(a[1]), .B(n249), .Y(n131), .clkinv(preclkbar) );
@@ -4650,8 +4650,8 @@ module aes_sbox_8 ( a, d, preclkbar );
   //NOR2XL U179 ( .A(n37), .B(a[1]), .Y(n195) );
   WDDLNOR2X U179 ( .A(n37), .B(a[1]), .Y(n195), .clkinv(preclkbar) );
   //wddl
-  //NAND2XL U180 ( .A(n107), .B(n348), .Y(n175) );
-  WDDLNAND2X U180 ( .A(n107), .B(n348), .Y(n175), .clkinv(preclkbar) );
+  NAND2XL U180 ( .A(n107), .B(n348), .Y(n175) );
+  //WDDLNAND2X U180 ( .A(n107), .B(n348), .Y(n175), .clkinv(preclkbar) );
   NOR2XL U181 ( .A(n233), .B(n331), .Y(n108) );
   NAND3XL U182 ( .A(n205), .B(n242), .C(n204), .Y(n206) );
   AOI22XL U183 ( .A0(n141), .A1(n332), .B0(n251), .B1(n330), .Y(n148) );
@@ -4786,8 +4786,8 @@ module aes_sbox_8 ( a, d, preclkbar );
   INVX1 U282 ( .A(n350), .Y(n335) );
   NAND2X1 U283 ( .A(n31), .B(n198), .Y(n103) );
   //wddl
-  //NAND2X1 U284 ( .A(n20), .B(n245), .Y(n263) );
-  WDDLNAND2X U284 ( .A(n20), .B(n245), .Y(n263), .clkinv(preclkbar) );
+  NAND2X1 U284 ( .A(n20), .B(n245), .Y(n263) );
+  //WDDLNAND2X U284 ( .A(n20), .B(n245), .Y(n263), .clkinv(preclkbar) );
   NAND4X1 U285 ( .A(n12), .B(n11), .C(n10), .D(n9), .Y(n28) );
   //wddl
   //NAND2X1 U286 ( .A(a[3]), .B(n323), .Y(n267) );
@@ -4808,8 +4808,8 @@ module aes_sbox_8 ( a, d, preclkbar );
   INVX1 U296 ( .A(n195), .Y(n142) );
   NAND2X1 U297 ( .A(a[0]), .B(n16), .Y(n297) );
   //wddl
-  //INVX1 U298 ( .A(n226), .Y(n253) );
-  WDDLINV U298 ( .A(n226), .Y(n253), .clkinv(preclkbar) );
+  INVX1 U298 ( .A(n226), .Y(n253) );
+  //WDDLINV U298 ( .A(n226), .Y(n253), .clkinv(preclkbar) );
   NAND2X1 U299 ( .A(n196), .B(n348), .Y(n117) );
   NAND2X1 U300 ( .A(n307), .B(n82), .Y(n287) );
   INVX1 U301 ( .A(n1), .Y(n301) );
@@ -4820,20 +4820,20 @@ module aes_sbox_8 ( a, d, preclkbar );
   AOI211X1 U306 ( .A0(n125), .A1(n28), .B0(n27), .C0(n26), .Y(n29) );
   INVX1 U307 ( .A(n327), .Y(n248) );
   //wddl
-  //INVX1 U308 ( .A(n181), .Y(n109) );
-  WDDLINV U308 ( .A(n181), .Y(n109), .clkinv(preclkbar) );
+  INVX1 U308 ( .A(n181), .Y(n109) );
+  //WDDLINV U308 ( .A(n181), .Y(n109), .clkinv(preclkbar) );
   INVX1 U309 ( .A(n225), .Y(n302) );
   //wddl
-  //NAND2X1 U310 ( .A(n109), .B(n302), .Y(n100) );
-  WDDLNAND2X U310 ( .A(n109), .B(n302), .Y(n100), .clkinv(preclkbar) );
+  NAND2X1 U310 ( .A(n109), .B(n302), .Y(n100) );
+  //WDDLNAND2X U310 ( .A(n109), .B(n302), .Y(n100), .clkinv(preclkbar) );
   OAI21XL U311 ( .A0(n270), .A1(n160), .B0(n1), .Y(n32) );
   NAND4BXL U312 ( .AN(n246), .B(n34), .C(n33), .D(n32), .Y(n35) );
   AOI211X1 U313 ( .A0(n296), .A1(n101), .B0(n36), .C0(n35), .Y(n60) );
   NOR2X1 U314 ( .A(n141), .B(n331), .Y(n336) );
   INVX1 U315 ( .A(n270), .Y(n107) );
   //wddl
-  //INVX1 U316 ( .A(n306), .Y(n145) );
-  WDDLINV U316 ( .A(n306), .Y(n145), .clkinv(preclkbar) );
+  INVX1 U316 ( .A(n306), .Y(n145) );
+  //WDDLINV U316 ( .A(n306), .Y(n145), .clkinv(preclkbar) );
   NAND4X1 U317 ( .A(n44), .B(n43), .C(n42), .D(n41), .Y(n58) );
   INVX1 U318 ( .A(n210), .Y(n236) );
   INVX1 U319 ( .A(n331), .Y(n78) );
@@ -4850,8 +4850,8 @@ module aes_sbox_8 ( a, d, preclkbar );
   NOR2X1 U330 ( .A(n275), .B(n273), .Y(n332) );
   OAI21XL U331 ( .A0(n352), .A1(n248), .B0(n71), .Y(n75) );
   //wddl
-  //INVX1 U332 ( .A(n72), .Y(n204) );
-  WDDLINV U332 ( .A(n72), .Y(n204), .clkinv(preclkbar) );
+  INVX1 U332 ( .A(n72), .Y(n204) );
+  //WDDLINV U332 ( .A(n72), .Y(n204), .clkinv(preclkbar) );
   OAI21XL U333 ( .A0(n221), .A1(n314), .B0(n73), .Y(n74) );
   NAND2X1 U334 ( .A(n345), .B(n209), .Y(n93) );
   INVX1 U335 ( .A(n125), .Y(n319) );

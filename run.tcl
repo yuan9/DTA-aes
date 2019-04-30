@@ -93,6 +93,7 @@ uniquify
 #compile -map_effort high
 compile_ultra -no_autoungroup
 
+report_area
 
 #ungroup -all ##check solvnet
 #uniquify ##before compile

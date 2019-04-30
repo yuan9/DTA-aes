@@ -1,6 +1,7 @@
 #!/bin/bash
 
-results_folder=result_aes_1ps_wddl_MSRegmoreWDDLGates2PreDFF
+##results_folder=result_aes_1ps_wddl_MSRegmoreWDDLGates2PreDFF
+results_folder=result_aes_1ps_wddl_MSRegWithLatestGates
 mkdir ../$results_folder/
 
 for counter in {0..599}
