@@ -5,7 +5,7 @@ import sys
 import numpy as np
 
 tracenum = 600
-Gatelist = [0,1,2,3,4,5,6,7,8,9]
+Gatelist = [0,1,2,3,4]
 for i in range(0,tracenum):
 	mergepower_dict = {}
 	for id in Gatelist:
@@ -33,6 +33,6 @@ for i in range(0,tracenum):
 	mergpower_dict_sorted = sorted(mergepower_dict.items())
 	#print "merge:"
 	#print mergpower_dict_sorted
-	np.savetxt('GatePowerMerge/vector_'+ "{:03d}".format(i) +'.out', mergpower_dict_sorted, fmt='%d %s')
+	np.savetxt('GatePowerMerge_exp3/vector_'+ "{:03d}".format(i) +'.out', mergpower_dict_sorted, fmt='%d %s')
 	print "finish processing trace-" + str(i)
 			

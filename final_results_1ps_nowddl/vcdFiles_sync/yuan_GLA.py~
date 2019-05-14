@@ -15,18 +15,26 @@ bitnumber = 6
 #leakend="281470"
 #leakstart= "278610"
 #leakend="279910"
+#Yuan: whole window
 leakstart= "170660"
 leakend= "171730"
+#Yuan: window 1
+#leakstart= "171100"
+#leakend= "171550"
+#Yuan: window 2
+#leakstart= "171550"
+#leakend= "171730"
 #leakend="279400"
 print leakstart
 print leakend
 
-prefix = 'nowddl_'
+prefix = 'nowddl_dist_'
 
 #---------------------------------------------#
 # parameter for gate reranking
 #---------------------------------------------#
-threshold =400
+#threshold = 400
+threshold = -120
 
 #-------------------------------------------------------------------------------#
 #  Yuan: read in termediate data
@@ -441,7 +449,7 @@ if __name__ == '__main__':
 		dic_gatepower_merge[dic_gateid[id]] = dic_gatepower[id][4]
 	#print dic_gatepower_merge
         dic_gatepower_merge = sorted(dic_gatepower_merge.items(), key=operator.itemgetter(1),reverse=True)
-	np.savetxt(prefix +'phase_2.txt', dic_gatepower_merge, fmt='%s')
+	np.savetxt(prefix +'phase2.txt', dic_gatepower_merge, fmt='%s')
 
 
 
