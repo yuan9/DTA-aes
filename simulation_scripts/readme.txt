@@ -1,4 +1,6 @@
 File locations:
+This applies to no_wddl branch. The timestamps for wddl branch is different in outfile_postprocess_ptpx.py
+
 
 1. gtl_aes_gui.do and gtl_aes_commandline.do files are in /home/dtatest/DTA-aes/
 
