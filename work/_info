@@ -175,28 +175,28 @@ vaes_cipher_top
 Vbg4?85@Zk@EQMZjnNLNgz3
 r1
 31
-I9;O1<HV?[o[CCFKgZXbB62
-Z6 w1556159054
+IHIeQb^35KRUEJiNMD^Jmd0
+Z6 w1562814810
 Z7 8/home/dtatest/DTA-aes/workdir/aes_netlist_lowpower.v
 Z8 F/home/dtatest/DTA-aes/workdir/aes_netlist_lowpower.v
 L0 8979
 R4
 R5
 !s85 0
-!s100 M=f82o]i8kig04@E6^:4i1
+!s100 O_=[eiC:IGlZaA2R_ZHZ=3
 vaes_cipher_top_tb
 V>d95MLhXNER:XCeo;`bN?2
 r1
 31
-I3U1SHKN=2Jg_oh;<i=VN23
-Z9 w1556167227
+IPBAY@RBCOkW;IQTkUm9l83
+Z9 w1562824898
 Z10 8aes_cipher_top_tb.v
 Z11 Faes_cipher_top_tb.v
 L0 18
 R4
 R5
 !s85 0
-!s100 O2ag9n[NK`GZ8d;;ZSUD63
+!s100 Jb6_`bZ@A<gO1AzBl`fPi1
 vaes_key_expand_128
 VEF0AL<nW;fiDPK_6j[V222
 r1
@@ -461,7 +461,7 @@ vaes_sbox_8
 Vi>HQzz]6K:8E7gb3NeNo]3
 r1
 31
-I[JC[6]L_Ze^OUD;GkGX_]1
+Ic=Aob>]DlcS9W=BRD[Q^h3
 R6
 R7
 R8
@@ -469,7 +469,7 @@ L0 4403
 R4
 R5
 !s85 0
-!s100 BH>0DGY19T6ogRA:CZgS52
+!s100 @gZ5WnJX28Q3bh9AcFXTf1
 vaes_sbox_9
 V4^6<@agKih4SDGeJ=7U5T3
 r1
@@ -694,19 +694,19 @@ n@a@n@d2@x4
 !s100 NXddh5F>Ao3B_SZk2SGRB0
 !s85 0
 vAND2XL
-ISME[kUSZoM?VfM;03Bn]=2
 V5XIbMnW3i[MgBVIa@nKMa1
+r1
+31
+ISME[kUSZoM?VfM;03Bn]=2
 R1
 R2
 R3
 L0 4110
 R4
-r1
-31
 R5
 n@a@n@d2@x@l
-!s100 Gzjd@HzkILzheOm8MB5Na1
 !s85 0
+!s100 Gzjd@HzkILzheOm8MB5Na1
 vAND3X1
 IfYJ`C:7Z9Ti2VgWLa2Ufk3
 VLo1M9G6e64JaCL[UB^@[>0
@@ -1827,19 +1827,19 @@ n@c@l@k@i@n@v@x8
 !s100 J33b9_a7eVmEOg7RjEBAb3
 !s85 0
 vCLKINVXL
-I?QD1^>M;2]Vg;CS0gzkK30
 VI@JITd:P10bifnzQ@[b:g3
+r1
+31
+I?QD1^>M;2]Vg;CS0gzkK30
 R1
 R2
 R3
 L0 9119
 R4
-r1
-31
 R5
 n@c@l@k@i@n@v@x@l
-!s100 W;EoJm>Z[6]z^RA?eo4S?3
 !s85 0
+!s100 W;EoJm>Z[6]z^RA?eo4S?3
 vCMPR22X1
 ITLFZ6lG[`5bDT2ZV_4=gF2
 Vh4BeMODk^:nGgI<zn?NYL1
@@ -1925,19 +1925,19 @@ n@d@f@f@h@q@x2
 !s85 0
 !s100 ^9Om4olcdR@Q?]GonnVZh0
 vDFFHQX4
-V^d2]DGiYHiiYX2Bn[Aki52
-r1
-31
 IWW1;f2aRN7mX;5<117kdd2
+V^d2]DGiYHiiYX2Bn[Aki52
 R1
 R2
 R3
 L0 9516
 R4
+r1
+31
 R5
 n@d@f@f@h@q@x4
-!s85 0
 !s100 5PWJ5CB^KY`GO>iJoF`<10
+!s85 0
 vDFFHQXL
 IAg:>GPVP>D_e4j7o<=1H80
 VE:N^5N4m;e?G8@GL>;;C53

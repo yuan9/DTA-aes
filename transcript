@@ -13,7 +13,14 @@
 # Loading work.aes_cipher_top_tb
 # Refreshing /home/dtatest/DTA-aes/work.aes_cipher_top
 # Loading work.aes_cipher_top
-# ** Warning: (vsim-3009) [TSCALE] - Module 'aes_cipher_top' does not have a `timescale directive in effect, but previous modules do.
+# ** Warning: (vsim-WLF-5000) WLF file currently in use: vsim.wlf
+#           File in use by: dtatest  Hostname: keccak  ProcessID: 54599
+#           Attempting to use alternate WLF file "./wlftGHqTZe".
+# ** Warning: (vsim-WLF-5001) Could not open WLF file: vsim.wlf
+#           Using alternate file: ./wlftGHqTZe
+# ** Warning: (vsim-WLF-5001) Could not open WLF file: vsim.wlf
+#           Using alternate file: ./wlftGHqTZe
+# [TSCALE] - Module 'aes_cipher_top' does not have a `timescale directive in effect, but previous modules do.
 #         Region: /aes_cipher_top_tb/dut
 # Refreshing /home/dtatest/DTA-aes/work.aes_key_expand_128
 # Loading work.aes_key_expand_128
@@ -183,6 +190,10 @@
 # Loading work.aes_sbox_8
 # ** Warning: (vsim-3009) [TSCALE] - Module 'aes_sbox_8' does not have a `timescale directive in effect, but previous modules do.
 #         Region: /aes_cipher_top_tb/dut/us23
+# Refreshing /home/dtatest/DTA-aes/work.AND2XL
+# Loading work.AND2XL
+# Refreshing /home/dtatest/DTA-aes/work.CLKINVXL
+# Loading work.CLKINVXL
 # Refreshing /home/dtatest/DTA-aes/work.aes_sbox_7
 # Loading work.aes_sbox_7
 # ** Warning: (vsim-3009) [TSCALE] - Module 'aes_sbox_7' does not have a `timescale directive in effect, but previous modules do.
@@ -207,8 +218,6 @@
 # Loading work.DFFX4
 # Refreshing /home/dtatest/DTA-aes/work.DFFHQX2
 # Loading work.DFFHQX2
-# Refreshing /home/dtatest/DTA-aes/work.DFFHQX4
-# Loading work.DFFHQX4
 # Refreshing /home/dtatest/DTA-aes/work.AOI2BB2X1
 # Loading work.AOI2BB2X1
 # Refreshing /home/dtatest/DTA-aes/work.OR2X1
@@ -662,5 +671,5 @@
 # ** Note: (vsim-3587) SDF Backannotation Successfully Completed.
 #    Time: 0 ps  Iteration: 0  Region: /aes_cipher_top_tb  File: aes_cipher_top_tb.v
 # do gtl_aes_commandline.do 
-# Initial plaintext a47766975051032927646ce28735a37f
-# Final ciphertext e9919fe5cb2cecf2168e31d5e5e2937a
+# Initial plaintext bba47f76875f634a85d6fe52004297b4
+# Final ciphertext 54bf030236c9f532e80422b3409d2f9e

@@ -202,7 +202,7 @@ for counter in range (0,filecount):
 sorted_dicleaksig = sorted(dicleaksig.items(), key=operator.itemgetter(1))
 #print  (sorted_dicleaksig)
 #np.savetxt('yuan_sigrank.txt',sorted_dicleaksig , fmt='%s')
-np.savetxt('rank_nowddl_1ps_aes_byte14bit' + str(bitnumber)+ '.txt',sorted_dicleaksig , fmt='%s')
+np.savetxt('rank_nowddl_1ps_aes_byte14bittemp' + str(bitnumber)+ '.txt',sorted_dicleaksig , fmt='%s')
 
 
 

@@ -1,24 +1,28 @@
 #!/bin/bash
-results_folder=result_aes_1ps_nowddl_lowpoweronlyRegX4
+
+
+results_folder=result_aes_1ps_lowpower40_noreg
+mkdir ../$results_folder/
 
 for counter in {0..599}
 do
-cp /home/dtatest/DTA-aes/aes_cipher_top_tb_orig /home/dtatest/DTA-aes/aes_cipher_top_tb.v
 #generate 16bytes random number for plaintext
-R1=$(od -vAn -N8 -tu8 < /dev/urandom)
-R1_hex=$(echo "obase=16; $R1" | bc)
-R2=$(od -vAn -N8 -tu8 < /dev/urandom)
-R2_hex=$(echo "obase=16; $R2" | bc)
+#R1=$(od -vAn -N8 -tu8 < /dev/urandom)
+#R1_hex=$(echo "obase=16; $R1" | bc)
+#R2=$(od -vAn -N8 -tu8 < /dev/urandom)
+#R2_hex=$(echo "obase=16; $R2" | bc)
 echo "Running simulation number $counter"
 echo "Plain text"
-echo "${R1_hex} ${R2_hex}"
+temp=$((counter+1))
+R1=$(sed "${temp}q;d" plain_cipher_sync.csv)
+R2=${R1:0:32}
+echo "${R2}"
+cp /home/dtatest/DTA-aes/aes_cipher_top_tb_orig /home/dtatest/DTA-aes/aes_cipher_top_tb.v
 cd ../
-echo "${R1_hex}${R2_hex}">>plaintext.txt
-sed -i "s/FEDCBA9876543210/$R1_hex/g" /home/dtatest/DTA-aes/aes_cipher_top_tb.v
-sed -i "s/0123456789ABCDEF/$R2_hex/g" /home/dtatest/DTA-aes/aes_cipher_top_tb.v
+echo "${R2}">>plaintext.txt
+sed -i "s/FEDCBA98765432100123456789ABCDEF/$R2/g" /home/dtatest/DTA-aes/aes_cipher_top_tb.v
 
 #make aes-commandline>>simulation.log
-#make aes-commandline-wddl>>simulation.log
 make aes-commandline-lowpower>>simulation.log
 pt_shell -f /home/dtatest/DTA-aes/simulation_scripts/pt_script_aes_lowpower.tcl>>pt.log
 
@@ -35,3 +39,4 @@ mv yuan_PowerReport.txt $results_folder/result_$counter/yuan_PowerReport_$counte
 cd simulation_scripts
 
 done
+

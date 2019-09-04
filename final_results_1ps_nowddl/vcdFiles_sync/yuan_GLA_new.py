@@ -401,7 +401,7 @@ def extract_reggate():
 	
 	#F1 = open('final_leakagemodel_sigrank_bit6.txt','r')
 	#F1 = open('rank_316_byte10bit6.txt','r')
-        F1 = open(prefix +'phase1.txt','r')
+        F1 = open(prefix +'phase1temp.txt','r')
 	#F1 = open('test.txt','r')
 	file_string = F1.read()
 	F1.close()
@@ -542,4 +542,4 @@ if __name__ == '__main__':
 	
         dic_gatepower_merge = sorted(dic_gatepower_merge.items(), key=operator.itemgetter(1),reverse=True)
         #print dic_gatepower_merge
-	np.savetxt(prefix +'phase2_square.txt', dic_gatepower_merge, fmt='%s')
+	np.savetxt(prefix +'phase2_squaretemp.txt', dic_gatepower_merge, fmt='%s')
