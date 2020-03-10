@@ -18,7 +18,11 @@ bitnumber = 6
 # leakend="618571000"
 #leakstart= "618570300"
 #leakend="618571000"
-leakstart= "170160"
+#Yuan 11/14 full leakage time interval		
+#leakstart= "170160"
+#leakend="171730"
+#Yuan 11/14 2nd iteration
+leakstart= "171545"
 leakend="171730"
 
 #leakstart=str( BASE_TIME + int(START_TIME*1000000))
@@ -202,7 +206,7 @@ for counter in range (0,filecount):
 sorted_dicleaksig = sorted(dicleaksig.items(), key=operator.itemgetter(1))
 #print  (sorted_dicleaksig)
 #np.savetxt('yuan_sigrank.txt',sorted_dicleaksig , fmt='%s')
-np.savetxt('rank_nowddl_1ps_aes_byte14bittemp' + str(bitnumber)+ '.txt',sorted_dicleaksig , fmt='%s')
+np.savetxt('phase1_2nditer_bit' + str(bitnumber)+ '.txt',sorted_dicleaksig , fmt='%s')
 
 
 

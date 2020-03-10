@@ -44,7 +44,9 @@ link
 
 set power_analysis_mode "time_based"
 
-read_vcd test.vcd -strip_path /aes_cipher_top_tb/dut
+#read_vcd test.vcd -strip_path /aes_cipher_top_tb/dut
+# generate the fix plaintext
+read_vcd ../test_fixpt.vcd -strip_path /aes_cipher_top_tb/dut
 #read_vcd test.vcd -strip_path /aes_cipher_top_tb/dut
 #read_vcd test.vcd -strip_path /testbench/d3 -path core0_leon3core0_cp2_v0 
 #set_power_analysis_options -waveform_interval 0.001 -waveform_format out -waveform_output "yuan_power" -include all_without_leaf
@@ -53,7 +55,7 @@ read_vcd test.vcd -strip_path /aes_cipher_top_tb/dut
 #set_power_analysis_options -waveform_format fsdb -waveform_output "yuan_power" -include all_with_leaf
 #set_power_analysis_options -waveform_interval 0.0001 -waveform_format out -waveform_output "yuan_power" -include top
 #set_power_analysis_options -waveform_interval 0.0001 -waveform_format out -waveform_output "yuan_power" -include all_with_leaf
-set_power_analysis_options -waveform_interval 0.001 -waveform_format out -waveform_output "yuan_power" -include all_with_leaf
+set_power_analysis_options -waveform_interval 0.001 -waveform_format out -waveform_output "yuan_power_fixpt" -include all_with_leaf
 update_timing
 
 update_power  

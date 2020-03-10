@@ -1,6 +1,6 @@
 #@ # 
 #@ # Running pt_shell Version N-2017.12-SP3-2 for linux64 -- Aug 10, 2018
-#@ # Date:   Tue Apr 23 10:48:57 2019
+#@ # Date:   Thu Feb 20 11:57:54 2020
 #@ # Run by: dtatest@keccak
 #@ 
 
@@ -872,8 +872,8 @@ source /software/Synopsys_New/pts/N-2017.12-SP3-2/admin/setup/.synopsys_pt.setup
 #@ }
 #@ # -- End source /software/Synopsys_New/pts/N-2017.12-SP3-2/auxx/tcllib/lib/itcl4.0.2/itcl.tcl
 
-source -echo -verbose pt_script_mod.tcl
-#@ # -- Starting source pt_script_mod.tcl
+source -echo -verbose pt_script_aes.tcl
+#@ # -- Starting source pt_script_aes.tcl
 
 #@ if {[catch {getenv "TSMC180_HOME"} msg]} {
 #@  echo "ERROR: Enviroment variable TSMC180_HOME should point at a tsmc180 lib installation "
@@ -912,9 +912,8 @@ source -echo -verbose pt_script_mod.tcl
 #@ set technology_file "$technology_file_path/tech_sage-x_tsmc_cl018g_6lm.tf"
 #@ 
 #@ 
-#@ #read_ddc /home/dtatest/DTA-aes/workdir/aes_synthesis.ddc
+#@ read_ddc /home/dtatest/DTA-aes/workdir/aes_synthesis.ddc
 #@ #read_ddc /home/dtatest/DTA-aes/workdir/wddl_aes.ddc
-#@ read_ddc /home/dtatest/DTA-aes/workdir/lowpower_aes.ddc
 #@ 
 #@ set power_enable_analysis "true"
 #@ 
@@ -922,16 +921,18 @@ source -echo -verbose pt_script_mod.tcl
 #@ 
 #@ set power_analysis_mode "time_based"
 #@ 
-#@ read_vcd /home/dtatest/DTA-aes/final_results_1ps_nowddl_lowpower/vcdFiles_sync/test_599.vcd -strip_path /aes_cipher_top_tb/dut
-#@ #read_vcd /home/dtatest/DTA-aes/final_results_1ps_nowddl_lowpower/vcdFiles_sync/test_599.vcd -strip_path /aes_cipher_top_tb/dut
-#@ #read_vcd /home/dtatest/DTA-aes/final_results_1ps_nowddl_lowpower/vcdFiles_sync/test_599.vcd -strip_path /testbench/d3 -path core0_leon3core0_cp2_v0 
+#@ #read_vcd test.vcd -strip_path /aes_cipher_top_tb/dut
+#@ # generate the fix plaintext
+#@ read_vcd ../test_fixpt.vcd -strip_path /aes_cipher_top_tb/dut
+#@ #read_vcd test.vcd -strip_path /aes_cipher_top_tb/dut
+#@ #read_vcd test.vcd -strip_path /testbench/d3 -path core0_leon3core0_cp2_v0 
 #@ #set_power_analysis_options -waveform_interval 0.001 -waveform_format out -waveform_output "yuan_power" -include all_without_leaf
 #@ #set_power_analysis_options -waveform_interval 0.01 -waveform_format out -waveform_output "yuan_power" -include all_with_leaf
 #@ #set_power_analysis_options -waveform_format out -waveform_output "yuan_power" -include all_with_leaf
 #@ #set_power_analysis_options -waveform_format fsdb -waveform_output "yuan_power" -include all_with_leaf
 #@ #set_power_analysis_options -waveform_interval 0.0001 -waveform_format out -waveform_output "yuan_power" -include top
 #@ #set_power_analysis_options -waveform_interval 0.0001 -waveform_format out -waveform_output "yuan_power" -include all_with_leaf
-#@ set_power_analysis_options -waveform_interval 0.001 -waveform_format out -waveform_output "yuan_power" -include all_with_leaf
+#@ set_power_analysis_options -waveform_interval 0.001 -waveform_format out -waveform_output "yuan_power_fixpt" -include all_with_leaf
 #@ update_timing
 #@ 
 #@ update_power  

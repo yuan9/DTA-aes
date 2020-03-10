@@ -17,9 +17,9 @@ echo "${R1_hex}${R2_hex}">>plaintext.txt
 sed -i "s/FEDCBA9876543210/$R1_hex/g" /home/dtatest/DTA-aes/aes_cipher_top_tb.v
 sed -i "s/0123456789ABCDEF/$R2_hex/g" /home/dtatest/DTA-aes/aes_cipher_top_tb.v
 
-#make aes-commandline>>simulation.log
+make aes-commandline>>simulation.log
 #make aes-commandline-wddl>>simulation.log
-make aes-commandline-lowpower>>simulation.log
+#make aes-commandline-lowpower>>simulation.log
 pt_shell -f /home/dtatest/DTA-aes/simulation_scripts/pt_script_aes.tcl>>pt.log
 
 
