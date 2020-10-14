@@ -1,11 +1,11 @@
 #@ # 
-#@ # Running pt_shell Version N-2017.12-SP3-2 for linux64 -- Aug 10, 2018
-#@ # Date:   Thu Feb 20 11:57:54 2020
-#@ # Run by: dtatest@keccak
+#@ # Running pt_shell Version Q-2019.12-SP4 for linux64 -- May 28, 2020
+#@ # Date:   Tue Oct 13 21:42:31 2020
+#@ # Run by: yuan9@cadence-restricted
 #@ 
 
-source /software/Synopsys_New/pts/N-2017.12-SP3-2/admin/setup/.synopsys_pt.setup
-#@ # -- Starting source /software/Synopsys_New/pts/N-2017.12-SP3-2/admin/setup/.synopsys_pt.setup
+source /opt/synopsys/prime/Q-2019.12-SP4/admin/setup/.synopsys_pt.setup
+#@ # -- Starting source /opt/synopsys/prime/Q-2019.12-SP4/admin/setup/.synopsys_pt.setup
 
 #@ #
 #@ # .synopsys_pt.setup: Initialization File for PrimeTime
@@ -62,9 +62,9 @@ source /software/Synopsys_New/pts/N-2017.12-SP3-2/admin/setup/.synopsys_pt.setup
 #@ #
 #@ #alias q quit
 #@ 
-#@ # -- End source /software/Synopsys_New/pts/N-2017.12-SP3-2/admin/setup/.synopsys_pt.setup
+#@ # -- End source /opt/synopsys/prime/Q-2019.12-SP4/admin/setup/.synopsys_pt.setup
 
-#@ # -- Starting source /software/Synopsys_New/pts/N-2017.12-SP3-2/auxx/tcllib/lib/itcl4.0.2/itcl.tcl
+#@ # -- Starting source /opt/synopsys/prime/Q-2019.12-SP4/auxx/tcllib/lib/itcl4.0.5/itcl.tcl
 
 #@ #
 #@ # itcl.tcl
@@ -129,7 +129,7 @@ source /software/Synopsys_New/pts/N-2017.12-SP3-2/admin/setup/.synopsys_pt.setup
 #@ 	set contextStack [lrange $contextStack 1 end]
 #@     }
 #@ }
-#@ # -- Starting source /software/Synopsys_New/pts/N-2017.12-SP3-2/auxx/tcllib/lib/tcl8.6/auto.tcl
+#@ # -- Starting source /opt/synopsys/prime/Q-2019.12-SP4/auxx/tcllib/lib/tcl8.6/auto.tcl
 
 #@ # auto.tcl --
 #@ #
@@ -700,9 +700,7 @@ source /software/Synopsys_New/pts/N-2017.12-SP3-2/admin/setup/.synopsys_pt.setup
 #@ 	if {[namespace which -command tbcload::bcproc] eq ""} {
 #@ 	    auto_load tbcload::bcproc
 #@ 	}
-#@         if {[info commands load] == "load"} {
-#@ 	    load {} tbcload $auto_mkindex_parser::parser
-#@         }
+#@ 	load {} tbcload $auto_mkindex_parser::parser
 #@ 
 #@ 	# AUTO MKINDEX:  tbcload::bcproc name arglist body
 #@ 	# Adds an entry to the auto index list for the given pre-compiled
@@ -781,7 +779,7 @@ source /software/Synopsys_New/pts/N-2017.12-SP3-2/admin/setup/.synopsys_pt.setup
 #@ }
 #@ 
 #@ return
-#@ # -- End source /software/Synopsys_New/pts/N-2017.12-SP3-2/auxx/tcllib/lib/tcl8.6/auto.tcl
+#@ # -- End source /opt/synopsys/prime/Q-2019.12-SP4/auxx/tcllib/lib/tcl8.6/auto.tcl
 
 #@ 
 #@ #
@@ -870,11 +868,12 @@ source /software/Synopsys_New/pts/N-2017.12-SP3-2/admin/setup/.synopsys_pt.setup
 #@         }
 #@     }
 #@ }
-#@ # -- End source /software/Synopsys_New/pts/N-2017.12-SP3-2/auxx/tcllib/lib/itcl4.0.2/itcl.tcl
+#@ # -- End source /opt/synopsys/prime/Q-2019.12-SP4/auxx/tcllib/lib/itcl4.0.5/itcl.tcl
 
 source -echo -verbose pt_script_aes.tcl
 #@ # -- Starting source pt_script_aes.tcl
 
+#@ if {0} {
 #@ if {[catch {getenv "TSMC180_HOME"} msg]} {
 #@  echo "ERROR: Enviroment variable TSMC180_HOME should point at a tsmc180 lib installation "
 #@  exit
@@ -910,9 +909,134 @@ source -echo -verbose pt_script_aes.tcl
 #@ # Technology File
 #@ set technology_file_path "$cell_path/milkyway/"
 #@ set technology_file "$technology_file_path/tech_sage-x_tsmc_cl018g_6lm.tf"
+#@ }
+#@ #yy change the setup files
+#@ source ../setup_dare.tcl
+#@ # -- Starting source ../setup_dare.tcl
+
+#@ #################################################################################
+#@ #-- File:        setup_dare.tcl
+#@ #-- Author:      Chinmay Deshpande 
+#@ #-- Description: Library setup for TSMC 180
+#@ #################################################################################
+#@ 
+#@ #################################################################################
+#@ # Library setup
+#@ #################################################################################
+#@ 
+#@ # TSMC180_HOME - /opt/libs/tsmc180/extracted
+#@ # pk TODO:
+#@ #if {[catch {getenv "TSMC180_HOME"} msg]} {
+#@ # echo "$env(TSMC180_HOME)"
+#@ # echo "ERROR: Enviroment variable TSMC180_HOME should point at a tsmc180 lib installation "
+#@ # exit
+#@ #}
+#@ 
+#@ set tech 180nm
+#@ set grtechlibdir "/opt/libraries/TSMCHOME/"
+#@ #TODO set grtechlibdir [getenv {TSMC180_HOME}]
+#@ set front_end_path "$grtechlibdir/digital/Front_End/"
+#@ set back_end_path "$grtechlibdir/digital/Back_End/"
+#@ set cell_lib_path "$front_end_path/timing_power_noise/NLDM/tcb018gbwp7t_270a/"
+#@ #set cell_lib_path "$front_end_path/timing_power_noise/NLDM/tcb018g3d3_280a/"
+#@ set io_lib_path "$front_end_path/timing_power_noise/NLDM/tpz973gv_280a/"
+#@ set a_io_lib_path "$front_end_path/timing_power/tpa018nv_270a/"
+#@ #set memory_path "/home/pantea/RAM_byte/sram8kx8/compout/"
+#@ set memory_path "/gulerlab/TAPEOUT2020/sram8kx8/compout/"
+#@ set memory_lib_path ""
+#@ set grtechlibpath ". $cell_lib_path $io_lib_path $memory_path $a_io_lib_path"
+#@ #set grtechlibpath ". $cell_lib_path $io_lib_path $memory_lib_path"
+#@ #set grtechlibpath ". ../hdl/ $cell_lib_path $io_lib_path $memory_path"
+#@ #set cell_path "${grtechlibdir}/tsmc/cl018g/sc9_base_rvt/2008q3v01/"
+#@ #set cell_lib_path "$cell_path/db/"
+#@ #set io_path "${grtechlibdir}/gpio/TPZ018NV/TS02IG502/fb_tpz018nv_280a_r6p0-02eac0/" 
+#@ #set io_lib_path "$io_path/timing_power_noise/NLDM/tpz018nv_280a/"
+#@ #set memory_path "/home/bilgiday/sram_new" 
+#@ #set memory_lib_path "$memory_path/db/" 
+#@ #set grtechlibpath ". $cell_lib_path $io_lib_path $memory_lib_path"
+#@ #set grtechlibpath ". $cell_lib_path $io_lib_path $memory_path"
+#@ 
+#@ # Target library - worst case condition - 1.62V 125C
+#@ set grtechtargetlib "tcb018gbwp7twc.db"
+#@ #set grtechtargetlib "tcb018g3d3wc.db"
+#@ #set grtechtargetlib "sage-x_tsmc_cl018g_rvt_ss_1p62v_125c.db"
+#@ 
+#@ # IO libary - worst case (wc)
+#@ set iolib "tpz973gvwc.db"
+#@ set a_iolib "tpa018nvwc.db"
+#@ #set iolib "tpz018nvwc.db"
+#@ 
+#@ # Memory Library - worst case (slow)
+#@ #TODO memlib and search_path accordingly
+#@ #set memlib "/home/pantea/RAM_byte/sram16kx8/compout/views/aspulsgfs1p16384x8cm16sw0/Worst/aspulsgfs1p16384x8cm16sw0.lib"
+#@ set memlib "$memory_path/libcompile/aspulsgfs1p8192x8cm16sw0/Worst/aspulsgfs1p8192x8cm16sw0_lib.db"
+#@ #set memlib "/home/bilgiday/sram_new/db/sram12x8_slow_syn.db /home/bilgiday/sram_new/db/sram6x26_slow_syn.db /home/bilgiday/sram_new/db/sram8x25_slow_syn.db /home/bilgiday/sram_new/db/sram9x32_slow_syn.db /home/bilgiday/sram_new/db/sram6x32_slow_syn.db /home/bilgiday/sram_new/db/sram8x32_slow_syn.db /home/bilgiday/sram_new/db/sram2p8x32_slow_syn.db /home/bilgiday/sram_new/db/sram13x8_slow_syn.db"
+#@ 
+#@ # Link library - worst case condition - wc
+#@ set grtechlinklib "* $grtechtargetlib $iolib $memlib $a_iolib"
+#@ 
+#@ set search_path    $grtechlibpath
+#@ set target_library $grtechtargetlib
+#@ set link_library   $grtechlinklib
+#@ 
+#@ # Technology File
+#@ set technology_file_path "$back_end_path/milkyway/tcb018gbwp7t_270a/"
+#@ #set technology_file_path "$back_end_path/milkyway/tcb018g3d3_280a/"
+#@ set technology_file "$technology_file_path/techfiles/tsmc018_6lm.tf"
+#@ #set technology_file_path "$cell_path/milkyway/"
+#@ #set technology_file "$technology_file_path/tech_sage-x_tsmc_cl018g_6lm.tf"
+#@ 
+#@ # Milkyway Reference Library
+#@ set std_cell_mw_ref_lib_path "$technology_file_path/cell_frame/"
+#@ set std_cell_mw_ref_lib "$std_cell_mw_ref_lib_path/tcb018gbwp7t"
+#@ #set std_cell_mw_ref_lib "$std_cell_mw_ref_lib_path/tcb018g3d3"
+#@ #set io_mw_ref_lib_path "$io_path/milkyway/"
+#@ #set io_mw_ref_lib "$io_mw_ref_lib_path/tpz018nv_280a/mt_2/6lm/cell_frame/tpz018nv"
+#@ # IO MW Ref library changed  to a location where it has the gate area information 
+#@ # dumped into the FRAM views of cells
+#@ set io_mw_ref_lib_path "$back_end_path/milkyway/"
+#@ set io_mw_ref_lib "$io_mw_ref_lib_path/tpz973gv_280a/mt_2/6lm/cell_frame/tpz973gv/"
+#@ #set io_mw_ref_lib_path "/home/shashank/nist/NISTCHIP/nistchip_hw/designs/leon3-asic/gpio"
+#@ #set io_mw_ref_lib "$io_mw_ref_lib_path/tpz018nv_sel"
 #@ 
 #@ 
-#@ read_ddc /home/dtatest/DTA-aes/workdir/aes_synthesis.ddc
+#@ set io_bonding_ref_lib "/opt/libraries/TSMCHOME/digital/Back_End/milkyway/tpb018v_180a/cup/6lm/cell_frame/tpb018v"
+#@ set a_io_mw_ref_lib "/opt/libraries/TSMCHOME/digital/Back_End/milkyway/tpa018nv_270a/mt_2/6lm/cell_frame/tpa018nv"
+#@ set mem_mw_ref_lib_path "$memory_path"
+#@ #TODO
+#@ set mem_mw_ref_lib "$memory_path/fram/aspulsgfs1p8192x8cm16sw0/fram_for_aspulsgfs1p8192x8cm16sw0/"
+#@ #set mem_mw_ref_lib "$memory_path/fram/aspulsgfs1p16384x8cm16sw0/fram_for_aspulsgfs1p16384x8cm16sw0"
+#@ #set io_bonding_ref_lib "/opt/libs/tsmc180/extracted/gpio/TPB018NV/TS02IG504/fb_TSMCHOME_tpb018v_140a/digital/Back_End/milkyway/tpb018v_140a/cup/6lm/cell_frame/tpb018v"
+#@ #set mem_mw_ref_lib_path "$memory_path"
+#@ #set mem_mw_ref_lib "$memory_path/memories8"
+#@ 
+#@ #yy
+#@ # Milkyway Design
+#@ #set mw_design_library picochip_mw_lib
+#@ 
+#@ #create_mw_lib -technology $technology_file -mw_reference_library "$std_cell_mw_ref_lib $io_mw_ref_lib $mem_mw_ref_lib $io_bonding_ref_lib $a_io_mw_ref_lib" -open $mw_design_library/
+#@ 
+#@ ### Library rules...
+#@ 
+#@ ## Library attributes
+#@ ## e.g. set hdlin_latch_synch_set_reset "false" 
+#@ 
+#@ ## Don't use list
+#@ ## e.g set_dont_use lib/TIEH 
+#@ ##     set_dont_uselib/TIEL
+#@ #if {[info exists timestamp]} {
+#@ #	puts "INFO: timestamp already set to $timestamp"
+#@ #} else {
+#@ #	set timestamp [clock format [clock seconds] -format {%b%d_%H%M%S}]
+#@ #	puts "INFO: Setting timestamp to $timestamp"
+#@ #}
+#@ 
+#@ #catch {sh mkdir dc_logs}
+#@ #set sh_output_log_file "dc_logs/dc_logs_$timestamp"
+#@ # -- End source ../setup_dare.tcl
+
+#@ 
+#@ read_ddc /home/yuan9/DTA-aes/workdir/aes_synthesis.ddc
 #@ #read_ddc /home/dtatest/DTA-aes/workdir/wddl_aes.ddc
 #@ 
 #@ set power_enable_analysis "true"
@@ -923,8 +1047,8 @@ source -echo -verbose pt_script_aes.tcl
 #@ 
 #@ #read_vcd test.vcd -strip_path /aes_cipher_top_tb/dut
 #@ # generate the fix plaintext
-#@ read_vcd ../test_fixpt.vcd -strip_path /aes_cipher_top_tb/dut
-#@ #read_vcd test.vcd -strip_path /aes_cipher_top_tb/dut
+#@ #read_vcd ../test_fixpt.vcd -strip_path /aes_cipher_top_tb/dut
+#@ read_vcd ../test.vcd -strip_path /aes_cipher_top_tb/dut
 #@ #read_vcd test.vcd -strip_path /testbench/d3 -path core0_leon3core0_cp2_v0 
 #@ #set_power_analysis_options -waveform_interval 0.001 -waveform_format out -waveform_output "yuan_power" -include all_without_leaf
 #@ #set_power_analysis_options -waveform_interval 0.01 -waveform_format out -waveform_output "yuan_power" -include all_with_leaf
@@ -932,10 +1056,12 @@ source -echo -verbose pt_script_aes.tcl
 #@ #set_power_analysis_options -waveform_format fsdb -waveform_output "yuan_power" -include all_with_leaf
 #@ #set_power_analysis_options -waveform_interval 0.0001 -waveform_format out -waveform_output "yuan_power" -include top
 #@ #set_power_analysis_options -waveform_interval 0.0001 -waveform_format out -waveform_output "yuan_power" -include all_with_leaf
-#@ set_power_analysis_options -waveform_interval 0.001 -waveform_format out -waveform_output "yuan_power_fixpt" -include all_with_leaf
+#@ set_power_analysis_options -waveform_interval 0.001 -waveform_format out -waveform_output "yuan_power" -include all_with_leaf
 #@ update_timing
 #@ 
 #@ update_power  
 #@ report_power_analysis_options
 #@ report_power -verbose -hierarchy > yuan_PowerReport.txt
 #@ quit
+#@ if { [namespace which -command __pre_quit_tcl_procs] == "::__pre_quit_tcl_procs" } {   __pre_quit_tcl_procs}
+

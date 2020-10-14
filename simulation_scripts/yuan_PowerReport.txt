@@ -3,34 +3,96 @@ Report : Time Based Power
 	-hierarchy
 	-verbose
 Design : aes_cipher_top
-Version: N-2017.12-SP3-2
-Date   : Thu Feb 20 11:57:58 2020
+Version: Q-2019.12-SP4
+Date   : Tue Oct 13 21:42:37 2020
 ****************************************
 
 Sampling Interval: 0.001 ns
 
 Library(s) Used:
 
-    sage-x_tsmc_cl018g_rvt_ss_1p62v_125c (File: /opt/libs/tsmc180/extracted/tsmc/cl018g/sc9_base_rvt/2008q3v01/db/sage-x_tsmc_cl018g_rvt_ss_1p62v_125c.db)
-    tpz018nvwc (File: /opt/libs/tsmc180/extracted/gpio/TPZ018NV/TS02IG502/fb_tpz018nv_280a_r6p0-02eac0/timing_power_noise/NLDM/tpz018nv_280a/tpz018nvwc.db)
-    sram12x8 (File: /home/bilgiday/sram_new/db/sram12x8_slow_syn.db)
-    USERLIB (File: /home/bilgiday/sram_new/db/sram6x26_slow_syn.db)
-    sram8x25 (File: /home/bilgiday/sram_new/db/sram8x25_slow_syn.db)
-    sram9x32 (File: /home/bilgiday/sram_new/db/sram9x32_slow_syn.db)
-    sram6x32 (File: /home/bilgiday/sram_new/db/sram6x32_slow_syn.db)
-    sram8x32 (File: /home/bilgiday/sram_new/db/sram8x32_slow_syn.db)
-    USERLIB (File: /home/bilgiday/sram_new/db/sram2p8x32_slow_syn.db)
-    sram13x8 (File: /home/bilgiday/sram_new/db/sram13x8_slow_syn.db)
+    tcb018gbwp7twc (File: /opt/libraries/TSMCHOME/digital/Front_End/timing_power_noise/NLDM/tcb018gbwp7t_270a/tcb018gbwp7twc.db)
+    tpz973gvwc (File: /opt/libraries/TSMCHOME/digital/Front_End/timing_power_noise/NLDM/tpz973gv_280a/tpz973gvwc.db)
+    aspulsgfs1p8192x8cm16sw0_lib (File: /home/gulerlab/TAPEOUT2020/sram8kx8/compout/libcompile/aspulsgfs1p8192x8cm16sw0/Worst/aspulsgfs1p8192x8cm16sw0_lib.db)
+    tpa018nvwc (File: /opt/libraries/TSMCHOME/digital/Front_End/timing_power/tpa018nv_270a/tpa018nvwc.db)
 
 
-Operating Conditions: ss_1p62v_125c   Library: sage-x_tsmc_cl018g_rvt_ss_1p62v_125c
-Wire Load Model Mode: top
+Operating Conditions: WCCOM   Library: tcb018gbwp7twc
+Wire Load Model Mode: segmented
 
 Cell               Design       Wire_model  Library       Selection_type
 --------------------------------------------------------------------------------
                    aes_cipher_top
-                                TSMC16K_Conservative
-                                            tpz018nvwc    automatic-by-area
+                                ZeroWireload
+                                            tcb018gbwp7twc
+                                                          automatic-by-area
+us00               aes_sbox_0   ZeroWireload
+                                            tcb018gbwp7twc
+                                                          automatic-by-area
+us01               aes_sbox_19  ZeroWireload
+                                            tcb018gbwp7twc
+                                                          automatic-by-area
+us02               aes_sbox_18  ZeroWireload
+                                            tcb018gbwp7twc
+                                                          automatic-by-area
+us03               aes_sbox_17  ZeroWireload
+                                            tcb018gbwp7twc
+                                                          automatic-by-area
+us10               aes_sbox_16  ZeroWireload
+                                            tcb018gbwp7twc
+                                                          automatic-by-area
+us11               aes_sbox_15  ZeroWireload
+                                            tcb018gbwp7twc
+                                                          automatic-by-area
+us12               aes_sbox_14  ZeroWireload
+                                            tcb018gbwp7twc
+                                                          automatic-by-area
+us13               aes_sbox_13  ZeroWireload
+                                            tcb018gbwp7twc
+                                                          automatic-by-area
+us20               aes_sbox_12  ZeroWireload
+                                            tcb018gbwp7twc
+                                                          automatic-by-area
+us21               aes_sbox_11  ZeroWireload
+                                            tcb018gbwp7twc
+                                                          automatic-by-area
+us22               aes_sbox_10  ZeroWireload
+                                            tcb018gbwp7twc
+                                                          automatic-by-area
+us23               aes_sbox_9   ZeroWireload
+                                            tcb018gbwp7twc
+                                                          automatic-by-area
+us30               aes_sbox_8   ZeroWireload
+                                            tcb018gbwp7twc
+                                                          automatic-by-area
+us31               aes_sbox_7   ZeroWireload
+                                            tcb018gbwp7twc
+                                                          automatic-by-area
+us32               aes_sbox_6   ZeroWireload
+                                            tcb018gbwp7twc
+                                                          automatic-by-area
+us33               aes_sbox_5   ZeroWireload
+                                            tcb018gbwp7twc
+                                                          automatic-by-area
+u0                 aes_key_expand_128
+                                ZeroWireload
+                                            tcb018gbwp7twc
+                                                          automatic-by-area
+u0/r0              aes_rcon     ZeroWireload
+                                            tcb018gbwp7twc
+                                                          automatic-by-area
+u0/u0              aes_sbox_4   ZeroWireload
+                                            tcb018gbwp7twc
+                                                          automatic-by-area
+u0/u1              aes_sbox_3   ZeroWireload
+                                            tcb018gbwp7twc
+                                                          automatic-by-area
+u0/u2              aes_sbox_2   ZeroWireload
+                                            tcb018gbwp7twc
+                                                          automatic-by-area
+u0/u3              aes_sbox_1   ZeroWireload
+                                            tcb018gbwp7twc
+                                                          automatic-by-area
 
 Power-specific unit information :
     Voltage Units = 1 V
@@ -44,55 +106,55 @@ Power-specific unit information :
                                       Int      Switch   Leak      Total
 Hierarchy                             Power    Power    Power     Power    %
 --------------------------------------------------------------------------------
-aes_cipher_top                        3.34e-03 2.62e-03 2.73e-06  5.96e-03 100.0
-  us00 (aes_sbox_19)                  4.97e-05 9.43e-05 7.23e-08  1.44e-04   2.4
-  us01 (aes_sbox_18)                  4.09e-05 8.01e-05 7.21e-08  1.21e-04   2.0
-  us02 (aes_sbox_17)                  3.91e-05 7.69e-05 7.27e-08  1.16e-04   1.9
-  us03 (aes_sbox_16)                  4.28e-05 8.32e-05 7.26e-08  1.26e-04   2.1
-  us10 (aes_sbox_15)                  4.75e-05 9.37e-05 7.27e-08  1.41e-04   2.4
-  us11 (aes_sbox_14)                  4.11e-05 8.04e-05 7.26e-08  1.21e-04   2.0
-  us12 (aes_sbox_13)                  4.77e-05 9.25e-05 7.25e-08  1.40e-04   2.4
-  us13 (aes_sbox_12)                  3.67e-05 7.00e-05 7.28e-08  1.07e-04   1.8
-  us20 (aes_sbox_11)                  4.29e-05 8.43e-05 7.23e-08  1.27e-04   2.1
-  us21 (aes_sbox_10)                  4.16e-05 8.02e-05 7.27e-08  1.22e-04   2.0
-  us22 (aes_sbox_9)                   3.93e-05 7.75e-05 7.25e-08  1.17e-04   2.0
-  us23 (aes_sbox_8)                   4.42e-05 8.56e-05 7.27e-08  1.30e-04   2.2
-  us30 (aes_sbox_7)                   4.28e-05 8.47e-05 7.10e-08  1.28e-04   2.1
-  us31 (aes_sbox_6)                   4.33e-05 8.74e-05 7.08e-08  1.31e-04   2.2
-  us32 (aes_sbox_5)                   4.10e-05 8.13e-05 7.11e-08  1.22e-04   2.1
-  us33 (aes_sbox_4)                   3.89e-05 7.57e-05 7.03e-08  1.15e-04   1.9
-  u0 (aes_key_expand_128)             9.39e-04 7.23e-04 5.85e-07  1.66e-03  27.9
-    r0 (aes_rcon)                     2.67e-05 7.53e-06 1.71e-08  3.43e-05   0.6
-    u0 (aes_sbox_3)                   4.28e-05 7.77e-05 7.05e-08  1.21e-04   2.0
-    u1 (aes_sbox_2)                   4.38e-05 7.98e-05 6.99e-08  1.24e-04   2.1
-    u2 (aes_sbox_1)                   4.80e-05 8.89e-05 7.05e-08  1.37e-04   2.3
-    u3 (aes_sbox_0)                   4.62e-05 8.57e-05 7.01e-08  1.32e-04   2.2
+aes_cipher_top                        2.73e-03 6.41e-04 2.55e-06  3.37e-03 100.0
+  us00 (aes_sbox_0)                   1.94e-05 1.82e-05 6.44e-08  3.77e-05   1.1
+  us01 (aes_sbox_19)                  1.76e-05 1.59e-05 6.45e-08  3.35e-05   1.0
+  us02 (aes_sbox_18)                  1.92e-05 1.83e-05 6.43e-08  3.76e-05   1.1
+  us03 (aes_sbox_17)                  1.92e-05 1.77e-05 6.44e-08  3.70e-05   1.1
+  us10 (aes_sbox_16)                  2.07e-05 2.01e-05 6.45e-08  4.08e-05   1.2
+  us11 (aes_sbox_15)                  1.95e-05 1.86e-05 6.42e-08  3.81e-05   1.1
+  us12 (aes_sbox_14)                  1.96e-05 1.86e-05 6.44e-08  3.83e-05   1.1
+  us13 (aes_sbox_13)                  2.03e-05 1.97e-05 6.44e-08  4.00e-05   1.2
+  us20 (aes_sbox_12)                  1.93e-05 1.87e-05 6.45e-08  3.80e-05   1.1
+  us21 (aes_sbox_11)                  1.91e-05 1.82e-05 6.44e-08  3.73e-05   1.1
+  us22 (aes_sbox_10)                  1.91e-05 1.83e-05 6.47e-08  3.74e-05   1.1
+  us23 (aes_sbox_9)                   2.05e-05 1.94e-05 6.43e-08  3.99e-05   1.2
+  us30 (aes_sbox_8)                   2.03e-05 1.98e-05 6.45e-08  4.02e-05   1.2
+  us31 (aes_sbox_7)                   1.96e-05 1.94e-05 6.46e-08  3.90e-05   1.2
+  us32 (aes_sbox_6)                   1.99e-05 1.96e-05 6.45e-08  3.96e-05   1.2
+  us33 (aes_sbox_5)                   2.09e-05 2.01e-05 6.42e-08  4.11e-05   1.2
+  u0 (aes_key_expand_128)             8.66e-04 2.21e-04 5.69e-07  1.09e-03  32.3
+    r0 (aes_rcon)                     3.39e-05 3.62e-06 1.83e-08  3.75e-05   1.1
+    u0 (aes_sbox_4)                   1.61e-05 1.43e-05 6.11e-08  3.05e-05   0.9
+    u1 (aes_sbox_3)                   1.61e-05 1.46e-05 6.14e-08  3.07e-05   0.9
+    u2 (aes_sbox_2)                   1.54e-05 1.43e-05 6.13e-08  2.98e-05   0.9
+    u3 (aes_sbox_1)                   2.12e-05 1.86e-05 6.44e-08  3.99e-05   1.2
 
 
                                       Peak     Peak            Glitch   X-tran
 Hierarchy                             Power    Time            Power    Power
 --------------------------------------------------------------------------------
-aes_cipher_top                           0.975  85.331-85.332  2.41e-04 2.62e-05
-  us00 (aes_sbox_19)                  1.40e-02 427.409-427.410 1.08e-05    0.000
-  us01 (aes_sbox_18)                  1.13e-02 555.666-555.667 8.75e-06    0.000
-  us02 (aes_sbox_17)                  1.10e-02 256.917-256.918 6.61e-06    0.000
-  us03 (aes_sbox_16)                  1.07e-02 598.076-598.077 9.91e-06    0.000
-  us10 (aes_sbox_15)                  1.33e-02 299.528-299.529 1.12e-05    0.000
-  us11 (aes_sbox_14)                  1.19e-02 427.544-427.545 8.60e-06    0.000
-  us12 (aes_sbox_13)                  1.16e-02 512.990-512.991 9.93e-06    0.000
-  us13 (aes_sbox_12)                  1.20e-02 214.350-214.351 7.51e-06    0.000
-  us20 (aes_sbox_11)                  1.26e-02 214.268-214.269 9.92e-06    0.000
-  us21 (aes_sbox_10)                  1.21e-02 171.414-171.415 7.46e-06    0.000
-  us22 (aes_sbox_9)                   1.29e-02 214.183-214.184 8.31e-06    0.000
-  us23 (aes_sbox_8)                   1.21e-02 598.347-598.348 8.22e-06    0.000
-  us30 (aes_sbox_7)                   1.21e-02 257.011-257.012 8.60e-06    0.000
-  us31 (aes_sbox_6)                   1.17e-02 598.157-598.158 6.54e-06    0.000
-  us32 (aes_sbox_5)                   1.11e-02 171.558-171.559 7.40e-06    0.000
-  us33 (aes_sbox_4)                   1.16e-02 470.220-470.221 4.24e-06    0.000
-  u0 (aes_key_expand_128)             7.65e-02  85.411-85.412  5.91e-05 1.39e-05
-    r0 (aes_rcon)                     4.15e-03 426.659-426.660 6.67e-07 6.10e-07
-    u0 (aes_sbox_3)                   1.08e-02 427.862-427.863 7.79e-06    0.000
-    u1 (aes_sbox_2)                   1.14e-02 257.198-257.199 7.48e-06    0.000
-    u2 (aes_sbox_1)                   1.22e-02 513.018-513.019 7.28e-06    0.000
-    u3 (aes_sbox_0)                   1.41e-02 555.721-555.722 9.15e-06    0.000
+aes_cipher_top                           1.382  85.331-85.332  2.99e-06 3.34e-04
+  us00 (aes_sbox_0)                   6.49e-03 129.120-129.121 6.31e-08 1.54e-05
+  us01 (aes_sbox_19)                  6.39e-03 129.119-129.120 8.07e-08 1.53e-05
+  us02 (aes_sbox_18)                  6.42e-03 129.183-129.184 1.86e-07 1.53e-05
+  us03 (aes_sbox_17)                  6.65e-03 129.111-129.112 5.69e-08 1.54e-05
+  us10 (aes_sbox_16)                  6.49e-03 129.126-129.127 4.15e-08 1.55e-05
+  us11 (aes_sbox_15)                  6.40e-03 129.200-129.201 1.53e-08 1.54e-05
+  us12 (aes_sbox_14)                  6.31e-03 129.120-129.121 2.16e-07 1.54e-05
+  us13 (aes_sbox_13)                  6.21e-03 129.119-129.120    0.000 1.55e-05
+  us20 (aes_sbox_12)                  6.17e-03 129.223-129.224 2.22e-07 1.54e-05
+  us21 (aes_sbox_11)                  6.31e-03 129.119-129.120 1.08e-07 1.53e-05
+  us22 (aes_sbox_10)                  6.54e-03 129.123-129.124 2.10e-07 1.55e-05
+  us23 (aes_sbox_9)                   6.35e-03 129.182-129.183 7.63e-08 1.54e-05
+  us30 (aes_sbox_8)                   6.27e-03 129.119-129.120 1.02e-07 1.54e-05
+  us31 (aes_sbox_7)                   6.29e-03 129.216-129.217 2.75e-08 1.54e-05
+  us32 (aes_sbox_6)                   6.49e-03 129.120-129.121 6.82e-08 1.54e-05
+  us33 (aes_sbox_5)                   6.31e-03 129.120-129.121 1.09e-07 1.54e-05
+  u0 (aes_key_expand_128)             2.71e-02  86.253-86.254  5.31e-07 2.46e-05
+    r0 (aes_rcon)                     1.60e-03 427.910-427.911 3.17e-07 4.85e-07
+    u0 (aes_sbox_4)                   1.64e-03  87.150-87.151  6.05e-08    0.000
+    u1 (aes_sbox_3)                   1.74e-03 130.336-130.337 8.24e-08    0.000
+    u2 (aes_sbox_2)                   1.46e-03 343.372-343.373 1.72e-08    0.000
+    u3 (aes_sbox_1)                   1.41e-02  44.959-44.960  5.47e-08 1.53e-05
 1

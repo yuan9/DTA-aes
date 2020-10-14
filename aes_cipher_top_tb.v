@@ -31,15 +31,12 @@ clkgen CLK (rst, clk);
 
 initial begin
     rst = 1'b1;
-    ld = 1'b0;
 	#1000
 	rst = 1'b0;
-	//text_in = 128'h00000000000000000000000000000000;
 	#`clkperi
 	rst = 1'b1;
 	key = 128'hcafebabedeadbeefdeadbeef00000000;
-	text_in = 128'hbba47f76875f634a85d6fe52004297b4;
-	//text_in = 128'h00000000000000000000000000000000;
+	text_in = 128'h68096D6646B8D77065ACF0281C95C4FA;
 	@(posedge clk);
 	ld = 1'b1;
 	@(posedge clk);
