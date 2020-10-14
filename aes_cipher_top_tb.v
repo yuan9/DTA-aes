@@ -1,6 +1,6 @@
-//`timescale 1ps/1ps
-`timescale 100fs/100fs
-`define clkperi 213333
+`timescale 1ps/1ps
+//`timescale 100fs/100fs
+`define clkperi 21333
 
 module clkgen(input reset, output reg clk);
 	always
@@ -31,17 +31,21 @@ clkgen CLK (rst, clk);
 
 initial begin
     rst = 1'b1;
+    ld = 1'b0;
 	#1000
 	rst = 1'b0;
+	//text_in = 128'h00000000000000000000000000000000;
 	#`clkperi
 	rst = 1'b1;
 	key = 128'hcafebabedeadbeefdeadbeef00000000;
-	text_in = 128'h1237E5AA81D55ACA4C1AC60B635264D3;
+	text_in = 128'hbba47f76875f634a85d6fe52004297b4;
+	//text_in = 128'h00000000000000000000000000000000;
 	@(posedge clk);
 	ld = 1'b1;
 	@(posedge clk);
 	ld = 1'b0;
 	@(posedge done);
+	#300
 	data_output_encrypt = text_out;
 	$display("Initial plaintext %x", text_in);
 	$display("Final ciphertext %x", data_output_encrypt);

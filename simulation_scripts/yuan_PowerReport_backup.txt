@@ -1,0 +1,38 @@
+****************************************
+Report : Time Based Power
+Design : aes_cipher_top
+Version: N-2017.12-SP3-2
+Date   : Mon Apr 15 14:05:33 2019
+****************************************
+
+
+
+  Attributes
+  ----------
+      i  -  Including register clock pin internal power
+      u  -  User defined power group
+
+                        Internal  Switching  Leakage    Total
+Power Group             Power     Power      Power      Power   (     %)  Attrs
+--------------------------------------------------------------------------------
+clock_network              0.0000    0.0000    0.0000    0.0000 ( 0.00%)  i
+register                   0.0000    0.0000    0.0000    0.0000 ( 0.00%)  
+combinational           1.839e-03 2.379e-03 2.221e-06 4.220e-03 (66.31%)  
+sequential              1.920e-03 2.232e-04 8.594e-07 2.144e-03 (33.69%)  
+memory                     0.0000    0.0000    0.0000    0.0000 ( 0.00%)  
+io_pad                     0.0000    0.0000    0.0000    0.0000 ( 0.00%)  
+black_box                  0.0000    0.0000    0.0000    0.0000 ( 0.00%)  
+
+  Net Switching Power  = 2.602e-03   (40.89%)
+  Cell Internal Power  = 3.759e-03   (59.06%)
+  Cell Leakage Power   = 3.081e-06   ( 0.05%)
+                         ---------
+Total Power            = 6.364e-03  (100.00%)
+
+X Transition Power     = 2.615e-05
+Glitching Power        = 2.426e-04
+
+Peak Power             =    1.2355
+Peak Time              =    85.331
+
+1

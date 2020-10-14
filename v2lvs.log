@@ -1,0 +1,23 @@
+//  v2lvs v2019.2_26.18    Tue May 7 10:56:43 PDT 2019
+//
+//  Copyright (c) 1992, 1993 Regents of the University of California
+//         All rights reserved.
+//
+//        Copyright Mentor Graphics Corporation 1996-2019
+//                       All Rights Reserved.
+//   THIS WORK CONTAINS TRADE SECRET AND PROPRIETARY INFORMATION
+//      WHICH IS THE PROPERTY OF MENTOR GRAPHICS CORPORATION
+//        OR ITS LICENSORS AND IS SUBJECT TO LICENSE TERMS.
+//
+//  The registered trademark Linux is used pursuant to a sublicense from LMI, the
+//  exclusive licensee of Linus Torvalds, owner of the mark on a world-wide basis.
+//
+//  Mentor Graphics software executing under x86-64 Linux
+//
+Running /opt/cadence/CALIBRE/pkgs/icv/pvt/v2lvs -v aes_netlist.v -l /opt/libraries/TSMCHOME/digital/Front_End/verilog/tcb018gbwp7t_270a/tcb018gbwp7t.v -s /opt/libraries/TSMCHOME/digital/Back_End/spice/tcb018gbwp7t_270a/tcb018gbwp7t_270a.spi -s0 VSS -s1 VDD -o aes_netlist.spi
+
+Info: Creating Library Database ...
+Info: Creating Design Database ...
+Error: Fail to open file aes_netlist.v
+
+CPU TIME = 0  REAL TIME = 0  MALLOC = 6/6/6

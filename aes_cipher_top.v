@@ -102,15 +102,46 @@ reg	[3:0]	dcnt;
 // Misc Logic
 //
 
-always @(posedge clk)
-	if(!rst)	dcnt <= #1 4'h0;
-	else
-	if(ld)		dcnt <= #1 4'hb;
-	else
-	if(|dcnt)	dcnt <= #1 dcnt - 4'h1;
-
+always @(posedge clk or negedge rst) begin
+	if(!rst) begin	
+		dcnt <= #1 4'h0;
+		//text_in_r <= 128'h0;
+		/*sa00 <= 8'h0;
+		sa01 <= 8'h0;
+		sa02 <= 8'h0;
+		sa03 <= 8'h0;
+		sa10 <= 8'h0;
+		sa11 <= 8'h0;
+		sa12 <= 8'h0;
+		sa13 <= 8'h0;
+		sa20 <= 8'h0;
+		sa21 <= 8'h0;
+		sa22 <= 8'h0;
+		sa23 <= 8'h0;
+		sa30 <= 8'h0;
+		sa31 <= 8'h0;
+		sa32 <= 8'h0;
+		sa33 <= 8'h0;*/
+	end
+	else if(ld) begin		
+		dcnt <= #1 4'hb;
+	end
+	else if(|dcnt)
+	begin	
+	dcnt <= #1 dcnt - 4'h1;
+	end
+end
+	
 always @(posedge clk) done <= #1 !(|dcnt[3:1]) & dcnt[0] & !ld;
-always @(posedge clk) if(ld) text_in_r <= #1 text_in;
+//always @(posedge clk) if(ld) text_in_r <= #1 text_in;
+always @(posedge clk or negedge rst) begin 
+	if(!rst) begin
+		text_in_r <= 128'h0;
+	end
+	else if(ld) begin
+		text_in_r <= #1 text_in;
+	end
+end
 always @(posedge clk) ld_r <= #1 ld;
 
 ////////////////////////////////////////////////////////////////////
@@ -118,7 +149,7 @@ always @(posedge clk) ld_r <= #1 ld;
 // Initial Permutation (AddRoundKey)
 //
 
-always @(posedge clk)	sa33 <= #1 ld_r ? text_in_r[007:000] ^ w3[07:00] : sa33_next;
+/*always @(posedge clk)	sa33 <= #1 ld_r ? text_in_r[007:000] ^ w3[07:00] : sa33_next;
 always @(posedge clk)	sa23 <= #1 ld_r ? text_in_r[015:008] ^ w3[15:08] : sa23_next;
 always @(posedge clk)	sa13 <= #1 ld_r ? text_in_r[023:016] ^ w3[23:16] : sa13_next;
 always @(posedge clk)	sa03 <= #1 ld_r ? text_in_r[031:024] ^ w3[31:24] : sa03_next;
@@ -133,8 +164,152 @@ always @(posedge clk)	sa01 <= #1 ld_r ? text_in_r[095:088] ^ w1[31:24] : sa01_ne
 always @(posedge clk)	sa30 <= #1 ld_r ? text_in_r[103:096] ^ w0[07:00] : sa30_next;
 always @(posedge clk)	sa20 <= #1 ld_r ? text_in_r[111:104] ^ w0[15:08] : sa20_next;
 always @(posedge clk)	sa10 <= #1 ld_r ? text_in_r[119:112] ^ w0[23:16] : sa10_next;
-always @(posedge clk)	sa00 <= #1 ld_r ? text_in_r[127:120] ^ w0[31:24] : sa00_next;
+always @(posedge clk)   sa00 <= #1 ld_r ? text_in_r[127:120] ^ w0[31:24] : sa00_next;*/
 
+always @(posedge clk or negedge rst) begin
+	if (!rst) begin
+		sa33 <= 8'h0;
+	end
+	else begin
+		sa33 <=  #1 ld_r ? text_in_r[007:000] ^ w3[07:00] : sa33_next;
+	end
+end
+
+always @(posedge clk or negedge rst) begin
+	if (!rst) begin
+		sa23 <= 8'h0;
+	end
+	else begin
+		sa23 <=  #1 ld_r ? text_in_r[015:008] ^ w3[15:08] : sa23_next;
+	end
+end
+
+always @(posedge clk or negedge rst) begin
+	if (!rst) begin
+		sa13 <= 8'h0;
+	end
+	else begin
+		sa13 <=  #1 ld_r ? text_in_r[023:016] ^ w3[23:16] : sa13_next;
+	end
+end
+
+always @(posedge clk or negedge rst) begin
+	if (!rst) begin
+		sa03 <= 8'h0;
+	end
+	else begin
+		sa03 <=  #1 ld_r ? text_in_r[031:024] ^ w3[31:24] : sa03_next;
+	end
+end
+
+always @(posedge clk or negedge rst) begin
+	if (!rst) begin
+		sa32 <= 8'h0;
+	end
+	else begin
+		sa32 <= #1 ld_r ? text_in_r[039:032] ^ w2[07:00] : sa32_next;
+	end
+end
+
+always @(posedge clk or negedge rst) begin
+	if (!rst) begin
+		sa22 <= 8'h0;
+	end
+	else begin
+		sa22 <= #1 ld_r ? text_in_r[047:040] ^ w2[15:08] : sa22_next;
+	end
+end
+
+always @(posedge clk or negedge rst) begin
+	if (!rst) begin
+		sa12 <= 8'h0;
+	end
+	else begin
+		sa12 <= #1 ld_r ? text_in_r[055:048] ^ w2[23:16] : sa12_next;
+	end
+end
+
+always @(posedge clk or negedge rst) begin
+	if (!rst) begin
+		sa02 <= 8'h0;
+	end
+	else begin
+		sa02 <= #1 ld_r ? text_in_r[063:056] ^ w2[31:24] : sa02_next;
+	end
+end
+
+always @(posedge clk or negedge rst) begin
+	if (!rst) begin
+		sa31 <= 8'h0;
+	end
+	else begin
+		sa31 <= #1 ld_r ? text_in_r[071:064] ^ w1[07:00] : sa31_next;
+	end
+end
+
+always @(posedge clk or negedge rst) begin
+	if (!rst) begin
+		sa21 <= 8'h0;
+	end
+	else begin
+		sa21 <= #1 ld_r ? text_in_r[079:072] ^ w1[15:08] : sa21_next;
+	end
+end
+
+always @(posedge clk or negedge rst) begin
+	if (!rst) begin
+		sa11 <= 8'h0;
+	end
+	else begin
+		sa11 <= #1 ld_r ? text_in_r[087:080] ^ w1[23:16] : sa11_next;
+	end
+end
+
+always @(posedge clk or negedge rst) begin
+	if (!rst) begin
+		sa01 <= 8'h0;
+	end
+	else begin
+		sa01 <= #1 ld_r ? text_in_r[095:088] ^ w1[31:24] : sa01_next;
+	end
+end
+
+
+always @(posedge clk or negedge rst) begin
+	if (!rst) begin
+		sa30 <= 8'h0;
+	end
+	else begin
+		sa30 <= #1 ld_r ? text_in_r[103:096] ^ w0[07:00] : sa30_next;
+	end
+end 
+
+always @(posedge clk or negedge rst) begin
+	if (!rst) begin
+		sa20 <= 8'h0;
+	end
+	else begin
+		sa20 <= #1 ld_r ? text_in_r[111:104] ^ w0[15:08] : sa20_next;
+	end
+end 
+
+always @(posedge clk or negedge rst) begin
+	if (!rst) begin
+		sa10 <= 8'h0;
+	end
+	else begin
+		sa10 <= #1 ld_r ? text_in_r[119:112] ^ w0[23:16] : sa10_next;
+	end
+end
+
+always @(posedge clk or negedge rst) begin
+	if (!rst) begin
+		sa00 <= 8'h0;
+	end
+	else begin
+		sa00 <= #1 ld_r ? text_in_r[127:120] ^ w0[31:24] : sa00_next;
+	end
+end
 ////////////////////////////////////////////////////////////////////
 //
 // Round Permutations
@@ -225,6 +400,7 @@ endfunction
 //
 
 aes_key_expand_128 u0(
+	.krst(      rst), //yy
 	.clk(		clk	),
 	.kld(		ld	),
 	.key(		key	),
