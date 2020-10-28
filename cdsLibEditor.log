@@ -1,0 +1,50 @@
+\o Program:		@(#)$CDS: cdsLibEditor version 6.1.7 - CAT35 10/30/2018 21:09 (sjfnl050) $
+\o Sub version:		sub-version  s231 
+\o Arguments:		-cdslib /home/yuan9/DTA-aes/cds.lib -mpssession virtuoso27076 -mpshost cadence-restricted 
+\o Working Directory:	cadence-restricted:/home/yuan9/DTA-aes
+\o 64-bit offsets
+\a nrSetWindowVisibility(cdsLibEditor "show")
+\o Qt version: 		4.8.5
+\a nrSetCurrentWindow(cdsLibEditor)
+\a nrListItemAction(cdsLibEditor->mainTable 0 0)
+\o Active cell: 0 0 "cdsDefTechLib"
+\a nrResizeWindow(cdsLibEditor list(2136 449 500 400))
+\a nrSetCurrentWindow(cdsLibEditor)
+\a cdsLibEditor->editAddLibButton->value = t
+\a newLibraryDialog->filePathComboBox->value = "/home/yuan9/DTA-aes"
+\a newLibraryDialog->useMappedName->value = nil
+\a nrSetWindowVisibility(newLibraryDialog "show")
+\a nrSetCurrentWindow(newLibraryDialog)
+\a nrResizeWindow(newLibraryDialog list(2111 353 531 513))
+\a newLibraryDialog->dirListWidget->value = ".."
+\a newLibraryDialog->filePathComboBox->value = "/home/yuan9/DTA-aes/.."
+\a nrListItemAction(newLibraryDialog->dirListWidget 0 0)
+\a newLibraryDialog->filePathComboBox->value = "/home/yuan9"
+\a newLibraryDialog->dirListWidget->value = nil
+\a newLibraryDialog->dirListWidget->value = ".."
+\a newLibraryDialog->filePathComboBox->value = "/home/yuan9/.."
+\a nrListItemAction(newLibraryDialog->dirListWidget 0 0)
+\a newLibraryDialog->filePathComboBox->value = "/home"
+\a newLibraryDialog->dirListWidget->value = nil
+\a newLibraryDialog->dirListWidget->value = "gulerlab"
+\a newLibraryDialog->filePathComboBox->value = "/home/gulerlab"
+\a nrListItemAction(newLibraryDialog->dirListWidget 11 0)
+\a newLibraryDialog->dirListWidget->value = nil
+\a newLibraryDialog->dirListWidget->value = "TAPEOUT2020"
+\a newLibraryDialog->filePathComboBox->value = "/home/gulerlab/TAPEOUT2020"
+\a nrListItemAction(newLibraryDialog->dirListWidget 2 0)
+\a newLibraryDialog->dirListWidget->value = nil
+\a newLibraryDialog->libraryListBox->value = "tcb018gbwp7t_oa"
+\a newLibraryDialog->useMappedName->value = t
+\a newLibraryDialog->libraryName->value = "tcb018gbwp7t_oa"
+\a newLibraryDialog->okButton->value = t
+\a newLibraryDialog->libraryListBox->value = nil
+\a newLibraryDialog->useMappedName->value = nil
+\a newLibraryDialog->libraryName->value = ""
+\a nrListItemAction(cdsLibEditor->mainTable 11 0)
+\o Active cell: 11 0 ""
+\a nrSetCurrentWindow(cdsLibEditor)
+\a cdsLibEditor->fileSaveButton->value = t
+\a cdsLibEditor->fileExitButton->value = t
+\a nrSetWindowVisibility(cdsLibEditor "hide")
+\a exit(0)

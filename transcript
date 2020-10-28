@@ -1,6 +1,3 @@
-# vsim -L work -c work.aes_cipher_top_tb -do "gtl_aes_commandline.do" "+notimingchecks" -sdfmax "/aes_cipher_top_tb/dut=/home/yuan9/DTA-aes/workdir/aes_synthesis.sdf" 
-# Start time: 01:10:37 on Oct 14,2020
-# ** Note: (vsim-3813) Design is being optimized due to module recompilation...
 # //  ModelSim SE-64 2019.2 Apr 16 2019 Linux 3.10.0-1062.18.1.el7.x86_64
 # //
 # //  Copyright 1991-2019 Mentor Graphics Corporation
@@ -14,6 +11,9 @@
 # //  is prohibited from disclosure under the Trade Secrets Act,
 # //  18 U.S.C. Section 1905.
 # //
+# vsim -L work -i work.aes_cipher_top_tb -do "wave.do" "+notimingchecks" -sdfmax "/aes_cipher_top_tb/dut=/home/yuan9/DTA-aes/workdir/aes_synthesis.sdf" 
+# Start time: 10:47:35 on Oct 28,2020
+# ** Note: (vsim-3812) Design is being optimized...
 # Loading work.aes_cipher_top_tb(fast)
 # Loading work.aes_cipher_top(fast)
 # Loading work.IND4D0BWP7T(fast)
@@ -70,8 +70,6 @@
 # Loading timing data from /home/yuan9/DTA-aes/workdir/aes_synthesis.sdf
 # ** Note: (vsim-3587) SDF Backannotation Successfully Completed.
 #    Time: 0 ps  Iteration: 0  Instance: /aes_cipher_top_tb File: aes_cipher_top_tb.v
-# do gtl_aes_commandline.do
-# Initial plaintext 68096d6646b8d77065acf0281c95c4fa
-# Final ciphertext 78856e973bcd2c74d5fe73616f9a07dc
-# End time: 01:10:38 on Oct 14,2020, Elapsed time: 0:00:01
-# Errors: 0, Warnings: 0
+# do wave.do
+# Initial plaintext 00000000000000000000000000000000
+# Final ciphertext e5d0343bb4106d009c074b2f563830e7

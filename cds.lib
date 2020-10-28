@@ -1,0 +1,8 @@
+# File Created by  at Wed Oct 28 10:16:29 2020
+# assisted by CdsLibEditor
+SOFTINCLUDE /opt/cadence/IC617/share/cdssetup/cds.lib
+DEFINE aes_spi_lib /home/yuan9/DTA-aes/workdir/aes_spi_lib
+#Removed by ddDeleteObj: DEFINE aes_libs /home/yuan9/DTA-aes/libs/aes_libs
+DEFINE tsmc18 /opt/cadence/TSMC18J19/TSMC18J19/tsmc18
+DEFINE tcb018gbwp7t_oa /home/gulerlab/TAPEOUT2020/tcb018gbwp7t_oa
+DEFINE lib_trans /home/yuan9/DTA-aes/lib_trans

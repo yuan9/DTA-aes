@@ -1,0 +1,64 @@
+xmvlog: *W,DLNOHV: Unable to find an 'hdl.var' file to load in.
+TOOL:	xmvlog(64)	18.03-s013: Started on Oct 28, 2020 at 10:21:41 EDT
+xmvlog
+    -use5x
+    -work __nclib
+    -view module
+    -logfile xmvlog.log
+    -cdslib /tmp/ihdl_cdslibb2231_32231
+    -messages
+    -nostdout
+    -nocopyright
+    -ESCAPEDNAME
+    /home/yuan9/DTA-aes/workdir/aes_netlist.v
+
+file: /home/yuan9/DTA-aes/workdir/aes_netlist.v
+	module __nclib.aes_rcon:module
+		errors: 0, warnings: 0
+	module __nclib.aes_sbox_1:module
+		errors: 0, warnings: 0
+	module __nclib.aes_sbox_2:module
+		errors: 0, warnings: 0
+	module __nclib.aes_sbox_3:module
+		errors: 0, warnings: 0
+	module __nclib.aes_sbox_4:module
+		errors: 0, warnings: 0
+	module __nclib.aes_key_expand_128:module
+		errors: 0, warnings: 0
+	module __nclib.aes_sbox_0:module
+		errors: 0, warnings: 0
+	module __nclib.aes_sbox_5:module
+		errors: 0, warnings: 0
+	module __nclib.aes_sbox_6:module
+		errors: 0, warnings: 0
+	module __nclib.aes_sbox_7:module
+		errors: 0, warnings: 0
+	module __nclib.aes_sbox_8:module
+		errors: 0, warnings: 0
+	module __nclib.aes_sbox_9:module
+		errors: 0, warnings: 0
+	module __nclib.aes_sbox_10:module
+		errors: 0, warnings: 0
+	module __nclib.aes_sbox_11:module
+		errors: 0, warnings: 0
+	module __nclib.aes_sbox_12:module
+		errors: 0, warnings: 0
+	module __nclib.aes_sbox_13:module
+		errors: 0, warnings: 0
+	module __nclib.aes_sbox_14:module
+		errors: 0, warnings: 0
+	module __nclib.aes_sbox_15:module
+		errors: 0, warnings: 0
+	module __nclib.aes_sbox_16:module
+		errors: 0, warnings: 0
+	module __nclib.aes_sbox_17:module
+		errors: 0, warnings: 0
+	module __nclib.aes_sbox_18:module
+		errors: 0, warnings: 0
+	module __nclib.aes_sbox_19:module
+		errors: 0, warnings: 0
+	module __nclib.aes_cipher_top:module
+		errors: 0, warnings: 0
+	Total errors/warnings found outside modules and primitives:
+		errors: 0, warnings: 1
+TOOL:	xmvlog(64)	18.03-s013: Exiting on Oct 28, 2020 at 10:21:42 EDT  (total: 00:00:01)
