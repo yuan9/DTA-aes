@@ -19,8 +19,8 @@ leakend="171838"
 
 #leakstart=str( BASE_TIME + int(START_TIME*1000000))
 #leakend=str( BASE_TIME + int(END_TIME*1000000))
-print leakstart
-print leakend
+print (leakstart)
+print (leakend)
 #leakstart= "617690200"
 #leakend="617691300"
 #-------------------------------------------------------------------------------#
@@ -72,8 +72,8 @@ for counter in range (0,filecount):
         if int(stamparray[i]) < int(leakend) and int(stamparray[i+1]) >= int(leakend):
             leakend = stamparray[i+1]
 
-    print "vcd start time:" + leakstart
-    print "vcd end time:" + leakend
+    print ("vcd start time:" + leakstart)
+    print ("vcd end time:" + leakend)
     # #----------------------------------------------------#
     # # Yuan: get all the time stamps during leakstart-endstart
     # #----------------------------------------------------#
@@ -200,5 +200,5 @@ sorted_dicleaksig = sorted(dicleaksig.items(), key=operator.itemgetter(1))
 #np.savetxt('yuan_sigrank.txt',sorted_dicleaksig , fmt='%s')
 #np.savetxt('phase1_2nditer_bit' + str(bitnumber)+ '.txt',sorted_dicleaksig , fmt='%s')
 
-np.savetxt('wpi_phase1_byte4' + str(bitnumber)+ '.txt',sorted_dicleaksig , fmt='%s')
+np.savetxt('wpi_phase1_byte4bit' + str(bitnumber)+ '.txt',sorted_dicleaksig , fmt='%s')
 
