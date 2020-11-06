@@ -77,44 +77,38 @@ elaborate aes_cipher_top -library work -update
 # Link Design
 ###################################################################
 link
-#set LINK_SUCCESS [link]
-#echo $LINK_SUCCESS
-#########
-
-##########################################################
+###################################################################
 # apply timing constraint
 ###################################################################
-#set clock_margin 0.1
-#set sys_clk_freq   80.0
-#set sys_in_peri [expr 1000.0 / $sys_clk_freq]
-#set sys_peri [expr $sys_in_peri - $sys_in_peri*$clock_margin]
-#echo "Info: CLK period is set to ${sys_peri} ns"
-#create_clock clk -name clk -period $sys_peri
+set clock_margin 0.1
+set sys_clk_freq   80.0
+set sys_in_peri [expr 1000.0 / $sys_clk_freq]
+set sys_peri [expr $sys_in_peri - $sys_in_peri*$clock_margin]
+echo "Info: CLK period is set to ${sys_peri} ns"
+create_clock clk -name clk -period $sys_peri
 ###################################################################
 #add uncertainity
-#set pll_output_jitter 0.100
-#set clock_tree_jitter 0.300
-#set ocv_jitter 0.100
-#set extra_jitter 0.100
+set pll_output_jitter 0.100
+set clock_tree_jitter 0.300
+set ocv_jitter 0.100
+set extra_jitter 0.100
 
-#set_clock_uncertainty [expr $clock_tree_jitter + $ocv_jitter + $extra_jitter] [get_clocks clk]
+set_clock_uncertainty [expr $clock_tree_jitter + $ocv_jitter + $extra_jitter] [get_clocks clk]
 
 
-#uniquify
+uniquify
 #compile -map_effort high
-#compile_ultra -no_autoungroup
-#current_design ro_testc
-remove_attribute [get_lib_cells tcb018gbwp7twc/*] dont_use
-compile -map_effort high
+compile_ultra -no_autoungroup
+
+
 #ungroup -all ##check solvnet
 #uniquify ##before compile
-#change_names -rules verilog
-#ungroup -flatten -all
+change_names -rules verilog
+
 write_sdc workdir/aes_synthesis.sdc
 write -f ddc -hier aes_cipher_top -output workdir/aes_synthesis.ddc
 write_sdf -version 2.1 workdir/aes_synthesis.sdf
 write -format verilog -hierarchy -output workdir/aes_netlist.v
-report_cell
-report_area -hierarchy 
+
 quit
 #/home/shashank/asic_design/dc_scripts

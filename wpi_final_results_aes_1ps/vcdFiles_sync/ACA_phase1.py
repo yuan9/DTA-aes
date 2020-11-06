@@ -14,9 +14,12 @@ import operator
 filecount = 500
 bitnumber = 6
 #wpi_byte4bit6(bit38)
-leakstart= "171338"
-leakend="171838"
-
+# LTI in Insepctor
+#leakstart= "171338"
+#leakend="171838"
+#LTI in Modelsim
+leakstart= "171064"
+leakend="171128"
 #leakstart=str( BASE_TIME + int(START_TIME*1000000))
 #leakend=str( BASE_TIME + int(END_TIME*1000000))
 print (leakstart)

@@ -23,7 +23,7 @@ prefix = 'nowddl_dist2_'
 #---------------------------------------------#
 #threshold = 400
 #threshold = -120
-threshold = 0
+threshold = 50
 #start_threshold = -120
 #end_threshold = 600
 # #-------------------------------------------------------------------------------#
@@ -403,7 +403,7 @@ def extract_reggate():
 	i = 0
 	current_score = 0
 	while (i < len(file_split)):
-		print(i)
+		#print(i)
 		if file_split[i]:
 			if (len(file_split[i].split(" ")) > 1):
 				current_score = int(file_split[i].split(" ")[1])
@@ -413,7 +413,7 @@ def extract_reggate():
 
 			else:
 				line_split = file_split[i].split(".")
-				#print line_split
+				print (line_split)
 				if (line_split[-2][0] == 'U'and line_split[-1]=="Y"):
 					newline = file_split[i].split(".")[0:-1]
 					newline = '/'.join(newline)		

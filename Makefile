@@ -46,7 +46,7 @@ aes-commandline: gtl-vsim
 	#dc_shell -f run.tcl
 	vlog -work work /home/yuan9/DTA-aes/workdir/aes_netlist.v
 	#make -C "../../software/test_soft/fault_tests/dtatest" prog.mem
-	vsim -L work -c work.aes_cipher_top_tb -do gtl_aes_commandline.do +notimingchecks -sdfmax /aes_cipher_top_tb/dut=/home/yuan9/DTA-aes/workdir/aes_synthesis.sdf
+	vsim -voptargs=+acc=lprn -L work -c work.aes_cipher_top_tb -do gtl_aes_commandline.do +notimingchecks -sdfmax /aes_cipher_top_tb/dut=/home/yuan9/DTA-aes/workdir/aes_synthesis.sdf
 	#vsim -L work -novopt -i work.aes_cipher_top_tb +notimingchecks -sdfmax /aes_cipher_top_tb/dut=/home/dtatest/DTA-aes/workdir/aes_synthesis.sdf
 
 	#make -C "../../software/test_soft/fault_tests/dtatest" clean
