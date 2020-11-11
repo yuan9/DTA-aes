@@ -1,4 +1,4 @@
-vcd file test_f.vcd
+vcd file test.vcd
 vcd add -r /aes_cipher_top_tb/*
 vcd add -r /aes_cipher_top_tb/dut/*
 #add wave sim:/aes_cipher_top_tb/*

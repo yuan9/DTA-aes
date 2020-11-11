@@ -1,0 +1,1 @@
+add wave -position insertpoint sim:/aes_cipher_top_tb/dut/sa30_reg_7_/Q

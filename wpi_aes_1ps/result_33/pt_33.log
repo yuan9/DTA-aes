@@ -1,0 +1,179 @@
+
+                                 PrimeTime (R)
+
+               Version Q-2019.12-SP4 for linux64 - May 28, 2020 
+
+                    Copyright (c) 1988 - 2020 Synopsys, Inc.
+   This software and the associated documentation are proprietary to Synopsys,
+ Inc. This software may only be used in accordance with the terms and conditions
+ of a written license agreement with Synopsys, Inc. All other use, reproduction,
+            or distribution of this software is strictly prohibited.
+if {0} {
+if {[catch {getenv "TSMC180_HOME"} msg]} {
+ echo "ERROR: Enviroment variable TSMC180_HOME should point at a tsmc180 lib installation "
+ exit
+}
+
+set tech 180nm
+set grtechlibdir [getenv {TSMC180_HOME}]
+set cell_path "${grtechlibdir}/tsmc/cl018g/sc9_base_rvt/2008q3v01/"
+set cell_lib_path "$cell_path/db/"
+set io_path "${grtechlibdir}/gpio/TPZ018NV/TS02IG502/fb_tpz018nv_280a_r6p0-02eac0/" 
+set io_lib_path "$io_path/timing_power_noise/NLDM/tpz018nv_280a/"
+set memory_path "/home/bilgiday/sram_new" 
+set memory_lib_path "$memory_path/db/" 
+set grtechlibpath ". $cell_lib_path $io_lib_path $memory_lib_path"
+set grtechlibpath ". $cell_lib_path $io_lib_path $memory_path"
+
+# Target library - worst case condition - 1.62V 125C
+set grtechtargetlib "sage-x_tsmc_cl018g_rvt_ss_1p62v_125c.db"
+
+# IO libary - worst case (wc)
+set iolib "tpz018nvwc.db"
+
+# Memory Library - worst case (slow)
+set memlib "/home/bilgiday/sram_new/db/sram12x8_slow_syn.db /home/bilgiday/sram_new/db/sram6x26_slow_syn.db /home/bilgiday/sram_new/db/sram8x25_slow_syn.db /home/bilgiday/sram_new/db/sram9x32_slow_syn.db /home/bilgiday/sram_new/db/sram6x32_slow_syn.db /home/bilgiday/sram_new/db/sram8x32_slow_syn.db /home/bilgiday/sram_new/db/sram2p8x32_slow_syn.db /home/bilgiday/sram_new/db/sram13x8_slow_syn.db"
+
+# Link library - worst case condition - wc
+set grtechlinklib "* $grtechtargetlib $iolib $memlib"
+
+set search_path    $grtechlibpath
+set target_library $grtechtargetlib
+set link_library   $grtechlinklib
+
+# Technology File
+set technology_file_path "$cell_path/milkyway/"
+set technology_file "$technology_file_path/tech_sage-x_tsmc_cl018g_6lm.tf"
+}
+#yy change the setup files
+source ../setup_dare.tcl
+read_ddc /home/yuan9/DTA-aes/workdir/aes_synthesis.ddc
+Information: The \fBread_ddc\fP command no longer supports reading constraints. (DBR-209)
+1
+#read_ddc /home/dtatest/DTA-aes/workdir/wddl_aes.ddc
+set power_enable_analysis "true"
+Information: Checked out license 'PrimePower' (PT-019)
+true
+link
+Loading db file '/opt/libraries/TSMCHOME/digital/Front_End/timing_power_noise/NLDM/tcb018gbwp7t_270a/tcb018gbwp7twc.db'
+ view mode is 2
+Loading db file '/opt/libraries/TSMCHOME/digital/Front_End/timing_power_noise/NLDM/tpz973gv_280a/tpz973gvwc.db'
+ view mode is 2
+Loading db file '/gulerlab/TAPEOUT2020/sram8kx8/compout/libcompile/aspulsgfs1p8192x8cm16sw0/Worst/aspulsgfs1p8192x8cm16sw0_lib.db'
+ view mode is 2
+Loading db file '/opt/libraries/TSMCHOME/digital/Front_End/timing_power/tpa018nv_270a/tpa018nvwc.db'
+ view mode is 2
+Linking design aes_cipher_top...
+Information: Removing 22 unneeded designs..... (LNK-034)
+Information: 518 (92.50%) library cells are unused in library tcb018gbwp7twc..... (LNK-045)
+Information: 129 (100.00%) library cells are unused in library tpz973gvwc..... (LNK-045)
+Information: 1 (100.00%) library cells are unused in library aspulsgfs1p8192x8cm16sw0_lib..... (LNK-045)
+Information: 12 (100.00%) library cells are unused in library tpa018nvwc..... (LNK-045)
+Information: total 660 library cells are unused (LNK-046)
+Design 'aes_cipher_top' was successfully linked.
+Information: There are 9537 leaf cells, ports, hiers and 9975 nets in the design (LNK-047)
+1
+set power_analysis_mode "time_based"
+time_based
+#read_vcd test.vcd -strip_path /aes_cipher_top_tb/dut
+# generate the fix plaintext
+#read_vcd ../test_fixpt.vcd -strip_path /aes_cipher_top_tb/dut
+read_vcd test.vcd -strip_path /aes_cipher_top_tb/dut
+
+======================================================================
+Summary:
+Total number of nets = 9386
+Number of annotated nets = 9386 (100.00%)
+Total number of leaf cells = 9126
+Number of fully annotated leaf cells = 9126 (100.00%)
+======================================================================
+
+1
+#read_vcd test.vcd -strip_path /testbench/d3 -path core0_leon3core0_cp2_v0 
+#set_power_analysis_options -waveform_interval 0.001 -waveform_format out -waveform_output "yuan_power" -include all_without_leaf
+#set_power_analysis_options -waveform_interval 0.01 -waveform_format out -waveform_output "yuan_power" -include all_with_leaf
+#set_power_analysis_options -waveform_format out -waveform_output "yuan_power" -include all_with_leaf
+#set_power_analysis_options -waveform_format fsdb -waveform_output "yuan_power" -include all_with_leaf
+#set_power_analysis_options -waveform_interval 0.0001 -waveform_format out -waveform_output "yuan_power" -include top
+#set_power_analysis_options -waveform_interval 0.0001 -waveform_format out -waveform_output "yuan_power" -include all_with_leaf
+set_power_analysis_options -waveform_interval 0.001 -waveform_format out -waveform_output "yuan_power" -include all_with_leaf
+update_timing
+Information: Using automatic max wire load selection group 'WireAreaForZero'. (ENV-003)
+Information: Using automatic min wire load selection group 'WireAreaForZero'. (ENV-003)
+Information: Building multi voltage information for entire design. (MV-022)
+1
+update_power  
+Information: Running time_based power analysis... (PWR-601)
+Information: Reading vcd file '/home/yuan9/DTA-aes/test.vcd'
+Information: The waveform options are:
+		File name:	yuan_power.out
+		File format:	out
+		Time interval:	0.001ns
+		Hierarchical level:	all
+
+Information: Power analysis is running, please wait ...
+
+ Last event time =  128.604 ns  Last event time =  172.458 ns  Last event time =  259.577 ns  Last event time =  385.039 ns  Last event time =  471.126 ns  Last event time =  557.772 ns Information: analysis is done for time window (0ns - 575.991ns)
+
+Information: Total simulation time = 575.991000 ns
+1
+report_power_analysis_options
+****************************************
+Report : Power Analysis Options
+Design : aes_cipher_top
+Version: Q-2019.12-SP4
+Date   : Thu Nov  5 23:44:58 2020
+****************************************
+
+Power Analysis Mode: Time_based
+
+Option Name                   Value
+--------------------------------------------------------------------------------
+exclude lib cells             undefined
+cells                         undefined
+include                       all_with_leaf
+include_groups                undefined
+waveform_format               out
+waveform_interval             0.001
+waveform_output               yuan_power
+sdpd_tracking                 disabled
+sdpd_tracking_cells           undefined
+separate_power_waveform       none
+
+1
+report_power -verbose -hierarchy > yuan_PowerReport.txt
+quit
+Information: Defining new variable 'technology_file'. (CMD-041)
+Information: Defining new variable 'grtechlibdir'. (CMD-041)
+Information: Defining new variable 'std_cell_mw_ref_lib'. (CMD-041)
+Information: Defining new variable 'back_end_path'. (CMD-041)
+Information: Defining new variable 'front_end_path'. (CMD-041)
+Information: Defining new variable 'grtechlinklib'. (CMD-041)
+Information: Defining new variable 'a_iolib'. (CMD-041)
+Information: Defining new variable 'a_io_mw_ref_lib'. (CMD-041)
+Information: Defining new variable 'iolib'. (CMD-041)
+Information: Defining new variable 'mem_mw_ref_lib_path'. (CMD-041)
+Information: Defining new variable 'io_mw_ref_lib_path'. (CMD-041)
+Information: Defining new variable 'grtechtargetlib'. (CMD-041)
+Information: Defining new variable 'io_bonding_ref_lib'. (CMD-041)
+Information: Defining new variable 'memory_path'. (CMD-041)
+Information: Defining new variable 'memory_lib_path'. (CMD-041)
+Information: Defining new variable 'grtechlibpath'. (CMD-041)
+Information: Defining new variable 'a_io_lib_path'. (CMD-041)
+Information: Defining new variable 'io_mw_ref_lib'. (CMD-041)
+Information: Defining new variable 'cell_lib_path'. (CMD-041)
+Information: Defining new variable 'io_lib_path'. (CMD-041)
+Information: Defining new variable 'technology_file_path'. (CMD-041)
+Information: Defining new variable 'tech'. (CMD-041)
+Information: Defining new variable 'mem_mw_ref_lib'. (CMD-041)
+Information: Defining new variable 'memlib'. (CMD-041)
+Information: Defining new variable 'std_cell_mw_ref_lib_path'. (CMD-041)
+
+Timing updates: 1 (0 implicit, 1 explicit) (0 incremental, 1 full, 0 logical)
+Noise updates: 0 (0 implicit, 0 explicit) (0 incremental, 0 full)
+Maximum memory usage for this session: 1063.34 MB
+CPU usage for this session: 14 seconds 
+Elapsed time for this session: 11 seconds
+Diagnostics summary: 38 informationals
+
+Thank you for using pt_shell!

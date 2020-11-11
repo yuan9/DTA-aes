@@ -1,5 +1,5 @@
 #!/bin/bash
-results_folder=wpi_result_aes_1ps
+results_folder=wpi_aes_1ps
 
 for counter in {0..499}
 #for counter in {0..3}

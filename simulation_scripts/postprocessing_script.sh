@@ -1,7 +1,7 @@
 #!/bin/bash
 numtrace=500
-results_dir=../wpi_result_aes_1ps
-final_dir=../wpi_final_results_aes_1ps
+results_dir=../wpi_aes_1ps
+final_dir=../wpi_final_aes_1ps_1109
 
 #create the final directories
 mkdir $final_dir
