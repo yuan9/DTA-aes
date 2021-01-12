@@ -4398,10 +4398,12 @@ module aes_sbox_7 ( a, d );
   OAI21XL U375 ( .A0(n355), .A1(n354), .B0(n353), .Y(n356) );
 endmodule
 
-
-module aes_sbox_8 ( a, d, preclkbar );
+//lmdpl
+//module aes_sbox_8 ( a, d, preclkbar );
+module aes_sbox_8 ( a, d,clk, rst,  preclkbar,m_in0_U179, m_in1_U179, m_out_U179, precharge_lmdpl);
   input [7:0] a;
-  input preclkbar;
+  //lmdpl
+  input preclkbar,clk, rst, m_in0_U179, m_in1_U179, m_out_U179, precharge_lmdpl;
   output [7:0] d;
   wire   n1, n2, n3, n4, n5, n6, n7, n8, n9, n10, n11, n12, n13, n14, n15, n16,
          n17, n18, n19, n20, n21, n22, n23, n24, n25, n26, n27, n28, n29, n30,
@@ -4444,8 +4446,8 @@ module aes_sbox_8 ( a, d, preclkbar );
   INVX1 U6 ( .A(n116), .Y(n203) );
   NAND2X1 U7 ( .A(n194), .B(n274), .Y(n344) );
   //wddl
-  //INVX1 U8 ( .A(n324), .Y(n265) );
-  WDDLINV U8 ( .A(n324), .Y(n265), .clkinv(preclkbar) );
+  INVX1 U8 ( .A(n324), .Y(n265) );
+ // WDDLINV U8 ( .A(n324), .Y(n265), .clkinv(preclkbar) );
   AOI21XL U9 ( .A0(n339), .A1(n338), .B0(n337), .Y(n341) );
   AOI2BB2XL U10 ( .B0(n359), .B1(n289), .A0N(n288), .A1N(n287), .Y(n300) );
   INVXL U11 ( .A(n257), .Y(n289) );
@@ -4456,33 +4458,33 @@ module aes_sbox_8 ( a, d, preclkbar );
   NOR2XL U16 ( .A(n248), .B(n142), .Y(n357) );
   NAND2XL U17 ( .A(n109), .B(n78), .Y(n158) );
   //wddl
-  //NOR2XL U18 ( .A(n324), .B(n131), .Y(n262) );
-  WDDLNOR2X U18 ( .A(n324), .B(n131), .Y(n262), .clkinv(preclkbar) );
+  NOR2XL U18 ( .A(n324), .B(n131), .Y(n262) );
+ // WDDLNOR2X U18 ( .A(n324), .B(n131), .Y(n262), .clkinv(preclkbar) );
   NOR2XL U19 ( .A(n181), .B(n95), .Y(n174) );
   //wddl
-  //NAND2XL U20 ( .A(a[1]), .B(n293), .Y(n82) );
-  WDDLNAND2X U20 ( .A(a[1]), .B(n293), .Y(n82), .clkinv(preclkbar) );
+  NAND2XL U20 ( .A(a[1]), .B(n293), .Y(n82) );
+ // WDDLNAND2X U20 ( .A(a[1]), .B(n293), .Y(n82), .clkinv(preclkbar) );
   //wddl
-  //NOR2X1 U21 ( .A(n293), .B(n323), .Y(n150) );
-  WDDLNOR2X U21 ( .A(n293), .B(n323), .Y(n150), .clkinv(preclkbar) );
+  NOR2X1 U21 ( .A(n293), .B(n323), .Y(n150) );
+  //WDDLNOR2X U21 ( .A(n293), .B(n323), .Y(n150), .clkinv(preclkbar) );
   //wddl
-  //NOR2X1 U22 ( .A(a[1]), .B(n293), .Y(n318) );
-  WDDLNOR2X U22 ( .A(a[1]), .B(n293), .Y(n318), .clkinv(preclkbar) );
+  NOR2X1 U22 ( .A(a[1]), .B(n293), .Y(n318) );
+  //WDDLNOR2X U22 ( .A(a[1]), .B(n293), .Y(n318), .clkinv(preclkbar) );
   //wddl
   NAND2XL U23 ( .A(n140), .B(n20), .Y(n151) );
   //WDDLNAND2X U23 ( .A(n140), .B(n20), .Y(n151), .clkinv(preclkbar) );
   INVXL U24 ( .A(n352), .Y(n141) );
   INVXL U25 ( .A(n267), .Y(n333) );
   //wddl
-  //NOR2X1 U26 ( .A(a[1]), .B(n103), .Y(n331) );
-  WDDLNOR2X U26 ( .A(a[1]), .B(n103), .Y(n331), .clkinv(preclkbar) );
+  NOR2X1 U26 ( .A(a[1]), .B(n103), .Y(n331) );
+  //WDDLNOR2X U26 ( .A(a[1]), .B(n103), .Y(n331), .clkinv(preclkbar) );
   //wddl
-  //NOR2XL U27 ( .A(a[1]), .B(n242), .Y(n186) );
-  WDDLNOR2X U27 ( .A(a[1]), .B(n242), .Y(n186), .clkinv(preclkbar) );
+  NOR2XL U27 ( .A(a[1]), .B(n242), .Y(n186) );
+  //WDDLNOR2X U27 ( .A(a[1]), .B(n242), .Y(n186), .clkinv(preclkbar) );
   NOR2X4 U28 ( .A(n264), .B(n197), .Y(n350) );
   //wddl
-  //NAND2X1 U29 ( .A(a[1]), .B(n31), .Y(n352) );
-  WDDLNAND2X U29 ( .A(a[1]), .B(n31), .Y(n352), .clkinv(preclkbar) );
+  NAND2X1 U29 ( .A(a[1]), .B(n31), .Y(n352) );
+  //WDDLNAND2X U29 ( .A(a[1]), .B(n31), .Y(n352), .clkinv(preclkbar) );
   AOI211XL U30 ( .A0(n125), .A1(n58), .B0(n57), .C0(n56), .Y(n59) );
   OR4X2 U31 ( .A(n367), .B(n366), .C(n365), .D(n364), .Y(d[0]) );
   AOI211XL U32 ( .A0(n89), .A1(n88), .B0(n87), .C0(n86), .Y(n90) );
@@ -4576,8 +4578,8 @@ module aes_sbox_8 ( a, d, preclkbar );
   AOI22XL U119 ( .A0(n1), .A1(n263), .B0(n328), .B1(n262), .Y(n279) );
   OAI211XL U120 ( .A0(n274), .A1(n273), .B0(n272), .C0(n271), .Y(n276) );
   //wddl
-  //NAND2XL U121 ( .A(n352), .B(n351), .Y(n358) );
-  WDDLNAND2X U121 ( .A(n352), .B(n351), .Y(n358), .clkinv(preclkbar) );
+  NAND2XL U121 ( .A(n352), .B(n351), .Y(n358) );
+  //WDDLNAND2X U121 ( .A(n352), .B(n351), .Y(n358), .clkinv(preclkbar) );
   AOI32XL U122 ( .A0(n109), .A1(a[7]), .A2(n266), .B0(n159), .B1(n264), .Y(
         n193) );
   AOI22XL U123 ( .A0(n185), .A1(n318), .B0(n327), .B1(n262), .Y(n110) );
@@ -4606,8 +4608,8 @@ module aes_sbox_8 ( a, d, preclkbar );
   NAND2XL U146 ( .A(n311), .B(n236), .Y(n346) );
   NOR2XL U147 ( .A(n181), .B(n269), .Y(n315) );
   //wddl
-  //INVXL U148 ( .A(n131), .Y(n351) );
-  WDDLINV U148 ( .A(n131), .Y(n351), .clkinv(preclkbar) );
+  INVXL U148 ( .A(n131), .Y(n351) );
+  //WDDLINV U148 ( .A(n131), .Y(n351), .clkinv(preclkbar) );
   NOR3XL U149 ( .A(n181), .B(n261), .C(n309), .Y(n295) );
   AOI22XL U150 ( .A0(a[3]), .A1(n350), .B0(n349), .B1(n348), .Y(n362) );
   AOI22XL U151 ( .A0(n186), .A1(n359), .B0(n328), .B1(n103), .Y(n33) );
@@ -4636,8 +4638,9 @@ module aes_sbox_8 ( a, d, preclkbar );
   NOR2XL U172 ( .A(n187), .B(n186), .Y(n290) );
   NAND3XL U173 ( .A(n1), .B(a[3]), .C(n204), .Y(n73) );
   //wddl
-  //NOR2XL U174 ( .A(a[1]), .B(n329), .Y(n269) );
-  WDDLNOR2X U174 ( .A(a[1]), .B(n329), .Y(n269), .clkinv(preclkbar) );
+ // NOR2XL U174 ( .A(a[1]), .B(n329), .Y(n269) );
+  nor_lmdpl U174 ( .clk(clk), .rst_n(rst), .precharge(precharge_lmdpl), .in0(a[1]), .in1(n329), .m_in0(m_in0_U179), .m_in1(m_in1_U179), .m_out(m_out_U179), .out(n269));
+  //WDDLNOR2X U174 ( .A(a[1]), .B(n329), .Y(n269), .clkinv(preclkbar) );
   AOI22XL U175 ( .A0(n325), .A1(n324), .B0(n1), .B1(n323), .Y(n343) );
   NAND2XL U176 ( .A(n311), .B(n303), .Y(n38) );
   //wddl
@@ -4645,14 +4648,17 @@ module aes_sbox_8 ( a, d, preclkbar );
   //WDDLNAND2X U177 ( .A(n306), .B(n267), .Y(n61), .clkinv(preclkbar) );
   //wddl
   //NOR2XL U178 ( .A(a[1]), .B(n249), .Y(n131) );
-  WDDLNOR2X U178 ( .A(a[1]), .B(n249), .Y(n131), .clkinv(preclkbar) );
+  nor_lmdpl U178 ( .clk(clk), .rst_n(rst), .precharge(precharge_lmdpl), .in0(a[1]), .in1(n249), .m_in0(m_in0_U179), .m_in1(m_in1_U179), .m_out(m_out_U179), .out(n131));
+  //WDDLNOR2X U178 ( .A(a[1]), .B(n249), .Y(n131), .clkinv(preclkbar) );
   //wddl
   //NOR2XL U179 ( .A(n37), .B(a[1]), .Y(n195) );
-  WDDLNOR2X U179 ( .A(n37), .B(a[1]), .Y(n195), .clkinv(preclkbar) );
+  nor_lmdpl U179 ( .clk(clk), .rst_n(rst), .precharge(precharge_lmdpl), .in0(n37), .in1(a[1]), .m_in0(m_in0_U179), .m_in1(m_in1_U179), .m_out(m_out_U179), .out(n195));
+  //WDDLNOR2X U179 ( .A(n37), .B(a[1]), .Y(n195), .clkinv(preclkbar) );
   //wddl
   NAND2XL U180 ( .A(n107), .B(n348), .Y(n175) );
   //WDDLNAND2X U180 ( .A(n107), .B(n348), .Y(n175), .clkinv(preclkbar) );
   NOR2XL U181 ( .A(n233), .B(n331), .Y(n108) );
+  //nor_lmdpl U181 ( .clk(clk), .rst_n(rst), .precharge(precharge_lmdpl), .in0(n233), .in1(n331), .m_in0(m_in0_U179), .m_in1(m_in1_U179), .m_out(m_out_U179), .out(n108));
   NAND3XL U182 ( .A(n205), .B(n242), .C(n204), .Y(n206) );
   AOI22XL U183 ( .A0(n141), .A1(n332), .B0(n251), .B1(n330), .Y(n148) );
   AOI22XL U184 ( .A0(n187), .A1(n205), .B0(n328), .B1(n307), .Y(n12) );
@@ -4660,29 +4666,29 @@ module aes_sbox_8 ( a, d, preclkbar );
   NAND2XL U186 ( .A(n329), .B(n323), .Y(n245) );
   NAND3XL U187 ( .A(n332), .B(n72), .C(n242), .Y(n71) );
   //wddl
-  //NAND2XL U188 ( .A(a[1]), .B(n261), .Y(n303) );
-  WDDLNAND2X U188 ( .A(a[1]), .B(n261), .Y(n303), .clkinv(preclkbar) );
+  NAND2XL U188 ( .A(a[1]), .B(n261), .Y(n303) );
+  //WDDLNAND2X U188 ( .A(a[1]), .B(n261), .Y(n303), .clkinv(preclkbar) );
   INVXL U189 ( .A(n332), .Y(n234) );
   INVXL U190 ( .A(n297), .Y(n284) );
   NAND2XL U191 ( .A(n328), .B(n311), .Y(n353) );
   INVXL U192 ( .A(n197), .Y(n185) );
   NOR2XL U193 ( .A(n264), .B(n273), .Y(n330) );
   //wddl
-  //NOR2XL U194 ( .A(a[1]), .B(n198), .Y(n160) );
-  WDDLNOR2X U194 ( .A(a[1]), .B(n198), .Y(n160), .clkinv(preclkbar) );
+  NOR2XL U194 ( .A(a[1]), .B(n198), .Y(n160) );
+  //WDDLNOR2X U194 ( .A(a[1]), .B(n198), .Y(n160), .clkinv(preclkbar) );
   INVXL U195 ( .A(n274), .Y(n251) );
   NAND2XL U196 ( .A(n264), .B(n275), .Y(n252) );
   AOI22XL U197 ( .A0(a[2]), .A1(a[4]), .B0(a[3]), .B1(n273), .Y(n132) );
   AOI22XL U198 ( .A0(a[1]), .A1(a[7]), .B0(n264), .B1(n323), .Y(n72) );
   //wddl
-  //NOR2XL U199 ( .A(a[3]), .B(a[1]), .Y(n225) );
-  WDDLNOR2X U199 ( .A(a[3]), .B(a[1]), .Y(n225), .clkinv(preclkbar) );
+  NOR2XL U199 ( .A(a[3]), .B(a[1]), .Y(n225) );
+  //WDDLNOR2X U199 ( .A(a[3]), .B(a[1]), .Y(n225), .clkinv(preclkbar) );
   //wddl
-  //NAND2XL U200 ( .A(a[3]), .B(a[1]), .Y(n20) );
-  WDDLNAND2X U200 ( .A(a[3]), .B(a[1]), .Y(n20), .clkinv(preclkbar) );
+  NAND2XL U200 ( .A(a[3]), .B(a[1]), .Y(n20) );
+  //WDDLNAND2X U200 ( .A(a[3]), .B(a[1]), .Y(n20), .clkinv(preclkbar) );
   //wddl
-  //NAND2XL U201 ( .A(a[4]), .B(a[1]), .Y(n274) );
-  WDDLNAND2X U201 ( .A(a[4]), .B(a[1]), .Y(n274), .clkinv(preclkbar) );
+  NAND2XL U201 ( .A(a[4]), .B(a[1]), .Y(n274) );
+  //WDDLNAND2X U201 ( .A(a[4]), .B(a[1]), .Y(n274), .clkinv(preclkbar) );
   INVX2 U202 ( .A(a[7]), .Y(n264) );
   CLKINVX3 U203 ( .A(n266), .Y(n329) );
   NAND2X2 U204 ( .A(a[4]), .B(n31), .Y(n266) );
@@ -4693,16 +4699,16 @@ module aes_sbox_8 ( a, d, preclkbar );
   OAI21X1 U209 ( .A0(n127), .A1(n297), .B0(n126), .Y(d[4]) );
   NOR2X2 U210 ( .A(n31), .B(n198), .Y(n261) );
   //wddl
-  //NOR2X2 U211 ( .A(n37), .B(n323), .Y(n181) );
-  WDDLNOR2X U211 ( .A(n37), .B(n323), .Y(n181),.clkinv(preclkbar) );
+  NOR2X2 U211 ( .A(n37), .B(n323), .Y(n181) );
+  //WDDLNOR2X U211 ( .A(n37), .B(n323), .Y(n181),.clkinv(preclkbar) );
   NOR2X2 U212 ( .A(n273), .B(a[7]), .Y(n325) );
   NOR2X2 U213 ( .A(n249), .B(n329), .Y(n293) );
   //wddl
-  //NOR2X2 U214 ( .A(n329), .B(n323), .Y(n226) );
-  WDDLNOR2X U214 ( .A(n329), .B(n323), .Y(n226), .clkinv(preclkbar) );
+  NOR2X2 U214 ( .A(n329), .B(n323), .Y(n226) );
+  //WDDLNOR2X U214 ( .A(n329), .B(n323), .Y(n226), .clkinv(preclkbar) );
   //wddl
-  //NAND2X2 U215 ( .A(n198), .B(n323), .Y(n311) );
-  WDDLNAND2X U215 ( .A(n198), .B(n323), .Y(n311), .clkinv(preclkbar) );
+  NAND2X2 U215 ( .A(n198), .B(n323), .Y(n311) );
+  //WDDLNAND2X U215 ( .A(n198), .B(n323), .Y(n311), .clkinv(preclkbar) );
   CLKINVX3 U216 ( .A(a[4]), .Y(n198) );
   CLKINVX3 U217 ( .A(n233), .Y(n359) );
   NAND2X2 U218 ( .A(a[5]), .B(n325), .Y(n233) );
@@ -4722,8 +4728,8 @@ module aes_sbox_8 ( a, d, preclkbar );
   CLKINVX3 U232 ( .A(n309), .Y(n345) );
   NAND2X2 U233 ( .A(n275), .B(n325), .Y(n309) );
   //wddl
-  //NAND2X2 U234 ( .A(a[1]), .B(n242), .Y(n306) );
-  WDDLNAND2X U234 ( .A(a[1]), .B(n242), .Y(n306), .clkinv(preclkbar) );
+  NAND2X2 U234 ( .A(a[1]), .B(n242), .Y(n306) );
+  //WDDLNAND2X U234 ( .A(a[1]), .B(n242), .Y(n306), .clkinv(preclkbar) );
   NAND2X2 U235 ( .A(a[3]), .B(n198), .Y(n242) );
   AOI21XL U236 ( .A0(n311), .A1(n310), .B0(n309), .Y(n317) );
   AOI21XL U237 ( .A0(n307), .A1(n306), .B0(n335), .Y(n308) );
@@ -4751,13 +4757,13 @@ module aes_sbox_8 ( a, d, preclkbar );
   WDDLINV U257 ( .A(a[1]), .Y(n323), .clkinv(preclkbar) );
   NAND2X1 U258 ( .A(a[7]), .B(a[5]), .Y(n129) );
   //wddl
-  //NOR2X1 U259 ( .A(n323), .B(n242), .Y(n210) );
-  WDDLNOR2X U259 ( .A(n323), .B(n242), .Y(n210), .clkinv(preclkbar) );
+  NOR2X1 U259 ( .A(n323), .B(n242), .Y(n210) );
+  //WDDLNOR2X U259 ( .A(n323), .B(n242), .Y(n210), .clkinv(preclkbar) );
   NAND2X1 U260 ( .A(a[2]), .B(n275), .Y(n192) );
   NAND2X1 U261 ( .A(n327), .B(n266), .Y(n95) );
   //wddl
-  //NOR2X1 U262 ( .A(a[4]), .B(n323), .Y(n270) );
-  WDDLNOR2X U262 ( .A(a[4]), .B(n323), .Y(n270), .clkinv(preclkbar) );
+  NOR2X1 U262 ( .A(a[4]), .B(n323), .Y(n270) );
+  //WDDLNOR2X U262 ( .A(a[4]), .B(n323), .Y(n270), .clkinv(preclkbar) );
   OAI21XL U263 ( .A0(n270), .A1(n225), .B0(n1), .Y(n3) );
   NOR2X1 U264 ( .A(a[2]), .B(n275), .Y(n66) );
   NOR2X1 U265 ( .A(a[7]), .B(a[2]), .Y(n339) );
@@ -4767,21 +4773,21 @@ module aes_sbox_8 ( a, d, preclkbar );
   INVX1 U269 ( .A(n192), .Y(n205) );
   INVX1 U270 ( .A(n66), .Y(n111) );
   //wddl
-  //NOR2X1 U271 ( .A(n261), .B(n323), .Y(n324) );
-  WDDLNOR2X U271 ( .A(n261), .B(n323), .Y(n324), .clkinv(preclkbar) );
+  NOR2X1 U271 ( .A(n261), .B(n323), .Y(n324) );
+  //WDDLNOR2X U271 ( .A(n261), .B(n323), .Y(n324), .clkinv(preclkbar) );
   NAND3X1 U272 ( .A(n6), .B(n5), .C(n4), .Y(n7) );
   AOI211X1 U273 ( .A0(n328), .A1(n210), .B0(n8), .C0(n7), .Y(n30) );
   NAND2X1 U274 ( .A(a[6]), .B(a[0]), .Y(n360) );
   INVX1 U275 ( .A(a[6]), .Y(n16) );
   NOR2X1 U276 ( .A(a[0]), .B(n16), .Y(n125) );
   //wddl
-  //NOR2X1 U277 ( .A(n323), .B(n266), .Y(n187) );
-  WDDLNOR2X U277 ( .A(n323), .B(n266), .Y(n187), .clkinv(preclkbar) );
+  NOR2X1 U277 ( .A(n323), .B(n266), .Y(n187) );
+  //WDDLNOR2X U277 ( .A(n323), .B(n266), .Y(n187), .clkinv(preclkbar) );
   INVX1 U278 ( .A(n261), .Y(n307) );
   INVX1 U279 ( .A(n20), .Y(n326) );
   //wddl
-  //NAND2X1 U280 ( .A(n261), .B(n323), .Y(n348) );
-  WDDLNAND2X U280 ( .A(n261), .B(n323), .Y(n348), .clkinv(preclkbar) );
+  NAND2X1 U280 ( .A(n261), .B(n323), .Y(n348) );
+  //WDDLNAND2X U280 ( .A(n261), .B(n323), .Y(n348), .clkinv(preclkbar) );
   INVX1 U281 ( .A(n187), .Y(n196) );
   INVX1 U282 ( .A(n350), .Y(n335) );
   NAND2X1 U283 ( .A(n31), .B(n198), .Y(n103) );
@@ -4790,22 +4796,24 @@ module aes_sbox_8 ( a, d, preclkbar );
   //WDDLNAND2X U284 ( .A(n20), .B(n245), .Y(n263), .clkinv(preclkbar) );
   NAND4X1 U285 ( .A(n12), .B(n11), .C(n10), .D(n9), .Y(n28) );
   //wddl
-  //NAND2X1 U286 ( .A(a[3]), .B(n323), .Y(n267) );
-  WDDLNAND2X U286 ( .A(a[3]), .B(n323), .Y(n267), .clkinv(preclkbar) );
+  NAND2X1 U286 ( .A(a[3]), .B(n323), .Y(n267) );
+  //WDDLNAND2X U286 ( .A(a[3]), .B(n323), .Y(n267), .clkinv(preclkbar) );
   AOI22X1 U287 ( .A0(n1), .A1(n39), .B0(n345), .B1(n61), .Y(n19) );
   INVX1 U288 ( .A(n103), .Y(n37) );
   NOR2X1 U289 ( .A(n195), .B(n270), .Y(n161) );
   INVX1 U290 ( .A(n311), .Y(n268) );
   INVX1 U291 ( .A(n293), .Y(n209) );
   //wddl
-  //NOR2X1 U292 ( .A(a[1]), .B(n209), .Y(n224) );
-  WDDLNOR2X U292 ( .A(a[1]), .B(n209), .Y(n224), .clkinv(preclkbar) );
+  NOR2X1 U292 ( .A(a[1]), .B(n209), .Y(n224) );
+  //WDDLNOR2X U292 ( .A(a[1]), .B(n209), .Y(n224), .clkinv(preclkbar) );
   INVX1 U293 ( .A(n224), .Y(n235) );
   //wddl
-  //NAND2X1 U294 ( .A(n323), .B(n307), .Y(n140) );
-  WDDLNAND2X U294 ( .A(n323), .B(n307), .Y(n140), .clkinv(preclkbar) );
+  NAND2X1 U294 ( .A(n323), .B(n307), .Y(n140) );
+  //WDDLNAND2X U294 ( .A(n323), .B(n307), .Y(n140), .clkinv(preclkbar) );
   NOR2BX1 U295 ( .AN(n140), .B(n181), .Y(n92) );
-  INVX1 U296 ( .A(n195), .Y(n142) );
+ //wddl
+  //INVX1 U296 ( .A(n195), .Y(n142) ); 
+  WDDLINV U296 ( .A(n195), .Y(n142), .clkinv(preclkbar) );
   NAND2X1 U297 ( .A(a[0]), .B(n16), .Y(n297) );
   //wddl
   INVX1 U298 ( .A(n226), .Y(n253) );
@@ -4859,13 +4867,14 @@ module aes_sbox_8 ( a, d, preclkbar );
   OAI21XL U337 ( .A0(n116), .A1(n309), .B0(n79), .Y(n80) );
   //wddl
   //NOR2X1 U338 ( .A(n145), .B(n318), .Y(n152) );
-  WDDLNOR2X U338 ( .A(n145), .B(n318), .Y(n152), .clkinv(preclkbar) );
+  nor_lmdpl U338 ( .clk(clk), .rst_n(rst), .precharge(precharge_lmdpl), .in0(n145), .in1(n318), .m_in0(m_in0_U179), .m_in1(m_in1_U179), .m_out(m_out_U179), .out(n152));
+  //WDDLNOR2X U338 ( .A(n145), .B(n318), .Y(n152), .clkinv(preclkbar) );
   NAND4X1 U339 ( .A(n96), .B(n95), .C(n94), .D(n93), .Y(n97) );
   AOI211X1 U340 ( .A0(n349), .A1(n152), .B0(n98), .C0(n97), .Y(n127) );
   OAI21XL U341 ( .A0(n249), .A1(n288), .B0(n176), .Y(n102) );
   //wddl
-  //NOR2X1 U342 ( .A(n103), .B(n323), .Y(n355) );
-  WDDLNOR2X U342 ( .A(n103), .B(n323), .Y(n355), .clkinv(preclkbar) );
+  NOR2X1 U342 ( .A(n103), .B(n323), .Y(n355) );
+  //WDDLNOR2X U342 ( .A(n103), .B(n323), .Y(n355), .clkinv(preclkbar) );
   OAI21XL U343 ( .A0(n186), .A1(n355), .B0(n328), .Y(n104) );
   NAND4BXL U344 ( .AN(n108), .B(n106), .C(n105), .D(n104), .Y(n124) );
   OAI21XL U345 ( .A0(n111), .A1(n193), .B0(n110), .Y(n112) );
@@ -9239,11 +9248,13 @@ endmodule
 
 //module aes_cipher_top ( clk, rst, ld, done, key, text_in, text_out );
 //module aes_cipher_top ( clk, rst, ld, done, key, text_in, text_out );
-module aes_cipher_top ( divclk,clk, rst, ld, done, key, text_in, text_out );
+module aes_cipher_top ( divclk,clk, rst, ld, done, key, text_in, text_out, m_in0_U179, m_in1_U179, m_out_U179, precharge_lmdpl);
   input [127:0] key;
   input [127:0] text_in;
   output [127:0] text_out;
   input divclk;
+  // lmdpl inputs:
+  input  m_in0_U179, m_in1_U179, m_out_U179, precharge_lmdpl;
   //input divclk, rst, ld;
   input clk, rst, ld;
   output done;
@@ -9412,7 +9423,8 @@ module aes_cipher_top ( divclk,clk, rst, ld, done, key, text_in, text_out );
   aes_sbox_9 us22 ( .a(sa22), .d(sa20_sr) );
   //aes_sbox_8 us23 ( .a(sa23), .d(sa21_sr) );
   //wddl
-  aes_sbox_8 us23 ( .a(sa23), .d(sa21_sr), .preclkbar(clk_bar));
+  //aes_sbox_8 us23 ( .a(sa23), .d(sa21_sr), .preclkbar(clk_bar));
+  aes_sbox_8 us23 ( .a(sa23), .d(sa21_sr), .clk(clk), .rst(rst), .preclkbar(clk_bar), .m_in0_U179(m_in0_U179), .m_in1_U179(m_in1_U179), .m_out_U179(m_out_U179), .precharge_lmdpl(precharge_lmdpl));
   aes_sbox_7 us30 ( .a(sa30), .d(sa31_sr) );
   aes_sbox_6 us31 ( .a(sa31), .d(sa32_sr) );
   aes_sbox_5 us32 ( .a(sa32), .d(sa33_sr) );
@@ -11229,3 +11241,271 @@ WDDLDFFMS sa00_reg_1_ ( .D(N273), .CK(clk), .Q(sa00[1]) );
   OAI21XL U1834 ( .A0(n1189), .A1(n2), .B0(n966), .Y(n1187) );
   OAI21XL U1835 ( .A0(n3), .A1(n959), .B0(n1190), .Y(n1188) );
 endmodule
+
+//------------------------------------------------//
+// LMDPL implementaiton for NOR
+//-----------------------------------------------//
+
+/*module nor_tablegen ( m_in0, m_in1, m_out, \t[7]_BAR , \t[3] , \t[2] , \t[1] , 
+        \t[0] , \t[6]_BAR , \t[5]_BAR , \t[4]_BAR  );
+  input m_in0, m_in1, m_out;
+  output \t[7]_BAR , \t[3] , \t[2] , \t[1] , \t[0] , \t[6]_BAR , \t[5]_BAR ,
+         \t[4]_BAR ;
+  wire   \t[4]_BAR , \t[6]_BAR , \t[5]_BAR , \t[7]_BAR , n1, n2, n3, n4, n5,
+         n6, n7, n8, n9, n10;
+  assign \t[0]  = \t[4]_BAR ;
+  assign \t[2]  = \t[6]_BAR ;
+  assign \t[1]  = \t[5]_BAR ;
+  assign \t[3]  = \t[7]_BAR ;
+
+  INVX1 U1 ( .A(m_out), .Y(n5) );
+  NAND2X1 U2 ( .A(m_in1), .B(m_in0), .Y(n2) );
+  NAND2X1 U3 ( .A(n5), .B(n2), .Y(n1) );
+  OAI21XL U4 ( .A0(n5), .A1(n2), .B0(n1), .Y(\t[7]_BAR ) );
+  INVX1 U5 ( .A(m_in1), .Y(n6) );
+  NAND2X1 U6 ( .A(n6), .B(m_in0), .Y(n4) );
+  NAND2X1 U7 ( .A(n5), .B(n4), .Y(n3) );
+  OAI21XL U8 ( .A0(n5), .A1(n4), .B0(n3), .Y(\t[5]_BAR ) );
+  NOR2X1 U9 ( .A(n6), .B(m_in0), .Y(n8) );
+  NAND2X1 U10 ( .A(n8), .B(m_out), .Y(n7) );
+  OAI21XL U11 ( .A0(n8), .A1(m_out), .B0(n7), .Y(\t[6]_BAR ) );
+  NOR2X1 U12 ( .A(m_in1), .B(m_in0), .Y(n10) );
+  NAND2X1 U13 ( .A(n10), .B(m_out), .Y(n9) );
+  OAI21XL U14 ( .A0(n10), .A1(m_out), .B0(n9), .Y(\t[4]_BAR ) );
+endmodule
+
+
+module boolean_mask_dualrail_1 ( in, mask, in_m, in_m_bar );
+  input in, mask;
+  output in_m, in_m_bar;
+
+
+  XNOR2X1 U1 ( .A(in), .B(mask), .Y(in_m_bar) );
+  INVX1 U2 ( .A(in_m_bar), .Y(in_m) );
+endmodule
+
+
+module and3_lib ( in0, in1, in2, out );
+  input in0, in1, in2;
+  output out;
+
+
+  AND3X1 and3_inst ( .A(in0), .B(in1), .C(in2), .Y(out) );
+endmodule
+
+
+module or4_lib ( in0, in1, in2, in3, out );
+  input in0, in1, in2, in3;
+  output out;
+
+
+  OR4X1 or4_inst ( .A(in0), .B(in1), .C(in2), .D(in3), .Y(out) );
+endmodule
+
+
+module lmdpl_nl_gate ( t, a_m, a_m_bar, b_m, b_m_bar, q_m, q_m_bar );
+  input [7:0] t;
+  input a_m, a_m_bar, b_m, b_m_bar;
+  output q_m, q_m_bar;
+
+  wire   [7:0] and_out;
+
+  and3_lib and3_inst_0 ( .in0(t[0]), .in1(a_m_bar), .in2(b_m_bar), .out(
+        and_out[0]) );
+  and3_lib and3_inst_1 ( .in0(t[1]), .in1(a_m), .in2(b_m_bar), .out(and_out[1]) );
+  and3_lib and3_inst_2 ( .in0(t[2]), .in1(a_m_bar), .in2(b_m), .out(and_out[2]) );
+  and3_lib and3_inst_3 ( .in0(t[3]), .in1(a_m), .in2(b_m), .out(and_out[3]) );
+  and3_lib and3_inst_4 ( .in0(t[4]), .in1(a_m_bar), .in2(b_m_bar), .out(
+        and_out[4]) );
+  and3_lib and3_inst_5 ( .in0(t[5]), .in1(a_m), .in2(b_m_bar), .out(and_out[5]) );
+  and3_lib and3_inst_6 ( .in0(t[6]), .in1(a_m_bar), .in2(b_m), .out(and_out[6]) );
+  and3_lib and3_inst_7 ( .in0(t[7]), .in1(a_m), .in2(b_m), .out(and_out[7]) );
+  or4_lib or4_inst_0 ( .in0(and_out[0]), .in1(and_out[1]), .in2(and_out[2]), 
+        .in3(and_out[3]), .out(q_m_bar) );
+  or4_lib or4_inst_1 ( .in0(and_out[4]), .in1(and_out[5]), .in2(and_out[6]), 
+        .in3(and_out[7]), .out(q_m) );
+endmodule
+
+
+module boolean_mask_dualrail_0 ( in, mask, in_m, in_m_bar );
+  input in, mask;
+  output in_m, in_m_bar;
+
+
+  XNOR2X1 U1 ( .A(in), .B(mask), .Y(in_m_bar) );
+  INVX1 U2 ( .A(in_m_bar), .Y(in_m) );
+endmodule
+
+
+module nor_lmdpl ( clk, rst_n, precharge, in0, in1, m_in0, m_in1, m_out, out
+ );
+  input clk, rst_n, precharge, in0, in1, m_in0, m_in1, m_out;
+  output out;
+  wire   in0_m, in0_m_bar, in1_m, in1_m_bar, in0_m_pre_reg, in0_m_bar_pre_reg,
+         in1_m_pre_reg, in1_m_bar_pre_reg, out_m, N16, n3, n4, n5, n6, n7, n8;
+  wire   [7:0] t;
+  wire   [7:0] t_reg;
+
+  nor_tablegen nor_tablegen_inst ( .m_in0(m_in0), .m_in1(m_in1), .m_out(m_out), 
+        .\t[7]_BAR (t[7]), .\t[3] (t[3]), .\t[2] (t[2]), .\t[1] (t[1]), 
+        .\t[0] (t[0]), .\t[6]_BAR (t[6]), .\t[5]_BAR (t[5]), .\t[4]_BAR (t[4])
+         );
+  boolean_mask_dualrail_1 boolean_mask_dualrail_inst0 ( .in(in0), .mask(m_in0), 
+        .in_m(in0_m), .in_m_bar(in0_m_bar) );
+  boolean_mask_dualrail_0 boolean_mask_dualrail_inst1 ( .in(in1), .mask(m_in1), 
+        .in_m(in1_m), .in_m_bar(in1_m_bar) );
+  lmdpl_nl_gate lmdpl_nl_gate_inst ( .t(t_reg), .a_m(in0_m_pre_reg), .a_m_bar(
+        in0_m_bar_pre_reg), .b_m(in1_m_pre_reg), .b_m_bar(in1_m_bar_pre_reg), 
+        .q_m(out_m) );
+  DFFHQX1 out_reg_reg ( .D(N16), .CK(clk), .Q(out) );
+  DFFTRX1 t_reg_reg_3_ ( .D(t[3]), .RN(rst_n), .CK(clk), .Q(t_reg[3]) );
+  DFFTRX1 t_reg_reg_2_ ( .D(t[2]), .RN(rst_n), .CK(clk), .Q(t_reg[2]) );
+  DFFTRX1 t_reg_reg_1_ ( .D(t[1]), .RN(rst_n), .CK(clk), .Q(t_reg[1]) );
+  DFFTRX1 t_reg_reg_0_ ( .D(t[0]), .RN(rst_n), .CK(clk), .Q(t_reg[0]) );
+  DFFTRX1 t_reg_reg_7_ ( .D(n8), .RN(rst_n), .CK(clk), .Q(t_reg[7]) );
+  DFFTRX1 t_reg_reg_6_ ( .D(n7), .RN(rst_n), .CK(clk), .Q(t_reg[6]) );
+  DFFTRX1 t_reg_reg_5_ ( .D(n6), .RN(rst_n), .CK(clk), .Q(t_reg[5]) );
+  DFFTRX1 t_reg_reg_4_ ( .D(n5), .RN(rst_n), .CK(clk), .Q(t_reg[4]) );
+  DFFTRX1 in1_m_pre_reg_reg ( .D(n3), .RN(in1_m), .CK(clk), .Q(in1_m_pre_reg)
+         );
+  DFFTRX1 in1_m_bar_pre_reg_reg ( .D(n3), .RN(in1_m_bar), .CK(clk), .Q(
+        in1_m_bar_pre_reg) );
+  DFFTRX1 in0_m_pre_reg_reg ( .D(n3), .RN(in0_m), .CK(clk), .Q(in0_m_pre_reg)
+         );
+  DFFTRX1 in0_m_bar_pre_reg_reg ( .D(in0_m_bar), .RN(rst_n), .CK(clk), .Q(
+        in0_m_bar_pre_reg) );
+  AOI21XL U7 ( .A0(m_out), .A1(out_m), .B0(n4), .Y(N16) );
+  INVX1 U8 ( .A(t[4]), .Y(n5) );
+  INVX1 U9 ( .A(t[5]), .Y(n6) );
+  INVX1 U10 ( .A(t[6]), .Y(n7) );
+  INVX1 U11 ( .A(t[7]), .Y(n8) );
+  NOR2BX1 U12 ( .AN(rst_n), .B(precharge), .Y(n3) );
+  OAI21XL U13 ( .A0(m_out), .A1(out_m), .B0(rst_n), .Y(n4) );
+endmodule
+*/
+
+//--------------------------------------------//
+// combinational implemenent lmdpl
+//--------------------------------------------//
+
+module nor_tablegen ( m_in0, m_in1, m_out, t );
+  output [7:0] t;
+  input m_in0, m_in1, m_out;
+  wire   N13, N15, N18, N21, n1, n2, n3, n4, n5, n6, n7, n8, n9, n10;
+  assign t[7] = N13;
+  assign t[6] = N15;
+  assign t[5] = N18;
+  assign t[4] = N21;
+
+  INVX1 U1 ( .A(m_out), .Y(n8) );
+  NAND2X1 U2 ( .A(m_in1), .B(m_in0), .Y(n2) );
+  NAND2X1 U3 ( .A(n8), .B(n2), .Y(n1) );
+  OAI21XL U4 ( .A0(n8), .A1(n2), .B0(n1), .Y(t[3]) );
+  INVX1 U5 ( .A(t[3]), .Y(N13) );
+  INVX1 U6 ( .A(m_in1), .Y(n5) );
+  NOR2X1 U7 ( .A(n5), .B(m_in0), .Y(n4) );
+  NAND2X1 U8 ( .A(n4), .B(m_out), .Y(n3) );
+  OAI21XL U9 ( .A0(n4), .A1(m_out), .B0(n3), .Y(t[2]) );
+  INVX1 U10 ( .A(t[2]), .Y(N15) );
+  NAND2X1 U11 ( .A(n5), .B(m_in0), .Y(n7) );
+  NAND2X1 U12 ( .A(n8), .B(n7), .Y(n6) );
+  OAI21XL U13 ( .A0(n8), .A1(n7), .B0(n6), .Y(t[1]) );
+  INVX1 U14 ( .A(t[1]), .Y(N18) );
+  NOR2X1 U15 ( .A(m_in1), .B(m_in0), .Y(n10) );
+  NAND2X1 U16 ( .A(n10), .B(m_out), .Y(n9) );
+  OAI21XL U17 ( .A0(n10), .A1(m_out), .B0(n9), .Y(t[0]) );
+  INVX1 U18 ( .A(t[0]), .Y(N21) );
+endmodule
+
+
+module boolean_mask_dualrail_1 ( in, mask, in_m, in_m_bar );
+  input in, mask;
+  output in_m, in_m_bar;
+
+
+  XNOR2X1 U1 ( .A(in), .B(mask), .Y(in_m_bar) );
+endmodule
+
+
+module and3_lib ( in0, in1, in2, out );
+  input in0, in1, in2;
+  output out;
+
+
+  AND3X1 and3_inst ( .A(in0), .B(in1), .C(in2), .Y(out) );
+endmodule
+
+
+module or4_lib ( in0, in1, in2, in3, out );
+  input in0, in1, in2, in3;
+  output out;
+
+
+  OR4X1 or4_inst ( .A(in0), .B(in1), .C(in2), .D(in3), .Y(out) );
+endmodule
+
+
+module lmdpl_nl_gate ( t, a_m, a_m_bar, b_m, b_m_bar, q_m, q_m_bar );
+  input [7:0] t;
+  input a_m, a_m_bar, b_m, b_m_bar;
+  output q_m, q_m_bar;
+
+  wire   [7:0] and_out;
+
+  and3_lib and3_inst_0 ( .in0(t[0]), .in1(a_m_bar), .in2(b_m_bar), .out(
+        and_out[0]) );
+  and3_lib and3_inst_1 ( .in0(t[1]), .in1(a_m), .in2(b_m_bar), .out(and_out[1]) );
+  and3_lib and3_inst_2 ( .in0(t[2]), .in1(a_m_bar), .in2(b_m), .out(and_out[2]) );
+  and3_lib and3_inst_3 ( .in0(t[3]), .in1(a_m), .in2(b_m), .out(and_out[3]) );
+  and3_lib and3_inst_4 ( .in0(t[4]), .in1(a_m_bar), .in2(b_m_bar), .out(
+        and_out[4]) );
+  and3_lib and3_inst_5 ( .in0(t[5]), .in1(a_m), .in2(b_m_bar), .out(and_out[5]) );
+  and3_lib and3_inst_6 ( .in0(t[6]), .in1(a_m_bar), .in2(b_m), .out(and_out[6]) );
+  and3_lib and3_inst_7 ( .in0(t[7]), .in1(a_m), .in2(b_m), .out(and_out[7]) );
+  or4_lib or4_inst_0 ( .in0(and_out[0]), .in1(and_out[1]), .in2(and_out[2]), 
+        .in3(and_out[3]), .out(q_m_bar) );
+  or4_lib or4_inst_1 ( .in0(and_out[4]), .in1(and_out[5]), .in2(and_out[6]), 
+        .in3(and_out[7]), .out(q_m) );
+endmodule
+
+
+module boolean_mask_dualrail_0 ( in, mask, in_m, in_m_bar );
+  input in, mask;
+  output in_m, in_m_bar;
+
+
+  XNOR2X1 U1 ( .A(in), .B(mask), .Y(in_m_bar) );
+endmodule
+
+
+module nor_lmdpl ( clk, rst_n, precharge, in0, in1, m_in0, m_in1, m_out, out
+ );
+  input clk, rst_n, precharge, in0, in1, m_in0, m_in1, m_out;
+  output out;
+  wire   in0_m_bar, in1_m_bar, in0_m_pre, in0_m_bar_pre, in1_m_pre,
+         in1_m_bar_pre, out_m, out_m_bar, n4, n5, n6;
+  wire   [7:0] t;
+
+  nor_tablegen nor_tablegen_inst ( .m_in0(m_in0), .m_in1(m_in1), .m_out(m_out), 
+        .t(t) );
+  boolean_mask_dualrail_1 boolean_mask_dualrail_inst0 ( .in(in0), .mask(m_in0), 
+        .in_m_bar(in0_m_bar) );
+  boolean_mask_dualrail_0 boolean_mask_dualrail_inst1 ( .in(in1), .mask(m_in1), 
+        .in_m_bar(in1_m_bar) );
+  lmdpl_nl_gate lmdpl_nl_gate_inst ( .t(t), .a_m(in0_m_pre), .a_m_bar(
+        in0_m_bar_pre), .b_m(in1_m_pre), .b_m_bar(in1_m_bar_pre), .q_m(out_m), 
+        .q_m_bar(out_m_bar) );
+  NOR2BX1 U9 ( .AN(in0_m_bar), .B(precharge), .Y(in0_m_bar_pre) );
+  NOR2X1 U10 ( .A(precharge), .B(in0_m_bar), .Y(in0_m_pre) );
+  NOR2BX1 U11 ( .AN(in1_m_bar), .B(precharge), .Y(in1_m_bar_pre) );
+  NOR2X1 U12 ( .A(precharge), .B(in1_m_bar), .Y(in1_m_pre) );
+  INVX1 U13 ( .A(out_m_bar), .Y(n6) );
+  INVX1 U14 ( .A(out_m), .Y(n5) );
+  INVX1 U15 ( .A(m_out), .Y(n4) );
+  AOI33X1 U16 ( .A0(m_out), .A1(out_m), .A2(n6), .B0(out_m_bar), .B1(n5), .B2(
+        n4), .Y(out) );
+endmodule
+
+
+
+

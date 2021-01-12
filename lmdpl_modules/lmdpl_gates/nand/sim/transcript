@@ -1,0 +1,78 @@
+# //  ModelSim SE-64 2019.2 Apr 16 2019 Linux 4.2.0-42-generic
+# //
+# //  Copyright 1991-2019 Mentor Graphics Corporation
+# //  All Rights Reserved.
+# //
+# //  ModelSim SE-64 and its associated documentation contain trade
+# //  secrets and commercial or financial information that are the property of
+# //  Mentor Graphics Corporation and are privileged, confidential,
+# //  and exempt from disclosure under the Freedom of Information Act,
+# //  5 U.S.C. Section 552. Furthermore, this information
+# //  is prohibited from disclosure under the Trade Secrets Act,
+# //  18 U.S.C. Section 1905.
+# //
+# vsim work.nand_lmdpl_sim -voptargs="+acc" -sdfmax "/nand_lmdpl_sim/nand_lmdpl_inst=../syn/workdir/nand_lmdpl_synthesis.sdf" 
+# Start time: 15:56:28 on Nov 25,2020
+# ** Note: (vsim-3812) Design is being optimized...
+# ** Warning: ../syn/workdir/nand_lmdpl_netlist.v(110): (vopt-2685) [TFMPC] - Too few port connections for 'lmdpl_nl_gate_inst'.  Expected 7, found 6.
+# ** Warning: ../syn/workdir/nand_lmdpl_netlist.v(110): (vopt-2718) [TFMPC] - Missing connection for port 'q_m_bar'.
+# ** Warning: ../syn/workdir/nand_lmdpl_netlist.v(114): (vopt-2685) [TFMPC] - Too few port connections for 't_reg_reg_3_'.  Expected 5, found 4.
+# ** Warning: ../syn/workdir/nand_lmdpl_netlist.v(114): (vopt-2718) [TFMPC] - Missing connection for port 'QN'.
+# ** Warning: ../syn/workdir/nand_lmdpl_netlist.v(115): (vopt-2685) [TFMPC] - Too few port connections for 't_reg_reg_2_'.  Expected 5, found 4.
+# ** Warning: ../syn/workdir/nand_lmdpl_netlist.v(115): (vopt-2718) [TFMPC] - Missing connection for port 'QN'.
+# ** Warning: ../syn/workdir/nand_lmdpl_netlist.v(116): (vopt-2685) [TFMPC] - Too few port connections for 't_reg_reg_1_'.  Expected 5, found 4.
+# ** Warning: ../syn/workdir/nand_lmdpl_netlist.v(116): (vopt-2718) [TFMPC] - Missing connection for port 'QN'.
+# ** Warning: ../syn/workdir/nand_lmdpl_netlist.v(117): (vopt-2685) [TFMPC] - Too few port connections for 't_reg_reg_0_'.  Expected 5, found 4.
+# ** Warning: ../syn/workdir/nand_lmdpl_netlist.v(117): (vopt-2718) [TFMPC] - Missing connection for port 'QN'.
+# ** Warning: ../syn/workdir/nand_lmdpl_netlist.v(118): (vopt-2685) [TFMPC] - Too few port connections for 't_reg_reg_7_'.  Expected 5, found 4.
+# ** Warning: ../syn/workdir/nand_lmdpl_netlist.v(118): (vopt-2718) [TFMPC] - Missing connection for port 'QN'.
+# ** Warning: ../syn/workdir/nand_lmdpl_netlist.v(119): (vopt-2685) [TFMPC] - Too few port connections for 't_reg_reg_6_'.  Expected 5, found 4.
+# ** Warning: ../syn/workdir/nand_lmdpl_netlist.v(119): (vopt-2718) [TFMPC] - Missing connection for port 'QN'.
+# ** Warning: ../syn/workdir/nand_lmdpl_netlist.v(120): (vopt-2685) [TFMPC] - Too few port connections for 't_reg_reg_5_'.  Expected 5, found 4.
+# ** Warning: ../syn/workdir/nand_lmdpl_netlist.v(120): (vopt-2718) [TFMPC] - Missing connection for port 'QN'.
+# ** Warning: ../syn/workdir/nand_lmdpl_netlist.v(121): (vopt-2685) [TFMPC] - Too few port connections for 't_reg_reg_4_'.  Expected 5, found 4.
+# ** Warning: ../syn/workdir/nand_lmdpl_netlist.v(121): (vopt-2718) [TFMPC] - Missing connection for port 'QN'.
+# ** Warning: ../syn/workdir/nand_lmdpl_netlist.v(122): (vopt-2685) [TFMPC] - Too few port connections for 'in1_m_pre_reg_reg'.  Expected 5, found 4.
+# ** Warning: ../syn/workdir/nand_lmdpl_netlist.v(122): (vopt-2718) [TFMPC] - Missing connection for port 'QN'.
+# ** Warning: ../syn/workdir/nand_lmdpl_netlist.v(124): (vopt-2685) [TFMPC] - Too few port connections for 'in1_m_bar_pre_reg_reg'.  Expected 5, found 4.
+# ** Warning: ../syn/workdir/nand_lmdpl_netlist.v(124): (vopt-2718) [TFMPC] - Missing connection for port 'QN'.
+# ** Warning: ../syn/workdir/nand_lmdpl_netlist.v(126): (vopt-2685) [TFMPC] - Too few port connections for 'in0_m_pre_reg_reg'.  Expected 5, found 4.
+# ** Warning: ../syn/workdir/nand_lmdpl_netlist.v(126): (vopt-2718) [TFMPC] - Missing connection for port 'QN'.
+# ** Warning: ../syn/workdir/nand_lmdpl_netlist.v(128): (vopt-2685) [TFMPC] - Too few port connections for 'in0_m_bar_pre_reg_reg'.  Expected 5, found 4.
+# ** Warning: ../syn/workdir/nand_lmdpl_netlist.v(128): (vopt-2718) [TFMPC] - Missing connection for port 'QN'.
+# Loading work.nand_lmdpl_sim(fast)
+# Loading work.nand_lmdpl(fast)
+# Loading work.nand_tablegen(fast)
+# Loading work.INVX1(fast)
+# Loading work.NOR2X1(fast)
+# Loading work.NAND2X1(fast)
+# Loading work.OAI21XL(fast)
+# Loading work.boolean_mask_dualrail_1(fast)
+# Loading work.XNOR2X1(fast)
+# Loading work.boolean_mask_dualrail_0(fast)
+# Loading work.lmdpl_nl_gate(fast)
+# Loading work.and3_lib(fast)
+# Loading work.AND3X1(fast)
+# Loading work.or4_lib(fast)
+# Loading work.OR4X1(fast)
+# Loading work.DFFHQX1(fast)
+# Loading work.DFFTRX1(fast)
+# Loading work.AOI21XL(fast)
+# Loading work.NOR2BX1(fast)
+# Loading work.xorshift_prng(fast)
+# Loading instances from ../syn/workdir/nand_lmdpl_synthesis.sdf
+# Loading timing data from ../syn/workdir/nand_lmdpl_synthesis.sdf
+# ** Warning: (vsim-8756) Instance 'nand_lmdpl_sim.nand_lmdpl_inst.in0_m_bar_pre_reg_reg' - Negative timing check limits detected in simulation with cells modeled without delayed copies of data or reference signals.
+#    Time: 0 ps  Iteration: 0  Instance: /nand_lmdpl_sim File: /opt/libs/tsmc180/extracted/tsmc/cl018g/sc9_base_rvt/2008q3v01/verilog/sage-x_tsmc_cl018g_rvt.v Line: 13226
+# ** Note: (vsim-3587) SDF Backannotation Successfully Completed.
+#    Time: 0 ps  Iteration: 0  Instance: /nand_lmdpl_sim File: ../nand_lmdpl_sim.v
+run -all
+# input0: 0, input1: 0 --> output: 1
+# input0: 0, input1: 1 --> output: 1
+# input0: 1, input1: 0 --> output: 1
+# input0: 1, input1: 1 --> output: 0
+# ** Note: $stop    : ../nand_lmdpl_sim.v(71)
+#    Time: 180 ns  Iteration: 0  Instance: /nand_lmdpl_sim
+# Break in Module nand_lmdpl_sim at ../nand_lmdpl_sim.v line 71
+# End time: 15:57:14 on Nov 25,2020, Elapsed time: 0:00:46
+# Errors: 0, Warnings: 27
